@@ -1,5 +1,5 @@
 library,run,subreads
-lib1,210504_A,/fh/fast/bloom_j/SR/ngs/pacbio/210504_GreaneyCrawford/r54228_20210504_191557/1_A01/m54228_210504_192625.subreads.bam
-lib2,210504_A,/fh/fast/bloom_j/SR/ngs/pacbio/210504_GreaneyCrawford/r54228_20210504_191557/2_B01/m54228_210505_154447.subreads.bam
-lib1,210513_A,/fh/fast/bloom_j/SR/ngs/pacbio/210511_GreaneyMalone/r54228_20210511_172101/1_A01/m54228_210511_181219.subreads.bam
-lib2,210513_A,/fh/fast/bloom_j/SR/ngs/pacbio/210511_GreaneyMalone/r54228_20210511_172101/2_B01/m54228_210512_143038.subreads.bam
+lib1,210701_A,
+lib2,210701_A,
+lib1,210701_A,
+lib2,210701_A,

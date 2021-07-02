@@ -7,5 +7,5 @@ snakemake \
     --latency-wait 30 \
     --use-envmodules \
     --use-conda \
-    --conda-prefix /home/agreaney/miniconda3/envs/SARS-CoV-2-RBD_resurface \
+    --conda-prefix ./env \
     -R make_summary

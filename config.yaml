@@ -10,13 +10,10 @@ max_cpus: 16
 amplicons: data/PacBio_amplicons.gb
 
 # the primary target for which we are calling mutations
-primary_target: SARS-CoV-2
+primary_target: B.1.351
 
 # how to parse the amplicon
 feature_parse_specs: data/feature_parse_specs.yaml
-
-# the mutations present in the library design
-library_design: data/designed_mutants.csv
 
 # do we get the sequencing data from the 'HutchServer' or 'SRA'?
 seqdata_source: HutchServer
@@ -37,6 +34,7 @@ wildtype_sequence: data/wildtype_sequence.fasta
 site_number_offset: 330  # add this to sequential sites to get RBD numbering
 
 # URLs from which we download binding & expression of mutants & variants
+# for the original DMS of SARS-CoV-2 Wuhan-1 RBD
 mut_bind_expr_url: https://media.githubusercontent.com/media/jbloomlab/SARS-CoV-2-RBD_DMS/master/results/single_mut_effects/single_mut_effects.csv
 
 # parameters for running PacBio `ccs` program

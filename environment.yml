@@ -1,4 +1,4 @@
-name: SARS-CoV-2-RBD_resurface
+name: SARS-CoV-2-RBD_B.1.351
 channels:
   - bioconda
   - conda-forge
@@ -21,5 +21,3 @@ dependencies:
   - pip:
     - alignparse==0.2.4
     - dms-variants==0.8.9
-
-prefix: /home/agreaney/miniconda3/envs/SARS-CoV-2-RBD_resurface
