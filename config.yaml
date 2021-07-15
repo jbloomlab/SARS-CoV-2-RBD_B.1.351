@@ -10,7 +10,7 @@ max_cpus: 16
 amplicons: data/PacBio_amplicons.gb
 
 # the primary target for which we are calling mutations
-primary_target: B.1.351
+primary_target: B1351
 
 # how to parse the amplicon
 feature_parse_specs: data/feature_parse_specs.yaml

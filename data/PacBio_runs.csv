@@ -1,5 +1,3 @@
-library,run,subreads
-lib1,210701_A,
-lib2,210701_A,
-lib1,210701_A,
-lib2,210701_A,
+library,run,ccs
+lib1,210701_A,/fh/fast/bloom_j/SR/ngs/pacbio_UW/20210701_Greaney_A/bg_pool.AG/CCS_7555/fastx_files/demultiplex.bc1021_BAK8B_OA--bc1021_BAK8B_OA.hifi_reads.fastq.gz
+lib2,210701_A,/fh/fast/bloom_j/SR/ngs/pacbio_UW/20210701_Greaney_A/bg_pool.AG/CCS_7555/fastx_files/demultiplex.bc1022_BAK8B_OA--bc1022_BAK8B_OA.hifi_reads.fastq.gz
