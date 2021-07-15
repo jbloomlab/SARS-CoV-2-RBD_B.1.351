@@ -1,3 +1,2 @@
 results/counts/variant_counts.csv.gz filter=lfs diff=lfs merge=lfs -text
-
 *.ipynb filter=strip-notebook-metadata diff=strip-notebook-metadata
