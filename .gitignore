@@ -16,7 +16,7 @@ results/*
 !resuts/counts
 results/counts/*
 !results/counts/variant_counts.csv.gz
-!results/counts/counts_to_cells.csv
+!results/counts/counts_to_cells_csv.csv
 !results/escape_scores
 results/escape_scores/*
 !results/escape_scores/scores.csv.gz
