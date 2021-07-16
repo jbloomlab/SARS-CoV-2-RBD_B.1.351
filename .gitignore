@@ -19,8 +19,7 @@ results/counts/*
 !results/counts/counts_to_cells_csv.csv
 !results/escape_scores
 results/escape_scores/*
-!results/escape_scores/scores.csv.gz
-!results/escape_scores/scores_homologs.csv
+!results/escape_scores/scores.csv
 !results/escape_scores/escape_fracs.csv
 
 data/spikeprot*
