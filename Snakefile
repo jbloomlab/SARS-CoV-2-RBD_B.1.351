@@ -85,7 +85,7 @@ rule make_summary:
         # compute_meanF='results/summary/compute_expression_meanF.md',
         # expression_sortseq_file=config['expression_sortseq_file'],
         # global_epistasis_expression=nb_markdown('global_epistasis_expression.ipynb'),
-        # counts_to_scores=nb_markdown('counts_to_scores.ipynb'),
+        counts_to_scores=nb_markdown('counts_to_scores.ipynb'),
         # scores_to_frac_escape=nb_markdown('scores_to_frac_escape.ipynb'),
         # escape_fracs=config['escape_fracs'],
     output:
@@ -126,7 +126,8 @@ rule make_summary:
                all samples.
             
             6. [QC analysis of sequencing counts]({path(input.analyze_counts)}).
-
+            
+            9. [Escape scores from variant counts]({path(input.counts_to_scores)}).
 
             """
             ).strip())
@@ -139,7 +140,7 @@ rule make_summary:
 # 
 # 8. [Global epistasis decomposition of expression effects]({path(input.global_epistasis_expression)}).
 # 
-# 9. [Escape scores from variant counts]({path(input.counts_to_scores)}).
+# 
 # 
 # 10. [Global epistasis deconvolution of escape fractions for single mutations]
 #    ({path(input.scores_to_frac_escape)}); creating
@@ -168,20 +169,22 @@ rule make_rulegraph:
 #     shell:
 #         "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
 # 
-# rule counts_to_scores:
-#     """Analyze variant counts to compute escape scores."""
-#     input:
-#         config['variant_counts'],
-#         config['wildtype_sequence'],
-#         config['expression_predictions_by_aa_substitutions_file'],
-#     output:
-#         nb_markdown=nb_markdown('counts_to_scores.ipynb'),
-#         escape_scores=config['escape_scores'],
-#         escape_score_samples=config['escape_score_samples'],
-#     params:
-#         nb='counts_to_scores.ipynb'
-#     shell:
-#         "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
+rule counts_to_scores:
+    """Analyze variant counts to compute escape scores."""
+    input:
+        config['variant_counts'],
+        config['wildtype_sequence'],
+        # config['mut_bind_expr'],
+        # config['variant_expr'],
+        # config['variant_bind'],
+    output:
+        nb_markdown=nb_markdown('counts_to_scores.ipynb'),
+        escape_scores=config['escape_scores'],
+        escape_score_samples=config['escape_score_samples'],
+    params:
+        nb='counts_to_scores.ipynb'
+    shell:
+        "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
 # 
 # rule global_epistasis_expression:
 #     input:

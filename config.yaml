@@ -106,6 +106,8 @@ escape_frac_protein_chain: E  # use this chain
 summary_dir: results/summary
 figs_dir: results/figures
 mut_bind_expr: results/prior_DMS_data/mutant_ACE2binding_expression.csv
+variant_expr: results/prior_DMS_data/variant_expression.csv
+variant_bind: results/prior_DMS_data/variant_ACE2binding.csv
 ccs_dir: results/ccs
 process_ccs_dir: results/process_ccs
 processed_ccs_file: results/process_ccs/processed_ccs.csv
