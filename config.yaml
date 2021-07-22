@@ -102,6 +102,44 @@ escape_frac_avg_min_single: 2
 # visualization on PDB 6m0j:
 escape_frac_protein_chain: E  # use this chain
 
+
+# Parameters for calling sites of strong escape based on site escape metric.
+# There are several different calling thresholds defined. In order to be called,
+# a site must meet *all* of the site criteria or have a mutation that meets
+# *all* of the mutation criteria.
+strong_escape_sites_calling_params:
+  default:
+    exceed_median: 10  # must exceed median across sites by > this
+    frac_max: 0.1  # must be > this much of max escape site
+    min_value: 0  # site selection must be > than this
+  sensitive:
+    exceed_median: 5  # must exceed median across sites by > this
+    frac_max: 0.05  # must be > this much of max escape site
+    min_value: 0  # must be > than this
+  sensitive_max_mut:
+    exceed_median: 5  # must exceed median across sites by > this
+    frac_max: 0.05  # must be > this much of max escape site
+    min_value: 0  # must be > than this
+    min_value_mut: 0.5  # keep site if any mutation selection > than this
+
+# Site- and mutation-level metrics for escape profiles
+site_metric: site_total_escape_frac_epistasis_model
+mut_metric: mut_escape_frac_epistasis_model
+# Specify how to plot escape profiles
+escape_profiles_config: data/escape_profiles_config.yaml
+# Site color schemes for escape profiles
+site_color_schemes: data/site_color_schemes.csv
+# Set default y-axis max for escape profiles. The y-axis ymax is
+# scaled to larger of max site escape for antibody / sera **or** so
+# indicated quantile of site escape is at the indicated fraction of y-axis
+# height. It's also possible to set a minimum value for the y-maximum.
+# See: https://jbloomlab.github.io/dmslogo/set_ylims.html. Can be
+# overridden for specific escape profiles in `data/escape_profiles_config.yaml`.
+escape_profile_ymax:
+  quantile: 0.5
+  frac: 0.05
+  min_ymax: null
+
 # output directories / files
 summary_dir: results/summary
 figs_dir: results/figures
@@ -129,3 +167,5 @@ escape_scores_dir: results/escape_scores
 escape_score_samples: results/escape_scores/samples.csv
 escape_scores: results/escape_scores/scores.csv
 escape_fracs: results/escape_scores/escape_fracs.csv
+escape_profiles_dir: results/escape_profiles
+strong_escape_sites: results/escape_profiles/strong_escape_sites.csv

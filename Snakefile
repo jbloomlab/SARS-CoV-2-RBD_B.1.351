@@ -87,6 +87,9 @@ rule make_summary:
         counts_to_scores=nb_markdown('counts_to_scores.ipynb'),
         scores_to_frac_escape=nb_markdown('scores_to_frac_escape.ipynb'),
         escape_fracs=config['escape_fracs'],
+        call_strong_escape_sites=nb_markdown('call_strong_escape_sites.ipynb'),
+        strong_escape_sites=config['strong_escape_sites'],
+        escape_profiles=nb_markdown('escape_profiles.ipynb'),
     output:
         summary = os.path.join(config['summary_dir'], 'summary.md')
     run:
@@ -129,6 +132,11 @@ rule make_summary:
             7. [Global epistasis deconvolution of escape fractions for single mutations]
                ({path(input.scores_to_frac_escape)}); creating
                [mutation escape fraction file]({path(input.escape_fracs)}).
+            
+            8. [Call sites of strong escape]({path(input.call_strong_escape_sites)}),
+               and write to [a CSV file]({path(input.strong_escape_sites)}).
+            
+            9. Plot [escape profiles]({path(input.escape_profiles)}).
 
 
             """
@@ -144,6 +152,35 @@ rule make_rulegraph:
     shell:
         "snakemake --forceall --rulegraph | dot -Tsvg > {output}"
 
+rule escape_profiles:
+    """Make stacked logo plots of antibody escape profiles."""
+    input:
+        escape_fracs=config['escape_fracs'],
+        escape_profiles_config=config['escape_profiles_config'],
+        site_color_schemes=config['site_color_schemes'],
+        wildtype_sequence=config['wildtype_sequence'],
+        mut_bind_expr=config['mut_bind_expr'],
+        strong_escape_sites=config['strong_escape_sites'],
+    output:
+        nb_markdown=nb_markdown('escape_profiles.ipynb'),
+        # escape_profiles_dms_colors=config['escape_profiles_dms_colors'],
+    params:
+        nb='escape_profiles.ipynb'
+    shell:
+        "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
+        
+rule call_strong_escape_sites:
+    """Call sites of strong escape."""
+    input:
+        escape_fracs=config['escape_fracs'],
+    output:
+        nb_markdown=nb_markdown('call_strong_escape_sites.ipynb'),
+        strong_escape_sites=config['strong_escape_sites'],
+    params:
+        nb='call_strong_escape_sites.ipynb'
+    shell:
+        "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
+        
 rule scores_to_frac_escape:
     """Estimate mutation-level escape scores."""
     input:

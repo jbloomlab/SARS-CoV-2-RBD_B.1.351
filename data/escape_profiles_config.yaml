@@ -1,0 +1,981 @@
+# Specify configuration of escape profile and related plots.
+#
+# Each entry should be a key with the name of the plot. It then can
+# have the following nested keys:
+#   conditions -> specify antibodies / sera and names to use when plotting
+#   plot_auto_identified_sites -> provide name of one of the thresholds for
+#                                 identifying sites of strong escape, or false
+#                                 to not plot auto-identified strong sites.
+#   add_sites -> list of any additional sites to plot
+#   exclude_sites -> list of any sites to exclude from plot
+#   site_color_scheme -> site-level color scheme in `site_color_schemes.csv`
+#                        **or** color for all sites
+#   mutation_colors -> dict keyed by mutation (e.g., P484) with value being color
+#   color_by_dms -> make copies of escape profiles colored by DMS bind / expr
+#   make_supp_data -> make supplemental data / dms-view file
+#   single_nt_only -> only include single-nt mutations relative to Genbank file
+#                     specified here in escape profiles.
+#   draw_line_plot -> set to false to not show line plot in escape profile
+#   analyze_natural_mutations -> analyze naturally occuring mutations at sites
+#                                of strong escape.
+#   analyze_natural_mutations_specs -> override defaults in analyzing natural
+#                                      mutations, defaults in `natural_mutations.ipynb`
+#                                      at top of cells making scatter plots.
+#   natural_mutations_mincounts -> plot escape grid for all sites of strong
+#                                  escape with >= this many mutation counts.
+#   escape_profile_ymax -> override default for this parameter specified
+#                          in main `config.yaml`.
+#   shade_sites -> shade the stacks for certain sites. Key by the antibody name
+#                  (using the short names defined as values in `conditions`),
+#                  and then the values are maps of site to the list [color, alpha]
+#   dmslogo_facet_plot_kwargs -> any keyword arguments to dmslogo.facet_plot
+#   dmslogo_draw_logo_kwargs -> any keyword arguments to dmslogo.draw_logo
+#   dmslogo_draw_line_kwargs -> any keyword arguments to dmslogo.draw_line
+
+# 2196_2130_forAZ:  # name of plot
+#   conditions:  # antibodies / sera to show and names to use for them
+#     COV2-2196_400: COV2-2196
+#     COV2-2130_400: COV2-2130
+#   # plot automatically identified sites?
+#   plot_auto_identified_sites: default
+#   # add these sites if they aren't automatically identified
+#   add_sites: []
+#   # exclude these sites even if not automatically identified
+#   exclude_sites: []
+#   # name of site-level color scheme in `site_color_schemes.csv` **or**
+#   # color for all sites
+#   site_color_scheme: subdomain
+#   # make escape profiles colored by DMS bind / expr measurements?
+#   color_by_dms: True
+#   make_supp_data: True
+#   analyze_natural_mutations: true
+#
+AZ_cocktail:
+  conditions:
+    COV2-2196_400: COV2-2196
+    COV2-2130_400: COV2-2130
+    2196+2130_400: COV2-2196 + COV2-2130
+  plot_auto_identified_sites: default
+  add_sites: []
+  exclude_sites: []
+  site_color_scheme: subdomain
+  color_by_dms: False
+  make_supp_data: True
+  analyze_natural_mutations: false
+
+human_sera:  # name of plot
+  conditions:  # antibodies / sera to show and names to use for them
+    23_d21_1250: 23_d21
+    23_d45_1250: 23_d45
+    23_d120_500: 23_d120
+    1C_d26_200: 1C_d26
+    1C_d113_200: 1C_d113
+    24C_d32_200: 24C_d32
+    24C_d104_200: 24C_d104
+    6C_d33_500: 6C_d33
+    6C_d76_500: 6C_d76
+    22C_d28_200: 22C_d28
+    22C_d104_200: 22C_d104
+    25C_d48_200: 25C_d48
+    25C_d115_80: 25C_d115
+    25_d18_500: 25_d18
+    25_d94_200: 25_d94
+    12C_d61_160: 12C_d61
+    12C_d152_80: 12C_d152
+    23C_d26_80: 23C_d26
+    23C_d102_80: 23C_d102
+    13_d15_200: 13_d15
+    13_d121_1250: 13_d121
+    7C_d29_500: 7C_d29
+    7C_d103_200: 7C_d103
+  # plot automatically identified sites?
+  plot_auto_identified_sites: default
+  # add these sites if they aren't automatically identified
+  add_sites: []
+  # exclude these sites even if not automatically identified
+  exclude_sites: []
+  # name of site-level color scheme in `site_color_schemes.csv` **or**
+  # color for all sites
+  site_color_scheme: serum_epitopes
+  # make escape profiles colored by DMS bind / expr measurements?
+  color_by_dms: false
+  # make supplemental data files for this antibody set
+  make_supp_data: true
+  # analyze naturally occurring mutations at strong sites of escape
+  analyze_natural_mutations: true
+  analyze_natural_mutations_specs:
+    plot_average_only: true
+    also_label: [384, 385, 417, 439, 444, 446, 452, 453, 455, 456, 472, 477, 484, 485, 486, 490, 494, 501]
+    label_font_size: 7
+    default_color: '#999999'
+    default_alpha: 0.6
+    set_point_alpha:
+      384: 1
+      385: 1
+      417: 1
+      439: 1
+      444: 1
+      446: 1
+      452: 1
+      453: 1
+      455: 1
+      456: 1
+      472: 1
+      477: 1
+      484: 1
+      485: 1
+      486: 1
+      490: 1
+      494: 1
+      501: 1
+    set_point_color:
+      384: '#E69F00'
+      385: '#E69F00'
+      417: '#004488'
+      444: '#66CCEE'
+      446: '#66CCEE'
+      452: '#66CCEE'
+      455: '#004488'
+      456: '#004488'
+      472: '#004488'
+      477: '#004488'
+      484: '#004488'
+      485: '#004488'
+      486: '#004488'
+      490: '#004488'
+      494: '#66CCEE'
+      501: '#66CCEE'
+    escape: tot_site_escape
+    ylabel: total escape at site
+    label_minescape: 2
+    label_minfreq: 5e-5
+  natural_mutations_mincounts: 5  # plot sites with >= this many mutation counts
+  # set y-max on logo plots
+  escape_profile_ymax:
+    quantile: 0.5
+    frac: 0.05
+    min_ymax: 1
+  dmslogo_facet_plot_kwargs:
+    height_per_ax: 2.0
+  dmslogo_draw_line_kwargs:
+    widthscale: 0.5
+    axisfontscale: 1.5
+  dmslogo_draw_logo_kwargs:
+    widthscale: 0.75
+    axisfontscale: 1.5
+
+NHP_sera:
+  conditions:
+    NHP_serum_1000: NHP_serum
+  plot_auto_identified_sites: default
+  add_sites: []
+  exclude_sites: []
+  site_color_scheme: subdomain
+  color_by_dms: True
+  make_supp_data: true
+
+EZ_7A:
+  conditions:
+    EZ-7A_1000: EZ-7A
+  plot_auto_identified_sites: default
+  add_sites: []
+  exclude_sites: []
+  site_color_scheme: subdomain
+  color_by_dms: false
+  make_supp_data: true
+  analyze_natural_mutations: true
+
+REGN_cocktail:
+  conditions:
+    REGN10933_400: REGN10933
+    REGN10987_400: REGN10987
+    REGN10933+REGN10987_400: REGN10933 + REGN10987
+  plot_auto_identified_sites: default
+  add_sites: []
+  exclude_sites: []
+  site_color_scheme: subdomain
+  color_by_dms: false
+
+LY_cocktail:
+  conditions:
+    LY-CoV555_400: LY-CoV555
+    CB6_400: LY-CoV016
+    LY-CoV555+LY-CoV016_400: LY-CoV555+LY-CoV016
+  plot_auto_identified_sites: default
+  add_sites: [406]
+  exclude_sites: []
+  site_color_scheme: subdomain
+  color_by_dms: true
+
+Bjorkman_antibodies:
+  conditions:
+    C105_400: C105 # class 1, COV-107
+    C144_400: C144 # class 2, clinical trials, COV-047
+    C002_400: C002 # class 2, COV-021
+    C121_400: C121 # class 2, COV-107
+    C135_400: C135 # class 3, clinical trials, COV-072
+    C110_400: C110 # class 3, COV-107
+  plot_auto_identified_sites: default
+  add_sites: []
+  exclude_sites: []
+  site_color_scheme: subdomain
+  color_by_dms: false
+  make_supp_data: true
+  analyze_natural_mutations: true
+
+Nussenzweig_serum:
+  conditions:
+    COV-021_500: COV-021
+    COV-047_200: COV-047
+    COV-057_50: COV-057
+    COV-072_200: COV-072
+    COV-107_80: COV-107
+  plot_auto_identified_sites: default
+  add_sites: []
+  exclude_sites: []
+  site_color_scheme: subdomain
+  color_by_dms: false
+  make_supp_data: true
+  analyze_natural_mutations: true
+
+all_convalescent:
+  conditions:
+    23_d21_1250: 23_d21
+    23_d45_1250: 23_d45
+    23_d120_500: 23_d120
+    1C_d26_200: 1C_d26
+    1C_d113_200: 1C_d113
+    24C_d32_200: 24C_d32
+    24C_d104_200: 24C_d104
+    6C_d33_500: 6C_d33
+    6C_d76_500: 6C_d76
+    22C_d28_200: 22C_d28
+    22C_d104_200: 22C_d104
+    25C_d48_200: 25C_d48
+    25C_d115_80: 25C_d115
+    25_d18_500: 25_d18
+    25_d94_200: 25_d94
+    12C_d61_160: 12C_d61
+    12C_d152_80: 12C_d152
+    23C_d26_80: 23C_d26
+    23C_d102_80: 23C_d102
+    13_d15_200: 13_d15
+    13_d121_1250: 13_d121
+    7C_d29_500: 7C_d29
+    7C_d103_200: 7C_d103
+    COV-021_500: COV-021
+    COV-047_200: COV-047
+    COV-057_50: COV-057
+    COV-072_200: COV-072
+    COV-107_80: COV-107
+  plot_auto_identified_sites: default
+  add_sites: []
+  exclude_sites: []
+  site_color_scheme: barnes_serum_epitopes
+  color_by_dms: false
+  make_supp_data: false
+  analyze_natural_mutations: True
+  analyze_natural_mutations_specs:
+    plot_average_only: true
+    also_label: [384, 385, 417, 439, 444, 446, 452, 453, 455, 456, 472, 477, 484, 485, 486, 490, 494, 501]
+    label_font_size: 7
+    default_color: '#999999'
+    default_alpha: 0.6
+    set_point_alpha:
+      384: 1
+      385: 1
+      417: 1
+      439: 1
+      444: 1
+      446: 1
+      452: 1
+      453: 1
+      455: 1
+      456: 1
+      472: 1
+      477: 1
+      484: 1
+      485: 1
+      486: 1
+      490: 1
+      494: 1
+      501: 1
+    set_point_color:
+      384: '#E69F00'
+      385: '#E69F00'
+      417: '#E52794'
+      444: '#66CCEE'
+      446: '#66CCEE'
+      452: '#66CCEE'
+      455: '#E52794'
+      456: '#E52794'
+      472: '#6A0DAD'
+      477: '#808080'
+      484: '#6A0DAD'
+      485: '#6A0DAD'
+      486: '#E52794'
+      490: '#6A0DAD'
+      494: '#6A0DAD'
+      501: '#808080'
+    escape: tot_site_escape
+    ylabel: total escape at site
+    label_minescape: 2
+    label_minfreq: 5e-5
+  natural_mutations_mincounts: 5
+
+IPD_ligands:
+  conditions:
+    LCB1_23: LCB1_v1
+    LCB1_v2.2_400: LCB1_v2.2
+    LCB1_GS10_LCB3_400: LCB1_GS10_LCB3
+    LCB1_v2.2_trimer_400: LCB1_v2.2_trimer
+  plot_auto_identified_sites: default
+  add_sites: [493]
+  exclude_sites: []
+  site_color_scheme: subdomain
+  color_by_dms: True
+  make_supp_data: true
+  analyze_natural_mutations: true
+
+S309_duplicates:
+  conditions:
+    S309_400: S309
+    S309_421: S309_2
+  plot_auto_identified_sites: sensitive_max_mut
+  add_sites: []
+  exclude_sites: []
+  site_color_scheme: subdomain
+  color_by_dms: True
+  make_supp_data: false
+  analyze_natural_mutations: false
+
+vir_antibodies:
+  conditions:
+    S309_421: S309
+    S2H97_58: S2H97
+    S304_46: S304
+    S2X35_70: S2X35
+    S2E12_56: S2E12
+    S2X16_54: S2X16
+    S2H58_46: S2H58
+    S2H13_56: S2H13
+    S2D106_68: S2D106
+    S2X58_18: S2X58
+    S2H14_105: S2H14
+    S2X227_138: S2X227
+  plot_auto_identified_sites: sensitive
+  add_sites: []
+  exclude_sites: []
+  site_color_scheme: subdomain
+  color_by_dms: false
+  make_supp_data: true
+  analyze_natural_mutations: true
+
+Moderna_sera:  # name of plot
+  conditions:  # antibodies / sera to show and names to use for them
+    M01-day-119_80: M01 (day 119)
+    M02-day-36_1250: M02 (day 36)
+    M02-day-119_200: M02 (day 119)
+    M03-day-119_200: M03 (day 119)
+    M04-day-119_200: M04 (day 119)
+    M05-day-36_500: M05 (day 36)
+    M05-day-119_500: M05 (day 119)
+    M06-day-119_80: M06 (day 119)
+    M07-day-119_200: M07 (day 119)
+    M08-day-36_1250: M08 (day 36)
+    M08-day-119_200: M08 (day 119)
+    M09-day-119_500: M09 (day 119)
+    M10-day-36_500: M10 (day 36)
+    M10-day-119_200: M10 (day 119)
+    M11-day-119_200: M11 (day 119)
+    M12-day-36_1250: M12 (day 36)
+    M12-day-119_200: M12 (day 119)
+    M13-day-119_200: M13 (day 119)
+    M14-day-119_500: M14 (day 119)
+    M15-day-119_200: M15 (day 119)
+    M16-day-119_1250: M16 (day 119)
+    M17-day-119_200: M17 (day 119)
+    M18-day-119_80: M18 (day 119)
+    M19-day-119_200: M19 (day 119)
+    M20-day-119_200: M20 (day 119)
+    M21-day-119_200: M21 (day 119)
+    M22-day-119_200: M22 (day 119)
+    M23-day-119_200: M23 (day 119)
+  # plot automatically identified sites?
+  plot_auto_identified_sites: sensitive_max_mut
+  # add these sites if they aren't automatically identified
+  add_sites: []
+  # exclude these sites even if not automatically identified
+  exclude_sites: []
+  # name of site-level color scheme in `site_color_schemes.csv` **or**
+  # color for all sites
+  site_color_scheme: barnes_serum_epitopes
+  # make escape profiles colored by DMS bind / expr measurements?
+  color_by_dms: True
+  # make supplemental data files for this antibody set
+  make_supp_data: true
+  # analyze naturally occurring mutations at strong sites of escape
+  analyze_natural_mutations: true
+  analyze_natural_mutations_specs:
+    plot_average_only: true
+    also_label: [384, 385, 417, 439, 444, 446, 452, 453, 455, 456, 472, 477, 484, 485, 486, 490, 494, 501]
+    label_font_size: 7
+    default_color: '#999999'
+    default_alpha: 0.6
+    set_point_alpha:
+      384: 1
+      385: 1
+      417: 1
+      439: 1
+      444: 1
+      446: 1
+      452: 1
+      453: 1
+      455: 1
+      456: 1
+      472: 1
+      477: 1
+      484: 1
+      485: 1
+      486: 1
+      490: 1
+      494: 1
+      501: 1
+    set_point_color:
+      384: '#E69F00'
+      385: '#E69F00'
+      417: '#E52794'
+      444: '#66CCEE'
+      446: '#66CCEE'
+      452: '#66CCEE'
+      455: '#E52794'
+      456: '#E52794'
+      472: '#6A0DAD'
+      477: '#808080'
+      484: '#6A0DAD'
+      485: '#6A0DAD'
+      486: '#E52794'
+      490: '#6A0DAD'
+      494: '#6A0DAD'
+      501: '#808080'
+    escape: tot_site_escape
+    ylabel: total escape at site
+    label_minescape: 2
+    label_minfreq: 5e-5
+  natural_mutations_mincounts: 5  # plot sites with >= this many mutation counts
+  # set y-max on logo plots
+  escape_profile_ymax:
+    quantile: 0.5
+    frac: 0.05
+    min_ymax: 1
+  dmslogo_facet_plot_kwargs:
+    height_per_ax: 2.0
+  dmslogo_draw_line_kwargs:
+    widthscale: 0.5
+    axisfontscale: 1.25
+  dmslogo_draw_logo_kwargs:
+    widthscale: 0.75
+    axisfontscale: 1.25
+
+NHP_serum_remap:
+  conditions:
+    NHP-serum_1000: NHP-serum
+  plot_auto_identified_sites: sensitive_max_mut
+  add_sites: [365, 369, 383, 384, 385, 386, 417, 455, 456, 473, 475, 482, 484, 487, 452, 501, 477]
+  exclude_sites: []
+  site_color_scheme: serum_epitopes
+  color_by_dms: True
+  make_supp_data: true
+  escape_profile_ymax:
+    quantile: 0.5
+    frac: 0.05
+    min_ymax: 1
+  dmslogo_facet_plot_kwargs:
+    height_per_ax: 2.0
+  dmslogo_draw_line_kwargs:
+    widthscale: 0.5
+    axisfontscale: 1.25
+  dmslogo_draw_logo_kwargs:
+    widthscale: 0.75
+    axisfontscale: 1.25
+
+COV2-2381:  # name of plot
+  conditions:  # antibodies / sera to show and names to use for them
+    COV2-2381_400: COV2-2381
+  plot_auto_identified_sites: sensitive_max_mut
+  add_sites: [417,452,439,484,501,477]
+  exclude_sites: []
+  site_color_scheme: subdomain
+  color_by_dms: True
+  make_supp_data: True
+  analyze_natural_mutations: true
+  analyze_natural_mutations_specs:
+    plot_average_only: true
+    also_label: [417, 439, 484, 452, 501, 477]
+    label_font_size: 7
+    default_color: '#999999'
+    default_alpha: 0.6
+    escape: tot_site_escape
+    ylabel: total escape at site
+    label_minescape: 1
+    label_minfreq: 5e-5
+  natural_mutations_mincounts: 5
+  dmslogo_draw_line_kwargs:
+    widthscale: 0.5
+  dmslogo_draw_logo_kwargs:
+    widthscale: 0.75
+
+COV2-2381_COV2-2130:  # name of plot
+  conditions:  # antibodies / sera to show and names to use for them
+    COV2-2381_400: COV2-2381
+    COV2-2130_400: COV2-2130
+  plot_auto_identified_sites: sensitive_max_mut
+  add_sites: []
+  exclude_sites: []
+  site_color_scheme: subdomain
+  color_by_dms: True
+  make_supp_data: True
+  analyze_natural_mutations: true
+  analyze_natural_mutations_specs:
+    plot_average_only: False
+    scales: free_y
+    also_label: [417, 439, 484, 452, 501, 477]
+    label_font_size: 7
+    default_color: '#999999'
+    default_alpha: 0.6
+    escape: tot_site_escape
+    ylabel: total escape at site
+    label_minescape: 1
+    label_minfreq: 5e-5
+  natural_mutations_mincounts: 5
+  dmslogo_draw_line_kwargs:
+    widthscale: 0.5
+  dmslogo_draw_logo_kwargs:
+    widthscale: 0.75
+
+NHP_HCS:
+  conditions:
+    NHP-serum_1000: NHP-serum
+    24C_d32_200: subject C (day 32)
+    25_d94_200: subject G (day 94)
+    23C_d26_80: subject I (day 26)
+  plot_auto_identified_sites: default
+  add_sites: [417, 446, 452, 455, 456, 484, 501]
+  exclude_sites: []
+  site_color_scheme: serum_epitopes
+  color_by_dms: False
+  make_supp_data: True
+  escape_profile_ymax:
+    quantile: 0.5
+    frac: 0.05
+    min_ymax: 1
+  dmslogo_facet_plot_kwargs:
+    height_per_ax: 2.0
+  dmslogo_draw_line_kwargs:
+    widthscale: 0.5
+    axisfontscale: 1.25
+  dmslogo_draw_logo_kwargs:
+    widthscale: 0.75
+    axisfontscale: 1.25
+
+## try out several different plotting options for Moderna sera
+
+Moderna_6validations:  # name of plot
+  conditions:  # antibodies / sera to show and names to use for them
+    M06-day-119_80: M06 (day 119)
+    M11-day-119_200: M11 (day 119)
+    M05-day-119_500: M05 (day 119)
+    M03-day-119_200: M03 (day 119)
+    M12-day-119_200: M12 (day 119)
+    M14-day-119_500: M14 (day 119)
+  plot_auto_identified_sites: sensitive_max_mut
+  add_sites: [384, 417, 446, 455, 456, 484, 452, 501, 477]
+  exclude_sites: []
+  site_color_scheme: barnes_serum_epitopes
+  escape_profile_ymax:
+    quantile: 0.5
+    frac: 0.05
+    min_ymax: 1
+  dmslogo_facet_plot_kwargs:
+    height_per_ax: 2.0
+  dmslogo_draw_line_kwargs:
+    widthscale: 0.5
+    axisfontscale: 1.25
+  dmslogo_draw_logo_kwargs:
+    widthscale: 0.75
+    axisfontscale: 1.25
+
+Moderna_6validations_27sites:  # name of plot
+  conditions:  # antibodies / sera to show and names to use for them
+    M06-day-119_80: M06 (day 119)
+    M11-day-119_200: M11 (day 119)
+    M05-day-119_500: M05 (day 119)
+    M03-day-119_200: M03 (day 119)
+    M12-day-119_200: M12 (day 119)
+    M14-day-119_500: M14 (day 119)
+  plot_auto_identified_sites: False
+  add_sites: [383, 384, 385, 386, 417, 446, 447, 448, 449, 450, 452, 455, 456, 472, 473, 475, 477, 484, 485, 486, 487, 489, 490, 493, 494, 496, 501]
+  exclude_sites: []
+  site_color_scheme: barnes_serum_epitopes
+  escape_profile_ymax:
+    quantile: 0.5
+    frac: 0.05
+    min_ymax: 1
+  dmslogo_facet_plot_kwargs:
+    height_per_ax: 2.0
+  dmslogo_draw_line_kwargs:
+    widthscale: 0.5
+    axisfontscale: 1.25
+  dmslogo_draw_logo_kwargs:
+    widthscale: 0.75
+    axisfontscale: 1.25
+
+Moderna_100ug:  # name of plot
+  conditions:  # antibodies / sera to show and names to use for them
+    M16-day-119_1250: M16 (day 119)
+    M17-day-119_200: M17 (day 119)
+    M18-day-119_80: M18 (day 119)
+    M19-day-119_200: M19 (day 119)
+    M20-day-119_200: M20 (day 119)
+    M21-day-119_200: M21 (day 119)
+    M22-day-119_200: M22 (day 119)
+    M23-day-119_200: M23 (day 119)
+  plot_auto_identified_sites: sensitive_max_mut
+  add_sites: [384, 417, 446, 455, 456, 484, 452, 501, 477]
+  exclude_sites: []
+  site_color_scheme: barnes_serum_epitopes
+  escape_profile_ymax:
+    quantile: 0.5
+    frac: 0.05
+    min_ymax: 1
+  dmslogo_facet_plot_kwargs:
+    height_per_ax: 2.0
+  dmslogo_draw_line_kwargs:
+    widthscale: 0.5
+    axisfontscale: 1.25
+  dmslogo_draw_logo_kwargs:
+    widthscale: 0.75
+    axisfontscale: 1.25
+
+Moderna_day36:  # name of plot
+  conditions:  # antibodies / sera to show and names to use for them
+    M02-day-36_1250: M02 (day 36)
+    M05-day-36_500: M05 (day 36)
+    M08-day-36_1250: M08 (day 36)
+    M10-day-36_500: M10 (day 36)
+    M12-day-36_1250: M12 (day 36)
+  plot_auto_identified_sites: sensitive_max_mut
+  add_sites: [384, 417, 446, 455, 456, 484, 452, 501, 477]
+  exclude_sites: []
+  site_color_scheme: barnes_serum_epitopes
+  escape_profile_ymax:
+    quantile: 0.5
+    frac: 0.05
+    min_ymax: 1
+  dmslogo_facet_plot_kwargs:
+    height_per_ax: 2.0
+  dmslogo_draw_line_kwargs:
+    widthscale: 0.5
+    axisfontscale: 1.25
+  dmslogo_draw_logo_kwargs:
+    widthscale: 0.75
+    axisfontscale: 1.25
+
+Moderna_day119:  # name of plot
+  conditions:  # antibodies / sera to show and names to use for them
+    M02-day-119_200: M02 (day 119)
+    M05-day-119_500: M05 (day 119)
+    M08-day-119_200: M08 (day 119)
+    M10-day-119_200: M10 (day 119)
+    M12-day-119_200: M12 (day 119)
+  plot_auto_identified_sites: sensitive_max_mut
+  add_sites: [384, 417, 446, 455, 456, 484, 452, 501, 477]
+  exclude_sites: []
+  site_color_scheme: barnes_serum_epitopes
+  escape_profile_ymax:
+    quantile: 0.5
+    frac: 0.05
+    min_ymax: 1
+  dmslogo_facet_plot_kwargs:
+    height_per_ax: 2.0
+  dmslogo_draw_line_kwargs:
+    widthscale: 0.5
+    axisfontscale: 1.25
+  dmslogo_draw_logo_kwargs:
+    widthscale: 0.75
+    axisfontscale: 1.25
+
+Moderna_all_day119:  # name of plot
+  conditions:  # antibodies / sera to show and names to use for them
+    M01-day-119_80: M01 (day 119)
+    M02-day-119_200: M02 (day 119)
+    M03-day-119_200: M03 (day 119)
+    M04-day-119_200: M04 (day 119)
+    M05-day-119_500: M05 (day 119)
+    M06-day-119_80: M06 (day 119)
+    M07-day-119_200: M07 (day 119)
+    M08-day-119_200: M08 (day 119)
+    M09-day-119_500: M09 (day 119)
+    M10-day-119_200: M10 (day 119)
+    M11-day-119_200: M11 (day 119)
+    M12-day-119_200: M12 (day 119)
+    M13-day-119_200: M13 (day 119)
+    M14-day-119_500: M14 (day 119)
+    M15-day-119_200: M15 (day 119)
+    M16-day-119_1250: M16 (day 119)
+    M17-day-119_200: M17 (day 119)
+    M18-day-119_80: M18 (day 119)
+    M19-day-119_200: M19 (day 119)
+    M20-day-119_200: M20 (day 119)
+    M21-day-119_200: M21 (day 119)
+    M22-day-119_200: M22 (day 119)
+    M23-day-119_200: M23 (day 119)
+  plot_auto_identified_sites: sensitive_max_mut
+  add_sites: [384, 417, 446, 455, 456, 484, 452, 501, 477]
+  exclude_sites: []
+  site_color_scheme: barnes_serum_epitopes
+  escape_profile_ymax:
+    quantile: 0.5
+    frac: 0.05
+    min_ymax: 1
+  dmslogo_facet_plot_kwargs:
+    height_per_ax: 2.0
+  dmslogo_draw_line_kwargs:
+    widthscale: 0.5
+    axisfontscale: 1.25
+  dmslogo_draw_logo_kwargs:
+    widthscale: 0.75
+    axisfontscale: 1.25
+
+Moderna_250ug_day119:  # name of plot
+  conditions:  # antibodies / sera to show and names to use for them
+    M01-day-119_80: M01 (day 119)
+    M02-day-119_200: M02 (day 119)
+    M03-day-119_200: M03 (day 119)
+    M04-day-119_200: M04 (day 119)
+    M05-day-119_500: M05 (day 119)
+    M06-day-119_80: M06 (day 119)
+    M07-day-119_200: M07 (day 119)
+    M08-day-119_200: M08 (day 119)
+    M09-day-119_500: M09 (day 119)
+    M10-day-119_200: M10 (day 119)
+    M11-day-119_200: M11 (day 119)
+    M12-day-119_200: M12 (day 119)
+    M13-day-119_200: M13 (day 119)
+    M14-day-119_500: M14 (day 119)
+    M15-day-119_200: M15 (day 119)
+  plot_auto_identified_sites: sensitive_max_mut
+  add_sites: [384, 417, 446, 455, 456, 484, 452, 501, 477]
+  exclude_sites: []
+  site_color_scheme: barnes_serum_epitopes
+  escape_profile_ymax:
+    quantile: 0.5
+    frac: 0.05
+    min_ymax: 1
+  dmslogo_facet_plot_kwargs:
+    height_per_ax: 2.0
+  dmslogo_draw_line_kwargs:
+    widthscale: 0.5
+    axisfontscale: 1.25
+  dmslogo_draw_logo_kwargs:
+    widthscale: 0.75
+    axisfontscale: 1.25
+
+haarvi_100d:  # name of plot
+  conditions:  # antibodies / sera to show and names to use for them
+    23_d120_500: 23_d120
+    1C_d113_200: 1C_d113
+    24C_d104_200: 24C_d104
+    6C_d76_500: 6C_d76
+    22C_d104_200: 22C_d104
+    25C_d115_80: 25C_d115
+    25_d94_200: 25_d94
+    12C_d152_80: 12C_d152
+    23C_d102_80: 23C_d102
+    13_d121_1250: 13_d121
+    7C_d103_200: 7C_d103
+  plot_auto_identified_sites: default
+  add_sites: []
+  exclude_sites: []
+  site_color_scheme: barnes_serum_epitopes
+  color_by_dms: false
+  escape_profile_ymax:
+    quantile: 0.5
+    frac: 0.05
+    min_ymax: 1
+  dmslogo_facet_plot_kwargs:
+    height_per_ax: 2.0
+  dmslogo_draw_line_kwargs:
+    widthscale: 0.5
+    axisfontscale: 1.5
+  dmslogo_draw_logo_kwargs:
+    widthscale: 0.75
+    axisfontscale: 1.5
+
+haarvi_30d:  # name of plot
+  conditions:  # antibodies / sera to show and names to use for them
+    23_d21_1250: 23_d21
+    1C_d26_200: 1C_d26
+    24C_d32_200: 24C_d32
+    6C_d33_500: 6C_d33
+    22C_d28_200: 22C_d28
+    25C_d48_200: 25C_d48
+    25_d18_500: 25_d18
+    12C_d61_160: 12C_d61
+    23C_d26_80: 23C_d26
+    13_d15_200: 13_d15
+    7C_d29_500: 7C_d29
+  plot_auto_identified_sites: default
+  add_sites: []
+  exclude_sites: []
+  site_color_scheme: barnes_serum_epitopes
+  color_by_dms: false
+  escape_profile_ymax:
+    quantile: 0.5
+    frac: 0.05
+    min_ymax: 1
+  dmslogo_facet_plot_kwargs:
+    height_per_ax: 2.0
+  dmslogo_draw_line_kwargs:
+    widthscale: 0.5
+    axisfontscale: 1.5
+  dmslogo_draw_logo_kwargs:
+    widthscale: 0.75
+    axisfontscale: 1.5
+
+haarvi_6validations:  # name of plot
+  conditions:  # antibodies / sera to show and names to use for them
+    24C_d104_200: subject C (day 104)
+    22C_d104_200: subject E (day 104)
+    23C_d102_80: subject I (day 102)
+    1C_d113_200: subject B (day 113)
+    23_d120_500: subject A (day 120)
+    25_d94_200: subject G (day 94)
+  plot_auto_identified_sites: default
+  add_sites: [384, 417, 446, 455, 456, 484, 452, 501, 477]
+  exclude_sites: []
+  site_color_scheme: barnes_serum_epitopes
+  escape_profile_ymax:
+    quantile: 0.5
+    frac: 0.05
+    min_ymax: 1
+  dmslogo_facet_plot_kwargs:
+    height_per_ax: 2.0
+  dmslogo_draw_line_kwargs:
+    widthscale: 0.5
+    axisfontscale: 1.25
+  dmslogo_draw_logo_kwargs:
+    widthscale: 0.75
+    axisfontscale: 1.25
+
+haarvi_6validations_27sites:  # name of plot
+  conditions:  # antibodies / sera to show and names to use for them
+    24C_d104_200: subject C (day 104)
+    22C_d104_200: subject E (day 104)
+    23C_d102_80: subject I (day 102)
+    1C_d113_200: subject B (day 113)
+    23_d120_500: subject A (day 120)
+    25_d94_200: subject G (day 94)
+  plot_auto_identified_sites: false
+  add_sites: [383, 384, 385, 386, 417, 446, 447, 448, 449, 450, 452, 455, 456, 472, 473, 475, 477, 484, 485, 486, 487, 489, 490, 493, 494, 496, 501]
+  exclude_sites: []
+  site_color_scheme: barnes_serum_epitopes
+  escape_profile_ymax:
+    quantile: 0.5
+    frac: 0.05
+    min_ymax: 1
+  dmslogo_facet_plot_kwargs:
+    height_per_ax: 2.0
+  dmslogo_draw_line_kwargs:
+    widthscale: 0.5
+    axisfontscale: 1.25
+  dmslogo_draw_logo_kwargs:
+    widthscale: 0.75
+    axisfontscale: 1.25
+
+Moderna_not_shown_elsewhere:  # name of plot
+  conditions:  # antibodies / sera to show and names to use for them
+    M01-day-119_80: M01 (day 119)
+    M04-day-119_200: M04 (day 119)
+    M07-day-119_200: M07 (day 119)
+    M09-day-119_500: M09 (day 119)
+    M13-day-119_200: M13 (day 119)
+    M15-day-119_200: M15 (day 119)
+  plot_auto_identified_sites: False
+  add_sites: [383, 384, 385, 386, 417, 446, 447, 448, 449, 450, 452, 455, 456, 472, 473, 475, 477, 484, 485, 486, 487, 489, 490, 493, 494, 496, 501]
+  exclude_sites: []
+  site_color_scheme: barnes_serum_epitopes
+  escape_profile_ymax:
+    quantile: 0.5
+    frac: 0.05
+    min_ymax: 1
+  dmslogo_facet_plot_kwargs:
+    height_per_ax: 2.0
+  dmslogo_draw_line_kwargs:
+    widthscale: 0.5
+    axisfontscale: 1.25
+  dmslogo_draw_logo_kwargs:
+    widthscale: 0.75
+    axisfontscale: 1.25
+
+COV2-2955:
+  conditions:
+    COV2-2955_400: COV2-2955
+  plot_auto_identified_sites: sensitive_max_mut
+  add_sites: [417,452,439,484,501,477]
+  exclude_sites: []
+  site_color_scheme: subdomain
+  color_by_dms: True
+  make_supp_data: True
+  analyze_natural_mutations: True
+  analyze_natural_mutations_specs:
+    plot_average_only: true
+    also_label: [417, 439, 484, 452, 501, 477]
+    label_font_size: 7
+    default_color: '#999999'
+    default_alpha: 0.6
+    escape: tot_site_escape
+    ylabel: total escape at site
+    label_minescape: 1
+    label_minfreq: 5e-5
+  natural_mutations_mincounts: 5
+  dmslogo_draw_line_kwargs:
+    widthscale: 0.5
+  dmslogo_draw_logo_kwargs:
+    widthscale: 0.75
+
+B1351_sera:
+  conditions:
+    K006_200: K006
+    K007_500: K007
+    K031_500: K031
+    K033_500: K033
+    K040_500: K040
+    K041_500: K041
+    K046_200: K046
+    K114_200: K114
+    K115_80: K115
+    K116_80: K116
+    K119_200: K119
+  plot_auto_identified_sites: sensitive_max_mut
+  add_sites: [417,452,439,484,501,477,478]
+  exclude_sites: []
+  site_color_scheme: barnes_serum_epitopes
+  color_by_dms: True
+  make_supp_data: True
+  analyze_natural_mutations: True
+  analyze_natural_mutations_specs:
+    plot_average_only: true
+    also_label: [417, 439, 484, 452, 501, 477]
+    label_font_size: 7
+    default_color: '#999999'
+    default_alpha: 0.6
+    escape: tot_site_escape
+    ylabel: total escape at site
+    label_minescape: 1
+    label_minfreq: 5e-5
+  natural_mutations_mincounts: 5
+  dmslogo_draw_line_kwargs:
+    widthscale: 0.5
+  dmslogo_draw_logo_kwargs:
+    widthscale: 0.75
