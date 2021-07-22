@@ -91,6 +91,7 @@ rule make_summary:
         strong_escape_sites=config['strong_escape_sites'],
         escape_profiles=nb_markdown('escape_profiles.ipynb'),
         output_pdbs='results/summary/output_pdbs.md',
+        make_supp_data=nb_markdown('make_supp_data.ipynb'),
     output:
         summary = os.path.join(config['summary_dir'], 'summary.md')
     run:
@@ -139,6 +140,10 @@ rule make_summary:
             9. Plot [escape profiles]({path(input.escape_profiles)}).
             
             10. Map escape profiles to ``*.pdb`` files using [this notebook]({path(input.output_pdbs)})
+            
+            11. [Make supplementary data files]({path(input.make_supp_data)}),
+                which are [here]({path(config['supp_data_dir'])}). These include
+                `dms-view` input files.
 
 
             """
@@ -153,6 +158,20 @@ rule make_rulegraph:
         os.path.join(config['summary_dir'], 'rulegraph.svg')
     shell:
         "snakemake --forceall --rulegraph | dot -Tsvg > {output}"
+
+rule make_supp_data:
+    input:
+        config['escape_profiles_config'],
+        config['output_pdbs_config'],
+        config['escape_fracs'],
+        # config['escape_profiles_dms_colors']
+    output:
+        nb_markdown=nb_markdown('make_supp_data.ipynb'),
+        outdir=directory(config['supp_data_dir']),
+    params:
+        nb='make_supp_data.ipynb'
+    shell:
+        "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
 
 rule output_pdbs:
     input:

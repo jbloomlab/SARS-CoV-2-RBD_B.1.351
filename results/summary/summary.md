@@ -38,3 +38,7 @@ Here is the Markdown output of each notebook in the workflow:
 9. Plot [escape profiles](escape_profiles.md).
 
 10. Map escape profiles to ``*.pdb`` files using [this notebook](output_pdbs.md)
+
+11. [Make supplementary data files](make_supp_data.md),
+    which are [here](../supp_data). These include
+    `dms-view` input files.
