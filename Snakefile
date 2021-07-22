@@ -129,8 +129,7 @@ rule make_summary:
             
             6. [Escape scores from variant counts]({path(input.counts_to_scores)}).
             
-            7. [Global epistasis deconvolution of escape fractions for single mutations]
-               ({path(input.scores_to_frac_escape)}); creating
+            7. [Global epistasis deconvolution of escape fractions for single mutations]({path(input.scores_to_frac_escape)}); creating
                [mutation escape fraction file]({path(input.escape_fracs)}).
             
             8. [Call sites of strong escape]({path(input.call_strong_escape_sites)}),

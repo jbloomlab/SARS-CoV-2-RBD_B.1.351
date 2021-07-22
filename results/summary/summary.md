@@ -29,6 +29,10 @@ Here is the Markdown output of each notebook in the workflow:
 
 6. [Escape scores from variant counts](counts_to_scores.md).
 
-7. [Global epistasis deconvolution of escape fractions for single mutations]
-   (scores_to_frac_escape.md); creating
+7. [Global epistasis deconvolution of escape fractions for single mutations](scores_to_frac_escape.md); creating
    [mutation escape fraction file](../escape_scores/escape_fracs.csv).
+
+8. [Call sites of strong escape](call_strong_escape_sites.md),
+   and write to [a CSV file](../escape_profiles/strong_escape_sites.csv).
+
+9. Plot [escape profiles](escape_profiles.md).
