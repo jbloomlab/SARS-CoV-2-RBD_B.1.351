@@ -21,5 +21,8 @@ results/counts/*
 results/escape_scores/*
 !results/escape_scores/scores.csv
 !results/escape_scores/escape_fracs.csv
+!results/supp_data/
+results/supp_data/*
+!results/supp_data/*.csv
 
 data/spikeprot*
