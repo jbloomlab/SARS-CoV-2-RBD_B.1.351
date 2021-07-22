@@ -129,6 +129,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <th>antibody</th>
       <th>concentration</th>
       <th>sort_bin</th>
+      <th>selection</th>
       <th>sample</th>
       <th>experiment_type</th>
       <th>number_cells</th>
@@ -146,6 +147,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>ACE2pos</td>
       <td>8</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>ACE2_enrich-ACE2pos-8-abneg</td>
       <td>ab_selection</td>
       <td>31118467.0</td>
@@ -161,6 +163,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>ACE2pos</td>
       <td>8</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>ACE2_enrich-ACE2pos-8-abneg</td>
       <td>ab_selection</td>
       <td>32008380.0</td>
@@ -176,6 +179,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>presort</td>
       <td>0</td>
       <td>ref</td>
+      <td>reference</td>
       <td>ACE2_enrich-presort-0-ref</td>
       <td>ab_selection</td>
       <td>NaN</td>
@@ -191,6 +195,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>presort</td>
       <td>0</td>
       <td>ref</td>
+      <td>reference</td>
       <td>ACE2_enrich-presort-0-ref</td>
       <td>ab_selection</td>
       <td>NaN</td>
@@ -206,6 +211,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>none</td>
       <td>0</td>
       <td>ref</td>
+      <td>reference</td>
       <td>bg4e_1-5-none-0-ref</td>
       <td>ab_selection</td>
       <td>NaN</td>
@@ -221,6 +227,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>none</td>
       <td>0</td>
       <td>ref</td>
+      <td>reference</td>
       <td>bg4e_1-5-none-0-ref</td>
       <td>ab_selection</td>
       <td>NaN</td>
@@ -236,6 +243,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K007_old</td>
       <td>500</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_1-K007_old-500-abneg</td>
       <td>ab_selection</td>
       <td>527450.0</td>
@@ -251,6 +259,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K007_old</td>
       <td>500</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_1-K007_old-500-abneg</td>
       <td>ab_selection</td>
       <td>601342.0</td>
@@ -266,6 +275,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K031_old</td>
       <td>500</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_2-K031_old-500-abneg</td>
       <td>ab_selection</td>
       <td>524121.0</td>
@@ -281,6 +291,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K031_old</td>
       <td>500</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_2-K031_old-500-abneg</td>
       <td>ab_selection</td>
       <td>609250.0</td>
@@ -296,6 +307,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K033_old</td>
       <td>500</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_3-K033_old-500-abneg</td>
       <td>ab_selection</td>
       <td>752288.0</td>
@@ -311,6 +323,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K033_old</td>
       <td>500</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_3-K033_old-500-abneg</td>
       <td>ab_selection</td>
       <td>532827.0</td>
@@ -326,6 +339,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K040_old</td>
       <td>500</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_4-K040_old-500-abneg</td>
       <td>ab_selection</td>
       <td>481061.0</td>
@@ -341,6 +355,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K040_old</td>
       <td>500</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_4-K040_old-500-abneg</td>
       <td>ab_selection</td>
       <td>616299.0</td>
@@ -356,6 +371,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K041_old</td>
       <td>500</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_5-K041_old-500-abneg</td>
       <td>ab_selection</td>
       <td>534561.0</td>
@@ -371,6 +387,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K041_old</td>
       <td>500</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_5-K041_old-500-abneg</td>
       <td>ab_selection</td>
       <td>562704.0</td>
@@ -386,6 +403,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>none</td>
       <td>0</td>
       <td>ref</td>
+      <td>reference</td>
       <td>bg4e_6-9-none-0-ref</td>
       <td>ab_selection</td>
       <td>NaN</td>
@@ -401,6 +419,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>none</td>
       <td>0</td>
       <td>ref</td>
+      <td>reference</td>
       <td>bg4e_6-9-none-0-ref</td>
       <td>ab_selection</td>
       <td>NaN</td>
@@ -416,6 +435,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K046_old</td>
       <td>200</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_6-K046_old-200-abneg</td>
       <td>ab_selection</td>
       <td>602073.0</td>
@@ -431,6 +451,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K046_old</td>
       <td>200</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_6-K046_old-200-abneg</td>
       <td>ab_selection</td>
       <td>605655.0</td>
@@ -446,6 +467,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K114_old</td>
       <td>200</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_7-K114_old-200-abneg</td>
       <td>ab_selection</td>
       <td>504596.0</td>
@@ -461,6 +483,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K114_old</td>
       <td>200</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_7-K114_old-200-abneg</td>
       <td>ab_selection</td>
       <td>571429.0</td>
@@ -476,6 +499,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K115_old</td>
       <td>80</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_8-K115_old-80-abneg</td>
       <td>ab_selection</td>
       <td>604025.0</td>
@@ -491,6 +515,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K115_old</td>
       <td>80</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_8-K115_old-80-abneg</td>
       <td>ab_selection</td>
       <td>566545.0</td>
@@ -506,6 +531,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K119_old</td>
       <td>200</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_9-K119_old-200-abneg</td>
       <td>ab_selection</td>
       <td>759531.0</td>
@@ -521,6 +547,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K119_old</td>
       <td>200</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_9-K119_old-200-abneg</td>
       <td>ab_selection</td>
       <td>738012.0</td>
@@ -536,6 +563,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K007</td>
       <td>500</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_10-K007-500-abneg</td>
       <td>ab_selection</td>
       <td>510107.0</td>
@@ -551,6 +579,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K007</td>
       <td>500</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_10-K007-500-abneg</td>
       <td>ab_selection</td>
       <td>494538.0</td>
@@ -566,6 +595,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K031</td>
       <td>500</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_11-K031-500-abneg</td>
       <td>ab_selection</td>
       <td>730562.0</td>
@@ -581,6 +611,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K031</td>
       <td>500</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_11-K031-500-abneg</td>
       <td>ab_selection</td>
       <td>712255.0</td>
@@ -596,6 +627,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K033</td>
       <td>500</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_12-K033-500-abneg</td>
       <td>ab_selection</td>
       <td>802239.0</td>
@@ -611,6 +643,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K033</td>
       <td>500</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_12-K033-500-abneg</td>
       <td>ab_selection</td>
       <td>773070.0</td>
@@ -626,6 +659,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K040</td>
       <td>500</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_13-K040-500-abneg</td>
       <td>ab_selection</td>
       <td>687119.0</td>
@@ -641,6 +675,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K040</td>
       <td>500</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_13-K040-500-abneg</td>
       <td>ab_selection</td>
       <td>679198.0</td>
@@ -656,6 +691,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K041</td>
       <td>500</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_14-K041-500-abneg</td>
       <td>ab_selection</td>
       <td>601747.0</td>
@@ -671,6 +707,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K041</td>
       <td>500</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_14-K041-500-abneg</td>
       <td>ab_selection</td>
       <td>601730.0</td>
@@ -686,6 +723,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>reference</td>
       <td>0</td>
       <td>ref</td>
+      <td>reference</td>
       <td>bg4e_10-14-reference-0-ref</td>
       <td>ab_selection</td>
       <td>NaN</td>
@@ -701,6 +739,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>reference</td>
       <td>0</td>
       <td>ref</td>
+      <td>reference</td>
       <td>bg4e_10-14-reference-0-ref</td>
       <td>ab_selection</td>
       <td>NaN</td>
@@ -716,6 +755,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>reference</td>
       <td>0</td>
       <td>ref</td>
+      <td>reference</td>
       <td>bg4e_15-18-reference-0-ref</td>
       <td>ab_selection</td>
       <td>NaN</td>
@@ -731,6 +771,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>reference</td>
       <td>0</td>
       <td>ref</td>
+      <td>reference</td>
       <td>bg4e_15-18-reference-0-ref</td>
       <td>ab_selection</td>
       <td>NaN</td>
@@ -746,6 +787,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K046</td>
       <td>200</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_15-K046-200-abneg</td>
       <td>ab_selection</td>
       <td>561168.0</td>
@@ -761,6 +803,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K046</td>
       <td>200</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_15-K046-200-abneg</td>
       <td>ab_selection</td>
       <td>419123.0</td>
@@ -776,6 +819,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K114</td>
       <td>200</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_16-K114-200-abneg</td>
       <td>ab_selection</td>
       <td>638716.0</td>
@@ -791,6 +835,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K114</td>
       <td>200</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_16-K114-200-abneg</td>
       <td>ab_selection</td>
       <td>542375.0</td>
@@ -806,6 +851,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K115</td>
       <td>80</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_17-K115-80-abneg</td>
       <td>ab_selection</td>
       <td>1669109.0</td>
@@ -821,6 +867,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K115</td>
       <td>80</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_17-K115-80-abneg</td>
       <td>ab_selection</td>
       <td>1982477.0</td>
@@ -836,6 +883,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K119</td>
       <td>200</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_18-K119-200-abneg</td>
       <td>ab_selection</td>
       <td>548265.0</td>
@@ -851,6 +899,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>K119</td>
       <td>200</td>
       <td>abneg</td>
+      <td>escape</td>
       <td>bg4e_18-K119-200-abneg</td>
       <td>ab_selection</td>
       <td>630199.0</td>

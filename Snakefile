@@ -79,15 +79,14 @@ rule make_summary:
         codon_variant_table=config['codon_variant_table'],
         aggregate_variant_counts=nb_markdown('aggregate_variant_counts.ipynb'),
         variant_counts=config['variant_counts'],
-        analyze_counts=nb_markdown('analyze_counts.ipynb'),
         counts_to_cells_ratio=nb_markdown('counts_to_cells_ratio.ipynb'),
         counts_to_cells_csv=config['counts_to_cells_csv'],
         # compute_meanF='results/summary/compute_expression_meanF.md',
         # expression_sortseq_file=config['expression_sortseq_file'],
         # global_epistasis_expression=nb_markdown('global_epistasis_expression.ipynb'),
         counts_to_scores=nb_markdown('counts_to_scores.ipynb'),
-        # scores_to_frac_escape=nb_markdown('scores_to_frac_escape.ipynb'),
-        # escape_fracs=config['escape_fracs'],
+        scores_to_frac_escape=nb_markdown('scores_to_frac_escape.ipynb'),
+        escape_fracs=config['escape_fracs'],
     output:
         summary = os.path.join(config['summary_dir'], 'summary.md')
     run:
@@ -125,26 +124,15 @@ rule make_summary:
                sequencing counts, number of sorted cells, and ratios for
                all samples.
             
-            6. [QC analysis of sequencing counts]({path(input.analyze_counts)}).
+            6. [Escape scores from variant counts]({path(input.counts_to_scores)}).
             
-            9. [Escape scores from variant counts]({path(input.counts_to_scores)}).
+            7. [Global epistasis deconvolution of escape fractions for single mutations]
+               ({path(input.scores_to_frac_escape)}); creating
+               [mutation escape fraction file]({path(input.escape_fracs)}).
+
 
             """
             ).strip())
-
-# Comment out steps not ready to be run yet 
-# 
-# 7. [Computation of expression mean fluorescence]({path(input.compute_meanF)}).
-#    Creates files giving the expression of each barcoded variant
-#    [of SARS-CoV-2 RBD]({path(input.expression_sortseq_file)}).
-# 
-# 8. [Global epistasis decomposition of expression effects]({path(input.global_epistasis_expression)}).
-# 
-# 
-# 
-# 10. [Global epistasis deconvolution of escape fractions for single mutations]
-#    ({path(input.scores_to_frac_escape)}); creating
-#    [mutation escape fraction file]({path(input.escape_fracs)}).
 
 
 rule make_rulegraph:
@@ -156,19 +144,19 @@ rule make_rulegraph:
     shell:
         "snakemake --forceall --rulegraph | dot -Tsvg > {output}"
 
-# rule scores_to_frac_escape:
-#     """Estimate mutation- and homolog-level escape scores."""
-#     input:
-#         escape_score_samples=config['escape_score_samples'],
-#         escape_scores=config['escape_scores'],
-#     output:
-#         nb_markdown=nb_markdown('scores_to_frac_escape.ipynb'),
-#         escape_fracs=config['escape_fracs'],
-#     params:
-#         nb='scores_to_frac_escape.ipynb'
-#     shell:
-#         "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
-# 
+rule scores_to_frac_escape:
+    """Estimate mutation-level escape scores."""
+    input:
+        escape_score_samples=config['escape_score_samples'],
+        escape_scores=config['escape_scores'],
+    output:
+        nb_markdown=nb_markdown('scores_to_frac_escape.ipynb'),
+        escape_fracs=config['escape_fracs'],
+    params:
+        nb='scores_to_frac_escape.ipynb'
+    shell:
+        "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
+
 rule counts_to_scores:
     """Analyze variant counts to compute escape scores."""
     input:
@@ -183,48 +171,6 @@ rule counts_to_scores:
         escape_score_samples=config['escape_score_samples'],
     params:
         nb='counts_to_scores.ipynb'
-    shell:
-        "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
-# 
-# rule global_epistasis_expression:
-#     input:
-#         config['expression_sortseq_file']
-#     output:
-#         config['expression_predictions_by_aa_substitutions_file'],
-#         nb_markdown=nb_markdown('global_epistasis_expression.ipynb')
-#     params:
-#         nb='global_epistasis_expression.ipynb'
-#     shell:
-#         "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
-# 
-# rule compute_expression_meanFs:
-#     input:
-#         config['variant_counts']
-#     output:
-#         config['expression_sortseq_file'],
-#         md='results/summary/compute_expression_meanF.md',
-#         md_files=directory('results/summary/compute_expression_meanF_files')
-#     envmodules:
-#         'R/3.6.2-foss-2019b'
-#     params:
-#         nb='compute_expression_meanF.Rmd',
-#         md='compute_expression_meanF.md',
-#         md_files='compute_expression_meanF_files'
-#     shell:
-#         """
-#         R -e \"rmarkdown::render(input=\'{params.nb}\')\";
-#         mv {params.md} {output.md};
-#         mv {params.md_files} {output.md_files}
-#         """
-# 
-rule analyze_counts:
-    """Analyze variant counts and compute functional scores."""
-    input:
-        config['variant_counts']
-    output:
-        nb_markdown=nb_markdown('analyze_counts.ipynb')
-    params:
-        nb='analyze_counts.ipynb'
     shell:
         "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
 

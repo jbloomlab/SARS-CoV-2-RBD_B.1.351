@@ -27,4 +27,8 @@ Here is the Markdown output of each notebook in the workflow:
    sequencing counts, number of sorted cells, and ratios for
    all samples.
 
-6. [QC analysis of sequencing counts](analyze_counts.md).
+6. [Escape scores from variant counts](counts_to_scores.md).
+
+7. [Global epistasis deconvolution of escape fractions for single mutations]
+   (scores_to_frac_escape.md); creating
+   [mutation escape fraction file](../escape_scores/escape_fracs.csv).
