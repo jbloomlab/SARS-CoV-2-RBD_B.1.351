@@ -36,3 +36,5 @@ Here is the Markdown output of each notebook in the workflow:
    and write to [a CSV file](../escape_profiles/strong_escape_sites.csv).
 
 9. Plot [escape profiles](escape_profiles.md).
+
+10. Map escape profiles to ``*.pdb`` files using [this notebook](output_pdbs.md)

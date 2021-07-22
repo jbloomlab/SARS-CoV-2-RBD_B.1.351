@@ -1,0 +1,22 @@
+# Information about outputting B-factor re-assigned PDBs and dms-view inputs
+#
+# Top-level keys are PDBs
+# Under each PDB key, specify:
+#  pdbfile -> path to file containing PDB
+#  chains -> list of chain(s) to which we map colors, typically RBD chains
+#  conditions -> conditions (antibodies / sera) for which we write this PDB,
+#                set to ALL  for all conditions
+
+# 6m0j is ACE2 bound Wuan-1 RBD
+6m0j:
+  pdbfile: data/pdbs/6M0J.pdb
+  chains:
+    - E
+  conditions: ALL
+
+# 6m0j is ACE2 bound RBD
+7LYQ:
+  pdbfile: data/pdbs/7LYQ.pdb
+  chains:
+    - B
+  conditions: ALL

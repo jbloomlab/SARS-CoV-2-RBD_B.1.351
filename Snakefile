@@ -90,6 +90,7 @@ rule make_summary:
         call_strong_escape_sites=nb_markdown('call_strong_escape_sites.ipynb'),
         strong_escape_sites=config['strong_escape_sites'],
         escape_profiles=nb_markdown('escape_profiles.ipynb'),
+        output_pdbs='results/summary/output_pdbs.md',
     output:
         summary = os.path.join(config['summary_dir'], 'summary.md')
     run:
@@ -136,6 +137,8 @@ rule make_summary:
                and write to [a CSV file]({path(input.strong_escape_sites)}).
             
             9. Plot [escape profiles]({path(input.escape_profiles)}).
+            
+            10. Map escape profiles to ``*.pdb`` files using [this notebook]({path(input.output_pdbs)})
 
 
             """
@@ -150,6 +153,18 @@ rule make_rulegraph:
         os.path.join(config['summary_dir'], 'rulegraph.svg')
     shell:
         "snakemake --forceall --rulegraph | dot -Tsvg > {output}"
+
+rule output_pdbs:
+    input:
+        config['escape_fracs'],
+        config['output_pdbs_config'],
+    output:
+        nb_markdown=nb_markdown('output_pdbs.ipynb'),
+        outdir=directory(config['pdb_outputs_dir']),
+    params:
+        nb='output_pdbs.ipynb'
+    shell:
+        "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
 
 rule escape_profiles:
     """Make stacked logo plots of antibody escape profiles."""

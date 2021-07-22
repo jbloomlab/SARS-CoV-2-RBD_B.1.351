@@ -140,6 +140,9 @@ escape_profile_ymax:
   frac: 0.05
   min_ymax: null
 
+# structural mappings configuration
+output_pdbs_config: data/output_pdbs_config.yaml
+
 # output directories / files
 summary_dir: results/summary
 figs_dir: results/figures
@@ -169,3 +172,4 @@ escape_scores: results/escape_scores/scores.csv
 escape_fracs: results/escape_scores/escape_fracs.csv
 escape_profiles_dir: results/escape_profiles
 strong_escape_sites: results/escape_profiles/strong_escape_sites.csv
+pdb_outputs_dir: results/pdb_outputs
