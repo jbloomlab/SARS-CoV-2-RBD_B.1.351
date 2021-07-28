@@ -85,7 +85,6 @@ rule make_summary:
         # expression_sortseq_file=config['expression_sortseq_file'],
         # global_epistasis_expression=nb_markdown('global_epistasis_expression.ipynb'),
         counts_to_scores=nb_markdown('counts_to_scores.ipynb'),
-        # scores_to_frac_escape=nb_markdown('scores_to_frac_escape.ipynb'),
         escape_fracs=config['escape_fracs'],
         call_strong_escape_sites=nb_markdown('call_strong_escape_sites.ipynb'),
         strong_escape_sites=config['strong_escape_sites'],
@@ -210,19 +209,6 @@ rule call_strong_escape_sites:
         nb='call_strong_escape_sites.ipynb'
     shell:
         "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
-        
-# rule scores_to_frac_escape:
-#     """Estimate mutation-level escape scores."""
-#     input:
-#         escape_score_samples=config['escape_score_samples'],
-#         escape_scores=config['escape_scores'],
-#     output:
-#         nb_markdown=nb_markdown('scores_to_frac_escape.ipynb'),
-#         escape_fracs=config['escape_fracs'],
-#     params:
-#         nb='scores_to_frac_escape.ipynb'
-#     shell:
-#         "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
 
 rule counts_to_scores:
     """Analyze variant counts to compute escape scores."""
