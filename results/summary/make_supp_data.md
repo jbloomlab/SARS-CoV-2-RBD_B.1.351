@@ -50,8 +50,8 @@ print(f"At site level, quantifying selection by {site_metric}")
 print(f"At mutation level, quantify selection by {mut_metric}")
 ```
 
-    At site level, quantifying selection by site_total_escape_frac_epistasis_model
-    At mutation level, quantify selection by mut_escape_frac_epistasis_model
+    At site level, quantifying selection by site_total_escape_frac_single_mut
+    At mutation level, quantify selection by mut_escape_frac_single_mut
 
 
 Read escape profiles configuration and get sets for which we will be making supp data:
@@ -344,9 +344,9 @@ display(HTML(dms_view_df.head().to_html(index=False)))
       <td>N</td>
       <td>E</td>
       <td>331</td>
-      <td>0.9521</td>
-      <td>8.132</td>
-      <td>0.9938</td>
+      <td>0.7914</td>
+      <td>5.427</td>
+      <td>0.9978</td>
     </tr>
     <tr>
       <td>ACE2pos_8</td>
@@ -355,20 +355,9 @@ display(HTML(dms_view_df.head().to_html(index=False)))
       <td>N</td>
       <td>I</td>
       <td>331</td>
-      <td>0.6871</td>
-      <td>8.132</td>
-      <td>0.9938</td>
-    </tr>
-    <tr>
-      <td>ACE2pos_8</td>
-      <td>1</td>
-      <td>331</td>
-      <td>N</td>
-      <td>K</td>
-      <td>331</td>
-      <td>0.8624</td>
-      <td>8.132</td>
-      <td>0.9938</td>
+      <td>0.5932</td>
+      <td>5.427</td>
+      <td>0.9978</td>
     </tr>
     <tr>
       <td>ACE2pos_8</td>
@@ -377,20 +366,31 @@ display(HTML(dms_view_df.head().to_html(index=False)))
       <td>N</td>
       <td>L</td>
       <td>331</td>
-      <td>0.9938</td>
-      <td>8.132</td>
-      <td>0.9938</td>
+      <td>0.9978</td>
+      <td>5.427</td>
+      <td>0.9978</td>
     </tr>
     <tr>
       <td>ACE2pos_8</td>
       <td>1</td>
       <td>331</td>
       <td>N</td>
-      <td>Q</td>
+      <td>R</td>
       <td>331</td>
-      <td>0.8260</td>
-      <td>8.132</td>
-      <td>0.9938</td>
+      <td>0.8226</td>
+      <td>5.427</td>
+      <td>0.9978</td>
+    </tr>
+    <tr>
+      <td>ACE2pos_8</td>
+      <td>1</td>
+      <td>331</td>
+      <td>N</td>
+      <td>T</td>
+      <td>331</td>
+      <td>0.5893</td>
+      <td>5.427</td>
+      <td>0.9978</td>
     </tr>
   </tbody>
 </table>

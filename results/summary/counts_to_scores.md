@@ -1952,6 +1952,730 @@ escape_scores.to_csv(config['escape_scores'], index=False, float_format='%.4g')
     Writing escape scores for B1351 to results/escape_scores/scores.csv
 
 
+### Now we will also remove anything that did not pass all the filters above. 
+
+**Note that I will need to update this code once we have the ACE2 and expression scores!!!** (And then also remove this note so I know I did it!)
+
+
+```python
+escape_scores_primary = (escape_scores.query('pass_pre_count_filter == True')
+                        )
+
+display(HTML(escape_scores_primary.head().to_html()))
+print(f"Read {len(escape_scores_primary)} scores.")
+```
+
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>target</th>
+      <th>library</th>
+      <th>pre_sample</th>
+      <th>post_sample</th>
+      <th>barcode</th>
+      <th>score</th>
+      <th>score_var</th>
+      <th>pre_count</th>
+      <th>post_count</th>
+      <th>codon_substitutions</th>
+      <th>n_codon_substitutions</th>
+      <th>aa_substitutions</th>
+      <th>n_aa_substitutions</th>
+      <th>variant_class</th>
+      <th>pre_count_filter_cutoff</th>
+      <th>pass_pre_count_filter</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ACE2pos_8</td>
+      <td>B1351</td>
+      <td>lib1</td>
+      <td>ACE2_enrich-presort-0-ref</td>
+      <td>ACE2_enrich-ACE2pos-8-abneg</td>
+      <td>GCATATGCTAGTAATG</td>
+      <td>0.919550</td>
+      <td>0.007546</td>
+      <td>285</td>
+      <td>183</td>
+      <td>ATA104ATG</td>
+      <td>1</td>
+      <td>I104M</td>
+      <td>1</td>
+      <td>1 nonsynonymous</td>
+      <td>62.1</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ACE2pos_8</td>
+      <td>B1351</td>
+      <td>lib1</td>
+      <td>ACE2_enrich-presort-0-ref</td>
+      <td>ACE2_enrich-ACE2pos-8-abneg</td>
+      <td>AAAAGAATCTCACCAC</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>281</td>
+      <td>230</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td>wildtype</td>
+      <td>62.1</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ACE2pos_8</td>
+      <td>B1351</td>
+      <td>lib1</td>
+      <td>ACE2_enrich-presort-0-ref</td>
+      <td>ACE2_enrich-ACE2pos-8-abneg</td>
+      <td>AAAGATACTACATGGT</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>277</td>
+      <td>218</td>
+      <td>CCT7AGA GCG190TCT</td>
+      <td>2</td>
+      <td>P7R A190S</td>
+      <td>2</td>
+      <td>&gt;1 nonsynonymous</td>
+      <td>62.1</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ACE2pos_8</td>
+      <td>B1351</td>
+      <td>lib1</td>
+      <td>ACE2_enrich-presort-0-ref</td>
+      <td>ACE2_enrich-ACE2pos-8-abneg</td>
+      <td>GTGTCAAAAGGACAAA</td>
+      <td>0.977771</td>
+      <td>0.008740</td>
+      <td>268</td>
+      <td>183</td>
+      <td>CTG125TAT AAC151ACT</td>
+      <td>2</td>
+      <td>L125Y N151T</td>
+      <td>2</td>
+      <td>&gt;1 nonsynonymous</td>
+      <td>62.1</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ACE2pos_8</td>
+      <td>B1351</td>
+      <td>lib1</td>
+      <td>ACE2_enrich-presort-0-ref</td>
+      <td>ACE2_enrich-ACE2pos-8-abneg</td>
+      <td>TAGCCAGCTAACCTAA</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>267</td>
+      <td>278</td>
+      <td>CTT5TGT</td>
+      <td>1</td>
+      <td>L5C</td>
+      <td>1</td>
+      <td>1 nonsynonymous</td>
+      <td>62.1</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+
+
+    Read 959076 scores.
+
+
+### Count number of barcodes per mutation and remove variants with >1 amino acid substitution
+Also add the number of barocdes per mutation to the `escape_scores` dataframe and plot this. 
+But first see how many variants there are with >1 mutation, and query the dataframe to look at them qualitatively. 
+
+
+```python
+p = (ggplot(escape_scores_primary) +
+     aes('n_aa_substitutions', fill='variant_class') +
+     geom_bar() +
+     facet_wrap('~library + pre_sample', ncol=5) +
+     theme(
+#            figure_size=(3.3 * escape_scores_primary['pre_sample'].nunique(),
+#                         2 * escape_scores_primary['library'].nunique()),
+         figure_size=(12, 4),
+           panel_grid_major_x=element_blank(),
+           ) +
+     scale_fill_manual(values=CBPALETTE[1:]) +
+     expand_limits(y=(0, 1))
+     )
+
+_ = p.draw()
+```
+
+
+    
+![png](counts_to_scores_files/counts_to_scores_67_0.png)
+    
+
+
+### Filter dataframe on single mutations that are present in at least `n` number of variants (specified in `config.yaml` file)
+Now see how many `n_single_mut_measurements` there are for each variant:
+
+
+```python
+print(f'Flag anything with fewer than {config["escape_frac_min_single_mut_measurements"]} single mutant measurements (barcodes)')
+
+raw_avg_single_mut_scores = (
+    escape_scores_primary
+    .query('n_aa_substitutions == 1')
+    .rename(columns={'name': 'selection',
+                     'aa_substitutions': 'mutation'})
+    .groupby(['selection', 'library', 'mutation'])
+    .aggregate(raw_single_mut_score=pd.NamedAgg('score', 'mean'),
+               n_single_mut_measurements=pd.NamedAgg('barcode', 'count')
+              )
+    .assign(sufficient_measurements=lambda x: (
+                (x['n_single_mut_measurements'] >= config['escape_frac_min_single_mut_measurements'])))
+    .reset_index()
+    )
+
+# remove mutations with insufficient measurements
+effects_df = (raw_avg_single_mut_scores
+              .query('sufficient_measurements == True')
+              .drop(columns='sufficient_measurements')
+              )
+
+# some error checks
+assert len(effects_df) == len(effects_df.drop_duplicates()), 'duplicate rows in `effects_df`'
+assert all(effects_df['raw_single_mut_score'].notnull() | (effects_df['n_single_mut_measurements'] == 0))
+
+display(HTML(effects_df.head().to_html()))
+```
+
+    Flag anything with fewer than 2 single mutant measurements (barcodes)
+
+
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>selection</th>
+      <th>library</th>
+      <th>mutation</th>
+      <th>raw_single_mut_score</th>
+      <th>n_single_mut_measurements</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>13</th>
+      <td>ACE2pos_8</td>
+      <td>lib1</td>
+      <td>A105R</td>
+      <td>0.123266</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>ACE2pos_8</td>
+      <td>lib1</td>
+      <td>A105V</td>
+      <td>0.869011</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>ACE2pos_8</td>
+      <td>lib1</td>
+      <td>A105W</td>
+      <td>0.778166</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>ACE2pos_8</td>
+      <td>lib1</td>
+      <td>A145R</td>
+      <td>1.000000</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>ACE2pos_8</td>
+      <td>lib1</td>
+      <td>A145V</td>
+      <td>1.000000</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+
+
+We need to compute the escape scores (calculated as [here](https://jbloomlab.github.io/dms_variants/dms_variants.codonvarianttable.html?highlight=escape_scores#dms_variants.codonvarianttable.CodonVariantTable.escape_scores)) back to escape fractions. We define a function to do this depending on the score type:
+
+
+```python
+def score_to_frac(score):
+    """Convert escape score to escape fraction."""
+    if pd.isnull(score):
+        return pd.NA
+    floor = config['escape_score_floor_E']
+    ceil = config['escape_score_ceil_E']
+    if config['escape_score_type'] == 'frac_escape':
+        return min(ceil, max(floor, score))  # just the score after applying ceiling and floor
+    elif config['escape_score_type'] == 'log_escape':
+        # convert score back to fraction, apply ceiling, then re-scale so floor is 0
+        frac = 2**score
+        frac = min(ceil, max(floor, frac))
+        frac = (frac - floor) / (ceil - floor)
+        return frac
+    else:
+        raise ValueError(f"invalid `escape_score_type` of {config['escape_score_type']}")
+
+effects_df = (
+    effects_df
+    .assign(
+            mut_escape_frac_single_mut=lambda x: x['raw_single_mut_score'].map(score_to_frac),
+            )
+    )
+```
+
+### Average the escape score across all barcodes of the same mutation, for each library, and the average of both libraries. 
+Add rows that are the average of the two libraries for the fraction escape for all mutations that are present in both libraries (and if in just one library, the value in that or purge depending on config values printed here), the number of libraries each mutation is measured in, and the sum of the statistics giving the number of measurements:
+
+
+```python
+min_libs = config['escape_frac_avg_min_libraries']
+min_single = config['escape_frac_avg_min_single']
+print(f"Only taking average of mutations with escape fractions in >={min_libs} libraries "
+      f"or with >={min_single} single-mutant measurements total.")
+
+effects_df = (
+    effects_df
+    .query('library != "average"')  # git rid of averages if already there
+    .assign(nlibs=1)
+    .append(effects_df
+            .query('library != "average"')
+            .groupby(['selection', 'mutation'])
+            .aggregate(nlibs=pd.NamedAgg('library', 'count'),
+                       mut_escape_frac_single_mut=pd.NamedAgg('mut_escape_frac_single_mut',
+                                                              lambda s: s.mean(skipna=True)),
+                       n_single_mut_measurements=pd.NamedAgg('n_single_mut_measurements', 'sum'),
+                       )
+            .query('(nlibs >= @min_libs) or (n_single_mut_measurements >= @min_single)')
+            .assign(library="average")
+            .reset_index(),
+            ignore_index=True, sort=False,
+            )
+    )
+
+print(len(effects_df.query('nlibs>1')))
+print(len(effects_df.query('nlibs==1')))
+```
+
+    Only taking average of mutations with escape fractions in >=2 libraries or with >=2 single-mutant measurements total.
+    48061
+    119584
+
+
+Plot the correlations of the escape fractions among the two libraries for all selections performed on both libraries. 
+
+
+```python
+libraries = [lib for lib in effects_df['library'].unique() if lib != "average"]
+assert len(libraries) == 2, 'plot only makes sense if 2 libraries'
+
+# for val, has_single_mut_measurement, color in [
+#         ('mut_escape_frac_single_mut', False, CBPALETTE[1]),
+#         ('mut_escape_frac_epistasis_model', True, CBPALETTE[1]),
+#         ('mut_escape_frac_epistasis_model', False, CBPALETTE[2]),
+#         ]:
+# wide data frame with each library's score in a different column
+effects_df_wide = (
+    effects_df
+    .query('library != "average"')
+    .query(f"n_single_mut_measurements >= 1")
+    # just get selections with 2 libraries
+    .assign(nlibs=lambda x: x.groupby('selection')['library'].transform('nunique'))
+    .query('nlibs == 2')
+    # now make columns for each library, only keep mutants with scores for both libs
+    [['selection', 'mutation', 'library', 'mut_escape_frac_single_mut']]
+    .pivot_table(index=['selection', 'mutation'],
+                 columns='library',
+                 values='mut_escape_frac_single_mut',
+                 aggfunc='first')
+    .reset_index()
+    .dropna(axis=0)
+    )
+
+# correlations between libraries
+corrs = (
+    effects_df_wide
+    .groupby('selection')
+    [libraries]
+    .corr(method='pearson')
+    .reset_index()
+    .query('library == @libraries[0]')
+    .assign(correlation=lambda x: 'R=' + x[libraries[1]].round(2).astype(str))
+    [['selection', 'correlation']]
+    # add number of mutations measured
+    .merge(effects_df_wide
+           .groupby('selection')
+           .size()
+           .rename('n')
+           .reset_index()
+           )
+    .assign(correlation=lambda x: x['correlation'] + ', N=' + x['n'].astype(str))
+    )
+
+# plot correlations
+nfacets = effects_df_wide['selection'].nunique()
+ncol = min(nfacets, 5)
+nrow = math.ceil(nfacets / ncol)
+xmin = effects_df_wide[libraries[0]].min()
+xspan = effects_df_wide[libraries[0]].max() - xmin
+ymin = effects_df_wide[libraries[1]].min()
+yspan = effects_df_wide[libraries[1]].max() - ymin
+p = (ggplot(effects_df_wide) +
+     aes(libraries[0], libraries[1]) +
+     geom_point(alpha=0.2) +
+     geom_text(mapping=aes(label='correlation'),
+               data=corrs,
+               x=0.01 * xspan + xmin,
+               y=0.99 * yspan + ymin,
+               size=10,
+               ha='left',
+               va='top',
+               ) +
+     facet_wrap('~ selection', ncol=ncol) +
+     theme(figure_size=(2.5 * ncol, 2.5 * nrow),
+           plot_title=element_text(size=14)) +
+     ggtitle('Mutation-level escape fractions')
+     )
+
+_ = p.draw()
+```
+
+
+    
+![png](counts_to_scores_files/counts_to_scores_75_0.png)
+    
+
+
+### Escape at site level
+The above analysis estimates the effects of mutations. We also compute escape statistics at the site level. First, add sites to the data frame of mutational effects:
+
+
+```python
+effects_df = (
+    effects_df
+    .assign(site=lambda x: x['mutation'].str[1: -1].astype(int),
+            wildtype=lambda x: x['mutation'].str[0],
+            mutant=lambda x: x['mutation'].str[-1],
+            )
+    )
+```
+
+Now compute some site-level metrics. These are the average and total escape fraction at each site over all mutations at the site:
+
+
+```python
+site_effects_df = (
+    effects_df
+    .groupby(['selection', 'library', 'site'])
+    .aggregate(
+        site_avg_escape_frac_single_mut=pd.NamedAgg('mut_escape_frac_single_mut',
+                                                    lambda s: s.mean(skipna=True)),
+        site_total_escape_frac_single_mut=pd.NamedAgg('mut_escape_frac_single_mut', 'sum'),
+        )
+    .reset_index()
+    )
+
+display(HTML(site_effects_df.head().to_html(index=False)))
+```
+
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>selection</th>
+      <th>library</th>
+      <th>site</th>
+      <th>site_avg_escape_frac_single_mut</th>
+      <th>site_total_escape_frac_single_mut</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ACE2pos_8</td>
+      <td>average</td>
+      <td>1</td>
+      <td>0.775342</td>
+      <td>5.427391</td>
+    </tr>
+    <tr>
+      <td>ACE2pos_8</td>
+      <td>average</td>
+      <td>2</td>
+      <td>0.881753</td>
+      <td>5.290516</td>
+    </tr>
+    <tr>
+      <td>ACE2pos_8</td>
+      <td>average</td>
+      <td>3</td>
+      <td>0.976783</td>
+      <td>5.860698</td>
+    </tr>
+    <tr>
+      <td>ACE2pos_8</td>
+      <td>average</td>
+      <td>4</td>
+      <td>0.884894</td>
+      <td>4.424468</td>
+    </tr>
+    <tr>
+      <td>ACE2pos_8</td>
+      <td>average</td>
+      <td>5</td>
+      <td>0.812827</td>
+      <td>5.689789</td>
+    </tr>
+  </tbody>
+</table>
+
+
+Plot correlations between libraries of the same selection for the site-level statistics:
+
+
+```python
+libraries = [lib for lib in effects_df['library'].unique() if lib != "average"]
+assert len(libraries) == 2, 'plot only makes sense if 2 libraries'
+
+for val in ['site_avg_escape_frac_single_mut', 'site_total_escape_frac_single_mut']:
+
+    # wide data frame with each library's score in a different column
+    site_effects_df_wide = (
+        site_effects_df
+        .query('library != "average"')
+        # just get selections with 2 libraries
+        .assign(nlibs=lambda x: x.groupby('selection')['library'].transform('nunique'))
+        .query('nlibs == 2')
+        # now make columns for each library, only keep sites with scores for both libs
+        .pivot_table(index=['selection', 'site'],
+                     columns='library',
+                     values=val)
+        .reset_index()
+        .dropna(axis=0)
+        )
+
+    # correlations between libraries
+    corrs = (
+        site_effects_df_wide
+        .groupby('selection')
+        [libraries]
+        .corr(method='pearson')
+        .reset_index()
+        .query('library == @libraries[0]')
+        .assign(correlation=lambda x: 'R=' + x[libraries[1]].round(2).astype(str))
+        [['selection', 'correlation']]
+        # add number of mutations measured
+        .merge(site_effects_df_wide
+               .groupby('selection')
+               .size()
+               .rename('n')
+               .reset_index()
+               )
+        .assign(correlation=lambda x: x['correlation'] + ', N=' + x['n'].astype(str))
+        )
+
+    # plot correlations
+    nfacets = site_effects_df_wide['selection'].nunique()
+    ncol = min(nfacets, 5)
+    nrow = math.ceil(nfacets / ncol)
+    xmin = site_effects_df_wide[libraries[0]].min()
+    xspan = site_effects_df_wide[libraries[0]].max() - xmin
+    ymin = site_effects_df_wide[libraries[1]].min()
+    yspan = site_effects_df_wide[libraries[1]].max() - ymin
+    p = (ggplot(site_effects_df_wide) +
+         aes(libraries[0], libraries[1]) +
+         geom_point(alpha=0.2) +
+         geom_text(mapping=aes(label='correlation'),
+                   data=corrs,
+                   x=0.01 * xspan + xmin,
+                   y=0.99 * yspan + ymin,
+                   size=10,
+                   ha='left',
+                   va='top',
+                   ) +
+         facet_wrap('~ selection', ncol=ncol) +
+         theme(figure_size=(2.5 * ncol, 2.5 * nrow),
+               plot_title=element_text(size=14)) +
+         ggtitle(val)
+         )
+
+    _ = p.draw()
+```
+
+
+    
+![png](counts_to_scores_files/counts_to_scores_81_0.png)
+    
+
+
+
+    
+![png](counts_to_scores_files/counts_to_scores_81_1.png)
+    
+
+
+## Write file with escape fractions at mutation and site levels
+We write a files that has the mutation- and site-level escape fractions. This file has both the separate measurements for each library plus the average across libraries for all mutations measured in both libraries. We name the columns in such a way that this file can be used as [dms-view data file](https://dms-view.github.io/docs/dataupload):
+
+
+```python
+escape_fracs_to_write = (
+    effects_df
+    .merge(site_effects_df,
+           how='left',
+           validate='many_to_one',
+           on=['selection', 'library', 'site'])
+    .assign(protein_chain=config['escape_frac_protein_chain'],
+            protein_site=lambda x: x['site'] + config['site_number_offset'],
+            label_site=lambda x: x['protein_site'],
+            condition=lambda x: x['selection'].where(x['library'] == "average", x['selection'] + '_' + x['library']),
+            mutation=lambda x: x['mutant'],  # dms-view uses mutation to refer to mutant amino acid
+            )
+    [['selection', 'library', 'condition', 'site', 'label_site', 'wildtype', 'mutation',
+      'protein_chain', 'protein_site', 'mut_escape_frac_single_mut', 'site_total_escape_frac_single_mut',
+      'site_avg_escape_frac_single_mut', 'nlibs',
+      ]]
+    .sort_values(['library', 'selection', 'site', 'mutation'])
+    )
+
+print('Here are the first few lines that will be written to the escape-fraction file:')
+display(HTML(escape_fracs_to_write.head().to_html(index=False)))
+
+print(f"\nWriting to {config['escape_fracs']}")
+escape_fracs_to_write.to_csv(config['escape_fracs'], index=False, float_format='%.4g')
+
+```
+
+    Here are the first few lines that will be written to the escape-fraction file:
+
+
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>selection</th>
+      <th>library</th>
+      <th>condition</th>
+      <th>site</th>
+      <th>label_site</th>
+      <th>wildtype</th>
+      <th>mutation</th>
+      <th>protein_chain</th>
+      <th>protein_site</th>
+      <th>mut_escape_frac_single_mut</th>
+      <th>site_total_escape_frac_single_mut</th>
+      <th>site_avg_escape_frac_single_mut</th>
+      <th>nlibs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ACE2pos_8</td>
+      <td>average</td>
+      <td>ACE2pos_8</td>
+      <td>1</td>
+      <td>331</td>
+      <td>N</td>
+      <td>E</td>
+      <td>E</td>
+      <td>331</td>
+      <td>0.791437</td>
+      <td>5.427391</td>
+      <td>0.775342</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>ACE2pos_8</td>
+      <td>average</td>
+      <td>ACE2pos_8</td>
+      <td>1</td>
+      <td>331</td>
+      <td>N</td>
+      <td>I</td>
+      <td>E</td>
+      <td>331</td>
+      <td>0.593175</td>
+      <td>5.427391</td>
+      <td>0.775342</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>ACE2pos_8</td>
+      <td>average</td>
+      <td>ACE2pos_8</td>
+      <td>1</td>
+      <td>331</td>
+      <td>N</td>
+      <td>L</td>
+      <td>E</td>
+      <td>331</td>
+      <td>0.997765</td>
+      <td>5.427391</td>
+      <td>0.775342</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>ACE2pos_8</td>
+      <td>average</td>
+      <td>ACE2pos_8</td>
+      <td>1</td>
+      <td>331</td>
+      <td>N</td>
+      <td>R</td>
+      <td>E</td>
+      <td>331</td>
+      <td>0.822606</td>
+      <td>5.427391</td>
+      <td>0.775342</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>ACE2pos_8</td>
+      <td>average</td>
+      <td>ACE2pos_8</td>
+      <td>1</td>
+      <td>331</td>
+      <td>N</td>
+      <td>T</td>
+      <td>E</td>
+      <td>331</td>
+      <td>0.589304</td>
+      <td>5.427391</td>
+      <td>0.775342</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+
+
+    
+    Writing to results/escape_scores/escape_fracs.csv
+
+
 
 ```python
 

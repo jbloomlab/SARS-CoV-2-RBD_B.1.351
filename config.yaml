@@ -90,7 +90,7 @@ global_epistasis_filter_by_subs_observed_and_or: or
 # **either** >= the indicated number of filtered variants (after grouping
 # according to `escape_group_by`) with the mutation as a single mutant
 # or in any context for that library:
-escape_frac_min_single_mut_measurements: 1
+escape_frac_min_single_mut_measurements: 2
 escape_frac_min_any_mut_measurements: 2
 # In order to compute an "average" escape fraction for a mutation, require
 # it to be in at least this many libraries **or** to be observed at
@@ -123,8 +123,8 @@ strong_escape_sites_calling_params:
     min_value_mut: 0.5  # keep site if any mutation selection > than this
 
 # Site- and mutation-level metrics for escape profiles
-site_metric: site_total_escape_frac_epistasis_model
-mut_metric: mut_escape_frac_epistasis_model
+site_metric: site_total_escape_frac_single_mut
+mut_metric: mut_escape_frac_single_mut
 # Specify how to plot escape profiles
 escape_profiles_config: data/escape_profiles_config.yaml
 # Site color schemes for escape profiles
