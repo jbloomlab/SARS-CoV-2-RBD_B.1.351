@@ -29,16 +29,13 @@ Here is the Markdown output of each notebook in the workflow:
 
 6. [Escape scores from variant counts](counts_to_scores.md).
 
-7. [Global epistasis deconvolution of escape fractions for single mutations](scores_to_frac_escape.md); creating
-   [mutation escape fraction file](../escape_scores/escape_fracs.csv).
-
-8. [Call sites of strong escape](call_strong_escape_sites.md),
+7. [Call sites of strong escape](call_strong_escape_sites.md),
    and write to [a CSV file](../escape_profiles/strong_escape_sites.csv).
 
-9. Plot [escape profiles](escape_profiles.md).
+8. Plot [escape profiles](escape_profiles.md).
 
-10. Map escape profiles to ``*.pdb`` files using [this notebook](output_pdbs.md)
+9. Map escape profiles to ``*.pdb`` files using [this notebook](output_pdbs.md)
 
-11. [Make supplementary data files](make_supp_data.md),
+10. [Make supplementary data files](make_supp_data.md),
     which are [here](../supp_data). These include
     `dms-view` input files.

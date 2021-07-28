@@ -46,8 +46,8 @@ print(f"At site level, quantifying selection by {site_metric}")
 print(f"At mutation level, quantify selection by {mut_metric}")
 ```
 
-    At site level, quantifying selection by site_total_escape_frac_epistasis_model
-    At mutation level, quantify selection by mut_escape_frac_epistasis_model
+    At site level, quantifying selection by site_total_escape_frac_single_mut
+    At mutation level, quantify selection by mut_escape_frac_single_mut
 
 
 Read the escape fractions.
@@ -80,11 +80,8 @@ display(HTML(escape_fracs.head().to_html(index=False)))
       <th>mutation</th>
       <th>protein_chain</th>
       <th>protein_site</th>
-      <th>mut_escape_frac_epistasis_model</th>
       <th>mut_escape_frac_single_mut</th>
-      <th>site_total_escape_frac_epistasis_model</th>
       <th>site_total_escape_frac_single_mut</th>
-      <th>site_avg_escape_frac_epistasis_model</th>
       <th>site_avg_escape_frac_single_mut</th>
       <th>nlibs</th>
     </tr>
@@ -97,13 +94,10 @@ display(HTML(escape_fracs.head().to_html(index=False)))
       <td>E</td>
       <td>E</td>
       <td>331</td>
-      <td>0.9521</td>
-      <td>0.895725</td>
-      <td>8.132</td>
-      <td>8.031</td>
-      <td>0.8132</td>
-      <td>0.8031</td>
-      <td>2</td>
+      <td>0.7914</td>
+      <td>5.427</td>
+      <td>0.7753</td>
+      <td>1</td>
     </tr>
     <tr>
       <td>ACE2pos_8</td>
@@ -112,28 +106,10 @@ display(HTML(escape_fracs.head().to_html(index=False)))
       <td>I</td>
       <td>E</td>
       <td>331</td>
-      <td>0.6871</td>
-      <td>0.693975</td>
-      <td>8.132</td>
-      <td>8.031</td>
-      <td>0.8132</td>
-      <td>0.8031</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <td>ACE2pos_8</td>
-      <td>331</td>
-      <td>N</td>
-      <td>K</td>
-      <td>E</td>
-      <td>331</td>
-      <td>0.8624</td>
-      <td>0.880800</td>
-      <td>8.132</td>
-      <td>8.031</td>
-      <td>0.8132</td>
-      <td>0.8031</td>
-      <td>2</td>
+      <td>0.5932</td>
+      <td>5.427</td>
+      <td>0.7753</td>
+      <td>1</td>
     </tr>
     <tr>
       <td>ACE2pos_8</td>
@@ -142,28 +118,34 @@ display(HTML(escape_fracs.head().to_html(index=False)))
       <td>L</td>
       <td>E</td>
       <td>331</td>
-      <td>0.9938</td>
-      <td>0.997750</td>
-      <td>8.132</td>
-      <td>8.031</td>
-      <td>0.8132</td>
-      <td>0.8031</td>
+      <td>0.9978</td>
+      <td>5.427</td>
+      <td>0.7753</td>
       <td>1</td>
     </tr>
     <tr>
       <td>ACE2pos_8</td>
       <td>331</td>
       <td>N</td>
-      <td>Q</td>
+      <td>R</td>
       <td>E</td>
       <td>331</td>
-      <td>0.8260</td>
-      <td>0.831250</td>
-      <td>8.132</td>
-      <td>8.031</td>
-      <td>0.8132</td>
-      <td>0.8031</td>
-      <td>2</td>
+      <td>0.8226</td>
+      <td>5.427</td>
+      <td>0.7753</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>ACE2pos_8</td>
+      <td>331</td>
+      <td>N</td>
+      <td>T</td>
+      <td>E</td>
+      <td>331</td>
+      <td>0.5893</td>
+      <td>5.427</td>
+      <td>0.7753</td>
+      <td>1</td>
     </tr>
   </tbody>
 </table>
@@ -345,11 +327,11 @@ strong_sites.to_csv(config['strong_escape_sites'], index=False)
     </tr>
     <tr>
       <th>sensitive</th>
-      <td>88</td>
+      <td>90</td>
     </tr>
     <tr>
       <th>sensitive_max_mut</th>
-      <td>197</td>
+      <td>194</td>
     </tr>
   </tbody>
 </table>
@@ -365,7 +347,7 @@ strong_sites.to_csv(config['strong_escape_sites'], index=False)
       <th></th>
       <th>condition</th>
       <th>site</th>
-      <th>site_total_escape_frac_epistasis_model</th>
+      <th>site_total_escape_frac_single_mut</th>
       <th>max_mut</th>
       <th>threshold</th>
       <th>median</th>
@@ -386,14 +368,14 @@ strong_sites.to_csv(config['strong_escape_sites'], index=False)
       <th>0</th>
       <td>K007_500</td>
       <td>338</td>
-      <td>4.799</td>
-      <td>0.4390</td>
+      <td>4.921</td>
+      <td>0.4233</td>
       <td>default</td>
-      <td>0.2194</td>
-      <td>5.051</td>
-      <td>2.194</td>
+      <td>0.1927</td>
+      <td>4.921</td>
+      <td>1.927</td>
       <td>True</td>
-      <td>0.5051</td>
+      <td>0.4921</td>
       <td>True</td>
       <td>0</td>
       <td>True</td>
@@ -404,15 +386,15 @@ strong_sites.to_csv(config['strong_escape_sites'], index=False)
     <tr>
       <th>1</th>
       <td>K007_500</td>
-      <td>341</td>
-      <td>2.504</td>
-      <td>0.4513</td>
+      <td>342</td>
+      <td>4.883</td>
+      <td>0.4449</td>
       <td>default</td>
-      <td>0.2194</td>
-      <td>5.051</td>
-      <td>2.194</td>
+      <td>0.1927</td>
+      <td>4.921</td>
+      <td>1.927</td>
       <td>True</td>
-      <td>0.5051</td>
+      <td>0.4921</td>
       <td>True</td>
       <td>0</td>
       <td>True</td>
@@ -423,15 +405,15 @@ strong_sites.to_csv(config['strong_escape_sites'], index=False)
     <tr>
       <th>2</th>
       <td>K007_500</td>
-      <td>342</td>
-      <td>4.916</td>
-      <td>0.4441</td>
+      <td>347</td>
+      <td>4.286</td>
+      <td>0.3934</td>
       <td>default</td>
-      <td>0.2194</td>
-      <td>5.051</td>
-      <td>2.194</td>
+      <td>0.1927</td>
+      <td>4.921</td>
+      <td>1.927</td>
       <td>True</td>
-      <td>0.5051</td>
+      <td>0.4921</td>
       <td>True</td>
       <td>0</td>
       <td>True</td>
@@ -442,15 +424,15 @@ strong_sites.to_csv(config['strong_escape_sites'], index=False)
     <tr>
       <th>3</th>
       <td>K007_500</td>
-      <td>347</td>
-      <td>4.106</td>
-      <td>0.4023</td>
+      <td>351</td>
+      <td>3.545</td>
+      <td>0.4200</td>
       <td>default</td>
-      <td>0.2194</td>
-      <td>5.051</td>
-      <td>2.194</td>
+      <td>0.1927</td>
+      <td>4.921</td>
+      <td>1.927</td>
       <td>True</td>
-      <td>0.5051</td>
+      <td>0.4921</td>
       <td>True</td>
       <td>0</td>
       <td>True</td>
@@ -461,15 +443,15 @@ strong_sites.to_csv(config['strong_escape_sites'], index=False)
     <tr>
       <th>4</th>
       <td>K007_500</td>
-      <td>351</td>
-      <td>3.763</td>
-      <td>0.4410</td>
+      <td>353</td>
+      <td>2.916</td>
+      <td>0.4542</td>
       <td>default</td>
-      <td>0.2194</td>
-      <td>5.051</td>
-      <td>2.194</td>
+      <td>0.1927</td>
+      <td>4.921</td>
+      <td>1.927</td>
       <td>True</td>
-      <td>0.5051</td>
+      <td>0.4921</td>
       <td>True</td>
       <td>0</td>
       <td>True</td>

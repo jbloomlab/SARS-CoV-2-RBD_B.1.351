@@ -85,7 +85,7 @@ rule make_summary:
         # expression_sortseq_file=config['expression_sortseq_file'],
         # global_epistasis_expression=nb_markdown('global_epistasis_expression.ipynb'),
         counts_to_scores=nb_markdown('counts_to_scores.ipynb'),
-        scores_to_frac_escape=nb_markdown('scores_to_frac_escape.ipynb'),
+        # scores_to_frac_escape=nb_markdown('scores_to_frac_escape.ipynb'),
         escape_fracs=config['escape_fracs'],
         call_strong_escape_sites=nb_markdown('call_strong_escape_sites.ipynb'),
         strong_escape_sites=config['strong_escape_sites'],
@@ -131,17 +131,14 @@ rule make_summary:
             
             6. [Escape scores from variant counts]({path(input.counts_to_scores)}).
             
-            7. [Global epistasis deconvolution of escape fractions for single mutations]({path(input.scores_to_frac_escape)}); creating
-               [mutation escape fraction file]({path(input.escape_fracs)}).
-            
-            8. [Call sites of strong escape]({path(input.call_strong_escape_sites)}),
+            7. [Call sites of strong escape]({path(input.call_strong_escape_sites)}),
                and write to [a CSV file]({path(input.strong_escape_sites)}).
             
-            9. Plot [escape profiles]({path(input.escape_profiles)}).
+            8. Plot [escape profiles]({path(input.escape_profiles)}).
             
-            10. Map escape profiles to ``*.pdb`` files using [this notebook]({path(input.output_pdbs)})
+            9. Map escape profiles to ``*.pdb`` files using [this notebook]({path(input.output_pdbs)})
             
-            11. [Make supplementary data files]({path(input.make_supp_data)}),
+            10. [Make supplementary data files]({path(input.make_supp_data)}),
                 which are [here]({path(config['supp_data_dir'])}). These include
                 `dms-view` input files.
 
@@ -214,18 +211,18 @@ rule call_strong_escape_sites:
     shell:
         "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
         
-rule scores_to_frac_escape:
-    """Estimate mutation-level escape scores."""
-    input:
-        escape_score_samples=config['escape_score_samples'],
-        escape_scores=config['escape_scores'],
-    output:
-        nb_markdown=nb_markdown('scores_to_frac_escape.ipynb'),
-        escape_fracs=config['escape_fracs'],
-    params:
-        nb='scores_to_frac_escape.ipynb'
-    shell:
-        "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
+# rule scores_to_frac_escape:
+#     """Estimate mutation-level escape scores."""
+#     input:
+#         escape_score_samples=config['escape_score_samples'],
+#         escape_scores=config['escape_scores'],
+#     output:
+#         nb_markdown=nb_markdown('scores_to_frac_escape.ipynb'),
+#         escape_fracs=config['escape_fracs'],
+#     params:
+#         nb='scores_to_frac_escape.ipynb'
+#     shell:
+#         "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
 
 rule counts_to_scores:
     """Analyze variant counts to compute escape scores."""

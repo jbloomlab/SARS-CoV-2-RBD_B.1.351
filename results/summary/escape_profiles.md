@@ -74,8 +74,8 @@ print(f"At site level, quantifying selection by {site_metric}")
 print(f"At mutation level, quantify selection by {mut_metric}")
 ```
 
-    At site level, quantifying selection by site_total_escape_frac_epistasis_model
-    At mutation level, quantify selection by mut_escape_frac_epistasis_model
+    At site level, quantifying selection by site_total_escape_frac_single_mut
+    At mutation level, quantify selection by mut_escape_frac_single_mut
 
 
 Read the sites of "strong escape" for each antibody / sera.
@@ -122,11 +122,8 @@ display(HTML(escape_fracs.head().to_html(index=False)))
       <th>mutation</th>
       <th>protein_chain</th>
       <th>protein_site</th>
-      <th>mut_escape_frac_epistasis_model</th>
       <th>mut_escape_frac_single_mut</th>
-      <th>site_total_escape_frac_epistasis_model</th>
       <th>site_total_escape_frac_single_mut</th>
-      <th>site_avg_escape_frac_epistasis_model</th>
       <th>site_avg_escape_frac_single_mut</th>
       <th>nlibs</th>
     </tr>
@@ -139,13 +136,10 @@ display(HTML(escape_fracs.head().to_html(index=False)))
       <td>E</td>
       <td>E</td>
       <td>331</td>
-      <td>0.9521</td>
-      <td>0.895725</td>
-      <td>8.132</td>
-      <td>8.031</td>
-      <td>0.8132</td>
-      <td>0.8031</td>
-      <td>2</td>
+      <td>0.7914</td>
+      <td>5.427</td>
+      <td>0.7753</td>
+      <td>1</td>
     </tr>
     <tr>
       <td>ACE2pos_8</td>
@@ -154,28 +148,10 @@ display(HTML(escape_fracs.head().to_html(index=False)))
       <td>I</td>
       <td>E</td>
       <td>331</td>
-      <td>0.6871</td>
-      <td>0.693975</td>
-      <td>8.132</td>
-      <td>8.031</td>
-      <td>0.8132</td>
-      <td>0.8031</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <td>ACE2pos_8</td>
-      <td>331</td>
-      <td>N</td>
-      <td>K</td>
-      <td>E</td>
-      <td>331</td>
-      <td>0.8624</td>
-      <td>0.880800</td>
-      <td>8.132</td>
-      <td>8.031</td>
-      <td>0.8132</td>
-      <td>0.8031</td>
-      <td>2</td>
+      <td>0.5932</td>
+      <td>5.427</td>
+      <td>0.7753</td>
+      <td>1</td>
     </tr>
     <tr>
       <td>ACE2pos_8</td>
@@ -184,28 +160,34 @@ display(HTML(escape_fracs.head().to_html(index=False)))
       <td>L</td>
       <td>E</td>
       <td>331</td>
-      <td>0.9938</td>
-      <td>0.997750</td>
-      <td>8.132</td>
-      <td>8.031</td>
-      <td>0.8132</td>
-      <td>0.8031</td>
+      <td>0.9978</td>
+      <td>5.427</td>
+      <td>0.7753</td>
       <td>1</td>
     </tr>
     <tr>
       <td>ACE2pos_8</td>
       <td>331</td>
       <td>N</td>
-      <td>Q</td>
+      <td>R</td>
       <td>E</td>
       <td>331</td>
-      <td>0.8260</td>
-      <td>0.831250</td>
-      <td>8.132</td>
-      <td>8.031</td>
-      <td>0.8132</td>
-      <td>0.8031</td>
-      <td>2</td>
+      <td>0.8226</td>
+      <td>5.427</td>
+      <td>0.7753</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>ACE2pos_8</td>
+      <td>331</td>
+      <td>N</td>
+      <td>T</td>
+      <td>E</td>
+      <td>331</td>
+      <td>0.5893</td>
+      <td>5.427</td>
+      <td>0.7753</td>
+      <td>1</td>
     </tr>
   </tbody>
 </table>
