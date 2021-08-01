@@ -37,14 +37,10 @@ site_number_offset: 330  # add this to sequential sites to get RBD numbering
 # for the original DMS of SARS-CoV-2 Wuhan-1 RBD
 mut_bind_expr_url: https://media.githubusercontent.com/media/jbloomlab/SARS-CoV-2-RBD_DMS/master/results/single_mut_effects/single_mut_effects.csv
 
-# parameters for running PacBio `ccs` program
-min_ccs_accuracy: 0.999
-min_ccs_passes: 3
-min_ccs_length: 50
-max_ccs_length: 5000
-
-# max error rate in gene / barcode CCSs retained for consensu building
-max_error_rate: 0.0001
+# use preliminary ACE2 binding and RBD expression values? 
+dms_scores_preliminary: True 
+# for now, I will download the CSV file that contains preliminary mutant bind and expression scores because the `variants` repo is still private
+prelim_mut_bind_expr: data/prelim_variant_dms_scores.csv 
 
 # Parameters for processing Illumina barcodes, assuming this structure:
 #  [R2 binds] - [upstream] - [barcode] - [downstream] - [R1 binds]
@@ -74,18 +70,10 @@ escape_score_group_by: barcode
 # pre-selection counts < this quantile of stop codon variants, thereby
 # removing low count "noise":
 escape_score_stop_quantile_filter: 0.9
-# Which model to use for setting expression filter:
-expression_epistasistype: no epistasis
-expression_likelihoodtype: Gaussian
-# Filter variants with expression < this threshold
-# I have arbitrarily set this threshold for now
-escape_score_min_expr_variant: -2.5
-# **Prior to fitting global epistasis models**, remove variants that have
-# substitutions that are not observed in at least this many variants in a
-# single-mutant **and / or** any context:
-global_epistasis_filter_by_subs_observed_single: 0
-global_epistasis_filter_by_subs_observed_any: 2
-global_epistasis_filter_by_subs_observed_and_or: or
+# Filter variants with mutation with binding or expression scores
+# <= these values
+escape_score_min_bind_mut: -2.35
+escape_score_min_expr_mut: -1.0
 # Only retain mutation-level escape fraction estimates when there are
 # **either** >= the indicated number of filtered variants (after grouping
 # according to `escape_group_by`) with the mutation as a single mutant
@@ -158,19 +146,12 @@ codon_variant_table: results/variants/codon_variant_table.csv
 counts_dir: results/counts
 variant_counts: results/counts/variant_counts.csv.gz
 counts_to_cells_csv: results/counts/counts_to_cells_csv.csv
-expression_sortseq_dir: results/expression_meanFs
-expression_sortseq_file: results/expression_meanFs/expression_meanFs.csv
-global_epistasis_expr_dir: results/global_epistasis_expression
-global_epistasis_expr_file: results/global_epistasis_expression/global_epistasis_expression_predictions.csv
-expression_predictions_by_aa_substitutions_file: results/global_epistasis_expression/expression_predictions_by_aa_substitutions.csv
-expression_predictions_by_barcode_file: results/global_epistasis_expression/expression_predictions_by_barcode.csv
-single_mut_effects_dir: results/single_mut_effects
-single_mut_effects_file: results/single_mut_effects/single_mut_effects.csv
 escape_scores_dir: results/escape_scores
 escape_score_samples: results/escape_scores/samples.csv
 escape_scores: results/escape_scores/scores.csv
 escape_fracs: results/escape_scores/escape_fracs.csv
 escape_profiles_dir: results/escape_profiles
+escape_profiles_dms_colors: results/escape_profiles/escape_profiles_dms_colors.csv
 strong_escape_sites: results/escape_profiles/strong_escape_sites.csv
 pdb_outputs_dir: results/pdb_outputs
 supp_data_dir: results/supp_data

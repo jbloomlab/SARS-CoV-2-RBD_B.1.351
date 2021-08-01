@@ -44,14 +44,10 @@ jackpotted_experiments:
     K119_old_200: K119_old
   plot_auto_identified_sites: default
   add_sites: []
-  exclude_sites: []
+  exclude_sites: [336, 361]
   site_color_scheme: barnes_classes
   color_by_dms: False
   make_supp_data: True
-  escape_profile_ymax:
-    quantile: 0.5
-    frac: 0.05
-    min_ymax: 1
   dmslogo_facet_plot_kwargs:
     height_per_ax: 2.0
   dmslogo_draw_line_kwargs:
@@ -73,14 +69,10 @@ new_experiments:
     K119_200: K119
   plot_auto_identified_sites: default
   add_sites: []
-  exclude_sites: []
+  exclude_sites: [336, 361]
   site_color_scheme: barnes_classes
   color_by_dms: False
   make_supp_data: True
-  escape_profile_ymax:
-    quantile: 0.5
-    frac: 0.05
-    min_ymax: 1
   dmslogo_facet_plot_kwargs:
     height_per_ax: 2.0
   dmslogo_draw_line_kwargs:

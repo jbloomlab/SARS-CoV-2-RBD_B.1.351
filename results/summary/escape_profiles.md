@@ -237,93 +237,144 @@ Importantly, **note that as long as `clip_vals_gt_0` is set to `True`, then all 
 
 
 ```python
-# clip_vals_gt_0 = True  # plot DMS values > 0 as 0 (grouping beneficial and neutral)
+if config['dms_scores_preliminary']:
+    mut_bind_expr_file = config['prelim_mut_bind_expr']
+else: 
+    mut_bind_expr_file = config['mut_bind_expr']
 
-# print(f"Reading DMS data from {config['mut_bind_expr']}")
+clip_vals_gt_0 = True  # plot DMS values > 0 as 0 (grouping beneficial and neutral)
 
-# # read DMS data flagging mutations with escape > 0
-# mut_bind_expr = (
-#     pd.read_csv(config['mut_bind_expr'])
-#     [['site_SARS2', 'mutant', 'bind_avg', 'expr_avg']]
-#     .rename(columns={'site_SARS2': 'site',
-#                      'mutant': 'mutation',
-#                      'bind_avg': 'bind',
-#                      'expr_avg': 'expr'})
-#     # flag mutations with mutation escape > 0
-#     .merge(escape_fracs_padded, how='right', validate='one_to_many', on=['site', 'mutation'])
-#     .assign(escape_gt_0=lambda x: x[mut_metric] > 0)
-#     .groupby(['site', 'mutation', 'bind', 'expr'])
-#     .aggregate(escape_gt_0=pd.NamedAgg('escape_gt_0', 'any'))
-#     .reset_index()
-#     .drop_duplicates()
-#     )
+print(f"Reading DMS data from {mut_bind_expr_file}")
 
-# # add color for each mutation, coloring those without escape > 0 as white
-# for prop in ['bind', 'expr']:
+# read DMS data flagging mutations with escape > 0
+mut_bind_expr = (
+    pd.read_csv(mut_bind_expr_file)
+    .query('target==@config["primary_target"]')
+    [['position', 'mutant', 'delta_bind', 'delta_expr']]
+    .rename(columns={'position': 'site',
+                     'mutant': 'mutation',
+                     'delta_bind': 'bind',
+                     'delta_expr': 'expr'})
+    # flag mutations with mutation escape > 0
+    .merge(escape_fracs_padded, how='right', validate='one_to_many', on=['site', 'mutation'])
+    .assign(escape_gt_0=lambda x: x[mut_metric] > 0)
+    .groupby(['site', 'mutation', 'bind', 'expr'])
+    .aggregate(escape_gt_0=pd.NamedAgg('escape_gt_0', 'any'))
+    .reset_index()
+    .drop_duplicates()
+    )
+
+# add color for each mutation, coloring those without escape > 0 as white
+for prop in ['bind', 'expr']:
     
-#     # set up color scale and draw scale bard
-#     min_prop = mut_bind_expr.query('escape_gt_0')[prop].min()
-#     if clip_vals_gt_0:
-#         mut_bind_expr[prop] = numpy.clip(mut_bind_expr[prop], None, 0)
-#     max_prop = mut_bind_expr.query('escape_gt_0')[prop].max()
-#     # get YlOrBr color map (https://matplotlib.org/3.1.0/tutorials/colors/colormaps.html),
-#     # but start 20% in so not too faint: https://stackoverflow.com/a/18926541
-#     nsegments = 256
-#     cmap = matplotlib.colors.LinearSegmentedColormap.from_list(
-#             name='trunc_YlOrBr',
-#             colors=matplotlib.cm.get_cmap('YlOrBr', lut=256)(numpy.linspace(0.2, 1, 256))
-#             )
-#     colormap = pdb_prot_align.colorschemes.ValueToColorMap(
-#                     minvalue=min_prop,
-#                     maxvalue=max_prop,
-#                     cmap=cmap,
-#                     )
-#     for orientation in ['horizontal', 'vertical']:
-#         scalebar_file = os.path.join(config['escape_profiles_dir'], f"{prop}_scalebar_{orientation}.pdf")
-#         print(f"\n{prop} ranges from {min_prop} to {max_prop}, here is the scale bar, which is being saved to {scalebar_file}")
-#         fig, _ = colormap.scale_bar(orientation=orientation,
-#                                     label={'bind': 'ACE2 binding',
-#                                            'expr': 'RBD expression'}[prop])
-#         fig.savefig(scalebar_file, bbox_inches='tight')
-#         fig.savefig(os.path.splitext(scalebar_file)[0]+ '.svg', bbox_inches='tight')
-#         display(fig)
-#         plt.close(fig)
+    # set up color scale and draw scale bard
+    min_prop = mut_bind_expr.query('escape_gt_0')[prop].min()
+    if clip_vals_gt_0:
+        mut_bind_expr[prop] = numpy.clip(mut_bind_expr[prop], None, 0)
+    max_prop = mut_bind_expr.query('escape_gt_0')[prop].max()
+    # get YlOrBr color map (https://matplotlib.org/3.1.0/tutorials/colors/colormaps.html),
+    # but start 20% in so not too faint: https://stackoverflow.com/a/18926541
+    nsegments = 256
+    cmap = matplotlib.colors.LinearSegmentedColormap.from_list(
+            name='trunc_YlOrBr',
+            colors=matplotlib.cm.get_cmap('YlOrBr', lut=256)(numpy.linspace(0.2, 1, 256))
+            )
+    colormap = pdb_prot_align.colorschemes.ValueToColorMap(
+                    minvalue=min_prop,
+                    maxvalue=max_prop,
+                    cmap=cmap,
+                    )
+    for orientation in ['horizontal', 'vertical']:
+        scalebar_file = os.path.join(config['escape_profiles_dir'], f"{prop}_scalebar_{orientation}.pdf")
+        print(f"\n{prop} ranges from {min_prop} to {max_prop}, here is the scale bar, which is being saved to {scalebar_file}")
+        fig, _ = colormap.scale_bar(orientation=orientation,
+                                    label={'bind': 'ACE2 binding',
+                                           'expr': 'RBD expression'}[prop])
+        fig.savefig(scalebar_file, bbox_inches='tight')
+        fig.savefig(os.path.splitext(scalebar_file)[0]+ '.svg', bbox_inches='tight')
+        display(fig)
+        plt.close(fig)
     
-#     # add color to data frame of DMS data
-#     mut_bind_expr[f"{prop}_color"] = mut_bind_expr.apply(lambda r: colormap.val_to_color(r[prop]) if r['escape_gt_0'] else 'white',
-#                                                          axis=1)
+    # add color to data frame of DMS data
+    mut_bind_expr[f"{prop}_color"] = mut_bind_expr.apply(lambda r: colormap.val_to_color(r[prop]) if r['escape_gt_0'] else 'white',
+                                                         axis=1)
     
-#     # save to file the color scheme
-#     print(f"Saving DMS color scheme to {config['escape_profiles_dms_colors']}")
-#     (mut_bind_expr
-#      .query('escape_gt_0')
-#      .drop(columns='escape_gt_0')
-#      .to_csv(config['escape_profiles_dms_colors'], index=False)
-#      )
+    # save to file the color scheme
+    print(f"Saving DMS color scheme to {config['escape_profiles_dms_colors']}")
+    (mut_bind_expr
+     .query('escape_gt_0')
+     .drop(columns='escape_gt_0')
+     .to_csv(config['escape_profiles_dms_colors'], index=False)
+     )
     
-# # add DMS coloring to escape fractions data frame
-# escape_fracs_padded = (
-#     escape_fracs_padded
-#     .drop(columns=['bind_color', 'expr_color'], errors='ignore')
-#     .merge(mut_bind_expr[['site', 'mutation', 'bind_color', 'expr_color']],
-#            how='left',
-#            validate='many_to_one',
-#            on=['site', 'mutation'])
-#     # assign colors that are NaN and have 0 height to be white
-#     .assign(bind_color=lambda x: x['bind_color'].where((x[mut_metric] != 0) | x['bind_color'].notnull(),
-#                                                        'white'),
-#             expr_color=lambda x: x['expr_color'].where((x[mut_metric] != 0) | x['expr_color'].notnull(),
-#                                                        'white'),
-#             )
-#     )
-# # check no letters have NaN colors
-# nan_color = (
-#     escape_fracs_padded
-#     .query('bind_color.isnull() | expr_color.isnull()')
-#     )
-# if len(nan_color):
-#     raise ValueError(f"The following entries lack colors:\n{nan_color}")
+# add DMS coloring to escape fractions data frame
+escape_fracs_padded = (
+    escape_fracs_padded
+    .drop(columns=['bind_color', 'expr_color'], errors='ignore')
+    .merge(mut_bind_expr[['site', 'mutation', 'bind_color', 'expr_color']],
+           how='left',
+           validate='many_to_one',
+           on=['site', 'mutation'])
+    # assign colors that are NaN and have 0 height to be white
+    .assign(bind_color=lambda x: x['bind_color'].where((x[mut_metric] != 0) | x['bind_color'].notnull(),
+                                                       'white'),
+            expr_color=lambda x: x['expr_color'].where((x[mut_metric] != 0) | x['expr_color'].notnull(),
+                                                       'white'),
+            )
+    )
+# check no letters have NaN colors
+nan_color = (
+    escape_fracs_padded
+    .query('bind_color.isnull() | expr_color.isnull()')
+    )
+if len(nan_color):
+    raise ValueError(f"The following entries lack colors:\n{nan_color}")
 ```
+
+    Reading DMS data from data/prelim_variant_dms_scores.csv
+    
+    bind ranges from -2.34777 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/bind_scalebar_horizontal.pdf
+
+
+
+    
+![png](escape_profiles_files/escape_profiles_18_1.png)
+    
+
+
+    
+    bind ranges from -2.34777 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/bind_scalebar_vertical.pdf
+
+
+
+    
+![png](escape_profiles_files/escape_profiles_18_3.png)
+    
+
+
+    Saving DMS color scheme to results/escape_profiles/escape_profiles_dms_colors.csv
+    
+    expr ranges from -0.99848 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/expr_scalebar_horizontal.pdf
+
+
+
+    
+![png](escape_profiles_files/escape_profiles_18_5.png)
+    
+
+
+    
+    expr ranges from -0.99848 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/expr_scalebar_vertical.pdf
+
+
+
+    
+![png](escape_profiles_files/escape_profiles_18_7.png)
+    
+
+
+    Saving DMS color scheme to results/escape_profiles/escape_profiles_dms_colors.csv
+
 
 ## Plot specified escape profiles
 We have manually specified configurations for escape profiles in a YAML file:

@@ -323,15 +323,15 @@ strong_sites.to_csv(config['strong_escape_sites'], index=False)
   <tbody>
     <tr>
       <th>default</th>
-      <td>61</td>
+      <td>18</td>
     </tr>
     <tr>
       <th>sensitive</th>
-      <td>90</td>
+      <td>30</td>
     </tr>
     <tr>
       <th>sensitive_max_mut</th>
-      <td>194</td>
+      <td>154</td>
     </tr>
   </tbody>
 </table>
@@ -367,97 +367,97 @@ strong_sites.to_csv(config['strong_escape_sites'], index=False)
     <tr>
       <th>0</th>
       <td>K007_500</td>
-      <td>338</td>
-      <td>4.921</td>
-      <td>0.4233</td>
+      <td>336</td>
+      <td>0.1343</td>
+      <td>0.08200</td>
       <td>default</td>
-      <td>0.1927</td>
-      <td>4.921</td>
-      <td>1.927</td>
+      <td>0.01298</td>
+      <td>0.8212</td>
+      <td>0.1298</td>
       <td>True</td>
-      <td>0.4921</td>
+      <td>0.08212</td>
       <td>True</td>
       <td>0</td>
       <td>True</td>
       <td>False</td>
       <td>True</td>
-      <td>43</td>
+      <td>4</td>
     </tr>
     <tr>
       <th>1</th>
       <td>K007_500</td>
-      <td>342</td>
-      <td>4.883</td>
-      <td>0.4449</td>
+      <td>361</td>
+      <td>0.4309</td>
+      <td>0.16440</td>
       <td>default</td>
-      <td>0.1927</td>
-      <td>4.921</td>
-      <td>1.927</td>
+      <td>0.01298</td>
+      <td>0.8212</td>
+      <td>0.1298</td>
       <td>True</td>
-      <td>0.4921</td>
+      <td>0.08212</td>
       <td>True</td>
       <td>0</td>
       <td>True</td>
       <td>False</td>
       <td>True</td>
-      <td>43</td>
+      <td>4</td>
     </tr>
     <tr>
       <th>2</th>
       <td>K007_500</td>
-      <td>347</td>
-      <td>4.286</td>
-      <td>0.3934</td>
+      <td>447</td>
+      <td>0.2804</td>
+      <td>0.02732</td>
       <td>default</td>
-      <td>0.1927</td>
-      <td>4.921</td>
-      <td>1.927</td>
+      <td>0.01298</td>
+      <td>0.8212</td>
+      <td>0.1298</td>
       <td>True</td>
-      <td>0.4921</td>
+      <td>0.08212</td>
       <td>True</td>
       <td>0</td>
       <td>True</td>
       <td>False</td>
       <td>True</td>
-      <td>43</td>
+      <td>4</td>
     </tr>
     <tr>
       <th>3</th>
       <td>K007_500</td>
-      <td>351</td>
-      <td>3.545</td>
-      <td>0.4200</td>
+      <td>484</td>
+      <td>0.8212</td>
+      <td>0.19790</td>
       <td>default</td>
-      <td>0.1927</td>
-      <td>4.921</td>
-      <td>1.927</td>
+      <td>0.01298</td>
+      <td>0.8212</td>
+      <td>0.1298</td>
       <td>True</td>
-      <td>0.4921</td>
+      <td>0.08212</td>
       <td>True</td>
       <td>0</td>
       <td>True</td>
       <td>False</td>
       <td>True</td>
-      <td>43</td>
+      <td>4</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>K007_500</td>
-      <td>353</td>
-      <td>2.916</td>
-      <td>0.4542</td>
+      <td>K007_old_500</td>
+      <td>361</td>
+      <td>1.4640</td>
+      <td>0.42730</td>
       <td>default</td>
-      <td>0.1927</td>
-      <td>4.921</td>
-      <td>1.927</td>
+      <td>0.04605</td>
+      <td>4.0060</td>
+      <td>0.4605</td>
       <td>True</td>
-      <td>0.4921</td>
+      <td>0.40060</td>
       <td>True</td>
       <td>0</td>
       <td>True</td>
       <td>False</td>
       <td>True</td>
-      <td>43</td>
+      <td>7</td>
     </tr>
   </tbody>
 </table>

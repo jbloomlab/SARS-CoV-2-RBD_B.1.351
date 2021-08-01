@@ -192,7 +192,7 @@ rule escape_profiles:
         strong_escape_sites=config['strong_escape_sites'],
     output:
         nb_markdown=nb_markdown('escape_profiles.ipynb'),
-        # escape_profiles_dms_colors=config['escape_profiles_dms_colors'],
+        escape_profiles_dms_colors=config['escape_profiles_dms_colors'],
     params:
         nb='escape_profiles.ipynb'
     shell:
