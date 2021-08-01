@@ -285,34 +285,35 @@ The first step is to read these color schemes:
 
 
 ```python
-# print(f"Reading DMS color schemes from {config['escape_profiles_dms_colors']}")
+print(f"Reading DMS color schemes from {config['escape_profiles_dms_colors']}")
 
-# dms_colors = (
-#     pd.read_csv(config['escape_profiles_dms_colors'])
-#     .drop(columns=['bind', 'expr'])
-#     .rename(columns={'site': 'label_site'})
-#     .rename(columns={'bind_color': 'color ACE2 bind',
-#                      'expr_color': 'color RBD expr'})
-#     # add color schemes by functional group and all gray
-#     .assign(**{'color gray': '#696969',
-#                'color func group': 'functional'})
-#     )
+dms_colors = (
+    pd.read_csv(config['escape_profiles_dms_colors'])
+    .drop(columns=['bind', 'expr'])
+    .rename(columns={'site': 'label_site'})
+    .rename(columns={'bind_color': 'color ACE2 bind',
+                     'expr_color': 'color RBD expr'})
+    # add color schemes by functional group and all gray
+    .assign(**{'color gray': '#696969',
+               'color func group': 'functional'})
+    )
 ```
+
+    Reading DMS color schemes from results/escape_profiles/escape_profiles_dms_colors.csv
+
 
 Now write a [dms-view](https://dms-view.github.io/docs/dataupload) input file that allows different mutation-level coloring schemes:
 
 
 ```python
 dms_view_df = (
-#     pd.concat([raw_data.merge(dms_colors[['label_site', 'mutation', color]],
-#                               how='left',
-#                               validate='many_to_one')
-#                        .rename(columns={color: 'color_for_mutation',
-#                                         'mut_escape': 'mut_escape ' + color})
-#                for color in dms_colors.drop(columns=['label_site', 'mutation']).columns.tolist()
-#                ])
-    # remove this next line once dms_colors are available
-    raw_data
+    pd.concat([raw_data.merge(dms_colors[['label_site', 'mutation', color]],
+                              how='left',
+                              validate='many_to_one')
+                       .rename(columns={color: 'color_for_mutation',
+                                        'mut_escape': 'mut_escape ' + color})
+               for color in dms_colors.drop(columns=['label_site', 'mutation']).columns.tolist()
+               ])
     .rename(columns={'site_max_escape': 'site_max escape',
                      'site_total_escape': 'site_total escape'})
     .drop(columns='protein_chain')
@@ -331,9 +332,13 @@ display(HTML(dms_view_df.head().to_html(index=False)))
       <th>wildtype</th>
       <th>mutation</th>
       <th>protein_site</th>
-      <th>mut_escape</th>
+      <th>mut_escape color ACE2 bind</th>
       <th>site_total escape</th>
       <th>site_max escape</th>
+      <th>color_for_mutation</th>
+      <th>mut_escape color RBD expr</th>
+      <th>mut_escape color gray</th>
+      <th>mut_escape color func group</th>
     </tr>
   </thead>
   <tbody>
@@ -347,6 +352,10 @@ display(HTML(dms_view_df.head().to_html(index=False)))
       <td>0.7914</td>
       <td>5.427</td>
       <td>0.9978</td>
+      <td>#662505</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <td>ACE2pos_8</td>
@@ -358,6 +367,10 @@ display(HTML(dms_view_df.head().to_html(index=False)))
       <td>0.5932</td>
       <td>5.427</td>
       <td>0.9978</td>
+      <td>#722805</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <td>ACE2pos_8</td>
@@ -369,6 +382,10 @@ display(HTML(dms_view_df.head().to_html(index=False)))
       <td>0.9978</td>
       <td>5.427</td>
       <td>0.9978</td>
+      <td>#892f04</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <td>ACE2pos_8</td>
@@ -380,6 +397,10 @@ display(HTML(dms_view_df.head().to_html(index=False)))
       <td>0.8226</td>
       <td>5.427</td>
       <td>0.9978</td>
+      <td>#692505</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <td>ACE2pos_8</td>
@@ -391,6 +412,10 @@ display(HTML(dms_view_df.head().to_html(index=False)))
       <td>0.5893</td>
       <td>5.427</td>
       <td>0.9978</td>
+      <td>#672505</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
   </tbody>
 </table>
