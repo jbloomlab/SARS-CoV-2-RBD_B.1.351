@@ -1304,7 +1304,7 @@ display(HTML(score_sample_df.to_html(index=False)))
 </table>
 
 
-Compute the escape scores for variants of the primary target and classify the variants, then compute escape scores for homologs:
+Compute the escape scores for variants of the primary target and classify the variants:
 
 
 ```python
@@ -1762,115 +1762,362 @@ _ = p.draw()
 
 
 ## Apply ACE2-binding / expression filter to variant mutations
-In [Starr et al (2020)](https://www.biorxiv.org/content/10.1101/2020.06.17.157982v1), we used deep mutational scanning to estimate how each mutation affected ACE2 binding and expression.
+We also used deep mutational scanning to estimate how each mutation affected ACE2 binding and expression in the B.1.351 background.
 Here we flag for removal any variants of the primary target that have (or have mutations) that were measured to decrease ACE2-binding or expression beyond a minimal threshold, in order to avoid these variants muddying the signal as spurious escape mutants.
 
 To do this, we first determine all mutations that do / do-not having binding that exceeds the thresholds.
-We then flag variants as passing the ACE2-binding / expression filter if all of the mutations they contain exceed both thresholds, and failing as otherwise.
-In addition, we look at the measured ACE2-binding / expression for each variant in each library, and flag as passing the filter any variants that have binding / expression that exeed the thresholds, and failing as otherwise.
-If we are grouping by amino-acid substitutions, we use the average value for variants with those substitutions.
 
-Note that these filters are only applied to mutants of the primary target; homologs are specified manually for filtering in the configuration file:
+Note that because we are working on this serum-mapping project at the same time as we are working on the ACE2-binding / RBD-expression project, the scores will be preliminary until all final analyses have been done on the DMS project end. So, we will allow either preliminary or "final" measurements to be used. 
 
 
 ```python
-# Commenting out for now since we don't have these measurements finalized in the B.1.351 background yet. 
+if config['dms_scores_preliminary']:
+    mut_bind_expr_file = config['prelim_mut_bind_expr']
+else: 
+    mut_bind_expr_file = config['mut_bind_expr']
+    
+print(f"Reading ACE2-binding and expression for mutations from {mut_bind_expr_file}, "
+      f"and filtering for variants that have single mutations that "
+      f"only have mutations with binding >={config['escape_score_min_bind_mut']} and "
+      f"expression >={config['escape_score_min_expr_mut']}.")
 
-# print(f"Reading ACE2-binding and expression for mutations from {config['mut_bind_expr']}, "
-#       f"and for variants from {config['variant_bind']} and {config['variant_expr']}, "
-#       f"and filtering for variants with binding >={config['escape_score_min_bind_variant']}."
-#       f"and expression >= {config['escape_score_min_expr_variant']}, and also variants that "
-#       f"only have mutations with binding >={config['escape_score_min_bind_mut']} and "
-#       f"expression >={config['escape_score_min_expr_mut']}.")
+mut_bind_expr = (pd.read_csv(mut_bind_expr_file)
+                 .query('target==@config["primary_target"]')
+                 # need to add back the offset numbering for some silly, circuitous reason 
+                 .assign(RBD_site=lambda x: x['position']-config['site_number_offset'] ,
+                         RBD_mutation=lambda x: x['wildtype']+x['RBD_site'].astype(str)+x['mutant']
+                        )
+                )
 
-# # filter on mutations
-# mut_bind_expr = pd.read_csv(config['mut_bind_expr'])
-# assert mut_bind_expr['mutation_RBD'].nunique() == len(mut_bind_expr)
-# for prop in ['bind', 'expr']:
-#     muts_adequate = set(mut_bind_expr
-#                         .query(f"{prop}_avg >= {config[f'escape_score_min_{prop}_mut']}")
-#                         ['mutation_RBD']
-#                         )
-#     print(f"{len(muts_adequate)} of {len(mut_bind_expr)} mutations have adequate {prop}.")
-#     escape_scores[f"muts_pass_{prop}_filter"] = (
-#         escape_scores
-#         ['aa_substitutions']
-#         .map(lambda s: set(s.split()).issubset(muts_adequate))
-#         ) 
+print('Here is what that dataframe looks like:')
 
-# # filter on variants
-# for prop, col in [('bind', 'delta_log10Ka'), ('expr', 'delta_ML_meanF')]:
-#     filter_name = f"variant_pass_{prop}_filter"
-#     variant_pass_df = (
-#         pd.read_csv(config[f"variant_{prop}"], keep_default_na=False, na_values=['NA'])
-#         .groupby(['library', 'target', config['escape_score_group_by']])
-#         .aggregate(val=pd.NamedAgg(col, 'mean'))
-#         .reset_index()
-#         .assign(pass_filter=lambda x: x['val'] >= config[f"escape_score_min_{prop}_variant"])
-#         .rename(columns={'pass_filter': filter_name,
-#                          'val': f"variant_{prop}"})
-#         )
-#     print(f"\nTotal variants of {primary_target} that pass {prop} filter:")
-#     display(HTML(
-#         variant_pass_df
-#         .groupby(['library', filter_name])
-#         .aggregate(n_variants=pd.NamedAgg(config['escape_score_group_by'], 'count'))
-#         .to_html()
-#         ))
-#     escape_scores = (
-#         escape_scores
-#         .drop(columns=filter_name, errors='ignore')
-#         .merge(variant_pass_df,
-#                how='left',
-#                validate='many_to_one',
-#                on=['library', 'target', config['escape_score_group_by']],
-#                )
-#         )
-#     assert escape_scores[filter_name].notnull().all()
-
-# # annotate as passing overall filter if passes all mutation and binding filters:
-# escape_scores['pass_ACE2bind_expr_filter'] = (
-#         escape_scores['muts_pass_bind_filter'] &
-#         escape_scores['muts_pass_expr_filter'] &
-#         escape_scores['variant_pass_bind_filter'] &
-#         escape_scores['variant_pass_expr_filter']
-#         )
+display(HTML(mut_bind_expr.query('delta_bind < -2.35').head().to_html(index=False)))
 ```
+
+    Reading ACE2-binding and expression for mutations from data/prelim_variant_dms_scores.csv, and filtering for variants that have single mutations that only have mutations with binding >=-2.35 and expression >=-1.0.
+    Here is what that dataframe looks like:
+
+
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>target</th>
+      <th>wildtype</th>
+      <th>position</th>
+      <th>mutant</th>
+      <th>mutation</th>
+      <th>bind</th>
+      <th>delta_bind</th>
+      <th>n_bc_bind</th>
+      <th>n_libs_bind</th>
+      <th>expr</th>
+      <th>delta_expr</th>
+      <th>n_bc_expr</th>
+      <th>n_libs_expr</th>
+      <th>RBD_site</th>
+      <th>RBD_mutation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>B1351</td>
+      <td>F</td>
+      <td>338</td>
+      <td>E</td>
+      <td>F338E</td>
+      <td>6.53600</td>
+      <td>-2.73815</td>
+      <td>5</td>
+      <td>2</td>
+      <td>7.75599</td>
+      <td>-2.62571</td>
+      <td>14</td>
+      <td>2</td>
+      <td>8</td>
+      <td>F8E</td>
+    </tr>
+    <tr>
+      <td>B1351</td>
+      <td>F</td>
+      <td>338</td>
+      <td>G</td>
+      <td>F338G</td>
+      <td>6.62162</td>
+      <td>-2.65253</td>
+      <td>5</td>
+      <td>2</td>
+      <td>7.78782</td>
+      <td>-2.59388</td>
+      <td>9</td>
+      <td>2</td>
+      <td>8</td>
+      <td>F8G</td>
+    </tr>
+    <tr>
+      <td>B1351</td>
+      <td>F</td>
+      <td>338</td>
+      <td>K</td>
+      <td>F338K</td>
+      <td>6.19219</td>
+      <td>-3.08197</td>
+      <td>5</td>
+      <td>2</td>
+      <td>7.15474</td>
+      <td>-3.22696</td>
+      <td>13</td>
+      <td>2</td>
+      <td>8</td>
+      <td>F8K</td>
+    </tr>
+    <tr>
+      <td>B1351</td>
+      <td>F</td>
+      <td>338</td>
+      <td>N</td>
+      <td>F338N</td>
+      <td>6.62956</td>
+      <td>-2.64460</td>
+      <td>7</td>
+      <td>2</td>
+      <td>7.60247</td>
+      <td>-2.77923</td>
+      <td>13</td>
+      <td>2</td>
+      <td>8</td>
+      <td>F8N</td>
+    </tr>
+    <tr>
+      <td>B1351</td>
+      <td>F</td>
+      <td>338</td>
+      <td>Q</td>
+      <td>F338Q</td>
+      <td>6.81941</td>
+      <td>-2.45475</td>
+      <td>13</td>
+      <td>2</td>
+      <td>7.85744</td>
+      <td>-2.52426</td>
+      <td>17</td>
+      <td>2</td>
+      <td>8</td>
+      <td>F8Q</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+```python
+assert mut_bind_expr['RBD_mutation'].nunique() == len(mut_bind_expr)
+for prop in ['bind', 'expr']:
+    muts_adequate = set(mut_bind_expr
+                        .query(f"delta_{prop} >= {config[f'escape_score_min_{prop}_mut']}")
+                        ['RBD_mutation']
+                        )
+    print(f"{len(muts_adequate)} of {len(mut_bind_expr)} mutations have adequate {prop}.")
+    escape_scores[f"muts_pass_{prop}_filter"] = (
+        escape_scores
+        ['aa_substitutions']
+        .map(lambda s: set(s.split()).issubset(muts_adequate))
+        )
+
+# annotate as passing overall filter if passes all mutation and binding filters:
+escape_scores['pass_ACE2bind_expr_filter'] = (
+        escape_scores['muts_pass_bind_filter'] &
+        escape_scores['muts_pass_expr_filter'] 
+        )
+
+display(HTML(escape_scores.query('not pass_ACE2bind_expr_filter & variant_class != "stop"').head().to_html(index=False)))
+```
+
+    3004 of 4020 mutations have adequate bind.
+    2437 of 4020 mutations have adequate expr.
+
+
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>name</th>
+      <th>target</th>
+      <th>library</th>
+      <th>pre_sample</th>
+      <th>post_sample</th>
+      <th>barcode</th>
+      <th>score</th>
+      <th>score_var</th>
+      <th>pre_count</th>
+      <th>post_count</th>
+      <th>codon_substitutions</th>
+      <th>n_codon_substitutions</th>
+      <th>aa_substitutions</th>
+      <th>n_aa_substitutions</th>
+      <th>variant_class</th>
+      <th>pre_count_filter_cutoff</th>
+      <th>pass_pre_count_filter</th>
+      <th>muts_pass_bind_filter</th>
+      <th>muts_pass_expr_filter</th>
+      <th>pass_ACE2bind_expr_filter</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ACE2pos_8</td>
+      <td>B1351</td>
+      <td>lib1</td>
+      <td>ACE2_enrich-presort-0-ref</td>
+      <td>ACE2_enrich-ACE2pos-8-abneg</td>
+      <td>TTAGATTAAGCATAAT</td>
+      <td>0.147632</td>
+      <td>0.000874</td>
+      <td>266</td>
+      <td>27</td>
+      <td>TAT21AAA AGT69GTT</td>
+      <td>2</td>
+      <td>Y21K S69V</td>
+      <td>2</td>
+      <td>&gt;1 nonsynonymous</td>
+      <td>62.1</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>ACE2pos_8</td>
+      <td>B1351</td>
+      <td>lib1</td>
+      <td>ACE2_enrich-presort-0-ref</td>
+      <td>ACE2_enrich-ACE2pos-8-abneg</td>
+      <td>ACCTTAGTCAGCTGAG</td>
+      <td>0.098377</td>
+      <td>0.000591</td>
+      <td>254</td>
+      <td>17</td>
+      <td>GTT180TGG</td>
+      <td>1</td>
+      <td>V180W</td>
+      <td>1</td>
+      <td>1 nonsynonymous</td>
+      <td>62.1</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>ACE2pos_8</td>
+      <td>B1351</td>
+      <td>lib1</td>
+      <td>ACE2_enrich-presort-0-ref</td>
+      <td>ACE2_enrich-ACE2pos-8-abneg</td>
+      <td>GATGACTGACGCCAAA</td>
+      <td>0.701318</td>
+      <td>0.006495</td>
+      <td>229</td>
+      <td>112</td>
+      <td>CCT169TGG</td>
+      <td>1</td>
+      <td>P169W</td>
+      <td>1</td>
+      <td>1 nonsynonymous</td>
+      <td>62.1</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>ACE2pos_8</td>
+      <td>B1351</td>
+      <td>lib1</td>
+      <td>ACE2_enrich-presort-0-ref</td>
+      <td>ACE2_enrich-ACE2pos-8-abneg</td>
+      <td>TCTGTACAATAAAGAT</td>
+      <td>0.205287</td>
+      <td>0.001481</td>
+      <td>226</td>
+      <td>32</td>
+      <td>ATT72GGT</td>
+      <td>1</td>
+      <td>I72G</td>
+      <td>1</td>
+      <td>1 nonsynonymous</td>
+      <td>62.1</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>ACE2pos_8</td>
+      <td>B1351</td>
+      <td>lib1</td>
+      <td>ACE2_enrich-presort-0-ref</td>
+      <td>ACE2_enrich-ACE2pos-8-abneg</td>
+      <td>GTGGGCAATTTTAAAG</td>
+      <td>0.746590</td>
+      <td>0.007448</td>
+      <td>217</td>
+      <td>113</td>
+      <td>AAC157TCT</td>
+      <td>1</td>
+      <td>N157S</td>
+      <td>1</td>
+      <td>1 nonsynonymous</td>
+      <td>62.1</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+
 
 Plot the fraction of variants that **have already passed the pre-count filter** that are filtered by the ACE2-binding or expression thresholds:
 
 
 ```python
-# frac_ACE2bind_expr_pass_filter = (
-#     escape_scores
-#     .query('pass_pre_count_filter == True')
-#     [['pre_sample', 'library', 'target', config['escape_score_group_by'],
-#       'pre_count', 'pass_ACE2bind_expr_filter', 'variant_class']]
-#     .drop_duplicates()
-#     .groupby(['pre_sample', 'library', 'variant_class'], observed=True)
-#     .aggregate(n_variants=pd.NamedAgg('pass_ACE2bind_expr_filter', 'count'),
-#                n_pass_filter=pd.NamedAgg('pass_ACE2bind_expr_filter', 'sum')
-#                )
-#     .reset_index()
-#     .assign(frac_pass_filter=lambda x: x['n_pass_filter'] / x['n_variants'],
-#             pre_sample=lambda x: pd.Categorical(x['pre_sample'], x['pre_sample'].unique(), ordered=True))
-#     )
+frac_ACE2bind_expr_pass_filter = (
+    escape_scores
+    .query('pass_pre_count_filter == True')
+    [['pre_sample', 'library', 'target', config['escape_score_group_by'],
+      'pre_count', 'pass_ACE2bind_expr_filter', 'variant_class']]
+    .drop_duplicates()
+    .groupby(['pre_sample', 'library', 'variant_class'], observed=True)
+    .aggregate(n_variants=pd.NamedAgg('pass_ACE2bind_expr_filter', 'count'),
+               n_pass_filter=pd.NamedAgg('pass_ACE2bind_expr_filter', 'sum')
+               )
+    .reset_index()
+    .assign(frac_pass_filter=lambda x: x['n_pass_filter'] / x['n_variants'],
+            pre_sample=lambda x: pd.Categorical(x['pre_sample'], x['pre_sample'].unique(), ordered=True))
+    )
 
-# p = (ggplot(frac_ACE2bind_expr_pass_filter) +
-#      aes('variant_class', 'frac_pass_filter', fill='variant_class') +
-#      geom_bar(stat='identity') +
-#      facet_grid('library ~ pre_sample') +
-#      theme(axis_text_x=element_text(angle=90),
-#            figure_size=(3.3 * frac_ACE2bind_expr_pass_filter['pre_sample'].nunique(),
-#                         2 * frac_ACE2bind_expr_pass_filter['library'].nunique()),
-#            panel_grid_major_x=element_blank(),
-#            ) +
-#      scale_fill_manual(values=CBPALETTE[1:]) +
-#      expand_limits(y=(0, 1))
-#      )
+p = (ggplot(frac_ACE2bind_expr_pass_filter) +
+     aes('variant_class', 'frac_pass_filter', fill='variant_class') +
+     geom_bar(stat='identity') +
+     facet_grid('library ~ pre_sample') +
+     theme(axis_text_x=element_text(angle=90),
+           figure_size=(3.3 * frac_ACE2bind_expr_pass_filter['pre_sample'].nunique(),
+                        2 * frac_ACE2bind_expr_pass_filter['library'].nunique()),
+           panel_grid_major_x=element_blank(),
+           ) +
+     scale_fill_manual(values=CBPALETTE[1:]) +
+     expand_limits(y=(0, 1))
+     )
 
-# _ = p.draw()
+_ = p.draw()
 ```
+
+
+    
+![png](counts_to_scores_files/counts_to_scores_58_0.png)
+    
+
 
 ## Examine and write escape scores
 Plot the distribution of escape scores across variants of different classes **among those that pass both the pre-selection count filter and the ACE2-binding / expression filter**.
@@ -1884,7 +2131,7 @@ ncol = min(8, nfacets)
 nrow = math.ceil(nfacets / ncol)
 
 df = (escape_scores
-#       .query('(pass_pre_count_filter == True) & (pass_ACE2bind_expr_filter == True)')
+      .query('(pass_pre_count_filter == True) & (pass_ACE2bind_expr_filter == True)')
       .query('variant_class != "stop"')
       )
      
@@ -1905,7 +2152,7 @@ _ = p.draw()
 
 
     
-![png](counts_to_scores_files/counts_to_scores_59_0.png)
+![png](counts_to_scores_files/counts_to_scores_60_0.png)
     
 
 
@@ -1918,7 +2165,7 @@ The hoped for result is that the escape score doesn't appear to be strongly corr
 ```python
 p = (ggplot(escape_scores
             .query('pass_pre_count_filter == True')
-#             .query('(pass_pre_count_filter == True) & (pass_ACE2bind_expr_filter == True)')
+            .query('(pass_pre_count_filter == True) & (pass_ACE2bind_expr_filter == True)')
             .query('variant_class=="1 nonsynonymous"')
             ) +
      aes('pre_count', 'score') +
@@ -1937,7 +2184,7 @@ _ = p.draw()
 
 
     
-![png](counts_to_scores_files/counts_to_scores_61_0.png)
+![png](counts_to_scores_files/counts_to_scores_62_0.png)
     
 
 
@@ -1954,11 +2201,10 @@ escape_scores.to_csv(config['escape_scores'], index=False, float_format='%.4g')
 
 ### Now we will also remove anything that did not pass all the filters above. 
 
-**Note that I will need to update this code once we have the ACE2 and expression scores!!!** (And then also remove this note so I know I did it!)
-
 
 ```python
-escape_scores_primary = (escape_scores.query('pass_pre_count_filter == True')
+escape_scores_primary = (escape_scores
+                         .query('(pass_pre_count_filter == True) & (pass_ACE2bind_expr_filter == True)')
                         )
 
 display(HTML(escape_scores_primary.head().to_html()))
@@ -1987,6 +2233,9 @@ print(f"Read {len(escape_scores_primary)} scores.")
       <th>variant_class</th>
       <th>pre_count_filter_cutoff</th>
       <th>pass_pre_count_filter</th>
+      <th>muts_pass_bind_filter</th>
+      <th>muts_pass_expr_filter</th>
+      <th>pass_ACE2bind_expr_filter</th>
     </tr>
   </thead>
   <tbody>
@@ -2009,6 +2258,9 @@ print(f"Read {len(escape_scores_primary)} scores.")
       <td>1 nonsynonymous</td>
       <td>62.1</td>
       <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
     </tr>
     <tr>
       <th>1</th>
@@ -2028,6 +2280,9 @@ print(f"Read {len(escape_scores_primary)} scores.")
       <td>0</td>
       <td>wildtype</td>
       <td>62.1</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
       <td>True</td>
     </tr>
     <tr>
@@ -2049,6 +2304,9 @@ print(f"Read {len(escape_scores_primary)} scores.")
       <td>&gt;1 nonsynonymous</td>
       <td>62.1</td>
       <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
     </tr>
     <tr>
       <th>3</th>
@@ -2068,6 +2326,9 @@ print(f"Read {len(escape_scores_primary)} scores.")
       <td>2</td>
       <td>&gt;1 nonsynonymous</td>
       <td>62.1</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
       <td>True</td>
     </tr>
     <tr>
@@ -2089,12 +2350,15 @@ print(f"Read {len(escape_scores_primary)} scores.")
       <td>1 nonsynonymous</td>
       <td>62.1</td>
       <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
     </tr>
   </tbody>
 </table>
 
 
-    Read 959076 scores.
+    Read 724676 scores.
 
 
 ### Count number of barcodes per mutation and remove variants with >1 amino acid substitution
@@ -2122,7 +2386,7 @@ _ = p.draw()
 
 
     
-![png](counts_to_scores_files/counts_to_scores_67_0.png)
+![png](counts_to_scores_files/counts_to_scores_68_0.png)
     
 
 
@@ -2131,7 +2395,7 @@ Now see how many `n_single_mut_measurements` there are for each variant:
 
 
 ```python
-print(f'Flag anything with fewer than {config["escape_frac_min_single_mut_measurements"]} single mutant measurements (barcodes)')
+print(f'Remove anything with fewer than {config["escape_frac_min_single_mut_measurements"]} single mutant measurements (barcodes)')
 
 raw_avg_single_mut_scores = (
     escape_scores_primary
@@ -2160,7 +2424,7 @@ assert all(effects_df['raw_single_mut_score'].notnull() | (effects_df['n_single_
 display(HTML(effects_df.head().to_html()))
 ```
 
-    Flag anything with fewer than 2 single mutant measurements (barcodes)
+    Remove anything with fewer than 2 single mutant measurements (barcodes)
 
 
 
@@ -2177,31 +2441,7 @@ display(HTML(effects_df.head().to_html()))
   </thead>
   <tbody>
     <tr>
-      <th>13</th>
-      <td>ACE2pos_8</td>
-      <td>lib1</td>
-      <td>A105R</td>
-      <td>0.123266</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>ACE2pos_8</td>
-      <td>lib1</td>
-      <td>A105V</td>
-      <td>0.869011</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>ACE2pos_8</td>
-      <td>lib1</td>
-      <td>A105W</td>
-      <td>0.778166</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>32</th>
+      <th>11</th>
       <td>ACE2pos_8</td>
       <td>lib1</td>
       <td>A145R</td>
@@ -2209,15 +2449,68 @@ display(HTML(effects_df.head().to_html()))
       <td>2</td>
     </tr>
     <tr>
-      <th>35</th>
+      <th>14</th>
       <td>ACE2pos_8</td>
       <td>lib1</td>
       <td>A145V</td>
       <td>1.000000</td>
       <td>2</td>
     </tr>
+    <tr>
+      <th>41</th>
+      <td>ACE2pos_8</td>
+      <td>lib1</td>
+      <td>A190H</td>
+      <td>0.958216</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>ACE2pos_8</td>
+      <td>lib1</td>
+      <td>A190W</td>
+      <td>0.867900</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>ACE2pos_8</td>
+      <td>lib1</td>
+      <td>A192L</td>
+      <td>1.000000</td>
+      <td>2</td>
+    </tr>
   </tbody>
 </table>
+
+
+### Should we exclude mutations for which the wildtype identity is a cysteine?
+These would be mutations that break disulfide bonds (unless there is an unpaired cysteine in the protein that does not form a disulfide bond, of course). 
+Note that this approach would not work well for something like the SARS-CoV-2 NTD, where it has been documented (by the Veesler lab) that mutations in the B.1.427/429 (epislon) variant can rearrange disulfide bonds, leading to major structural rearrangements in the NTD, and yet an apparently fully functional spike. 
+
+If we are excluding cysteines, do that now:
+
+
+```python
+# if we are excluding all cysteines to remove spurious mutations that break disulfide bonds:
+if config['exclude_cysteines']:
+    print(f'Excluding mutations where the wildtype identity is a cysteine')
+    effects_df = effects_df.assign(pass_cysteine_filter=lambda x: x['mutation'].str[0] != "C",
+                                  )
+    disulfides_to_drop = effects_df.query('pass_cysteine_filter==False')['mutation'].unique()
+    print(f'Specifically, excluding: {disulfides_to_drop}')
+    effects_df=effects_df.query('pass_cysteine_filter').drop(columns='pass_cysteine_filter')
+
+else:
+    print(f'Retaining mutations where the wildtype identity is a cysteine')
+```
+
+    Excluding mutations where the wildtype identity is a cysteine
+    Specifically, excluding: ['C195A' 'C195D' 'C195E' 'C195G' 'C61A' 'C61F' 'C61K' 'C61S' 'C61H'
+     'C158Q' 'C195F' 'C195H' 'C195I' 'C195K' 'C195L' 'C195M' 'C195N' 'C195P'
+     'C195Q' 'C195R' 'C195S' 'C195T' 'C195W' 'C195Y' 'C31E' 'C31M' 'C31P'
+     'C61D' 'C61E' 'C61G' 'C61I' 'C61L' 'C61M' 'C61N' 'C61P' 'C61Q' 'C61R'
+     'C61T' 'C61V' 'C61W' 'C61Y' 'C6D' 'C6G' 'C31A' 'C195V']
 
 
 We need to compute the escape scores (calculated as [here](https://jbloomlab.github.io/dms_variants/dms_variants.codonvarianttable.html?highlight=escape_scores#dms_variants.codonvarianttable.CodonVariantTable.escape_scores)) back to escape fractions. We define a function to do this depending on the score type:
@@ -2283,8 +2576,8 @@ print(len(effects_df.query('nlibs==1')))
 ```
 
     Only taking average of mutations with escape fractions in >=2 libraries or with >=2 single-mutant measurements total.
-    48061
-    119584
+    31572
+    73592
 
 
 Plot the correlations of the escape fractions among the two libraries for all selections performed on both libraries. 
@@ -2294,11 +2587,6 @@ Plot the correlations of the escape fractions among the two libraries for all se
 libraries = [lib for lib in effects_df['library'].unique() if lib != "average"]
 assert len(libraries) == 2, 'plot only makes sense if 2 libraries'
 
-# for val, has_single_mut_measurement, color in [
-#         ('mut_escape_frac_single_mut', False, CBPALETTE[1]),
-#         ('mut_escape_frac_epistasis_model', True, CBPALETTE[1]),
-#         ('mut_escape_frac_epistasis_model', False, CBPALETTE[2]),
-#         ]:
 # wide data frame with each library's score in a different column
 effects_df_wide = (
     effects_df
@@ -2367,7 +2655,7 @@ _ = p.draw()
 
 
     
-![png](counts_to_scores_files/counts_to_scores_75_0.png)
+![png](counts_to_scores_files/counts_to_scores_78_0.png)
     
 
 
@@ -2528,13 +2816,13 @@ for val in ['site_avg_escape_frac_single_mut', 'site_total_escape_frac_single_mu
 
 
     
-![png](counts_to_scores_files/counts_to_scores_81_0.png)
+![png](counts_to_scores_files/counts_to_scores_84_0.png)
     
 
 
 
     
-![png](counts_to_scores_files/counts_to_scores_81_1.png)
+![png](counts_to_scores_files/counts_to_scores_84_1.png)
     
 
 
