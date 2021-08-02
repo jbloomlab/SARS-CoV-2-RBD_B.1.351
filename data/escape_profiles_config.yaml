@@ -43,10 +43,10 @@ jackpotted_experiments:
     K115_old_80: K115_old
     K119_old_200: K119_old
   plot_auto_identified_sites: default
-  add_sites: []
+  add_sites: [365,369,378,382,383,384,385,386,417,439,443,444,445,446,447,448,449,450,451,452,455,456,477,478,484,501]
   exclude_sites: [336, 361]
   site_color_scheme: barnes_classes
-  color_by_dms: False
+  color_by_dms: True
   make_supp_data: True
   dmslogo_facet_plot_kwargs:
     height_per_ax: 2.0
@@ -68,10 +68,10 @@ new_experiments:
     K115_80: K115
     K119_200: K119
   plot_auto_identified_sites: default
-  add_sites: []
+  add_sites: [365,369,378,382,383,384,385,386,417,439,443,444,445,446,447,448,449,450,451,452,455,456,477,478,484,501]
   exclude_sites: [336, 361]
   site_color_scheme: barnes_classes
-  color_by_dms: False
+  color_by_dms: True
   make_supp_data: True
   dmslogo_facet_plot_kwargs:
     height_per_ax: 2.0

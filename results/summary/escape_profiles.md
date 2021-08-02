@@ -647,7 +647,7 @@ with multiprocessing.Pool(ncpus) as pool:
         
 ```
 
-    Drawing 2 profiles using 16 CPUs...
+    Drawing 6 profiles using 16 CPUs...
     
     Plotted profile 1 to:
      results/escape_profiles/jackpotted_experiments_stackedlogo.pdf
@@ -662,13 +662,61 @@ with multiprocessing.Pool(ncpus) as pool:
 
     
     Plotted profile 2 to:
+     results/escape_profiles/jackpotted_experiments_color_by_bind_stackedlogo.pdf
+     results/escape_profiles/jackpotted_experiments_color_by_bind_stackedlogo.png.
+
+
+
+    
+![png](escape_profiles_files/escape_profiles_26_3.png)
+    
+
+
+    
+    Plotted profile 3 to:
+     results/escape_profiles/jackpotted_experiments_color_by_expr_stackedlogo.pdf
+     results/escape_profiles/jackpotted_experiments_color_by_expr_stackedlogo.png.
+
+
+
+    
+![png](escape_profiles_files/escape_profiles_26_5.png)
+    
+
+
+    
+    Plotted profile 4 to:
      results/escape_profiles/new_experiments_stackedlogo.pdf
      results/escape_profiles/new_experiments_stackedlogo.png.
 
 
 
     
-![png](escape_profiles_files/escape_profiles_26_3.png)
+![png](escape_profiles_files/escape_profiles_26_7.png)
+    
+
+
+    
+    Plotted profile 5 to:
+     results/escape_profiles/new_experiments_color_by_bind_stackedlogo.pdf
+     results/escape_profiles/new_experiments_color_by_bind_stackedlogo.png.
+
+
+
+    
+![png](escape_profiles_files/escape_profiles_26_9.png)
+    
+
+
+    
+    Plotted profile 6 to:
+     results/escape_profiles/new_experiments_color_by_expr_stackedlogo.pdf
+     results/escape_profiles/new_experiments_color_by_expr_stackedlogo.png.
+
+
+
+    
+![png](escape_profiles_files/escape_profiles_26_11.png)
     
 
 

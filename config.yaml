@@ -74,6 +74,8 @@ escape_score_stop_quantile_filter: 0.9
 # <= these values
 escape_score_min_bind_mut: -2.35
 escape_score_min_expr_mut: -1.0
+# should we just exclude all mutations to sites where the WT is a cysteine?
+exclude_cysteines: True
 # Only retain mutation-level escape fraction estimates when there are
 # **either** >= the indicated number of filtered variants (after grouping
 # according to `escape_group_by`) with the mutation as a single mutant
