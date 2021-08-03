@@ -45,7 +45,7 @@ jackpotted_experiments:
   plot_auto_identified_sites: default
   add_sites: [365,369,378,382,383,384,385,386,417,439,443,444,445,446,447,448,449,450,451,452,455,456,477,478,484,501]
   exclude_sites: [336, 361]
-  site_color_scheme: barnes_classes
+  site_color_scheme: barnes_serum_epitopes
   color_by_dms: True
   make_supp_data: True
   dmslogo_facet_plot_kwargs:
@@ -70,7 +70,7 @@ new_experiments:
   plot_auto_identified_sites: default
   add_sites: [365,369,378,382,383,384,385,386,417,439,443,444,445,446,447,448,449,450,451,452,455,456,477,478,484,501]
   exclude_sites: [336, 361]
-  site_color_scheme: barnes_classes
+  site_color_scheme: barnes_serum_epitopes
   color_by_dms: True
   make_supp_data: True
   dmslogo_facet_plot_kwargs:
