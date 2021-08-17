@@ -37,6 +37,7 @@ jackpotted_experiments:
     K007_old_500: K007_old
     K031_old_500: K031_old
     K033_old_500: K033_old
+    K040_old_500: K040_old
     K041_old_500: K041_old
     K046_old_200: K046_old
     K114_old_200: K114_old
@@ -62,6 +63,7 @@ new_experiments:
     K007_500: K007
     K031_500: K031
     K033_500: K033
+    K040_500: K040
     K041_500: K041
     K046_200: K046
     K114_200: K114
