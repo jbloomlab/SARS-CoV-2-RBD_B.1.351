@@ -1,0 +1,128 @@
+"""``snakemake`` file that analyzes experimental data."""
+
+# Imports ---------------------------------------------------------------------
+import os
+import re
+
+import pandas as pd
+
+# Configuration ---------------------------------------------------------------
+configfile: 'config.yaml'
+
+neut_subdirs = [os.path.join('neut_data', subdir)
+                for subdir in os.listdir('neut_data')
+                if subdir != '.DS_Store'
+                ]
+print('Subdirectories found for following neutralization assay runs:\n  ' +
+      '\n  '.join(neut_subdirs))
+
+# Functions -------------------------------------------------------------------
+
+def run_nb_to_md(nb):
+    """Run Jupyter notebook and put markdown results in `results_dir`."""
+    subprocess.check_call(['jupyter', 'nbconvert',
+                           '--to', 'notebook',
+                           '--execute',
+                           '--inplace',
+                           '--ExecutePreprocessor.timeout=-1',
+                           nb,
+                           ])
+    subprocess.check_call(['jupyter', 'nbconvert',
+                           '--to', 'markdown',
+                           '--output-dir', 'results/summary',
+                           nb,
+                           ])
+
+
+def get_single_file_in_subdir(subdir, ending):
+    """Checks `subdir` contains one file ending in `ending` and return path."""
+    filename = [f for f in os.listdir(subdir) if f.endswith(ending)]
+    if len(filename) == 1:
+        return os.path.join(subdir, filename[0])
+    else:
+        raise ValueError(f"{subdir} does not have one file ending in {ending}")
+
+
+# Rules -----------------------------------------------------------------------
+
+rule all:
+    input:
+        'results/neut_titers/fracinfect.csv',
+        'results/neut_titers/neut_titers.csv',
+        'results/summary/rbd_depletion_neuts.md',
+        'results/summary/analyze_neut_data.md',
+        'results/entry_titers/titers.csv',
+        'results/summary/calculate_entry_titer.md',
+        'results/summary/rbd_depletion_elisas.md',
+
+rule calculate_entry_titer:
+    input:
+        titer_data='data/entry_titers/',
+    output:
+        'results/entry_titers/titers.csv',
+        'results/summary/calculate_entry_titer.md',
+    run:
+        run_nb_to_md('calculate_entry_titer.ipynb')
+
+rule rbd_depletion_elisas:
+    input:
+        config['elisa_data_dir'],
+        config['final_depletion_elisas'],
+    output:
+        'results/summary/rbd_depletion_elisas.md',
+    run:
+        run_nb_to_md('rbd_depletion_elisas.ipynb')
+
+rule analyze_neut_curves:
+    input:
+        fracinfect='results/neut_titers/fracinfect.csv',
+    output:
+        'results/neut_titers/neut_titers.csv',
+        'results/summary/analyze_neut_data.md',
+    run:
+        run_nb_to_md('analyze_neut_data.ipynb')
+
+rule rbd_depletion_neuts:
+    input:
+        fracinfect='results/neut_titers/fracinfect.csv',
+    output:
+        'results/summary/rbd_depletion_neuts.md',
+    run:
+        run_nb_to_md('rbd_depletion_neuts.ipynb')
+
+rule aggregate_fract_infect_csvs:
+    """Aggregate experiments in CSV file with all fraction infectivities."""
+    input:
+        csvs=expand("{neut_subdir}/fractinfect.csv",
+                    neut_subdir=neut_subdirs),
+    output:
+        csv='results/neut_titers/fracinfect.csv'
+    params:
+        dates=[os.path.basename(d) for d in neut_subdirs]
+    run:
+        (pd.concat([pd.read_csv(csv, index_col=0, dtype={'Virus': str})
+                       .assign(date=date)
+                    for csv, date in zip(input.csvs, params.dates)],
+                   ignore_index=True)
+         .to_csv(output.csv, index=False, float_format='%.4g')
+         )
+
+
+rule excel_to_fractinfect_csv:
+    """Convert each Excel file to a fraction infectivity CSV."""
+    input:
+        infile=lambda wc: get_single_file_in_subdir(wc.neut_subdir, '.xlsx'),
+        sheet_map=lambda wc: get_single_file_in_subdir(wc.neut_subdir,
+                                                       'sample_map.csv'),
+    output:
+        fractinfect_csv="{neut_subdir}/fractinfect.csv",
+    params:
+        plate_layouts_dir='PlateLayouts'
+    shell:
+        """python excel_to_fractinfect.py \
+                {input.infile} \
+                {output.fractinfect_csv} \
+                {input.sheet_map} \
+                {params.plate_layouts_dir} \
+                --allow_cells_only_bg
+        """

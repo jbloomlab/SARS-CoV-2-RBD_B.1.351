@@ -1,0 +1,68 @@
+# config for analysis
+aggregate_fract_infect_csvs: results/neut_titers/fracinfect.csv
+
+rbd_depletions_date: 2021-06-10
+
+elisa_data_dir: data/rbd_depletion_elisas
+final_depletion_elisas: data/rbd_depletion_elisas/210513_ELISA_3xdep.csv
+
+fixtop: True
+fixbottom: 0
+
+serum_order:
+  - K007
+  - K031
+  - K033
+  - K040
+  - K041
+  - K046
+  - K114
+  - K115
+  - K119
+  - K116
+  - K006
+  - REGN10987 (spike-in)
+  - pre-pandemic
+
+sera_for_further_analysis:
+  - K007
+  - K031
+  - K033
+  - K040
+  - K041
+  - K046
+  - K114
+  - K119
+
+virus_order:
+  - wildtype
+  - B.1.351
+  - mock
+  - B.1.351-N417K
+  - B.1.351-K484E
+  - B.1.351-K484Q
+  - B.1.351-L452R
+  - B.1.351-G446V
+  - B.1.351-K444E
+  - B.1.351-Y501N
+  - B.1.351-N417K-K484E-Y501N
+  - RBD antibodies depleted
+
+virus_subsets:
+  all:
+    - wildtype
+    - B.1.351-N417K
+    - B.1.351-K484E
+    - B.1.351-K484Q
+    - B.1.351-L452R
+    - B.1.351-G446V
+    - B.1.351-K444E
+    - B.1.351-Y501N
+    - B.1.351-N417K-K484E-Y501N
+    - RBD antibodies depleted
+
+# enter all the samples and stuff to ignore here
+neut_samples_ignore: False
+
+# the neutralization limit of detection is equal to the starting dilution
+NT50_LOD: 25

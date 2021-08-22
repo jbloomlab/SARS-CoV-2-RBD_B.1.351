@@ -1,0 +1,25 @@
+Date_Read,Plate,Sample,SampleNum,Virus,PlateLayout,StartDil,DilFactor
+210610,Plate 1-V,K007,1,mock,layout1.csv,0.04,4
+210610,Plate 1-V,K007,2,RBD antibodies depleted,layout1.csv,0.04,4
+210610,Plate 1-V,K031,3,mock,layout1.csv,0.04,4
+210610,Plate 1-V,K031,4,RBD antibodies depleted,layout1.csv,0.04,4
+210610,Plate 2-V,K033,1,mock,layout1.csv,0.04,4
+210610,Plate 2-V,K033,2,RBD antibodies depleted,layout1.csv,0.04,4
+210610,Plate 2-V,K040,3,mock,layout1.csv,0.04,4
+210610,Plate 2-V,K040,4,RBD antibodies depleted,layout1.csv,0.04,4
+210610,Plate 3-V,K041,1,mock,layout1.csv,0.04,4
+210610,Plate 3-V,K041,2,RBD antibodies depleted,layout1.csv,0.04,4
+210610,Plate 3-V,K046,3,mock,layout1.csv,0.04,4
+210610,Plate 3-V,K046,4,RBD antibodies depleted,layout1.csv,0.04,4
+210610,Plate 4-V,K114,1,mock,layout1.csv,0.04,4
+210610,Plate 4-V,K114,2,RBD antibodies depleted,layout1.csv,0.04,4
+210610,Plate 4-V,K115,3,mock,layout1.csv,0.04,4
+210610,Plate 4-V,K115,4,RBD antibodies depleted,layout1.csv,0.04,4
+210610,Plate 5-V,K116,1,mock,layout1.csv,0.04,4
+210610,Plate 5-V,K116,2,RBD antibodies depleted,layout1.csv,0.04,4
+210610,Plate 5-V,REGN10987 (spike-in),3,mock,layout1.csv,0.25,4
+210610,Plate 5-V,REGN10987 (spike-in),4,RBD antibodies depleted,layout1.csv,0.25,4
+210610,Plate 6-V,pre-pandemic,1,mock,layout1.csv,0.04,4
+210610,Plate 6-V,K006,2,mock,layout1.csv,0.04,4
+210610,Plate 6-V,K119,3,mock,layout1.csv,0.04,4
+210610,Plate 6-V,K119,4,RBD antibodies depleted,layout1.csv,0.04,4
