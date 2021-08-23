@@ -9,6 +9,7 @@ dependencies:
   - jupyter
   - jupyter_contrib_nbextensions
   - jupyterlab
+  - jupytext
   - lifelines
   - minimap2=2.18
   - natsort

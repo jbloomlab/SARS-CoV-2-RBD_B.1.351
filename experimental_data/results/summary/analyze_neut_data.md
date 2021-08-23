@@ -212,9 +212,7 @@ plt.close(fig)
 
 
 
-    
 ![png](analyze_neut_data_files/analyze_neut_data_9_1.png)
-    
 
 
 Use [neutcurve](https://jbloomlab.github.io/neutcurve/) to fit neutralization curves to all of the data:
@@ -246,9 +244,8 @@ for d in fracinfect['date'].unique():
 fitparams.head()
 ```
 
-    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/neutcurve/hillcurve.py:451: RuntimeWarning: invalid value encountered in sqrt
-    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/scipy/optimize/minpack.py:833: OptimizeWarning: Covariance of the parameters could not be estimated
-    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/neutcurve/hillcurve.py:741: RuntimeWarning: invalid value encountered in power
+    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/scipy/optimize/minpack.py:807: OptimizeWarning: Covariance of the parameters could not be estimated
+    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/neutcurve/hillcurve.py:741: RuntimeWarning: invalid value encountered in power
 
 
 
@@ -411,11 +408,9 @@ fitparams_fixtop = (fitparams_fixtop
 display(HTML(fitparams_fixtop.head().to_html()))
 ```
 
-    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/scipy/optimize/minpack.py:833: OptimizeWarning: Covariance of the parameters could not be estimated
-    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/neutcurve/hillcurve.py:741: RuntimeWarning: invalid value encountered in power
-    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/neutcurve/hillcurve.py:451: RuntimeWarning: invalid value encountered in sqrt
-    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/neutcurve/hillcurve.py:741: RuntimeWarning: invalid value encountered in power
-    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/scipy/optimize/minpack.py:833: OptimizeWarning: Covariance of the parameters could not be estimated
+    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/scipy/optimize/minpack.py:807: OptimizeWarning: Covariance of the parameters could not be estimated
+    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/neutcurve/hillcurve.py:741: RuntimeWarning: invalid value encountered in power
+    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/neutcurve/hillcurve.py:451: RuntimeWarning: invalid value encountered in sqrt
 
 
 
@@ -537,15 +532,11 @@ for param in [('ic50', 'ic50_fixtop'), ('fold_change', 'fold_change_fixtop')]:
 
 
 
-    
 ![png](analyze_neut_data_files/analyze_neut_data_15_1.png)
-    
 
 
 
-    
 ![png](analyze_neut_data_files/analyze_neut_data_15_2.png)
-    
 
 
 Make a plot showing all viruses against each sera:
@@ -574,7 +565,7 @@ for d in fracinfect['date'].unique():
     fig.savefig(plotfile, bbox_inches='tight')
 ```
 
-    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/neutcurve/hillcurve.py:741: RuntimeWarning: invalid value encountered in power
+    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/neutcurve/hillcurve.py:741: RuntimeWarning: invalid value encountered in power
 
 
     Saving to results/neut_titers/2021-06-10_mutant_neuts.pdf
@@ -583,21 +574,15 @@ for d in fracinfect['date'].unique():
 
 
 
-    
 ![png](analyze_neut_data_files/analyze_neut_data_17_2.png)
-    
 
 
 
-    
 ![png](analyze_neut_data_files/analyze_neut_data_17_3.png)
-    
 
 
 
-    
 ![png](analyze_neut_data_files/analyze_neut_data_17_4.png)
-    
 
 
 ### Calculate fold-change IC50 relative to the gemetric mean of the wildtype virus against each serum on each date
@@ -746,7 +731,7 @@ display(HTML(neut_titers.query('virus=="wildtype" & replicate != "average" & (fo
       <td>K031</td>
       <td>wildtype</td>
       <td>0.000496</td>
-      <td>2015.434751</td>
+      <td>2015.434699</td>
       <td>interpolated</td>
       <td>2021-06-10</td>
       <td>1</td>
@@ -759,7 +744,7 @@ display(HTML(neut_titers.query('virus=="wildtype" & replicate != "average" & (fo
       <td>K031</td>
       <td>wildtype</td>
       <td>0.000226</td>
-      <td>4422.227100</td>
+      <td>4422.227189</td>
       <td>interpolated</td>
       <td>2021-06-10</td>
       <td>2</td>
@@ -772,7 +757,7 @@ display(HTML(neut_titers.query('virus=="wildtype" & replicate != "average" & (fo
       <td>K046</td>
       <td>wildtype</td>
       <td>0.000648</td>
-      <td>1542.465196</td>
+      <td>1542.465186</td>
       <td>interpolated</td>
       <td>2021-08-21</td>
       <td>1</td>
@@ -785,7 +770,7 @@ display(HTML(neut_titers.query('virus=="wildtype" & replicate != "average" & (fo
       <td>K046</td>
       <td>wildtype</td>
       <td>0.000346</td>
-      <td>2888.596538</td>
+      <td>2888.596520</td>
       <td>interpolated</td>
       <td>2021-08-21</td>
       <td>2</td>
@@ -797,28 +782,28 @@ display(HTML(neut_titers.query('virus=="wildtype" & replicate != "average" & (fo
     <tr>
       <td>K119</td>
       <td>wildtype</td>
-      <td>0.000162</td>
-      <td>6177.343337</td>
+      <td>0.000266</td>
+      <td>3761.207286</td>
       <td>interpolated</td>
       <td>2021-08-21</td>
       <td>1</td>
       <td>True</td>
       <td>False</td>
       <td>0.000207</td>
-      <td>0.780302</td>
+      <td>1.281555</td>
     </tr>
     <tr>
       <td>K119</td>
       <td>wildtype</td>
-      <td>0.000266</td>
-      <td>3761.207283</td>
+      <td>0.000162</td>
+      <td>6177.343348</td>
       <td>interpolated</td>
       <td>2021-08-21</td>
       <td>2</td>
       <td>True</td>
       <td>False</td>
       <td>0.000207</td>
-      <td>1.281555</td>
+      <td>0.780302</td>
     </tr>
   </tbody>
 </table>
@@ -883,15 +868,11 @@ for b in ('average', 'not_average'):
 
 
 
-    
 ![png](analyze_neut_data_files/analyze_neut_data_23_1.png)
-    
 
 
 
-    
 ![png](analyze_neut_data_files/analyze_neut_data_23_2.png)
-    
 
 
 
@@ -946,37 +927,33 @@ for metric in ['fold_change', 'ic50']:
     Making plot for fold_change for all:
 
 
-    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 80 rows containing missing values.
+    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/plotnine/layer.py:467: PlotnineWarning: geom_hline : Removed 80 rows containing missing values.
 
 
     Saving to results/neut_titers/fold_change_all.pdf
 
 
-    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 80 rows containing missing values.
+    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/plotnine/layer.py:467: PlotnineWarning: geom_hline : Removed 80 rows containing missing values.
 
 
     Making plot for ic50 for all:
 
 
-    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 80 rows containing missing values.
+    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/plotnine/layer.py:467: PlotnineWarning: geom_hline : Removed 80 rows containing missing values.
 
 
     Saving to results/neut_titers/ic50_all.pdf
 
 
-    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 80 rows containing missing values.
+    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/plotnine/layer.py:467: PlotnineWarning: geom_hline : Removed 80 rows containing missing values.
 
 
 
-    
 ![png](analyze_neut_data_files/analyze_neut_data_24_8.png)
-    
 
 
 
-    
 ![png](analyze_neut_data_files/analyze_neut_data_24_9.png)
-    
 
 
 ### Plot the results for all individuals on one plot and add the geometric mean of all 8 measurements (2 replicates * 4 sera) for each virus
@@ -1042,37 +1019,33 @@ for metric in ['fold_change', 'ic50']:
     Making plot for fold_change for all:
 
 
-    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 11 rows containing missing values.
+    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/plotnine/layer.py:467: PlotnineWarning: geom_hline : Removed 11 rows containing missing values.
 
 
     Saving to results/neut_titers/fold_change_all_aggregate.pdf
 
 
-    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 11 rows containing missing values.
+    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/plotnine/layer.py:467: PlotnineWarning: geom_hline : Removed 11 rows containing missing values.
 
 
     Making plot for ic50 for all:
 
 
-    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 11 rows containing missing values.
+    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/plotnine/layer.py:467: PlotnineWarning: geom_hline : Removed 11 rows containing missing values.
 
 
     Saving to results/neut_titers/ic50_all_aggregate.pdf
 
 
-    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 11 rows containing missing values.
+    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/plotnine/layer.py:467: PlotnineWarning: geom_hline : Removed 11 rows containing missing values.
 
 
 
-    
 ![png](analyze_neut_data_files/analyze_neut_data_26_8.png)
-    
 
 
 
-    
 ![png](analyze_neut_data_files/analyze_neut_data_26_9.png)
-    
 
 
 

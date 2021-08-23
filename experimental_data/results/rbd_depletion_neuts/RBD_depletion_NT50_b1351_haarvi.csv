@@ -1,30 +1,30 @@
 serum,depletion,NT50,fold_change,percent_RBD,day,post_ic50_bound,sample_type,early_late
-participant A (day 120),pre,861.1639424,43.05819712,97,120,True,Wuhan-1-like,day 100-150
+participant A (day 120),pre,861.1639424000001,43.05819712,97,120,True,Wuhan-1-like,day 100-150
 participant A (day 120),post,20.0,43.05819712,97,120,True,Wuhan-1-like,day 100-150
 participant A (day 21),pre,6881.22457,8.14205032,87,21,False,Wuhan-1-like,day 30-60
 participant A (day 21),post,845.1464066,8.14205032,87,21,False,Wuhan-1-like,day 30-60
-participant B (day 113),pre,284.8603719,14.24301859,92,113,True,Wuhan-1-like,day 100-150
+participant B (day 113),pre,284.86037189999996,14.24301859,92,113,True,Wuhan-1-like,day 100-150
 participant B (day 113),post,20.0,14.24301859,92,113,True,Wuhan-1-like,day 100-150
 participant B (day 26),pre,1563.437255,11.48431404,91,26,False,Wuhan-1-like,day 30-60
-participant B (day 26),post,136.1367557,11.48431404,91,26,False,Wuhan-1-like,day 30-60
+participant B (day 26),post,136.13675569999998,11.48431404,91,26,False,Wuhan-1-like,day 30-60
 participant C (day 104),pre,1383.047158,69.15235791,98,104,True,Wuhan-1-like,day 100-150
 participant C (day 104),post,20.0,69.15235791,98,104,True,Wuhan-1-like,day 100-150
-participant C (day 32),pre,3479.699831,125.3667272,99,32,False,Wuhan-1-like,day 30-60
-participant C (day 32),post,27.75616712,125.3667272,99,32,False,Wuhan-1-like,day 30-60
+participant C (day 32),pre,3479.6998310000004,125.36672720000001,99,32,False,Wuhan-1-like,day 30-60
+participant C (day 32),post,27.75616712,125.36672720000001,99,32,False,Wuhan-1-like,day 30-60
 participant D (day 33),pre,830.3844803,2.736580773,63,33,False,Wuhan-1-like,day 30-60
-participant D (day 33),post,303.4386883,2.736580773,63,33,False,Wuhan-1-like,day 30-60
+participant D (day 33),post,303.43868829999997,2.736580773,63,33,False,Wuhan-1-like,day 30-60
 participant D (day 76),pre,1013.710417,5.336357325,81,76,False,Wuhan-1-like,day 100-150
 participant D (day 76),post,189.9629945,5.336357325,81,76,False,Wuhan-1-like,day 100-150
 participant E (day 104),pre,706.3696994,35.31848497,97,104,True,Wuhan-1-like,day 100-150
 participant E (day 104),post,20.0,35.31848497,97,104,True,Wuhan-1-like,day 100-150
-participant E (day 28),pre,807.2747498,3.487434202,71,28,False,Wuhan-1-like,day 30-60
-participant E (day 28),post,231.4809981,3.487434202,71,28,False,Wuhan-1-like,day 30-60
+participant E (day 28),pre,807.2747498,3.4874342019999998,71,28,False,Wuhan-1-like,day 30-60
+participant E (day 28),post,231.48099810000002,3.4874342019999998,71,28,False,Wuhan-1-like,day 30-60
 participant F (day 115),pre,140.8318843,7.041594214,85,115,True,Wuhan-1-like,day 100-150
 participant F (day 115),post,20.0,7.041594214,85,115,True,Wuhan-1-like,day 100-150
 participant F (day 48),pre,147.6660876,4.099771734,75,48,False,Wuhan-1-like,day 30-60
 participant F (day 48),post,36.01812423,4.099771734,75,48,False,Wuhan-1-like,day 30-60
-participant G (day 18),pre,29366.99592,40.36367587,97,18,False,Wuhan-1-like,day 30-60
-participant G (day 18),post,727.5599978,40.36367587,97,18,False,Wuhan-1-like,day 30-60
+participant G (day 18),pre,29366.995919999998,40.36367587,97,18,False,Wuhan-1-like,day 30-60
+participant G (day 18),post,727.5599977999999,40.36367587,97,18,False,Wuhan-1-like,day 30-60
 participant G (day 94),pre,293.0698107,14.65349053,93,94,True,Wuhan-1-like,day 100-150
 participant G (day 94),post,20.0,14.65349053,93,94,True,Wuhan-1-like,day 100-150
 participant H (day 152),pre,640.7287665,3.863613458,74,152,False,Wuhan-1-like,day 100-150
@@ -48,40 +48,40 @@ participant L (day 35),post,49.98282962,12.28913676,91,35,False,Wuhan-1-like,day
 participant L (day 99),pre,169.7355666,5.032618187,80,99,False,Wuhan-1-like,day 100-150
 participant L (day 99),post,33.72709002,5.032618187,80,99,False,Wuhan-1-like,day 100-150
 participant M (day 26),pre,2118.601022,5.530511664,81,26,False,Wuhan-1-like,day 30-60
-participant M (day 26),post,383.0750482,5.530511664,81,26,False,Wuhan-1-like,day 30-60
+participant M (day 26),post,383.07504819999997,5.530511664,81,26,False,Wuhan-1-like,day 30-60
 participant M (day 97),pre,396.4319143,1.980999569,49,97,False,Wuhan-1-like,day 100-150
 participant M (day 97),post,200.1171129,1.980999569,49,97,False,Wuhan-1-like,day 100-150
-participant N (day 110),pre,35.8121897,1.790609485,44,110,True,Wuhan-1-like,day 100-150
+participant N (day 110),pre,35.812189700000005,1.790609485,44,110,True,Wuhan-1-like,day 100-150
 participant N (day 110),post,20.0,1.790609485,44,110,True,Wuhan-1-like,day 100-150
-participant N (day 32),pre,120.5476369,3.456372621,71,32,False,Wuhan-1-like,day 30-60
-participant N (day 32),post,34.8769216,3.456372621,71,32,False,Wuhan-1-like,day 30-60
-participant P (day 109),pre,217.1726218,10.85863109,90,109,True,Wuhan-1-like,day 100-150
+participant N (day 32),pre,120.5476369,3.4563726210000003,71,32,False,Wuhan-1-like,day 30-60
+participant N (day 32),post,34.8769216,3.4563726210000003,71,32,False,Wuhan-1-like,day 30-60
+participant P (day 109),pre,217.17262180000003,10.85863109,90,109,True,Wuhan-1-like,day 100-150
 participant P (day 109),post,20.0,10.85863109,90,109,True,Wuhan-1-like,day 100-150
-participant P (day 32),pre,438.2311442,8.539699267,88,32,False,Wuhan-1-like,day 30-60
+participant P (day 32),pre,438.23114419999996,8.539699267,88,32,False,Wuhan-1-like,day 30-60
 participant P (day 32),post,51.31692938,8.539699267,88,32,False,Wuhan-1-like,day 30-60
 participant Q (day 105),pre,202.3869888,6.068764301,83,105,False,Wuhan-1-like,day 100-150
-participant Q (day 105),post,33.3489618,6.068764301,83,105,False,Wuhan-1-like,day 100-150
+participant Q (day 105),post,33.348961800000005,6.068764301,83,105,False,Wuhan-1-like,day 100-150
 participant Q (day 27),pre,468.0423932,3.094936192,67,27,False,Wuhan-1-like,day 30-60
 participant Q (day 27),post,151.2284468,3.094936192,67,27,False,Wuhan-1-like,day 30-60
 participant R (day 48),pre,307.6802113,4.879299644,79,48,False,Wuhan-1-like,day 30-60
 participant R (day 48),post,63.05827347,4.879299644,79,48,False,Wuhan-1-like,day 30-60
-participant R (day 79),pre,166.7925349,5.540308973,81,79,False,Wuhan-1-like,day 100-150
-participant R (day 79),post,30.10527675,5.540308973,81,79,False,Wuhan-1-like,day 100-150
-K007,pre,2067.6278993001315,20.80071592045898,95,40,False,B.1.351,day 30-60
-K007,post,99.40176613183169,20.80071592045898,95,40,False,B.1.351,day 30-60
-K031,pre,3108.6345840729546,16.28813593152561,93,34,False,B.1.351,day 30-60
-K031,post,190.85269162422736,16.28813593152561,93,34,False,B.1.351,day 30-60
-K033,pre,4600.806832129612,13.256727417331074,92,35,False,B.1.351,day 30-60
-K033,post,347.0544944685809,13.256727417331074,92,35,False,B.1.351,day 30-60
-K040,pre,3369.0069328173595,15.6423351304371,93,37,False,B.1.351,day 30-60
-K040,post,215.37749349596103,15.6423351304371,93,37,False,B.1.351,day 30-60
-K041,pre,2459.294007739704,25.035765824161455,96,30,False,B.1.351,day 30-60
-K041,post,98.23122747722357,25.035765824161455,96,30,False,B.1.351,day 30-60
-K046,pre,1683.4355498194886,7.024258768168489,85,33,False,B.1.351,day 30-60
-K046,post,239.6602410845449,7.024258768168489,85,33,False,B.1.351,day 30-60
-K114,pre,1138.0785496756976,25.410331243065798,96,31,False,B.1.351,day 30-60
-K114,post,44.7880249489572,25.410331243065798,96,31,False,B.1.351,day 30-60
+participant R (day 79),pre,166.79253490000002,5.540308972999999,81,79,False,Wuhan-1-like,day 100-150
+participant R (day 79),post,30.10527675,5.540308972999999,81,79,False,Wuhan-1-like,day 100-150
+K007,pre,2067.6278993001315,20.800715951785268,95,40,False,B.1.351,day 30-60
+K007,post,99.40176598213067,20.800715951785268,95,40,False,B.1.351,day 30-60
+K031,pre,3108.634600200539,16.288136016028396,93,34,False,B.1.351,day 30-60
+K031,post,190.85269162422736,16.288136016028396,93,34,False,B.1.351,day 30-60
+K033,pre,4600.806832129612,13.25672745758351,92,35,False,B.1.351,day 30-60
+K033,post,347.05449341479226,13.25672745758351,92,35,False,B.1.351,day 30-60
+K040,pre,3369.0069602652666,15.642334483488108,93,37,False,B.1.351,day 30-60
+K040,post,215.37750415844621,15.642334483488108,93,37,False,B.1.351,day 30-60
+K041,pre,2459.2940054893625,25.03576580125284,96,30,False,B.1.351,day 30-60
+K041,post,98.23122747722357,25.03576580125284,96,30,False,B.1.351,day 30-60
+K046,pre,1683.4355609451104,7.024258964055397,85,33,False,B.1.351,day 30-60
+K046,post,239.6602359849776,7.024258964055397,85,33,False,B.1.351,day 30-60
+K114,pre,1138.0785496756976,25.41033121131745,96,31,False,B.1.351,day 30-60
+K114,post,44.788025004916555,25.41033121131745,96,31,False,B.1.351,day 30-60
 K115,pre,258.856366766933,4.859624958188617,79,27,False,B.1.351,day 30-60
 K115,post,53.2667374528053,4.859624958188617,79,27,False,B.1.351,day 30-60
-K119,pre,5081.755145140261,40.4043875173376,97,29,False,B.1.351,day 30-60
-K119,post,125.77235932507753,40.4043875173376,97,29,False,B.1.351,day 30-60
+K119,pre,5081.755209470542,40.404388028819454,97,29,False,B.1.351,day 30-60
+K119,post,125.77235932507753,40.404388028819454,97,29,False,B.1.351,day 30-60
