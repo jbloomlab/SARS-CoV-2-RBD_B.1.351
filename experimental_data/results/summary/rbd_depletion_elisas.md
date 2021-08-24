@@ -62,7 +62,7 @@ with open('config.yaml') as f:
 ```python
 datadir=config['elisa_data_dir']
 
-resultsdir='results'
+resultsdir='results/rbd_depletion_elisas'
 os.makedirs(resultsdir, exist_ok=True)
 ```
 
@@ -295,7 +295,6 @@ p = (
     theme(figure_size=(2.5 * ncol, 2.5 * nrow),
           axis_text_x=element_text(angle=90),
           strip_background=element_blank(),
-          strip_margin_y=0.35,
          ) +
     scale_color_manual(values=CBPALETTE[0:], name='B.1.351 RBD beads used in depletion') +
     ylab('arbitrary binding units (OD450)')
@@ -355,7 +354,6 @@ p = (
     theme(figure_size=(2.5 * ncol, 2.5 * nrow),
           axis_text_x=element_text(angle=90),
           strip_background=element_blank(),
-          strip_margin_y=0.35,
          ) +
     scale_color_manual(values=CBPALETTE[0:], name='B.1.351 RBD-binding\nantibodies depleted?') +
     ylab('arbitrary binding units (OD450)')
@@ -591,7 +589,6 @@ p = (
     theme(figure_size=(2.5 * ncol, 2.5 * nrow),
           axis_text_x=element_text(angle=90),
           strip_background=element_blank(),
-          strip_margin_y=0.5,
          ) +
     scale_color_manual(values=CBPALETTE[0:], name='B.1.351 RBD-binding\nantibodies depleted?') +
     ylab('arbitrary binding units (OD450)')
@@ -821,7 +818,6 @@ p = (
     theme(figure_size=(2.5 * ncol, 2.5 * nrow),
           axis_text_x=element_text(angle=90),
           strip_background=element_blank(),
-          strip_margin_y=0.5,
          ) +
     scale_color_manual(values=CBPALETTE[0:], name='B.1.351 RBD-binding\nantibodies depleted?') +
     ylab('arbitrary binding units (OD450)')
@@ -831,11 +827,313 @@ _ = p.draw()
 
 p.save(f'{resultsdir}/2x3xdepletions_ELISA.pdf', limitsize=False)
 p.save(f'{resultsdir}/2x3xdepletions_ELISA.png', limitsize=False)
+
+titration_df.to_csv(f'{resultsdir}/rbd_depletion_elisas.csv', index=False)
 ```
 
 
     
 ![png](rbd_depletion_elisas_files/rbd_depletion_elisas_20_0.png)
+    
+
+
+## Make supplemental figure for paper
+We exclude plasmas that are non-reactive or non-neutralizing against B.1.351 pseudovirus, because we did not MAP these sera in the yeast-display experiments (can only do experiments on samples that are sufficiently reactive!)
+
+
+```python
+# define which sera to exclude from downstream analyses
+exclude_sera = ["pre-pandemic", "REGN10987 (spike-in)", "K006", "K116"]
+```
+
+
+```python
+titration_df.query('(depleted in ["mock", "3x depleted"] & serum not in @exclude_sera & depleted_date!="mock_210512")'+
+                   '| serum=="K115"'
+                  )
+                   
+                   #
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>serum</th>
+      <th>depleted</th>
+      <th>ratio_beads</th>
+      <th>amount_RBD_protein</th>
+      <th>ligand</th>
+      <th>date</th>
+      <th>dilution_factor</th>
+      <th>OD450</th>
+      <th>dilution</th>
+      <th>depleted_date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>16</th>
+      <td>K115</td>
+      <td>mock</td>
+      <td>2to1</td>
+      <td>100ug</td>
+      <td>Acro B.1.351\nRBD</td>
+      <td>210512</td>
+      <td>100</td>
+      <td>2.7064</td>
+      <td>0.010000</td>
+      <td>mock_210512</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>K115</td>
+      <td>2x 2:1 depleted</td>
+      <td>2to1</td>
+      <td>100ug</td>
+      <td>Acro B.1.351\nRBD</td>
+      <td>210512</td>
+      <td>100</td>
+      <td>0.0813</td>
+      <td>0.010000</td>
+      <td>2x 2:1 depleted_210512</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>K115</td>
+      <td>mock</td>
+      <td>2to1</td>
+      <td>100ug</td>
+      <td>IPD B.1.351\nspike</td>
+      <td>210512</td>
+      <td>100</td>
+      <td>2.4498</td>
+      <td>0.010000</td>
+      <td>mock_210512</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>K115</td>
+      <td>2x 2:1 depleted</td>
+      <td>2to1</td>
+      <td>100ug</td>
+      <td>IPD B.1.351\nspike</td>
+      <td>210512</td>
+      <td>100</td>
+      <td>1.5325</td>
+      <td>0.010000</td>
+      <td>2x 2:1 depleted_210512</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>K115</td>
+      <td>mock</td>
+      <td>2to1</td>
+      <td>100ug</td>
+      <td>Acro B.1.351\nRBD</td>
+      <td>210512</td>
+      <td>300</td>
+      <td>1.6535</td>
+      <td>0.003333</td>
+      <td>mock_210512</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>155</th>
+      <td>K040</td>
+      <td>3x depleted</td>
+      <td>3to1</td>
+      <td>100ug</td>
+      <td>IPD B.1.351\nspike</td>
+      <td>210513</td>
+      <td>8100</td>
+      <td>0.5075</td>
+      <td>0.000123</td>
+      <td>3x depleted_210513</td>
+    </tr>
+    <tr>
+      <th>156</th>
+      <td>K041</td>
+      <td>3x depleted</td>
+      <td>3to1</td>
+      <td>100ug</td>
+      <td>IPD B.1.351\nspike</td>
+      <td>210513</td>
+      <td>8100</td>
+      <td>0.5596</td>
+      <td>0.000123</td>
+      <td>3x depleted_210513</td>
+    </tr>
+    <tr>
+      <th>157</th>
+      <td>K046</td>
+      <td>3x depleted</td>
+      <td>3to1</td>
+      <td>100ug</td>
+      <td>IPD B.1.351\nspike</td>
+      <td>210513</td>
+      <td>8100</td>
+      <td>0.3404</td>
+      <td>0.000123</td>
+      <td>3x depleted_210513</td>
+    </tr>
+    <tr>
+      <th>158</th>
+      <td>K114</td>
+      <td>3x depleted</td>
+      <td>3to1</td>
+      <td>100ug</td>
+      <td>IPD B.1.351\nspike</td>
+      <td>210513</td>
+      <td>8100</td>
+      <td>0.7632</td>
+      <td>0.000123</td>
+      <td>3x depleted_210513</td>
+    </tr>
+    <tr>
+      <th>159</th>
+      <td>K119</td>
+      <td>3x depleted</td>
+      <td>3to1</td>
+      <td>100ug</td>
+      <td>IPD B.1.351\nspike</td>
+      <td>210513</td>
+      <td>8100</td>
+      <td>0.2417</td>
+      <td>0.000123</td>
+      <td>3x depleted_210513</td>
+    </tr>
+  </tbody>
+</table>
+<p>200 rows × 10 columns</p>
+</div>
+
+
+
+
+```python
+ncol=9
+nrow=2
+
+p = (
+    ggplot((titration_df
+            .query('(depleted in ["mock", "3x depleted"] & serum not in @exclude_sera & depleted_date!="mock_210512")'+
+                   '| serum=="K115"'
+                  )
+            .replace({'mock':'mock depletion', 
+                      '2x 2:1 depleted':'RBD antibodies depleted',
+                      '3x depleted':'RBD antibodies depleted',
+                      'Acro B.1.351\nRBD':'B.1.351 RBD',
+                      'IPD B.1.351\nspike':'B.1.351 spike',
+                     }
+                    )
+            .assign(depleted=lambda x: pd.Categorical(x['depleted'], categories=['mock depletion','RBD antibodies depleted'], ordered=True)
+                   )
+           ),
+           aes('dilution', 
+               'OD450', 
+               color='depleted',
+               )) +
+    geom_point(size=3) +
+    geom_path(aes(color='depleted'), size=0.75) +
+    scale_x_log10(name='serum dilution', labels=scientific_format(digits=0)) +
+    facet_grid('ligand~ serum') +
+    theme(figure_size=(2.5 * ncol, 2.5 * nrow),
+          axis_text_x=element_text(angle=90),
+          strip_background=element_blank(),
+         ) +
+    scale_color_manual(values=CBPALETTE[0:], name='B.1.351 RBD-binding\nantibodies depleted?') +
+    ylab('arbitrary binding units (OD450)')
+    )
+
+_ = p.draw()
+
+p.save(f'{resultsdir}/FigS1A_ELISA.pdf', limitsize=False)
+p.save(f'{resultsdir}/FigS1A_ELISA.png', limitsize=False)
+```
+
+
+    
+![png](rbd_depletion_elisas_files/rbd_depletion_elisas_24_0.png)
+    
+
+
+Also make plot for REGN10987 in case
+
+
+```python
+p = (
+    ggplot((titration_df
+            .query('serum=="REGN10987"'
+                  )
+            .replace({'mock':'mock depletion', 
+                      '2x 2:1 depleted':'RBD antibodies depleted',
+                      '3x depleted':'RBD antibodies depleted',
+                      'Acro B.1.351\nRBD':'B.1.351 RBD',
+                      'IPD B.1.351\nspike':'B.1.351 spike',
+                     }
+                    )
+            .assign(depleted=lambda x: pd.Categorical(x['depleted'], categories=['mock depletion','RBD antibodies depleted'], ordered=True)
+                   )
+           ),
+           aes('dilution', 
+               'OD450', 
+               color='depleted',
+               )) +
+    geom_point(size=3) +
+    geom_path(aes(color='depleted'), size=0.75) +
+    scale_x_log10(name='serum dilution', labels=scientific_format(digits=0)) +
+    theme(figure_size=(2.5 * ncol, 2.5 * nrow),
+          axis_text_x=element_text(angle=90),
+          strip_background=element_blank(),
+         ) +
+    facet_grid('ligand~ serum') +
+    theme(figure_size=(2.5 * 1, 2.5 * 2),
+          axis_text_x=element_text(angle=90),
+          strip_background=element_blank(),
+         ) +
+    scale_color_manual(values=CBPALETTE[0:], name='B.1.351 RBD-binding\nantibodies depleted?') +
+    ylab('arbitrary binding units (OD450)')
+    )
+
+_ = p.draw()
+
+p.save(f'{resultsdir}/FigS1_REGN_elisa.pdf', limitsize=False)
+p.save(f'{resultsdir}/FigS1_REGN_elisa.png', limitsize=False)
+```
+
+
+    
+![png](rbd_depletion_elisas_files/rbd_depletion_elisas_26_0.png)
     
 
 
