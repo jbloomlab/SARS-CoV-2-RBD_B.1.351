@@ -74,6 +74,7 @@ rule make_summary:
     input:
         rulegraph=os.path.join(config['summary_dir'], 'rulegraph.svg'),
         get_mut_bind_expr=config['mut_bind_expr'],
+        get_early2020_escape_fracs=config['early2020_escape_fracs'],
         process_ccs=nb_markdown('process_ccs.ipynb'),
         build_variants=nb_markdown('build_variants.ipynb'),
         codon_variant_table=config['codon_variant_table'],
@@ -112,6 +113,8 @@ rule make_summary:
             Here is the Markdown output of each notebook in the workflow:
             1. Get prior DMS mutation-level [binding and expression data]({path(input.get_mut_bind_expr)}).
 
+            2. Get prior MAPping [escape_fracs]({path(input.get_early2020_escape_fracs)}) for polyclonal plasmas from early 2020 against the Wuhan-1 RBD library. 
+            
             2. [Process PacBio CCSs]({path(input.process_ccs)}).
 
             3. [Build variants from CCSs]({path(input.build_variants)}).
@@ -319,6 +322,15 @@ rule build_variants:
     shell:
         "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
 
+rule get_early2020_escape_fracs:
+    """Download escape_fracs for early 2020 polyclonal plasmas 
+        against Wuhan-1 RBD library from URL.
+    """
+    output:
+        file=config['early2020_escape_fracs']
+    run:
+        urllib.request.urlretrieve(config['early2020_escape_fracs_url'], output.file)
+        
 rule get_mut_bind_expr:
     """Download SARS-CoV-2 mutation ACE2-binding and expression from URL."""
     output:

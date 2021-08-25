@@ -42,6 +42,12 @@ dms_scores_preliminary: True
 # for now, I will download the CSV file that contains preliminary mutant bind and expression scores because the `variants` repo is still private
 prelim_mut_bind_expr: data/prelim_variant_dms_scores.csv 
 
+# escape_fracs for early 2020 plasmas against Wuhan-1 library:
+early2020_escape_fracs_url: https://media.githubusercontent.com/media/jbloomlab/SARS-CoV-2-RBD_MAP_HAARVI_sera/main/results/escape_scores/escape_fracs.csv
+early2020_site_metric: site_total_escape_frac_epistasis_model
+early2020_mut_metric: site_total_escape_frac_epistasis_model
+early2020_escape_profiles_config: data/early2020_escape_profiles_config.yaml
+
 # Parameters for processing Illumina barcodes, assuming this structure:
 #  [R2 binds] - [upstream] - [barcode] - [downstream] - [R1 binds]
 #  This orientation is hard-wired in the barcode parser, but here it is opposite
@@ -139,6 +145,7 @@ figs_dir: results/figures
 mut_bind_expr: results/prior_DMS_data/mutant_ACE2binding_expression.csv
 variant_expr: results/prior_DMS_data/variant_expression.csv
 variant_bind: results/prior_DMS_data/variant_ACE2binding.csv
+early2020_escape_fracs: results/prior_DMS_data/early2020_escape_fracs.csv
 ccs_dir: results/ccs
 process_ccs_dir: results/process_ccs
 processed_ccs_file: results/process_ccs/processed_ccs.csv
