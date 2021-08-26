@@ -1,0 +1,29 @@
+# Specify configuration of escape profile and related plots.
+
+haarvi_sera:
+  conditions:
+    23_d21_1250: participant A (day 21)
+    1C_d26_200: participant B (day 26)
+    24C_d32_200: participant C (day 32)
+    6C_d33_500: participant D (day 33)
+    22C_d28_200: participant E (day 28)
+    25C_d48_200: participant F (day 48)
+    25_d18_500: participant G (day 18)
+    23C_d26_80: participant I (day 26)
+  plot_auto_identified_sites: default
+  add_sites: [365,369,378,382,383,384,385,386,417,439,443,444,445,446,447,448,449,450,451,452,455,456,477,478,484,501]
+  exclude_sites: [336, 361]
+  site_color_scheme: barnes_serum_epitopes
+  color_by_dms: True
+  dmslogo_facet_plot_kwargs:
+    height_per_ax: 2.0
+  dmslogo_draw_line_kwargs:
+    widthscale: 0.5
+    axisfontscale: 1.5
+  dmslogo_draw_logo_kwargs:
+    widthscale: 0.75
+    axisfontscale: 1.5
+  # escape_profile_ymax:
+  #   quantile: 0.5
+  #   frac: 0.05
+  #   min_ymax: null
