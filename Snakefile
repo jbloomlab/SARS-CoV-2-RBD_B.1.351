@@ -74,6 +74,8 @@ rule make_summary:
     input:
         rulegraph=os.path.join(config['summary_dir'], 'rulegraph.svg'),
         get_mut_bind_expr=config['mut_bind_expr'],
+        get_early2020_mut_bind_expr=config['early2020_mut_bind_expr'],
+        get_early2020_escape_fracs=config['early2020_escape_fracs'],
         process_ccs=nb_markdown('process_ccs.ipynb'),
         build_variants=nb_markdown('build_variants.ipynb'),
         codon_variant_table=config['codon_variant_table'],
@@ -89,6 +91,9 @@ rule make_summary:
         call_strong_escape_sites=nb_markdown('call_strong_escape_sites.ipynb'),
         strong_escape_sites=config['strong_escape_sites'],
         escape_profiles=nb_markdown('escape_profiles.ipynb'),
+        early2020_call_strong_escape_sites=nb_markdown('early2020_call_strong_escape_sites.ipynb'),
+        early2020_strong_escape_sites=config['early2020_strong_escape_sites'],
+        early2020_escape_profiles=nb_markdown('early2020_escape_profiles.ipynb'),
         output_pdbs='results/summary/output_pdbs.md',
         make_supp_data=nb_markdown('make_supp_data.ipynb'),
     output:
@@ -112,6 +117,8 @@ rule make_summary:
             Here is the Markdown output of each notebook in the workflow:
             1. Get prior DMS mutation-level [binding and expression data]({path(input.get_mut_bind_expr)}).
 
+            2. Get prior MAPping [escape_fracs]({path(input.get_early2020_escape_fracs)}) for polyclonal plasmas from early 2020 against the Wuhan-1 RBD library. 
+            
             2. [Process PacBio CCSs]({path(input.process_ccs)}).
 
             3. [Build variants from CCSs]({path(input.build_variants)}).
@@ -160,7 +167,7 @@ rule make_supp_data:
         config['escape_profiles_config'],
         config['output_pdbs_config'],
         config['escape_fracs'],
-        # config['escape_profiles_dms_colors']
+        config['escape_profiles_dms_colors']
     output:
         nb_markdown=nb_markdown('make_supp_data.ipynb'),
         outdir=directory(config['supp_data_dir']),
@@ -178,6 +185,35 @@ rule output_pdbs:
         outdir=directory(config['pdb_outputs_dir']),
     params:
         nb='output_pdbs.ipynb'
+    shell:
+        "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
+
+rule early2020_escape_profiles:
+    """Make stacked logo plots of antibody escape profiles for early 2020 samples."""
+    input:
+        escape_fracs=config['early2020_escape_fracs'],
+        escape_profiles_config=config['early2020_escape_profiles_config'],
+        site_color_schemes=config['site_color_schemes'],
+        wildtype_sequence=config['early2020_wildtype_sequence'],
+        mut_bind_expr=config['mut_bind_expr'],
+        strong_escape_sites=config['early2020_strong_escape_sites'],
+    output:
+        nb_markdown=nb_markdown('early2020_escape_profiles.ipynb'),
+        escape_profiles_dms_colors=config['early2020_escape_profiles_dms_colors'],
+    params:
+        nb='early2020_escape_profiles.ipynb'
+    shell:
+        "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
+        
+rule early2020_call_strong_escape_sites:
+    """Call sites of strong escape for early 2020 samples."""
+    input:
+        escape_fracs=config['early2020_escape_fracs'],
+    output:
+        nb_markdown=nb_markdown('early2020_call_strong_escape_sites.ipynb'),
+        strong_escape_sites=config['early2020_strong_escape_sites'],
+    params:
+        nb='early2020_call_strong_escape_sites.ipynb'
     shell:
         "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
 
@@ -319,6 +355,22 @@ rule build_variants:
     shell:
         "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
 
+rule get_early2020_escape_fracs:
+    """Download escape_fracs for early 2020 polyclonal plasmas 
+        against Wuhan-1 RBD library from URL.
+    """
+    output:
+        file=config['early2020_escape_fracs']
+    run:
+        urllib.request.urlretrieve(config['early2020_escape_fracs_url'], output.file)
+        
+rule get_early2020_mut_bind_expr:
+    """Download SARS-CoV-2 Wuhan-1 mutation ACE2-binding and expression from URL."""
+    output:
+        file=config['early2020_mut_bind_expr']
+    run:
+        urllib.request.urlretrieve(config['early2020_mut_bind_expr_url'], output.file)
+        
 rule get_mut_bind_expr:
     """Download SARS-CoV-2 mutation ACE2-binding and expression from URL."""
     output:
