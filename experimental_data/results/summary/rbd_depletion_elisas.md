@@ -183,9 +183,7 @@ p.save(f'{resultsdir}/210415_pilot.pdf')
 ```
 
 
-    
 ![png](rbd_depletion_elisas_files/rbd_depletion_elisas_11_0.png)
-    
 
 
 New experiment testing the free sample of commerical beads we got from Acro
@@ -307,9 +305,7 @@ p.save(f'{resultsdir}/210507_pilot.png')
 ```
 
 
-    
 ![png](rbd_depletion_elisas_files/rbd_depletion_elisas_14_0.png)
-    
 
 
 ## Depleting B.1.351 sera with the Acro beads
@@ -535,9 +531,7 @@ p.save(f'{resultsdir}/210512_ELISA.png', limitsize=False)
 
 
 
-    
 ![png](rbd_depletion_elisas_files/rbd_depletion_elisas_16_1.png)
-    
 
 
 ## 3rd round of depletions on 8 of the serum samples
@@ -770,9 +764,7 @@ p.save(f'{resultsdir}/210513_ELISA.png', limitsize=False)
 
 
 
-    
 ![png](rbd_depletion_elisas_files/rbd_depletion_elisas_18_1.png)
-    
 
 
 Plot May 12 2x depletions and May 13 3x depletions on same axis
@@ -781,7 +773,7 @@ Plot May 12 2x depletions and May 13 3x depletions on same axis
 ```python
 titration_df = pd.DataFrame()
 
-for f in ['210512_ELISA_2xdep.csv', '210513_ELISA_3xdep.csv']:
+for f in ['210512_ELISA_2xdep.csv', '210513_ELISA_3xdep.csv', '210507_ELISA_pilot_RE.csv']:
 
     df = (pd.read_csv(os.path.join(datadir, f))
                     .melt(
@@ -793,10 +785,18 @@ for f in ['210512_ELISA_2xdep.csv', '210513_ELISA_3xdep.csv']:
                             dilution=lambda x: 1/x['dilution_factor'],
                            )
                     .replace({'RBD':'Acro B.1.351\nRBD',
+                              'spike':'IPD B.1.351\nspike',
+                              'no_beads': 'mock',
+                              '2to1':'2x 2:1 beads', '1to1':'1:1 beads',
+                              'Acro_beads':'2x 2:1 depleted',
+                              'RBD':'Acro B.1.351\nRBD',
                               'spike':'IPD B.1.351\nspike'
                              }
                             )
                    )
+    if f== '210507_ELISA_pilot_RE.csv':
+        df = df.query('serum=="pre-pandemic" & depleted!="Rachel_beads"')
+    
     titration_df=pd.concat([titration_df, df])
 
 titration_df = titration_df.assign(depleted_date=lambda x: x['depleted']+'_'+x['date'].astype(str))
@@ -832,9 +832,7 @@ titration_df.to_csv(f'{resultsdir}/rbd_depletion_elisas.csv', index=False)
 ```
 
 
-    
 ![png](rbd_depletion_elisas_files/rbd_depletion_elisas_20_0.png)
-    
 
 
 ## Make supplemental figure for paper
@@ -843,220 +841,32 @@ We exclude plasmas that are non-reactive or non-neutralizing against B.1.351 pse
 
 ```python
 # define which sera to exclude from downstream analyses
-exclude_sera = ["pre-pandemic", "REGN10987 (spike-in)", "K006", "K116"]
+exclude_sera = ["REGN10987", "K006", "K116"]
 ```
 
 
 ```python
-titration_df.query('(depleted in ["mock", "3x depleted"] & serum not in @exclude_sera & depleted_date!="mock_210512")'+
-                   '| serum=="K115"'
-                  )
-                   
-                   #
-```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>serum</th>
-      <th>depleted</th>
-      <th>ratio_beads</th>
-      <th>amount_RBD_protein</th>
-      <th>ligand</th>
-      <th>date</th>
-      <th>dilution_factor</th>
-      <th>OD450</th>
-      <th>dilution</th>
-      <th>depleted_date</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>16</th>
-      <td>K115</td>
-      <td>mock</td>
-      <td>2to1</td>
-      <td>100ug</td>
-      <td>Acro B.1.351\nRBD</td>
-      <td>210512</td>
-      <td>100</td>
-      <td>2.7064</td>
-      <td>0.010000</td>
-      <td>mock_210512</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>K115</td>
-      <td>2x 2:1 depleted</td>
-      <td>2to1</td>
-      <td>100ug</td>
-      <td>Acro B.1.351\nRBD</td>
-      <td>210512</td>
-      <td>100</td>
-      <td>0.0813</td>
-      <td>0.010000</td>
-      <td>2x 2:1 depleted_210512</td>
-    </tr>
-    <tr>
-      <th>40</th>
-      <td>K115</td>
-      <td>mock</td>
-      <td>2to1</td>
-      <td>100ug</td>
-      <td>IPD B.1.351\nspike</td>
-      <td>210512</td>
-      <td>100</td>
-      <td>2.4498</td>
-      <td>0.010000</td>
-      <td>mock_210512</td>
-    </tr>
-    <tr>
-      <th>44</th>
-      <td>K115</td>
-      <td>2x 2:1 depleted</td>
-      <td>2to1</td>
-      <td>100ug</td>
-      <td>IPD B.1.351\nspike</td>
-      <td>210512</td>
-      <td>100</td>
-      <td>1.5325</td>
-      <td>0.010000</td>
-      <td>2x 2:1 depleted_210512</td>
-    </tr>
-    <tr>
-      <th>64</th>
-      <td>K115</td>
-      <td>mock</td>
-      <td>2to1</td>
-      <td>100ug</td>
-      <td>Acro B.1.351\nRBD</td>
-      <td>210512</td>
-      <td>300</td>
-      <td>1.6535</td>
-      <td>0.003333</td>
-      <td>mock_210512</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>155</th>
-      <td>K040</td>
-      <td>3x depleted</td>
-      <td>3to1</td>
-      <td>100ug</td>
-      <td>IPD B.1.351\nspike</td>
-      <td>210513</td>
-      <td>8100</td>
-      <td>0.5075</td>
-      <td>0.000123</td>
-      <td>3x depleted_210513</td>
-    </tr>
-    <tr>
-      <th>156</th>
-      <td>K041</td>
-      <td>3x depleted</td>
-      <td>3to1</td>
-      <td>100ug</td>
-      <td>IPD B.1.351\nspike</td>
-      <td>210513</td>
-      <td>8100</td>
-      <td>0.5596</td>
-      <td>0.000123</td>
-      <td>3x depleted_210513</td>
-    </tr>
-    <tr>
-      <th>157</th>
-      <td>K046</td>
-      <td>3x depleted</td>
-      <td>3to1</td>
-      <td>100ug</td>
-      <td>IPD B.1.351\nspike</td>
-      <td>210513</td>
-      <td>8100</td>
-      <td>0.3404</td>
-      <td>0.000123</td>
-      <td>3x depleted_210513</td>
-    </tr>
-    <tr>
-      <th>158</th>
-      <td>K114</td>
-      <td>3x depleted</td>
-      <td>3to1</td>
-      <td>100ug</td>
-      <td>IPD B.1.351\nspike</td>
-      <td>210513</td>
-      <td>8100</td>
-      <td>0.7632</td>
-      <td>0.000123</td>
-      <td>3x depleted_210513</td>
-    </tr>
-    <tr>
-      <th>159</th>
-      <td>K119</td>
-      <td>3x depleted</td>
-      <td>3to1</td>
-      <td>100ug</td>
-      <td>IPD B.1.351\nspike</td>
-      <td>210513</td>
-      <td>8100</td>
-      <td>0.2417</td>
-      <td>0.000123</td>
-      <td>3x depleted_210513</td>
-    </tr>
-  </tbody>
-</table>
-<p>200 rows × 10 columns</p>
-</div>
-
-
-
-
-```python
-ncol=9
+ncol=10
 nrow=2
 
 p = (
     ggplot((titration_df
-            .query('(depleted in ["mock", "3x depleted"] & serum not in @exclude_sera & depleted_date!="mock_210512")'+
-                   '| serum=="K115"'
-                  )
+            .query('serum not in @exclude_sera')
             .replace({'mock':'mock depletion', 
-                      '2x 2:1 depleted':'RBD antibodies depleted',
-                      '3x depleted':'RBD antibodies depleted',
+                      '2x 2:1 depleted':'RBD antibodies depleted 2x',
+                      '3x depleted':'RBD antibodies depleted 3x',
                       'Acro B.1.351\nRBD':'B.1.351 RBD',
                       'IPD B.1.351\nspike':'B.1.351 spike',
                      }
                     )
-            .assign(depleted=lambda x: pd.Categorical(x['depleted'], categories=['mock depletion','RBD antibodies depleted'], ordered=True)
+            .assign(depleted=lambda x: 
+                    pd.Categorical(x['depleted'],
+                                   categories=['mock depletion',
+                                               'RBD antibodies depleted 2x',
+                                               'RBD antibodies depleted 3x'
+                                              ], 
+                                   ordered=True
+                                  )
                    )
            ),
            aes('dilution', 
@@ -1082,9 +892,7 @@ p.save(f'{resultsdir}/FigS1A_ELISA.png', limitsize=False)
 ```
 
 
-    
-![png](rbd_depletion_elisas_files/rbd_depletion_elisas_24_0.png)
-    
+![png](rbd_depletion_elisas_files/rbd_depletion_elisas_23_0.png)
 
 
 Also make plot for REGN10987 in case
@@ -1102,16 +910,17 @@ p = (
                       'IPD B.1.351\nspike':'B.1.351 spike',
                      }
                     )
+            .assign(antibody_concentration=lambda x: x['dilution']*50)
             .assign(depleted=lambda x: pd.Categorical(x['depleted'], categories=['mock depletion','RBD antibodies depleted'], ordered=True)
                    )
            ),
-           aes('dilution', 
+           aes('antibody_concentration', 
                'OD450', 
                color='depleted',
                )) +
     geom_point(size=3) +
     geom_path(aes(color='depleted'), size=0.75) +
-    scale_x_log10(name='serum dilution', labels=scientific_format(digits=0)) +
+    scale_x_log10(name='antibody (ug/mL)', breaks=[0.1, 0.01, 0.001]) + #labels=scientific_format(digits=0),
     theme(figure_size=(2.5 * ncol, 2.5 * nrow),
           axis_text_x=element_text(angle=90),
           strip_background=element_blank(),
@@ -1132,9 +941,7 @@ p.save(f'{resultsdir}/FigS1_REGN_elisa.png', limitsize=False)
 ```
 
 
-    
-![png](rbd_depletion_elisas_files/rbd_depletion_elisas_26_0.png)
-    
+![png](rbd_depletion_elisas_files/rbd_depletion_elisas_25_0.png)
 
 
 
