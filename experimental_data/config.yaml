@@ -6,6 +6,8 @@ rbd_depletions_date: 2021-06-10
 elisa_data_dir: data/rbd_depletion_elisas
 final_depletion_elisas: data/rbd_depletion_elisas/210513_ELISA_3xdep.csv
 
+haarvi_rbd_depletions: data/haarvi_rbd_depletion_foldchange_ic50.csv
+
 fixtop: True
 fixbottom: 0
 
@@ -21,8 +23,18 @@ serum_order:
   - K119
   - K116
   - K006
+  - participant A (day 21)
+  - participant B (day 26)
+  - participant C (day 32)
+  - participant I (day 26)
   - REGN10987 (spike-in)
   - pre-pandemic
+
+rename_sera:
+  23_d21: participant A (day 21)
+  24C_d32: participant C (day 32)
+  23C_d26: participant I (day 26)
+  1C_d26: participant B (day 26)
 
 sera_for_further_analysis:
   - K007
@@ -33,6 +45,24 @@ sera_for_further_analysis:
   - K046
   - K114
   - K119
+  - participant A (day 21)
+  - participant B (day 26)
+  - participant C (day 32)
+  - participant I (day 26)
+  
+infecting_virus:
+  K007: B.1.351
+  K031: B.1.351
+  K033: B.1.351
+  K040: B.1.351
+  K041: B.1.351
+  K046: B.1.351
+  K114: B.1.351
+  K119: B.1.351
+  participant A (day 21): early 2020
+  participant B (day 26): early 2020
+  participant C (day 32): early 2020
+  participant I (day 26): early 2020
 
 virus_order:
   - wildtype
@@ -46,6 +76,12 @@ virus_order:
   - B.1.351-K444E
   - B.1.351-Y501N
   - B.1.351-N417K-K484E-Y501N
+  - K417N
+  - E484K
+  - E484Q
+  - N501Y
+  - G446V
+  - K417N-E484K-N501Y
   - RBD antibodies depleted
 
 virus_subsets:
@@ -56,9 +92,14 @@ virus_subsets:
     - B.1.351-K484Q
     - B.1.351-L452R
     - B.1.351-G446V
-    - B.1.351-K444E
     - B.1.351-Y501N
     - B.1.351-N417K-K484E-Y501N
+    - K417N
+    - E484K
+    - E484Q
+    - N501Y
+    - G446V
+    - K417N-E484K-N501Y
     - RBD antibodies depleted
 
 # enter all the samples and stuff to ignore here
