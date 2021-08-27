@@ -49,7 +49,7 @@ sera_for_further_analysis:
   - participant B (day 26)
   - participant C (day 32)
   - participant I (day 26)
-  
+
 infecting_virus:
   K007: B.1.351
   K031: B.1.351
@@ -82,6 +82,37 @@ virus_order:
   - N501Y
   - G446V
   - K417N-E484K-N501Y
+  - RBD antibodies depleted
+
+virus_simplified_names:
+  wildtype: wildtype
+  B.1.351: wildtype
+  mock: wildtype
+  B.1.351-N417K: 417K/N
+  B.1.351-K484E: 484K/E
+  B.1.351-K484Q: 484Q
+  B.1.351-L452R: L452R
+  B.1.351-G446V: G446V
+  B.1.351-K444E: K444E
+  B.1.351-Y501N: 501Y/N
+  B.1.351-N417K-K484E-Y501N: '417-484-501'
+  K417N: 417K/N
+  E484K: 484K/E
+  E484Q: 484Q
+  N501Y: 501Y/N
+  G446V: G446V
+  K417N-E484K-N501Y: '417-484-501'
+  RBD antibodies depleted: 'RBD antibodies depleted'
+
+virus_simplified_names_order:
+  - wildtype
+  - L452R
+  - G446V
+  - 417K/N
+  - 501Y/N
+  - 484K/E
+  - 484Q
+  - 417-484-501
   - RBD antibodies depleted
 
 virus_subsets:

@@ -332,7 +332,7 @@ plotfile.close()
 
 ```python
 fig, axes = fits.plotSera(sera=natsort.natsorted(fitparams.query('serum=="REGN10987 (spike-in)"')['serum'].unique()),
-                          xlabel='antibody (ug/uL)',
+                          xlabel='antibody (ug/mL)',
                           yticklocs=[0,0.5,1],
                           markersize=8, linewidth=2,
                          )
@@ -593,11 +593,13 @@ p = (ggplot(foldchange
            axis_text=element_text(size=12),
            legend_text=element_text(size=12),
            legend_title=element_text(size=12),
-           axis_title_x=element_text(size=12),
+           axis_title_x=element_text(size=14),
+           axis_title_y=element_text(size=14),
+           legend_position='top',
           ) +
-     ylab('') +
-     scale_fill_manual(values=['#999999', '#FFFFFF', ], 
-                       name='depletion of RBD antibodies')
+     ylab('B.1.351 convalescent\nplasma') +
+     scale_fill_manual(values=['#999999', '#FFFFFF', ])+
+     labs(fill = '')
     )
 
 _ = p.draw()
@@ -637,7 +639,7 @@ foldchange=foldchange.assign(day=lambda x: x['serum'].map(collection_day))
 conv_plasma = (pd.read_csv('data/haarvi_rbd_depletion_foldchange_ic50.csv')
                [['serum', 'depletion', 'NT50', 'fold_change',  'percent_RBD', 'Days Post-Symptom Onset', 'post_ic50_bound']]
                .rename(columns={'Days Post-Symptom Onset':'day'})
-               .assign(sample_type='Wuhan-1-like')
+               .assign(sample_type='early 2020')
                .query('serum!="participant A (day 45)"') # dropping subject A (day 45) because we will only use the first time point
               )
 
@@ -649,7 +651,7 @@ compare_df = (pd.concat([conv_plasma,
                       )
               .replace({'pre-depletion': 'pre', 'post-depletion':'post', 'mock depletion': 'pre', 'RBD antibodies depleted': 'post'})
               .assign(depletion=lambda x: pd.Categorical(x['depletion'], categories=['pre', 'post'], ordered=True), 
-                      sample_type=lambda x: pd.Categorical(x['sample_type'], categories=['Wuhan-1-like', 'B.1.351'], ordered=True),
+                      sample_type=lambda x: pd.Categorical(x['sample_type'], categories=['early 2020', 'B.1.351'], ordered=True),
                       early_late=lambda x: x['day'].apply(lambda x: 'day 30-60' if x<=61 else 'day 100-150'),
                      )
               .assign(early_late=lambda x: pd.Categorical(x['early_late'], categories=['day 30-60', 'day 100-150'], ordered=True),)
@@ -686,7 +688,7 @@ compare_df.to_csv(csvfile, index=False)
       <td>97</td>
       <td>120</td>
       <td>True</td>
-      <td>Wuhan-1-like</td>
+      <td>early 2020</td>
       <td>day 100-150</td>
     </tr>
     <tr>
@@ -697,7 +699,7 @@ compare_df.to_csv(csvfile, index=False)
       <td>97</td>
       <td>120</td>
       <td>True</td>
-      <td>Wuhan-1-like</td>
+      <td>early 2020</td>
       <td>day 100-150</td>
     </tr>
     <tr>
@@ -708,7 +710,7 @@ compare_df.to_csv(csvfile, index=False)
       <td>87</td>
       <td>21</td>
       <td>False</td>
-      <td>Wuhan-1-like</td>
+      <td>early 2020</td>
       <td>day 30-60</td>
     </tr>
     <tr>
@@ -719,7 +721,7 @@ compare_df.to_csv(csvfile, index=False)
       <td>87</td>
       <td>21</td>
       <td>False</td>
-      <td>Wuhan-1-like</td>
+      <td>early 2020</td>
       <td>day 30-60</td>
     </tr>
     <tr>
@@ -730,7 +732,7 @@ compare_df.to_csv(csvfile, index=False)
       <td>92</td>
       <td>113</td>
       <td>True</td>
-      <td>Wuhan-1-like</td>
+      <td>early 2020</td>
       <td>day 100-150</td>
     </tr>
   </tbody>
@@ -742,8 +744,8 @@ compare_df.to_csv(csvfile, index=False)
 
 
 ```python
-LOD = (pd.DataFrame(data={'sample_type': ['Wuhan-1-like', 'B.1.351'], 'NT50': [20, 25]})
-      .assign(sample_type=lambda x: pd.Categorical(x['sample_type'], categories=['Wuhan-1-like', 'B.1.351'], ordered=True))
+LOD = (pd.DataFrame(data={'sample_type': ['early 2020', 'B.1.351'], 'NT50': [20, 25]})
+      .assign(sample_type=lambda x: pd.Categorical(x['sample_type'], categories=['early 2020', 'B.1.351'], ordered=True))
       )
 
 NT50_lines = (ggplot(compare_df.query("early_late=='day 30-60'"), aes(x='depletion', y='NT50', group='serum')) + 
@@ -815,14 +817,14 @@ stat_test_df = (compare_df
                )
 # display(HTML(stat_test_df.to_html()))
 
-print(f"Comparing Wuhan-1-like to B.1.351")
-percent_1 = stat_test_df.query('sample_type == "Wuhan-1-like"')['percent_RBD']
+print(f"Comparing early 2020 to B.1.351")
+percent_1 = stat_test_df.query('sample_type == "early 2020"')['percent_RBD']
 percent_2 = stat_test_df.query('sample_type == "B.1.351"')['percent_RBD']
 u, p = scipy.stats.mannwhitneyu(percent_1, percent_2)
 print(f"  Mann-Whitney test:      P = {p:.2g}")
 res = lifelines.statistics.logrank_test(percent_1, percent_2)
 print(f"  Log-rank test:          P = {res.p_value:.2g}")
-censored_1 = (~stat_test_df.query('sample_type == "Wuhan-1-like"')['post_ic50_bound']).astype(int)
+censored_1 = (~stat_test_df.query('sample_type == "early 2020"')['post_ic50_bound']).astype(int)
 censored_2 = (~stat_test_df.query('sample_type == "B.1.351"')['post_ic50_bound']).astype(int)
 res = lifelines.statistics.logrank_test(percent_1, percent_2, censored_1, censored_2)
 print(f"  Log-rank test censored: P = {res.p_value:.2g}")
@@ -836,7 +838,7 @@ cph = lifelines.CoxPHFitter().fit(cox_df, 'T', 'E')
 print(f"  Cox proportional-hazards censored: P = {cph.summary.at['groupA', 'p']:.2g}")
 ```
 
-    Comparing Wuhan-1-like to B.1.351
+    Comparing early 2020 to B.1.351
       Mann-Whitney test:      P = 0.0061
       Log-rank test:          P = 0.087
       Log-rank test censored: P = 0.087
