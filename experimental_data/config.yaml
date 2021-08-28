@@ -134,7 +134,9 @@ virus_subsets:
     - RBD antibodies depleted
 
 # enter all the samples and stuff to ignore here
-neut_samples_ignore: False
+neut_samples_ignore:
+  2021-08-20: [B.1.351-K484Q] # these were repeated on 2021-08-27
+  2021-08-21: [B.1.351-K484Q] # these were repeated on 2021-08-27
 
 # the neutralization limit of detection is equal to the starting dilution
 NT50_LOD: 25

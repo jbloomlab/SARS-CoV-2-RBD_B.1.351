@@ -84,9 +84,9 @@ if config['neut_samples_ignore']:
     for dat in config['neut_samples_ignore']:
         viruses = config['neut_samples_ignore'][dat]
         print(f'From {dat}, dropping {viruses}')
-        l = len((fracinfect[(fracinfect['virus'].isin(viruses)) & (fracinfect['date'] == dat)]))
-        print(fracinfect[(fracinfect['virus'].isin(viruses)) & (fracinfect['date'] == dat)]['virus'].unique())
-        fracinfect = fracinfect.drop(fracinfect[((fracinfect['virus'].isin(viruses)) & (fracinfect['date'] == dat))].index)
+        l = len((fracinfect[(fracinfect['virus'].isin(viruses)) & (fracinfect['date'].astype(str) == str(dat))]))
+        print(fracinfect[(fracinfect['virus'].isin(viruses)) & (fracinfect['date'].astype(str) == str(dat))]['virus'].unique())
+        fracinfect = fracinfect.drop(fracinfect[((fracinfect['virus'].isin(viruses)) & (fracinfect['date'].astype(str) == str(dat)))].index)
         print(f"Length after dropping {l} rows from {viruses} from {dat} = {len(fracinfect.index)}")
 
 fracinfect = (
@@ -116,7 +116,13 @@ display(HTML(fracinfect.head().to_html(index=False)))
 ```
 
     Reading neutralization data from results/neut_titers/fracinfect.csv
-    Length before dropping anything = 1984
+    Length before dropping anything = 2240
+    From 2021-08-20, dropping ['B.1.351-K484Q']
+    ['B.1.351-K484Q']
+    Length after dropping 64 rows from ['B.1.351-K484Q'] from 2021-08-20 = 2176
+    From 2021-08-21, dropping ['B.1.351-K484Q']
+    ['B.1.351-K484Q']
+    Length after dropping 64 rows from ['B.1.351-K484Q'] from 2021-08-21 = 2112
 
 
 
@@ -135,54 +141,54 @@ display(HTML(fracinfect.head().to_html(index=False)))
   </thead>
   <tbody>
     <tr>
-      <td>pre-pandemic</td>
-      <td>wildtype</td>
+      <td>K041</td>
+      <td>B.1.351-K484Q</td>
       <td>1</td>
       <td>0.040000</td>
-      <td>1.0450</td>
-      <td>2021-06-10</td>
-      <td>1 (2021-06-10)</td>
-      <td>1</td>
+      <td>4.610000e-07</td>
+      <td>2021-08-27</td>
+      <td>1 (2021-08-27)</td>
+      <td>2</td>
     </tr>
     <tr>
-      <td>pre-pandemic</td>
-      <td>wildtype</td>
+      <td>K041</td>
+      <td>B.1.351-K484Q</td>
       <td>1</td>
-      <td>0.010000</td>
-      <td>0.9724</td>
-      <td>2021-06-10</td>
-      <td>1 (2021-06-10)</td>
-      <td>1</td>
+      <td>0.013330</td>
+      <td>2.739000e-03</td>
+      <td>2021-08-27</td>
+      <td>1 (2021-08-27)</td>
+      <td>2</td>
     </tr>
     <tr>
-      <td>pre-pandemic</td>
-      <td>wildtype</td>
+      <td>K041</td>
+      <td>B.1.351-K484Q</td>
       <td>1</td>
-      <td>0.002500</td>
-      <td>1.0190</td>
-      <td>2021-06-10</td>
-      <td>1 (2021-06-10)</td>
-      <td>1</td>
+      <td>0.004444</td>
+      <td>2.070000e-02</td>
+      <td>2021-08-27</td>
+      <td>1 (2021-08-27)</td>
+      <td>2</td>
     </tr>
     <tr>
-      <td>pre-pandemic</td>
-      <td>wildtype</td>
+      <td>K041</td>
+      <td>B.1.351-K484Q</td>
       <td>1</td>
-      <td>0.000625</td>
-      <td>1.0040</td>
-      <td>2021-06-10</td>
-      <td>1 (2021-06-10)</td>
-      <td>1</td>
+      <td>0.001481</td>
+      <td>2.479000e-01</td>
+      <td>2021-08-27</td>
+      <td>1 (2021-08-27)</td>
+      <td>2</td>
     </tr>
     <tr>
-      <td>pre-pandemic</td>
-      <td>wildtype</td>
+      <td>K041</td>
+      <td>B.1.351-K484Q</td>
       <td>1</td>
-      <td>0.000156</td>
-      <td>0.8126</td>
-      <td>2021-06-10</td>
-      <td>1 (2021-06-10)</td>
-      <td>1</td>
+      <td>0.000494</td>
+      <td>9.689000e-01</td>
+      <td>2021-08-27</td>
+      <td>1 (2021-08-27)</td>
+      <td>2</td>
     </tr>
   </tbody>
 </table>
@@ -296,63 +302,63 @@ fitparams.head()
   <tbody>
     <tr>
       <th>0</th>
-      <td>pre-pandemic</td>
-      <td>wildtype</td>
-      <td>0.04</td>
-      <td>25.0</td>
-      <td>lower</td>
-      <td>2021-06-10</td>
+      <td>K041</td>
+      <td>B.1.351-K484Q</td>
+      <td>0.001137</td>
+      <td>879.582341</td>
+      <td>interpolated</td>
+      <td>2021-08-27</td>
       <td>1</td>
       <td>True</td>
-      <td>True</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>pre-pandemic</td>
-      <td>wildtype</td>
-      <td>0.04</td>
-      <td>25.0</td>
-      <td>lower</td>
-      <td>2021-06-10</td>
+      <td>K041</td>
+      <td>B.1.351-K484Q</td>
+      <td>0.001380</td>
+      <td>724.861603</td>
+      <td>interpolated</td>
+      <td>2021-08-27</td>
       <td>2</td>
       <td>True</td>
-      <td>True</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>pre-pandemic</td>
-      <td>wildtype</td>
-      <td>0.04</td>
-      <td>25.0</td>
-      <td>lower</td>
-      <td>2021-06-10</td>
+      <td>K041</td>
+      <td>B.1.351-K484Q</td>
+      <td>0.001393</td>
+      <td>717.838222</td>
+      <td>interpolated</td>
+      <td>2021-08-27</td>
       <td>average</td>
       <td>True</td>
-      <td>True</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>K006</td>
+      <td>K041</td>
       <td>wildtype</td>
-      <td>0.04</td>
-      <td>25.0</td>
-      <td>lower</td>
-      <td>2021-06-10</td>
+      <td>0.000481</td>
+      <td>2077.386549</td>
+      <td>interpolated</td>
+      <td>2021-08-27</td>
       <td>1</td>
       <td>True</td>
-      <td>True</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>K006</td>
+      <td>K041</td>
       <td>wildtype</td>
-      <td>0.04</td>
-      <td>25.0</td>
-      <td>lower</td>
-      <td>2021-06-10</td>
+      <td>0.000548</td>
+      <td>1824.055316</td>
+      <td>interpolated</td>
+      <td>2021-08-27</td>
       <td>2</td>
       <td>True</td>
-      <td>True</td>
+      <td>False</td>
     </tr>
   </tbody>
 </table>
@@ -446,68 +452,68 @@ display(HTML(fitparams_fixtop.head().to_html()))
   <tbody>
     <tr>
       <th>0</th>
-      <td>pre-pandemic</td>
-      <td>wildtype</td>
-      <td>0.04</td>
-      <td>2021-06-10</td>
+      <td>K041</td>
+      <td>B.1.351-K484Q</td>
+      <td>0.001090</td>
+      <td>2021-08-27</td>
       <td>1</td>
-      <td>0.04</td>
-      <td>1.0</td>
-      <td>0.04</td>
-      <td>0.04</td>
-      <td>1.0</td>
+      <td>0.000544</td>
+      <td>2.002853</td>
+      <td>0.001137</td>
+      <td>0.000481</td>
+      <td>2.361787</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>pre-pandemic</td>
-      <td>wildtype</td>
-      <td>0.04</td>
-      <td>2021-06-10</td>
+      <td>K041</td>
+      <td>B.1.351-K484Q</td>
+      <td>0.001401</td>
+      <td>2021-08-27</td>
       <td>2</td>
-      <td>0.04</td>
-      <td>1.0</td>
-      <td>0.04</td>
-      <td>0.04</td>
-      <td>1.0</td>
+      <td>0.000560</td>
+      <td>2.501544</td>
+      <td>0.001380</td>
+      <td>0.000548</td>
+      <td>2.516419</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>pre-pandemic</td>
-      <td>wildtype</td>
-      <td>0.04</td>
-      <td>2021-06-10</td>
+      <td>K041</td>
+      <td>B.1.351-K484Q</td>
+      <td>0.001168</td>
+      <td>2021-08-27</td>
       <td>average</td>
-      <td>0.04</td>
-      <td>1.0</td>
-      <td>0.04</td>
-      <td>0.04</td>
-      <td>1.0</td>
+      <td>0.000562</td>
+      <td>2.078311</td>
+      <td>0.001393</td>
+      <td>0.000527</td>
+      <td>2.643227</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>K006</td>
+      <td>K041</td>
       <td>wildtype</td>
-      <td>0.04</td>
-      <td>2021-06-10</td>
+      <td>0.000544</td>
+      <td>2021-08-27</td>
       <td>1</td>
-      <td>0.04</td>
-      <td>1.0</td>
-      <td>0.04</td>
-      <td>0.04</td>
-      <td>1.0</td>
+      <td>0.000544</td>
+      <td>1.000000</td>
+      <td>0.000481</td>
+      <td>0.000481</td>
+      <td>1.000000</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>K006</td>
+      <td>K041</td>
       <td>wildtype</td>
-      <td>0.04</td>
-      <td>2021-06-10</td>
+      <td>0.000560</td>
+      <td>2021-08-27</td>
       <td>2</td>
-      <td>0.04</td>
-      <td>1.0</td>
-      <td>0.04</td>
-      <td>0.04</td>
-      <td>1.0</td>
+      <td>0.000560</td>
+      <td>1.000000</td>
+      <td>0.000548</td>
+      <td>0.000548</td>
+      <td>1.000000</td>
     </tr>
   </tbody>
 </table>
@@ -578,6 +584,9 @@ for d in fracinfect['date'].unique():
     fig.savefig(plotfile, bbox_inches='tight')
 ```
 
+    Saving to results/neut_titers/2021-08-27_mutant_neuts.pdf
+
+
     /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/neutcurve/hillcurve.py:741: RuntimeWarning: invalid value encountered in power
 
 
@@ -594,10 +603,6 @@ for d in fracinfect['date'].unique():
 
 
 
-![png](analyze_neut_data_files/analyze_neut_data_18_4.png)
-
-
-
 ![png](analyze_neut_data_files/analyze_neut_data_18_5.png)
 
 
@@ -607,6 +612,14 @@ for d in fracinfect['date'].unique():
 
 
 ![png](analyze_neut_data_files/analyze_neut_data_18_7.png)
+
+
+
+![png](analyze_neut_data_files/analyze_neut_data_18_8.png)
+
+
+
+![png](analyze_neut_data_files/analyze_neut_data_18_9.png)
 
 
 ### Calculate fold-change IC50 relative to the gemetric mean of the wildtype virus against each serum on each date
@@ -658,69 +671,69 @@ neut_titers.to_csv(neut_titers_file, index=False)
   </thead>
   <tbody>
     <tr>
-      <td>pre-pandemic</td>
-      <td>wildtype</td>
-      <td>0.04</td>
-      <td>25.0</td>
-      <td>lower</td>
-      <td>2021-06-10</td>
+      <td>K041</td>
+      <td>B.1.351-K484Q</td>
+      <td>0.001137</td>
+      <td>879.582341</td>
+      <td>interpolated</td>
+      <td>2021-08-27</td>
       <td>1</td>
       <td>True</td>
-      <td>True</td>
-      <td>0.04</td>
-      <td>1.0</td>
+      <td>False</td>
+      <td>0.000514</td>
+      <td>2.213101</td>
     </tr>
     <tr>
-      <td>pre-pandemic</td>
-      <td>wildtype</td>
-      <td>0.04</td>
-      <td>25.0</td>
-      <td>lower</td>
-      <td>2021-06-10</td>
+      <td>K041</td>
+      <td>B.1.351-K484Q</td>
+      <td>0.001380</td>
+      <td>724.861603</td>
+      <td>interpolated</td>
+      <td>2021-08-27</td>
       <td>2</td>
       <td>True</td>
-      <td>True</td>
-      <td>0.04</td>
-      <td>1.0</td>
+      <td>False</td>
+      <td>0.000514</td>
+      <td>2.685484</td>
     </tr>
     <tr>
-      <td>pre-pandemic</td>
-      <td>wildtype</td>
-      <td>0.04</td>
-      <td>25.0</td>
-      <td>lower</td>
-      <td>2021-06-10</td>
+      <td>K041</td>
+      <td>B.1.351-K484Q</td>
+      <td>0.001393</td>
+      <td>717.838222</td>
+      <td>interpolated</td>
+      <td>2021-08-27</td>
       <td>average</td>
       <td>True</td>
-      <td>True</td>
-      <td>0.04</td>
-      <td>1.0</td>
+      <td>False</td>
+      <td>0.000514</td>
+      <td>2.711759</td>
     </tr>
     <tr>
-      <td>K006</td>
+      <td>K041</td>
       <td>wildtype</td>
-      <td>0.04</td>
-      <td>25.0</td>
-      <td>lower</td>
-      <td>2021-06-10</td>
+      <td>0.000481</td>
+      <td>2077.386549</td>
+      <td>interpolated</td>
+      <td>2021-08-27</td>
       <td>1</td>
       <td>True</td>
-      <td>True</td>
-      <td>0.04</td>
-      <td>1.0</td>
+      <td>False</td>
+      <td>0.000514</td>
+      <td>0.937045</td>
     </tr>
     <tr>
-      <td>K006</td>
+      <td>K041</td>
       <td>wildtype</td>
-      <td>0.04</td>
-      <td>25.0</td>
-      <td>lower</td>
-      <td>2021-06-10</td>
+      <td>0.000548</td>
+      <td>1824.055316</td>
+      <td>interpolated</td>
+      <td>2021-08-27</td>
       <td>2</td>
       <td>True</td>
-      <td>True</td>
-      <td>0.04</td>
-      <td>1.0</td>
+      <td>False</td>
+      <td>0.000514</td>
+      <td>1.067185</td>
     </tr>
   </tbody>
 </table>
@@ -780,28 +793,28 @@ display(HTML(neut_titers.query('virus=="wildtype" & replicate != "average" & (fo
     <tr>
       <td>K046</td>
       <td>wildtype</td>
-      <td>0.000648</td>
-      <td>1542.465186</td>
+      <td>0.000346</td>
+      <td>2888.596520</td>
       <td>interpolated</td>
       <td>2021-08-21</td>
       <td>1</td>
       <td>True</td>
       <td>False</td>
       <td>0.000474</td>
-      <td>1.368471</td>
+      <td>0.730742</td>
     </tr>
     <tr>
       <td>K046</td>
       <td>wildtype</td>
-      <td>0.000346</td>
-      <td>2888.596520</td>
+      <td>0.000648</td>
+      <td>1542.465186</td>
       <td>interpolated</td>
       <td>2021-08-21</td>
       <td>2</td>
       <td>True</td>
       <td>False</td>
       <td>0.000474</td>
-      <td>0.730742</td>
+      <td>1.368471</td>
     </tr>
     <tr>
       <td>K119</td>
@@ -1420,7 +1433,7 @@ neut_titers.query('virus=="wildtype" & infecting_virus=="B.1.351"')['ic50'].agg(
 
 
 
-    0.00036239753295860106
+    0.0003848677285585624
 
 
 
@@ -1524,89 +1537,89 @@ for metric in ['fold_change', 'ic50']:
   </thead>
   <tbody>
     <tr>
-      <th>6</th>
-      <td>K119</td>
-      <td>wildtype</td>
-      <td>0.000159</td>
-      <td>6269.666610</td>
+      <th>0</th>
+      <td>K041</td>
+      <td>B.1.351-K484Q</td>
+      <td>0.001137</td>
+      <td>879.582341</td>
       <td>interpolated</td>
-      <td>2021-06-10</td>
+      <td>2021-08-27</td>
       <td>1</td>
       <td>True</td>
       <td>False</td>
-      <td>0.000197</td>
-      <td>0.811232</td>
+      <td>0.000514</td>
+      <td>2.213101</td>
       <td>B.1.351</td>
-      <td>wildtype</td>
-      <td>wildtype</td>
+      <td>484Q</td>
+      <td>484Q</td>
     </tr>
     <tr>
-      <th>7</th>
-      <td>K119</td>
-      <td>wildtype</td>
-      <td>0.000242</td>
-      <td>4126.047926</td>
+      <th>1</th>
+      <td>K041</td>
+      <td>B.1.351-K484Q</td>
+      <td>0.001380</td>
+      <td>724.861603</td>
       <td>interpolated</td>
-      <td>2021-06-10</td>
+      <td>2021-08-27</td>
       <td>2</td>
       <td>True</td>
       <td>False</td>
-      <td>0.000197</td>
-      <td>1.232693</td>
+      <td>0.000514</td>
+      <td>2.685484</td>
       <td>B.1.351</td>
-      <td>wildtype</td>
-      <td>wildtype</td>
+      <td>484Q</td>
+      <td>484Q</td>
     </tr>
     <tr>
-      <th>8</th>
-      <td>K119</td>
-      <td>wildtype</td>
-      <td>0.000197</td>
-      <td>5081.755209</td>
+      <th>2</th>
+      <td>K041</td>
+      <td>B.1.351-K484Q</td>
+      <td>0.001393</td>
+      <td>717.838222</td>
       <td>interpolated</td>
-      <td>2021-06-10</td>
+      <td>2021-08-27</td>
       <td>average</td>
       <td>True</td>
       <td>False</td>
-      <td>0.000197</td>
-      <td>1.000865</td>
+      <td>0.000514</td>
+      <td>2.711759</td>
       <td>B.1.351</td>
-      <td>wildtype</td>
-      <td>wildtype</td>
+      <td>484Q</td>
+      <td>484Q</td>
     </tr>
     <tr>
-      <th>9</th>
-      <td>K119</td>
-      <td>RBD antibodies depleted</td>
-      <td>0.007640</td>
-      <td>130.885637</td>
+      <th>3</th>
+      <td>K041</td>
+      <td>wildtype</td>
+      <td>0.000481</td>
+      <td>2077.386549</td>
       <td>interpolated</td>
-      <td>2021-06-10</td>
+      <td>2021-08-27</td>
       <td>1</td>
       <td>True</td>
       <td>False</td>
-      <td>0.000197</td>
-      <td>38.859514</td>
+      <td>0.000514</td>
+      <td>0.937045</td>
       <td>B.1.351</td>
-      <td>RBD antibodies depleted</td>
-      <td>RBD\nantibodies\ndepleted</td>
+      <td>wildtype</td>
+      <td>wildtype</td>
     </tr>
     <tr>
-      <th>10</th>
-      <td>K119</td>
-      <td>RBD antibodies depleted</td>
-      <td>0.008364</td>
-      <td>119.556674</td>
+      <th>4</th>
+      <td>K041</td>
+      <td>wildtype</td>
+      <td>0.000548</td>
+      <td>1824.055316</td>
       <td>interpolated</td>
-      <td>2021-06-10</td>
+      <td>2021-08-27</td>
       <td>2</td>
       <td>True</td>
       <td>False</td>
-      <td>0.000197</td>
-      <td>42.541768</td>
+      <td>0.000514</td>
+      <td>1.067185</td>
       <td>B.1.351</td>
-      <td>RBD antibodies depleted</td>
-      <td>RBD\nantibodies\ndepleted</td>
+      <td>wildtype</td>
+      <td>wildtype</td>
     </tr>
   </tbody>
 </table>
