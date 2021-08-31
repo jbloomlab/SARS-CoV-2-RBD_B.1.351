@@ -45,7 +45,7 @@ print(f"Using `dms_variants` version {dms_variants.__version__}")
 ```
 
     Using `dmslogo` version 0.6.2
-    Using `dms_variants` version 0.8.9
+    Using `dms_variants` version 0.8.10
 
 
 Read the configuration file:
