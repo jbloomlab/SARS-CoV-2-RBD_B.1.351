@@ -94,8 +94,9 @@ rule make_summary:
         early2020_call_strong_escape_sites=nb_markdown('early2020_call_strong_escape_sites.ipynb'),
         early2020_strong_escape_sites=config['early2020_strong_escape_sites'],
         early2020_escape_profiles=nb_markdown('early2020_escape_profiles.ipynb'),
-        output_pdbs='results/summary/output_pdbs.md',
+        output_pdbs=nb_markdown('output_pdbs.ipynb'),
         make_supp_data=nb_markdown('make_supp_data.ipynb'),
+        lineplots_by_group=nb_markdown('lineplots_by_group.ipynb'),
     output:
         summary = os.path.join(config['summary_dir'], 'summary.md')
     run:
@@ -166,6 +167,7 @@ rule lineplots_by_group:
     input:
         config['early2020_escape_fracs'],
         config['escape_fracs'],
+        "data/pdbs/6M0J.pdb",
     output:
         nb_markdown=nb_markdown('lineplots_by_group.ipynb'),
         outdir=directory(config['lineplots_by_group_dir']),
