@@ -38,10 +38,10 @@ site_number_offset: 330  # add this to sequential sites to get RBD numbering
 mut_bind_expr_url: https://media.githubusercontent.com/media/jbloomlab/SARS-CoV-2-RBD_DMS/master/results/single_mut_effects/single_mut_effects.csv
 early2020_mut_bind_expr_url: https://media.githubusercontent.com/media/jbloomlab/SARS-CoV-2-RBD_DMS/master/results/single_mut_effects/single_mut_effects.csv
 
-# use preliminary ACE2 binding and RBD expression values? 
-dms_scores_preliminary: True 
+# use preliminary ACE2 binding and RBD expression values?
+dms_scores_preliminary: True
 # for now, I will download the CSV file that contains preliminary mutant bind and expression scores because the `variants` repo is still private
-prelim_mut_bind_expr: data/prelim_variant_dms_scores.csv 
+prelim_mut_bind_expr: data/prelim_variant_dms_scores.csv
 
 # escape_fracs for early 2020 plasmas against Wuhan-1 library:
 early2020_escape_fracs_url: https://media.githubusercontent.com/media/jbloomlab/SARS-CoV-2-RBD_MAP_HAARVI_sera/main/results/escape_scores/escape_fracs.csv
@@ -141,6 +141,9 @@ escape_profile_ymax:
 # structural mappings configuration
 output_pdbs_config: data/output_pdbs_config.yaml
 
+# config for making summary line plots by group
+lineplots_by_group_config: data/lineplots_config.yaml
+
 # output directories / files
 summary_dir: results/summary
 figs_dir: results/figures
@@ -170,3 +173,4 @@ early2020_strong_escape_sites: results/early2020_escape_profiles/strong_escape_s
 early2020_escape_profiles_dms_colors: results/escape_profiles/early2020_escape_profiles_dms_colors.csv
 pdb_outputs_dir: results/pdb_outputs
 supp_data_dir: results/supp_data
+lineplots_by_group_dir: results/lineplots_by_group

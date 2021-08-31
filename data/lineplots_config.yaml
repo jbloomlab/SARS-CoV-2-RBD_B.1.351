@@ -1,0 +1,30 @@
+# Specify configuration of lineplots averaged across groups.
+b1351_early2020_day30:
+  early 2020 (n=11):
+    - 23_d21_1250
+    - 1C_d26_200
+    - 24C_d32_200
+    - 6C_d33_500
+    - 22C_d28_200
+    - 25C_d48_200
+    - 25_d18_500
+    - 12C_d61_160
+    - 23C_d26_80
+    - 13_d15_200
+    - 7C_d29_500
+    # haven't decided if I should use samples from the Rockefeller cohort
+    # - COV-021_500
+    # - COV-047_200
+    # - COV-057_50
+    # - COV-072_200
+    # - COV-107_80
+  B.1.351 (n=9):
+    - K007_500
+    - K031_500
+    - K033_500
+    - K040_500
+    - K041_500
+    - K046_200
+    - K114_200
+    - K115_old_80
+    - K119_200

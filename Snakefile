@@ -94,8 +94,9 @@ rule make_summary:
         early2020_call_strong_escape_sites=nb_markdown('early2020_call_strong_escape_sites.ipynb'),
         early2020_strong_escape_sites=config['early2020_strong_escape_sites'],
         early2020_escape_profiles=nb_markdown('early2020_escape_profiles.ipynb'),
-        output_pdbs='results/summary/output_pdbs.md',
+        output_pdbs=nb_markdown('output_pdbs.ipynb'),
         make_supp_data=nb_markdown('make_supp_data.ipynb'),
+        lineplots_by_group=nb_markdown('lineplots_by_group.ipynb'),
     output:
         summary = os.path.join(config['summary_dir'], 'summary.md')
     run:
@@ -117,8 +118,8 @@ rule make_summary:
             Here is the Markdown output of each notebook in the workflow:
             1. Get prior DMS mutation-level [binding and expression data]({path(input.get_mut_bind_expr)}).
 
-            2. Get prior MAPping [escape_fracs]({path(input.get_early2020_escape_fracs)}) for polyclonal plasmas from early 2020 against the Wuhan-1 RBD library. 
-            
+            2. Get prior MAPping [escape_fracs]({path(input.get_early2020_escape_fracs)}) for polyclonal plasmas from early 2020 against the Wuhan-1 RBD library.
+
             2. [Process PacBio CCSs]({path(input.process_ccs)}).
 
             3. [Build variants from CCSs]({path(input.build_variants)}).
@@ -128,22 +129,22 @@ rule make_summary:
             4. Count variants and then
                [aggregate counts]({path(input.aggregate_variant_counts)}) to create
                to create [variant counts file]({path(input.variant_counts)}).
-            
+
             5. [Analyze sequencing counts to cells ratio]({path(input.counts_to_cells_ratio)});
                this prints a list of any samples where this ratio too low. Also
                creates [a CSV]({path(input.counts_to_cells_csv)}) with the
                sequencing counts, number of sorted cells, and ratios for
                all samples.
-            
+
             6. [Escape scores from variant counts]({path(input.counts_to_scores)}).
-            
+
             7. [Call sites of strong escape]({path(input.call_strong_escape_sites)}),
                and write to [a CSV file]({path(input.strong_escape_sites)}).
-            
+
             8. Plot [escape profiles]({path(input.escape_profiles)}).
-            
+
             9. Map escape profiles to ``*.pdb`` files using [this notebook]({path(input.output_pdbs)})
-            
+
             10. [Make supplementary data files]({path(input.make_supp_data)}),
                 which are [here]({path(config['supp_data_dir'])}). These include
                 `dms-view` input files.
@@ -161,6 +162,20 @@ rule make_rulegraph:
         os.path.join(config['summary_dir'], 'rulegraph.svg')
     shell:
         "snakemake --forceall --rulegraph | dot -Tsvg > {output}"
+
+rule lineplots_by_group:
+    input:
+        config['early2020_escape_fracs'],
+        config['escape_fracs'],
+        "data/pdbs/6M0J.pdb",
+    output:
+        nb_markdown=nb_markdown('lineplots_by_group.ipynb'),
+        outdir=directory(config['lineplots_by_group_dir']),
+    params:
+        nb='lineplots_by_group.ipynb'
+    shell:
+        "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
+
 
 rule make_supp_data:
     input:
@@ -204,7 +219,7 @@ rule early2020_escape_profiles:
         nb='early2020_escape_profiles.ipynb'
     shell:
         "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
-        
+
 rule early2020_call_strong_escape_sites:
     """Call sites of strong escape for early 2020 samples."""
     input:
@@ -233,7 +248,7 @@ rule escape_profiles:
         nb='escape_profiles.ipynb'
     shell:
         "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
-        
+
 rule call_strong_escape_sites:
     """Call sites of strong escape."""
     input:
@@ -356,21 +371,21 @@ rule build_variants:
         "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
 
 rule get_early2020_escape_fracs:
-    """Download escape_fracs for early 2020 polyclonal plasmas 
+    """Download escape_fracs for early 2020 polyclonal plasmas
         against Wuhan-1 RBD library from URL.
     """
     output:
         file=config['early2020_escape_fracs']
     run:
         urllib.request.urlretrieve(config['early2020_escape_fracs_url'], output.file)
-        
+
 rule get_early2020_mut_bind_expr:
     """Download SARS-CoV-2 Wuhan-1 mutation ACE2-binding and expression from URL."""
     output:
         file=config['early2020_mut_bind_expr']
     run:
         urllib.request.urlretrieve(config['early2020_mut_bind_expr_url'], output.file)
-        
+
 rule get_mut_bind_expr:
     """Download SARS-CoV-2 mutation ACE2-binding and expression from URL."""
     output:
