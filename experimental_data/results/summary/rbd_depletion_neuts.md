@@ -95,7 +95,7 @@ display(HTML(fitparams.to_html(index=False)))
     Getting data from 2021-06-10
 
 
-    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/neutcurve/hillcurve.py:741: RuntimeWarning: invalid value encountered in power
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/neutcurve/hillcurve.py:741: RuntimeWarning: invalid value encountered in power
 
 
 
@@ -132,7 +132,7 @@ display(HTML(fitparams.to_html(index=False)))
       <td>mock depletion</td>
       <td>0.000197</td>
       <td>interpolated</td>
-      <td>5081.755209</td>
+      <td>5081.755145</td>
       <td>False</td>
     </tr>
     <tr>
@@ -164,7 +164,7 @@ display(HTML(fitparams.to_html(index=False)))
       <td>mock depletion</td>
       <td>0.006938</td>
       <td>interpolated</td>
-      <td>144.127658</td>
+      <td>144.127664</td>
       <td>False</td>
     </tr>
     <tr>
@@ -212,7 +212,7 @@ display(HTML(fitparams.to_html(index=False)))
       <td>mock depletion</td>
       <td>0.000407</td>
       <td>interpolated</td>
-      <td>2459.294005</td>
+      <td>2459.294008</td>
       <td>False</td>
     </tr>
     <tr>
@@ -228,7 +228,7 @@ display(HTML(fitparams.to_html(index=False)))
       <td>mock depletion</td>
       <td>0.000594</td>
       <td>interpolated</td>
-      <td>1683.435561</td>
+      <td>1683.435550</td>
       <td>False</td>
     </tr>
     <tr>
@@ -236,7 +236,7 @@ display(HTML(fitparams.to_html(index=False)))
       <td>RBD antibodies depleted</td>
       <td>0.004173</td>
       <td>interpolated</td>
-      <td>239.660236</td>
+      <td>239.660241</td>
       <td>False</td>
     </tr>
     <tr>
@@ -252,7 +252,7 @@ display(HTML(fitparams.to_html(index=False)))
       <td>RBD antibodies depleted</td>
       <td>0.002881</td>
       <td>interpolated</td>
-      <td>347.054493</td>
+      <td>347.054494</td>
       <td>False</td>
     </tr>
     <tr>
@@ -260,7 +260,7 @@ display(HTML(fitparams.to_html(index=False)))
       <td>mock depletion</td>
       <td>0.000297</td>
       <td>interpolated</td>
-      <td>3369.006960</td>
+      <td>3369.006933</td>
       <td>False</td>
     </tr>
     <tr>
@@ -268,7 +268,7 @@ display(HTML(fitparams.to_html(index=False)))
       <td>RBD antibodies depleted</td>
       <td>0.004643</td>
       <td>interpolated</td>
-      <td>215.377504</td>
+      <td>215.377493</td>
       <td>False</td>
     </tr>
     <tr>
@@ -292,7 +292,7 @@ display(HTML(fitparams.to_html(index=False)))
       <td>mock depletion</td>
       <td>0.000322</td>
       <td>interpolated</td>
-      <td>3108.634600</td>
+      <td>3108.634584</td>
       <td>False</td>
     </tr>
     <tr>
@@ -326,7 +326,9 @@ plotfile.close()
 ```
 
 
+    
 ![png](rbd_depletion_neuts_files/rbd_depletion_neuts_10_0.png)
+    
 
 
 
@@ -343,7 +345,9 @@ plotfile.close()
 ```
 
 
+    
 ![png](rbd_depletion_neuts_files/rbd_depletion_neuts_11_0.png)
+    
 
 
 
@@ -436,14 +440,14 @@ display(HTML(foldchange.head(10).to_html(index=False)))
       <td>0.000322</td>
       <td>16.288136</td>
       <td>93</td>
-      <td>3108.634600</td>
+      <td>3108.634584</td>
       <td>190.852692</td>
       <td>False</td>
       <td>93%</td>
       <td>mock depletion</td>
       <td>0.000322</td>
       <td>interpolated</td>
-      <td>3108.634600</td>
+      <td>3108.634584</td>
       <td>False</td>
     </tr>
     <tr>
@@ -452,7 +456,7 @@ display(HTML(foldchange.head(10).to_html(index=False)))
       <td>0.000322</td>
       <td>16.288136</td>
       <td>93</td>
-      <td>3108.634600</td>
+      <td>3108.634584</td>
       <td>190.852692</td>
       <td>False</td>
       <td>93%</td>
@@ -469,7 +473,7 @@ display(HTML(foldchange.head(10).to_html(index=False)))
       <td>13.256727</td>
       <td>92</td>
       <td>4600.806832</td>
-      <td>347.054493</td>
+      <td>347.054494</td>
       <td>False</td>
       <td>92%</td>
       <td>mock depletion</td>
@@ -485,45 +489,45 @@ display(HTML(foldchange.head(10).to_html(index=False)))
       <td>13.256727</td>
       <td>92</td>
       <td>4600.806832</td>
-      <td>347.054493</td>
+      <td>347.054494</td>
       <td>False</td>
       <td>92%</td>
       <td>RBD antibodies depleted</td>
       <td>0.002881</td>
       <td>interpolated</td>
-      <td>347.054493</td>
+      <td>347.054494</td>
       <td>False</td>
     </tr>
     <tr>
       <td>K040</td>
       <td>0.004643</td>
       <td>0.000297</td>
-      <td>15.642334</td>
+      <td>15.642335</td>
       <td>93</td>
-      <td>3369.006960</td>
-      <td>215.377504</td>
+      <td>3369.006933</td>
+      <td>215.377493</td>
       <td>False</td>
       <td>93%</td>
       <td>mock depletion</td>
       <td>0.000297</td>
       <td>interpolated</td>
-      <td>3369.006960</td>
+      <td>3369.006933</td>
       <td>False</td>
     </tr>
     <tr>
       <td>K040</td>
       <td>0.004643</td>
       <td>0.000297</td>
-      <td>15.642334</td>
+      <td>15.642335</td>
       <td>93</td>
-      <td>3369.006960</td>
-      <td>215.377504</td>
+      <td>3369.006933</td>
+      <td>215.377493</td>
       <td>False</td>
       <td>93%</td>
       <td>RBD antibodies depleted</td>
       <td>0.004643</td>
       <td>interpolated</td>
-      <td>215.377504</td>
+      <td>215.377493</td>
       <td>False</td>
     </tr>
     <tr>
@@ -532,14 +536,14 @@ display(HTML(foldchange.head(10).to_html(index=False)))
       <td>0.000407</td>
       <td>25.035766</td>
       <td>96</td>
-      <td>2459.294005</td>
+      <td>2459.294008</td>
       <td>98.231227</td>
       <td>False</td>
       <td>96%</td>
       <td>mock depletion</td>
       <td>0.000407</td>
       <td>interpolated</td>
-      <td>2459.294005</td>
+      <td>2459.294008</td>
       <td>False</td>
     </tr>
     <tr>
@@ -548,7 +552,7 @@ display(HTML(foldchange.head(10).to_html(index=False)))
       <td>0.000407</td>
       <td>25.035766</td>
       <td>96</td>
-      <td>2459.294005</td>
+      <td>2459.294008</td>
       <td>98.231227</td>
       <td>False</td>
       <td>96%</td>
@@ -607,12 +611,14 @@ _ = p.draw()
 p.save(f'{resultsdir}/NT50_trackplot.pdf')
 ```
 
-    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/plotnine/ggplot.py:727: PlotnineWarning: Saving 3.5 x 2.25 in image.
-    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/plotnine/ggplot.py:730: PlotnineWarning: Filename: results/rbd_depletion_neuts/NT50_trackplot.pdf
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/ggplot.py:719: PlotnineWarning: Saving 3.5 x 2.25 in image.
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/ggplot.py:722: PlotnineWarning: Filename: results/rbd_depletion_neuts/NT50_trackplot.pdf
 
 
 
+    
 ![png](rbd_depletion_neuts_files/rbd_depletion_neuts_14_1.png)
+    
 
 
 
@@ -770,12 +776,14 @@ _ = NT50_lines.draw()
 NT50_lines.save(f'{resultsdir}/compare_Wuhan1_B1351_RBDtargeting.pdf')
 ```
 
-    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/plotnine/ggplot.py:727: PlotnineWarning: Saving 4 x 3 in image.
-    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/plotnine/ggplot.py:730: PlotnineWarning: Filename: results/rbd_depletion_neuts/compare_Wuhan1_B1351_RBDtargeting.pdf
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/ggplot.py:719: PlotnineWarning: Saving 4 x 3 in image.
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/ggplot.py:722: PlotnineWarning: Filename: results/rbd_depletion_neuts/compare_Wuhan1_B1351_RBDtargeting.pdf
 
 
 
+    
 ![png](rbd_depletion_neuts_files/rbd_depletion_neuts_17_1.png)
+    
 
 
 
@@ -800,12 +808,16 @@ _ = p.draw()
 p.save(f'{resultsdir}/compare_percentRBD.pdf')
 ```
 
-    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/plotnine/ggplot.py:727: PlotnineWarning: Saving 4 x 3 in image.
-    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/plotnine/ggplot.py:730: PlotnineWarning: Filename: results/rbd_depletion_neuts/compare_percentRBD.pdf
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/geoms/geom_point.py:61: UserWarning: You passed a edgecolor/edgecolors (['#333333ff', '#333333ff']) for an unfilled marker ('').  Matplotlib is ignoring the edgecolor in favor of the facecolor.  This behavior may change in the future.
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/ggplot.py:719: PlotnineWarning: Saving 4 x 3 in image.
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/ggplot.py:722: PlotnineWarning: Filename: results/rbd_depletion_neuts/compare_percentRBD.pdf
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/geoms/geom_point.py:61: UserWarning: You passed a edgecolor/edgecolors (['#333333ff', '#333333ff']) for an unfilled marker ('').  Matplotlib is ignoring the edgecolor in favor of the facecolor.  This behavior may change in the future.
 
 
 
+    
 ![png](rbd_depletion_neuts_files/rbd_depletion_neuts_18_1.png)
+    
 
 
 
@@ -839,7 +851,7 @@ print(f"  Cox proportional-hazards censored: P = {cph.summary.at['groupA', 'p']:
 ```
 
     Comparing early 2020 to B.1.351
-      Mann-Whitney test:      P = 0.0061
+      Mann-Whitney test:      P = 0.012
       Log-rank test:          P = 0.087
       Log-rank test censored: P = 0.087
       Cox proportional-hazards censored: P = 0.12

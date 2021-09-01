@@ -26,4 +26,5 @@ dependencies:
     - dms-variants==0.8.10
     - dmslogo==0.6.2
     - neutcurve
+    - openpyxl
     - pdb_prot_align

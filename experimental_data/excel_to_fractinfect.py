@@ -67,7 +67,7 @@ def main():
 
     sheet_data = pd.read_excel(excelfile,
                                sheet_name=None,  # read all sheets
-                               engine='xlrd',
+                               engine='openpyxl',
                                skiprows=range(0, 22),
                                index_col=0,
                                nrows=8
