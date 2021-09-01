@@ -230,7 +230,9 @@ plt.close(fig)
 
 
 
+    
 ![png](analyze_neut_data_files/analyze_neut_data_10_1.png)
+    
 
 
 Use [neutcurve](https://jbloomlab.github.io/neutcurve/) to fit neutralization curves to all of the data:
@@ -262,9 +264,12 @@ for d in fracinfect['date'].unique():
 fitparams.head()
 ```
 
-    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/scipy/optimize/minpack.py:807: OptimizeWarning: Covariance of the parameters could not be estimated
-    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/neutcurve/hillcurve.py:741: RuntimeWarning: invalid value encountered in power
-    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/neutcurve/hillcurve.py:741: RuntimeWarning: divide by zero encountered in true_divide
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/neutcurve/hillcurve.py:451: RuntimeWarning: invalid value encountered in sqrt
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/scipy/optimize/minpack.py:833: OptimizeWarning: Covariance of the parameters could not be estimated
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/neutcurve/hillcurve.py:741: RuntimeWarning: invalid value encountered in power
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/neutcurve/hillcurve.py:741: RuntimeWarning: divide by zero encountered in true_divide
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/neutcurve/hillcurve.py:741: RuntimeWarning: invalid value encountered in power
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/scipy/optimize/minpack.py:833: OptimizeWarning: Covariance of the parameters could not be estimated
 
 
 
@@ -305,7 +310,7 @@ fitparams.head()
       <td>K041</td>
       <td>B.1.351-K484Q</td>
       <td>0.001137</td>
-      <td>879.582341</td>
+      <td>879.582342</td>
       <td>interpolated</td>
       <td>2021-08-27</td>
       <td>1</td>
@@ -317,7 +322,7 @@ fitparams.head()
       <td>K041</td>
       <td>B.1.351-K484Q</td>
       <td>0.001380</td>
-      <td>724.861603</td>
+      <td>724.862206</td>
       <td>interpolated</td>
       <td>2021-08-27</td>
       <td>2</td>
@@ -329,7 +334,7 @@ fitparams.head()
       <td>K041</td>
       <td>B.1.351-K484Q</td>
       <td>0.001393</td>
-      <td>717.838222</td>
+      <td>717.838223</td>
       <td>interpolated</td>
       <td>2021-08-27</td>
       <td>average</td>
@@ -341,7 +346,7 @@ fitparams.head()
       <td>K041</td>
       <td>wildtype</td>
       <td>0.000481</td>
-      <td>2077.386549</td>
+      <td>2077.386543</td>
       <td>interpolated</td>
       <td>2021-08-27</td>
       <td>1</td>
@@ -353,7 +358,7 @@ fitparams.head()
       <td>K041</td>
       <td>wildtype</td>
       <td>0.000548</td>
-      <td>1824.055316</td>
+      <td>1824.055323</td>
       <td>interpolated</td>
       <td>2021-08-27</td>
       <td>2</td>
@@ -427,9 +432,13 @@ fitparams_fixtop = (fitparams_fixtop
 display(HTML(fitparams_fixtop.head().to_html()))
 ```
 
-    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/scipy/optimize/minpack.py:807: OptimizeWarning: Covariance of the parameters could not be estimated
-    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/neutcurve/hillcurve.py:741: RuntimeWarning: invalid value encountered in power
-    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/neutcurve/hillcurve.py:451: RuntimeWarning: invalid value encountered in sqrt
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/neutcurve/hillcurve.py:451: RuntimeWarning: invalid value encountered in sqrt
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/scipy/optimize/minpack.py:833: OptimizeWarning: Covariance of the parameters could not be estimated
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/neutcurve/hillcurve.py:741: RuntimeWarning: invalid value encountered in power
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/neutcurve/hillcurve.py:451: RuntimeWarning: invalid value encountered in sqrt
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/neutcurve/hillcurve.py:741: RuntimeWarning: invalid value encountered in power
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/neutcurve/hillcurve.py:741: RuntimeWarning: invalid value encountered in power
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/scipy/optimize/minpack.py:833: OptimizeWarning: Covariance of the parameters could not be estimated
 
 
 
@@ -474,7 +483,7 @@ display(HTML(fitparams_fixtop.head().to_html()))
       <td>2.501544</td>
       <td>0.001380</td>
       <td>0.000548</td>
-      <td>2.516419</td>
+      <td>2.516417</td>
     </tr>
     <tr>
       <th>2</th>
@@ -551,11 +560,15 @@ for param in [('ic50', 'ic50_fixtop'), ('fold_change', 'fold_change_fixtop')]:
 
 
 
+    
 ![png](analyze_neut_data_files/analyze_neut_data_16_1.png)
+    
 
 
 
+    
 ![png](analyze_neut_data_files/analyze_neut_data_16_2.png)
+    
 
 
 Make a plot showing all viruses against each sera:
@@ -587,15 +600,15 @@ for d in fracinfect['date'].unique():
     Saving to results/neut_titers/2021-08-27_mutant_neuts.pdf
 
 
-    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/neutcurve/hillcurve.py:741: RuntimeWarning: invalid value encountered in power
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/neutcurve/hillcurve.py:741: RuntimeWarning: invalid value encountered in power
 
 
     Saving to results/neut_titers/2021-06-10_mutant_neuts.pdf
     Saving to results/neut_titers/2021-08-20_mutant_neuts.pdf
 
 
-    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/neutcurve/hillcurve.py:741: RuntimeWarning: invalid value encountered in power
-    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/scipy/optimize/minpack.py:807: OptimizeWarning: Covariance of the parameters could not be estimated
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/neutcurve/hillcurve.py:741: RuntimeWarning: invalid value encountered in power
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/scipy/optimize/minpack.py:833: OptimizeWarning: Covariance of the parameters could not be estimated
 
 
     Saving to results/neut_titers/2021-08-26_mutant_neuts.pdf
@@ -603,23 +616,33 @@ for d in fracinfect['date'].unique():
 
 
 
+    
 ![png](analyze_neut_data_files/analyze_neut_data_18_5.png)
+    
 
 
 
+    
 ![png](analyze_neut_data_files/analyze_neut_data_18_6.png)
+    
 
 
 
+    
 ![png](analyze_neut_data_files/analyze_neut_data_18_7.png)
+    
 
 
 
+    
 ![png](analyze_neut_data_files/analyze_neut_data_18_8.png)
+    
 
 
 
+    
 ![png](analyze_neut_data_files/analyze_neut_data_18_9.png)
+    
 
 
 ### Calculate fold-change IC50 relative to the gemetric mean of the wildtype virus against each serum on each date
@@ -674,7 +697,7 @@ neut_titers.to_csv(neut_titers_file, index=False)
       <td>K041</td>
       <td>B.1.351-K484Q</td>
       <td>0.001137</td>
-      <td>879.582341</td>
+      <td>879.582342</td>
       <td>interpolated</td>
       <td>2021-08-27</td>
       <td>1</td>
@@ -687,20 +710,20 @@ neut_titers.to_csv(neut_titers_file, index=False)
       <td>K041</td>
       <td>B.1.351-K484Q</td>
       <td>0.001380</td>
-      <td>724.861603</td>
+      <td>724.862206</td>
       <td>interpolated</td>
       <td>2021-08-27</td>
       <td>2</td>
       <td>True</td>
       <td>False</td>
       <td>0.000514</td>
-      <td>2.685484</td>
+      <td>2.685482</td>
     </tr>
     <tr>
       <td>K041</td>
       <td>B.1.351-K484Q</td>
       <td>0.001393</td>
-      <td>717.838222</td>
+      <td>717.838223</td>
       <td>interpolated</td>
       <td>2021-08-27</td>
       <td>average</td>
@@ -713,7 +736,7 @@ neut_titers.to_csv(neut_titers_file, index=False)
       <td>K041</td>
       <td>wildtype</td>
       <td>0.000481</td>
-      <td>2077.386549</td>
+      <td>2077.386543</td>
       <td>interpolated</td>
       <td>2021-08-27</td>
       <td>1</td>
@@ -726,7 +749,7 @@ neut_titers.to_csv(neut_titers_file, index=False)
       <td>K041</td>
       <td>wildtype</td>
       <td>0.000548</td>
-      <td>1824.055316</td>
+      <td>1824.055323</td>
       <td>interpolated</td>
       <td>2021-08-27</td>
       <td>2</td>
@@ -768,7 +791,7 @@ display(HTML(neut_titers.query('virus=="wildtype" & replicate != "average" & (fo
       <td>K031</td>
       <td>wildtype</td>
       <td>0.000496</td>
-      <td>2015.434699</td>
+      <td>2015.434751</td>
       <td>interpolated</td>
       <td>2021-06-10</td>
       <td>1</td>
@@ -781,7 +804,7 @@ display(HTML(neut_titers.query('virus=="wildtype" & replicate != "average" & (fo
       <td>K031</td>
       <td>wildtype</td>
       <td>0.000226</td>
-      <td>4422.227189</td>
+      <td>4422.227100</td>
       <td>interpolated</td>
       <td>2021-06-10</td>
       <td>2</td>
@@ -794,7 +817,7 @@ display(HTML(neut_titers.query('virus=="wildtype" & replicate != "average" & (fo
       <td>K046</td>
       <td>wildtype</td>
       <td>0.000346</td>
-      <td>2888.596520</td>
+      <td>2888.596538</td>
       <td>interpolated</td>
       <td>2021-08-21</td>
       <td>1</td>
@@ -807,7 +830,7 @@ display(HTML(neut_titers.query('virus=="wildtype" & replicate != "average" & (fo
       <td>K046</td>
       <td>wildtype</td>
       <td>0.000648</td>
-      <td>1542.465186</td>
+      <td>1542.465196</td>
       <td>interpolated</td>
       <td>2021-08-21</td>
       <td>2</td>
@@ -820,7 +843,7 @@ display(HTML(neut_titers.query('virus=="wildtype" & replicate != "average" & (fo
       <td>K119</td>
       <td>wildtype</td>
       <td>0.000266</td>
-      <td>3761.207286</td>
+      <td>3761.207283</td>
       <td>interpolated</td>
       <td>2021-08-21</td>
       <td>1</td>
@@ -833,7 +856,7 @@ display(HTML(neut_titers.query('virus=="wildtype" & replicate != "average" & (fo
       <td>K119</td>
       <td>wildtype</td>
       <td>0.000162</td>
-      <td>6177.343348</td>
+      <td>6177.343337</td>
       <td>interpolated</td>
       <td>2021-08-21</td>
       <td>2</td>
@@ -1128,11 +1151,43 @@ for b in ('average', 'not_average'):
 
 
 
+    
 ![png](analyze_neut_data_files/analyze_neut_data_27_1.png)
+    
 
 
 
+    
 ![png](analyze_neut_data_files/analyze_neut_data_27_2.png)
+    
+
+
+
+```python
+neut_titers=(neut_titers.assign(virus_labels=lambda x: x['virus']
+                                .map(config['virus_simplified_names']),
+                                serum_virus=lambda x: x['serum'].astype(str)+'\n'+x['infecting_virus']
+                               )
+            )
+
+neut_titers=(neut_titers.assign(virus_labels=lambda x: pd.Categorical(x['virus_labels'],ordered=True,categories=(config['virus_simplified_names_order'])),))
+```
+
+
+```python
+neut_titers['serum_virus'].unique()
+```
+
+
+
+
+    array(['K041\nB.1.351', 'K046\nB.1.351', 'K114\nB.1.351', 'K119\nB.1.351',
+           'K007\nB.1.351', 'K031\nB.1.351', 'K033\nB.1.351', 'K040\nB.1.351',
+           'participant A (day 21)\nearly 2020',
+           'participant C (day 32)\nearly 2020',
+           'participant I (day 26)\nearly 2020',
+           'participant B (day 26)\nearly 2020'], dtype=object)
+
 
 
 
@@ -1148,21 +1203,20 @@ for metric in ['fold_change', 'ic50']:
         p = (ggplot(neut_titers
                     .query("virus in @virus_subsample & date in @dates & replicate!= 'average'")
                     ) +
-             aes('virus', metric, shape='ic50_is_bound',
+             aes('virus_labels', metric, shape='ic50_is_bound',
                 ) +
              geom_point(aes(fill='date'), size=2.5, alpha=0.5, ) + #fill='#999999', 
              scale_y_log10(name=ylab[metric]) +
-             facet_wrap('~serum', ncol=4, scales='free_x') +
+             facet_wrap('~serum_virus', ncol=4, scales='fixed') +
              theme_classic() +
              theme(axis_text_x=element_text(angle=90),
                axis_title_x=element_blank(),
                strip_background_x=element_blank(),
-               subplots_adjust={'hspace': 1.15},
-               figure_size=(12, 12),
+               figure_size=(9, 6),
                ) +
              geom_hline(data=(neut_titers
                               .query('virus in ["wildtype", "RBD antibodies depleted"] & replicate!="average"')
-                              .groupby(['serum', 'virus'])
+                              .groupby(['serum', 'virus', 'serum_virus'])
                               .agg({metric: geometric_mean})
                               .reset_index()
                              ),
@@ -1187,33 +1241,122 @@ for metric in ['fold_change', 'ic50']:
     Making plot for fold_change for all:
 
 
-    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/plotnine/layer.py:467: PlotnineWarning: geom_hline : Removed 192 rows containing missing values.
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 2568 rows containing missing values.
 
 
     Saving to results/neut_titers/fold_change_all.pdf
 
 
-    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/plotnine/layer.py:467: PlotnineWarning: geom_hline : Removed 192 rows containing missing values.
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 2568 rows containing missing values.
 
 
     Making plot for ic50 for all:
 
 
-    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/plotnine/layer.py:467: PlotnineWarning: geom_hline : Removed 192 rows containing missing values.
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 2568 rows containing missing values.
 
 
     Saving to results/neut_titers/ic50_all.pdf
 
 
-    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/plotnine/layer.py:467: PlotnineWarning: geom_hline : Removed 192 rows containing missing values.
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 2568 rows containing missing values.
 
 
 
-![png](analyze_neut_data_files/analyze_neut_data_28_8.png)
+    
+![png](analyze_neut_data_files/analyze_neut_data_30_8.png)
+    
 
 
 
-![png](analyze_neut_data_files/analyze_neut_data_28_9.png)
+    
+![png](analyze_neut_data_files/analyze_neut_data_30_9.png)
+    
+
+
+Make plots without adding color by date:
+
+
+```python
+for metric in ['fold_change', 'ic50']:
+    for virus_set, virus_subsample in config['virus_subsets'].items():
+        print(f'Making plot for {metric} for {virus_set}:')
+        
+        ylab={'fold_change':'fold decrease in neutralization', 'ic50':'inhibitory concentration 50% (IC50)'}
+
+        dates=neut_titers.query("virus in @virus_subsample & virus not in ['wildtype', 'RBD antibodies depleted']")['date'].unique()
+
+        p = (ggplot(neut_titers
+                    .query("virus in @virus_subsample & date in @dates & replicate!= 'average'")
+                    ) +
+             aes('virus_labels', metric, shape='ic50_is_bound',
+                ) +
+             geom_point(size=2, alpha=0.5, fill='#999999',) +  
+             scale_y_log10(name=ylab[metric]) +
+             facet_wrap('~serum_virus', ncol=4, scales='fixed') +
+             theme_classic() +
+             theme(axis_text_x=element_text(angle=90),
+               axis_title_x=element_blank(),
+               strip_background_x=element_blank(),
+               figure_size=(9, 6),
+               ) +
+             geom_hline(data=(neut_titers
+                              .query('virus in ["wildtype", "RBD antibodies depleted"] & replicate!="average"')
+                              .groupby(['serum', 'virus', 'serum_virus'])
+                              .agg({metric: geometric_mean})
+                              .reset_index()
+                             ),
+                        inherit_aes=False,
+                        mapping=aes(yintercept=metric, color='virus'),
+                        alpha=0.7,
+                        size=0.5,
+                        linetype='dotted',
+                       ) +
+             scale_shape_manual(values=['o','^'], name='limit of detection') +
+             scale_color_manual(values=CBPALETTE*3, guide=False) 
+             )
+
+        _ = p.draw()
+
+        plotfile = f'{results}/{metric}_{virus_set}.pdf'
+        print(f"Saving to {plotfile}")
+        p.save(plotfile, limitsize=False, verbose=False)
+```
+
+    Making plot for fold_change for all:
+
+
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 2568 rows containing missing values.
+
+
+    Saving to results/neut_titers/fold_change_all.pdf
+
+
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 2568 rows containing missing values.
+
+
+    Making plot for ic50 for all:
+
+
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 2568 rows containing missing values.
+
+
+    Saving to results/neut_titers/ic50_all.pdf
+
+
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 2568 rows containing missing values.
+
+
+
+    
+![png](analyze_neut_data_files/analyze_neut_data_32_8.png)
+    
+
+
+
+    
+![png](analyze_neut_data_files/analyze_neut_data_32_9.png)
+    
 
 
 ### Plot the results for all individuals on one plot and add the geometric mean of all 8 measurements (2 replicates * 4 sera) for each virus
@@ -1280,33 +1423,37 @@ for metric in ['fold_change', 'ic50']:
     Making plot for fold_change for all:
 
 
-    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/plotnine/layer.py:467: PlotnineWarning: geom_hline : Removed 34 rows containing missing values.
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 34 rows containing missing values.
 
 
     Saving to results/neut_titers/fold_change_all_aggregate.pdf
 
 
-    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/plotnine/layer.py:467: PlotnineWarning: geom_hline : Removed 34 rows containing missing values.
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 34 rows containing missing values.
 
 
     Making plot for ic50 for all:
 
 
-    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/plotnine/layer.py:467: PlotnineWarning: geom_hline : Removed 34 rows containing missing values.
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 34 rows containing missing values.
 
 
     Saving to results/neut_titers/ic50_all_aggregate.pdf
 
 
-    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/plotnine/layer.py:467: PlotnineWarning: geom_hline : Removed 34 rows containing missing values.
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 34 rows containing missing values.
 
 
 
-![png](analyze_neut_data_files/analyze_neut_data_30_8.png)
+    
+![png](analyze_neut_data_files/analyze_neut_data_34_8.png)
+    
 
 
 
-![png](analyze_neut_data_files/analyze_neut_data_30_9.png)
+    
+![png](analyze_neut_data_files/analyze_neut_data_34_9.png)
+    
 
 
 
@@ -1371,37 +1518,41 @@ for metric in ['fold_change', 'ic50']:
     Making plot for fold_change for all:
 
 
-    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/plotnine/layer.py:467: PlotnineWarning: geom_hline : Removed 34 rows containing missing values.
-    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/plotnine/guides/guides.py:197: PlotnineWarning: Cannot generate legend for the 'fill' aesthetic. Make sure you have mapped a variable to it
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 34 rows containing missing values.
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/guides/guides.py:197: PlotnineWarning: Cannot generate legend for the 'fill' aesthetic. Make sure you have mapped a variable to it
 
 
     Saving to results/neut_titers/fold_change_all_aggregate_nocolors.pdf
 
 
-    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/plotnine/layer.py:467: PlotnineWarning: geom_hline : Removed 34 rows containing missing values.
-    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/plotnine/guides/guides.py:197: PlotnineWarning: Cannot generate legend for the 'fill' aesthetic. Make sure you have mapped a variable to it
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 34 rows containing missing values.
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/guides/guides.py:197: PlotnineWarning: Cannot generate legend for the 'fill' aesthetic. Make sure you have mapped a variable to it
 
 
     Making plot for ic50 for all:
 
 
-    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/plotnine/layer.py:467: PlotnineWarning: geom_hline : Removed 34 rows containing missing values.
-    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/plotnine/guides/guides.py:197: PlotnineWarning: Cannot generate legend for the 'fill' aesthetic. Make sure you have mapped a variable to it
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 34 rows containing missing values.
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/guides/guides.py:197: PlotnineWarning: Cannot generate legend for the 'fill' aesthetic. Make sure you have mapped a variable to it
 
 
     Saving to results/neut_titers/ic50_all_aggregate_nocolors.pdf
 
 
-    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/plotnine/layer.py:467: PlotnineWarning: geom_hline : Removed 34 rows containing missing values.
-    /fh/fast/bloom_j/software/miniconda3/envs/BloomLab/lib/python3.8/site-packages/plotnine/guides/guides.py:197: PlotnineWarning: Cannot generate legend for the 'fill' aesthetic. Make sure you have mapped a variable to it
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 34 rows containing missing values.
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/guides/guides.py:197: PlotnineWarning: Cannot generate legend for the 'fill' aesthetic. Make sure you have mapped a variable to it
 
 
 
-![png](analyze_neut_data_files/analyze_neut_data_31_8.png)
+    
+![png](analyze_neut_data_files/analyze_neut_data_35_8.png)
+    
 
 
 
-![png](analyze_neut_data_files/analyze_neut_data_31_9.png)
+    
+![png](analyze_neut_data_files/analyze_neut_data_35_9.png)
+    
 
 
 ## Rename viruses such that they are comparable between the B.1.351 and early 2020 samples. 
@@ -1433,7 +1584,7 @@ neut_titers.query('virus=="wildtype" & infecting_virus=="B.1.351"')['ic50'].agg(
 
 
 
-    0.0003848677285585624
+    0.00038486772827164123
 
 
 
@@ -1456,6 +1607,11 @@ print(neut_titers['ic50_is_bound'].unique())
 for metric in ['fold_change', 'ic50']:
     for virus_set, virus_subsample in config['virus_subsets'].items():
         print(f'Making plot for {metric} for {virus_set}:')
+        
+        if metric=="fold_change":
+            virus_subsample=[v for v in virus_subsample if v!="wildtype"]
+        
+        print(f"Making plot for {neut_titers.query('virus in @virus_subsample')['virus_labels'].nunique()} viruses")
         
         ylab={'fold_change':'fold decrease in neutralization', 
               'ic50':'inhibitory concentration\n50% (IC50)'
@@ -1501,7 +1657,7 @@ for metric in ['fold_change', 'ic50']:
              scale_y_log10(name=ylab[metric]) +
              theme_classic() +
              theme(axis_title_x=element_blank(),
-                   figure_size=(8, 2.5),
+                   figure_size=(neut_titers.query('virus in @virus_subsample')['virus_labels'].nunique()*0.75, 2.5), 
                    ) +
              scale_fill_manual(values=['#44AA99', '#332288'], name='infecting virus\n')+
              scale_color_manual(values=['#44AA99', '#332288'], name='infecting virus\n')
@@ -1531,8 +1687,9 @@ for metric in ['fold_change', 'ic50']:
       <th>wildtype_ic50</th>
       <th>fold_change</th>
       <th>infecting_virus</th>
-      <th>virus_simplified_names</th>
       <th>virus_labels</th>
+      <th>serum_virus</th>
+      <th>virus_simplified_names</th>
     </tr>
   </thead>
   <tbody>
@@ -1541,7 +1698,7 @@ for metric in ['fold_change', 'ic50']:
       <td>K041</td>
       <td>B.1.351-K484Q</td>
       <td>0.001137</td>
-      <td>879.582341</td>
+      <td>879.582342</td>
       <td>interpolated</td>
       <td>2021-08-27</td>
       <td>1</td>
@@ -1551,6 +1708,7 @@ for metric in ['fold_change', 'ic50']:
       <td>2.213101</td>
       <td>B.1.351</td>
       <td>484Q</td>
+      <td>K041\nB.1.351</td>
       <td>484Q</td>
     </tr>
     <tr>
@@ -1558,16 +1716,17 @@ for metric in ['fold_change', 'ic50']:
       <td>K041</td>
       <td>B.1.351-K484Q</td>
       <td>0.001380</td>
-      <td>724.861603</td>
+      <td>724.862206</td>
       <td>interpolated</td>
       <td>2021-08-27</td>
       <td>2</td>
       <td>True</td>
       <td>False</td>
       <td>0.000514</td>
-      <td>2.685484</td>
+      <td>2.685482</td>
       <td>B.1.351</td>
       <td>484Q</td>
+      <td>K041\nB.1.351</td>
       <td>484Q</td>
     </tr>
     <tr>
@@ -1575,7 +1734,7 @@ for metric in ['fold_change', 'ic50']:
       <td>K041</td>
       <td>B.1.351-K484Q</td>
       <td>0.001393</td>
-      <td>717.838222</td>
+      <td>717.838223</td>
       <td>interpolated</td>
       <td>2021-08-27</td>
       <td>average</td>
@@ -1585,6 +1744,7 @@ for metric in ['fold_change', 'ic50']:
       <td>2.711759</td>
       <td>B.1.351</td>
       <td>484Q</td>
+      <td>K041\nB.1.351</td>
       <td>484Q</td>
     </tr>
     <tr>
@@ -1592,7 +1752,7 @@ for metric in ['fold_change', 'ic50']:
       <td>K041</td>
       <td>wildtype</td>
       <td>0.000481</td>
-      <td>2077.386549</td>
+      <td>2077.386543</td>
       <td>interpolated</td>
       <td>2021-08-27</td>
       <td>1</td>
@@ -1602,6 +1762,7 @@ for metric in ['fold_change', 'ic50']:
       <td>0.937045</td>
       <td>B.1.351</td>
       <td>wildtype</td>
+      <td>K041\nB.1.351</td>
       <td>wildtype</td>
     </tr>
     <tr>
@@ -1609,7 +1770,7 @@ for metric in ['fold_change', 'ic50']:
       <td>K041</td>
       <td>wildtype</td>
       <td>0.000548</td>
-      <td>1824.055316</td>
+      <td>1824.055323</td>
       <td>interpolated</td>
       <td>2021-08-27</td>
       <td>2</td>
@@ -1619,6 +1780,7 @@ for metric in ['fold_change', 'ic50']:
       <td>1.067185</td>
       <td>B.1.351</td>
       <td>wildtype</td>
+      <td>K041\nB.1.351</td>
       <td>wildtype</td>
     </tr>
   </tbody>
@@ -1627,17 +1789,23 @@ for metric in ['fold_change', 'ic50']:
 
     [False True]
     Making plot for fold_change for all:
+    Making plot for 8 viruses
     Saving to results/neut_titers/fold_change_all_aggregate_nofacet.pdf
     Making plot for ic50 for all:
+    Making plot for 9 viruses
     Saving to results/neut_titers/ic50_all_aggregate_nofacet.pdf
 
 
 
-![png](analyze_neut_data_files/analyze_neut_data_34_2.png)
+    
+![png](analyze_neut_data_files/analyze_neut_data_38_2.png)
+    
 
 
 
-![png](analyze_neut_data_files/analyze_neut_data_34_3.png)
+    
+![png](analyze_neut_data_files/analyze_neut_data_38_3.png)
+    
 
 
 
