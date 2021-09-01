@@ -89,17 +89,17 @@ virus_simplified_names:
   B.1.351: wildtype
   mock: wildtype
   B.1.351-N417K: 417K/N
-  B.1.351-K484E: 484K/E
+  B.1.351-K484E: 484E/K
   B.1.351-K484Q: 484Q
   B.1.351-L452R: L452R
   B.1.351-G446V: G446V
   B.1.351-K444E: K444E
-  B.1.351-Y501N: 501Y/N
+  B.1.351-Y501N: 501N/Y
   B.1.351-N417K-K484E-Y501N: '417-484-501'
   K417N: 417K/N
-  E484K: 484K/E
+  E484K: 484E/K
   E484Q: 484Q
-  N501Y: 501Y/N
+  N501Y: 501N/Y
   G446V: G446V
   K417N-E484K-N501Y: '417-484-501'
   RBD antibodies depleted: 'RBD antibodies depleted'
@@ -109,8 +109,8 @@ virus_simplified_names_order:
   - L452R
   - G446V
   - 417K/N
-  - 501Y/N
-  - 484K/E
+  - 501N/Y
+  - 484E/K
   - 484Q
   - 417-484-501
   - RBD antibodies depleted
