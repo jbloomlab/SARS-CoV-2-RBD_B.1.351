@@ -1201,7 +1201,7 @@ for metric in ['fold_change', 'ic50']:
         dates=neut_titers.query("virus in @virus_subsample & virus not in ['wildtype', 'RBD antibodies depleted']")['date'].unique()
 
         p = (ggplot(neut_titers
-                    .query("virus in @virus_subsample & date in @dates & replicate!= 'average'")
+                    .query("virus in @virus_subsample & replicate!= 'average'") # & date in @dates
                     ) +
              aes('virus_labels', metric, shape='ic50_is_bound',
                 ) +
@@ -1215,7 +1215,7 @@ for metric in ['fold_change', 'ic50']:
                figure_size=(9, 6),
                ) +
              geom_hline(data=(neut_titers
-                              .query('virus in ["wildtype", "RBD antibodies depleted"] & replicate!="average"')
+                              .query('virus in ["wildtype", "RBD antibodies depleted"] & replicate!="average" ') # & date in @dates
                               .groupby(['serum', 'virus', 'serum_virus'])
                               .agg({metric: geometric_mean})
                               .reset_index()
@@ -1287,7 +1287,7 @@ for metric in ['fold_change', 'ic50']:
         dates=neut_titers.query("virus in @virus_subsample & virus not in ['wildtype', 'RBD antibodies depleted']")['date'].unique()
 
         p = (ggplot(neut_titers
-                    .query("virus in @virus_subsample & date in @dates & replicate!= 'average'")
+                    .query("virus in @virus_subsample & replicate!= 'average'") # & date in @dates
                     ) +
              aes('virus_labels', metric, shape='ic50_is_bound',
                 ) +
@@ -1301,7 +1301,7 @@ for metric in ['fold_change', 'ic50']:
                figure_size=(9, 6),
                ) +
              geom_hline(data=(neut_titers
-                              .query('virus in ["wildtype", "RBD antibodies depleted"] & replicate!="average"')
+                              .query('virus in ["wildtype", "RBD antibodies depleted"] & replicate!="average" ') #& date in @dates
                               .groupby(['serum', 'virus', 'serum_virus'])
                               .agg({metric: geometric_mean})
                               .reset_index()
@@ -1372,13 +1372,13 @@ for metric in ['fold_change', 'ic50']:
         dates=neut_titers.query("virus in @virus_subsample & virus not in ['wildtype']")['date'].unique()
 
         p = (ggplot(neut_titers
-                    .query("virus in @virus_subsample & date in @dates & replicate== 'average'")
+                    .query("virus in @virus_subsample & replicate== 'average'") #& date in @dates
                     ) +
              aes('virus', metric, shape='ic50_is_bound', fill='serum',
                 ) +
              geom_point(size=2.5, alpha=0.5, ) + 
              geom_crossbar(data=(neut_titers
-                                 .query("virus in @virus_subsample & date in @dates & replicate== 'average'")
+                                 .query("virus in @virus_subsample & replicate== 'average'") # & date in @dates
                                  .groupby(['virus', 'infecting_virus'])
                                  .agg({metric: geometric_mean})
                                  .reset_index()
@@ -1396,7 +1396,7 @@ for metric in ['fold_change', 'ic50']:
                    figure_size=(6, 2.5),
                    ) +
              geom_hline(data=(neut_titers
-                              .query('virus in ["wildtype"] & replicate=="average"')
+                              .query('virus in ["wildtype"] & replicate=="average"') # & date in @dates
                               .groupby(['virus', 'infecting_virus'])
                               .agg({metric: geometric_mean})
                               .reset_index()
@@ -1467,13 +1467,13 @@ for metric in ['fold_change', 'ic50']:
         dates=neut_titers.query("virus in @virus_subsample & virus not in ['wildtype']")['date'].unique()
 
         p = (ggplot(neut_titers
-                    .query("virus in @virus_subsample & date in @dates & replicate== 'average'")
+                    .query("virus in @virus_subsample & replicate== 'average'") #  & date in @dates
                     ) +
              aes('virus', metric, shape='ic50_is_bound',
                 ) +
              geom_point(size=2.5, alpha=0.5, ) + 
              geom_crossbar(data=(neut_titers
-                                 .query("virus in @virus_subsample & date in @dates & replicate== 'average'")
+                                 .query("virus in @virus_subsample & replicate== 'average'") # & date in @dates
                                  .groupby(['virus', 'infecting_virus'])
                                  .agg({metric: geometric_mean})
                                  .reset_index()
@@ -1491,7 +1491,7 @@ for metric in ['fold_change', 'ic50']:
                    figure_size=(6, 2.5),
                    ) +
              geom_hline(data=(neut_titers
-                              .query('virus in ["wildtype"] & replicate=="average"')
+                              .query('virus in ["wildtype"] & replicate=="average"') # & date in @dates
                               .groupby(['virus', 'infecting_virus'])
                               .agg({metric: geometric_mean})
                               .reset_index()
