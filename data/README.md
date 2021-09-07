@@ -15,6 +15,11 @@ These files are used for the basic processing of the deep sequencing data to cal
    - [barcode_runs.csv](barcode_runs.csv): list of the Illumina runs used to count the barcodes for different samples. This file is built from [barcode_runs_orig-names.csv](barcode_runs_orig-names.csv) by the Jupyter notebook [build_barcode_runs.ipynb](build_barcode_runs.ipynb).
 
    - [RBD_sites.csv](RBD_sites.csv): gives site and residue information for SARS-CoV-2, including alignment of the RBD integer numbering with the Spike numbering for SARS-CoV-2 RBD, alignment to SARS-CoV, and structural annotations as detailed below.
+   
+   - [plasmid_maps](plasmid_maps/): This subdirectory contains the full Genbank maps for key plasmids used in the study: 
+    - the wildtype D614G and B.1.351 spike expression plasmids used to make pseudotyped lentiviral particles, 
+    - the B.1.351 wildtype RBD yeast-display plasmid, and 
+    - the fully assembled plasmid, including the Illumina adaptors and Nx16 barcode, that was used as the template for designing the Twist site-saturation variant libraries.
 
 ## For visualizing serum-escape data:
 
