@@ -69,7 +69,7 @@ print('Making supplementary data for the following condition sets:\n  ' + '\n  '
 
     Making supplementary data for the following condition sets:
       jackpotted_experiments
-      new_experiments
+      B1351
 
 
 Read the escape fractions
@@ -197,7 +197,7 @@ for metric_type, (set_name, condition_set) in itertools.product(['mutation', 'si
 
     Saving plot to results/supp_data/jackpotted_experiments-mutation-corr.pdf
     
-    Plotting correlations of mutation escape for new_experiments
+    Plotting correlations of mutation escape for B1351
 
 
 
@@ -206,7 +206,7 @@ for metric_type, (set_name, condition_set) in itertools.product(['mutation', 'si
     
 
 
-    Saving plot to results/supp_data/new_experiments-mutation-corr.pdf
+    Saving plot to results/supp_data/B1351-mutation-corr.pdf
     
     Plotting correlations of site escape for jackpotted_experiments
 
@@ -219,7 +219,7 @@ for metric_type, (set_name, condition_set) in itertools.product(['mutation', 'si
 
     Saving plot to results/supp_data/jackpotted_experiments-site-corr.pdf
     
-    Plotting correlations of site escape for new_experiments
+    Plotting correlations of site escape for B1351
 
 
 
@@ -228,7 +228,7 @@ for metric_type, (set_name, condition_set) in itertools.product(['mutation', 'si
     
 
 
-    Saving plot to results/supp_data/new_experiments-site-corr.pdf
+    Saving plot to results/supp_data/B1351-site-corr.pdf
 
 
 ## Raw data files
@@ -272,8 +272,8 @@ for set_name, condition_set in condition_sets.items():
     Raw data for jackpotted_experiments:
     Writing to results/supp_data/jackpotted_experiments_raw_data.csv
     
-    Raw data for new_experiments:
-    Writing to results/supp_data/new_experiments_raw_data.csv
+    Raw data for B1351:
+    Writing to results/supp_data/B1351_raw_data.csv
 
 
 ## Data for `dms-view`:
@@ -458,8 +458,8 @@ for set_name, condition_set in condition_sets.items():
 
     Writing `dms-view` input file for jackpotted_experiments mapped to PDB 6m0j to results/supp_data/jackpotted_experiments_6m0j_dms-view_data.csv
     Writing `dms-view` input file for jackpotted_experiments mapped to PDB 7LYQ to results/supp_data/jackpotted_experiments_7LYQ_dms-view_data.csv
-    Writing `dms-view` input file for new_experiments mapped to PDB 6m0j to results/supp_data/new_experiments_6m0j_dms-view_data.csv
-    Writing `dms-view` input file for new_experiments mapped to PDB 7LYQ to results/supp_data/new_experiments_7LYQ_dms-view_data.csv
+    Writing `dms-view` input file for B1351 mapped to PDB 6m0j to results/supp_data/B1351_6m0j_dms-view_data.csv
+    Writing `dms-view` input file for B1351 mapped to PDB 7LYQ to results/supp_data/B1351_7LYQ_dms-view_data.csv
 
 
 
