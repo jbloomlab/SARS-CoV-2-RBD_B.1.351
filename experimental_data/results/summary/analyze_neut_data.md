@@ -1811,7 +1811,7 @@ for metric in ['fold_change', 'ic50']:
 
 ```python
 geomean_mut_effects=(neut_titers
-                     .query("replicate!='average'")
+                     .query("replicate=='average'")
                      .groupby(['virus', 'infecting_virus'])
                      .agg({'fold_change': geometric_mean})
                      .reset_index()
@@ -1845,103 +1845,103 @@ display(HTML(geomean_mut_effects.to_html(index=False)))
     <tr>
       <td>wildtype</td>
       <td>B.1.351</td>
-      <td>1.000000</td>
+      <td>1.003636</td>
       <td>24</td>
     </tr>
     <tr>
       <td>wildtype</td>
       <td>early 2020</td>
-      <td>1.000000</td>
+      <td>1.004706</td>
       <td>8</td>
     </tr>
     <tr>
       <td>B.1.351-N417K</td>
       <td>B.1.351</td>
-      <td>1.526334</td>
+      <td>1.543051</td>
       <td>8</td>
     </tr>
     <tr>
       <td>B.1.351-K484E</td>
       <td>B.1.351</td>
-      <td>1.041387</td>
+      <td>1.048404</td>
       <td>8</td>
     </tr>
     <tr>
       <td>B.1.351-K484Q</td>
       <td>B.1.351</td>
-      <td>2.999631</td>
+      <td>3.041059</td>
       <td>8</td>
     </tr>
     <tr>
       <td>B.1.351-L452R</td>
       <td>B.1.351</td>
-      <td>1.295513</td>
+      <td>1.316204</td>
       <td>8</td>
     </tr>
     <tr>
       <td>B.1.351-G446V</td>
       <td>B.1.351</td>
-      <td>2.049562</td>
+      <td>2.098504</td>
       <td>8</td>
     </tr>
     <tr>
       <td>B.1.351-K444E</td>
       <td>B.1.351</td>
-      <td>0.737641</td>
+      <td>0.753376</td>
       <td>8</td>
     </tr>
     <tr>
       <td>B.1.351-Y501N</td>
       <td>B.1.351</td>
-      <td>1.381539</td>
+      <td>1.385752</td>
       <td>8</td>
     </tr>
     <tr>
       <td>B.1.351-N417K-K484E-Y501N</td>
       <td>B.1.351</td>
-      <td>2.631295</td>
+      <td>2.744978</td>
       <td>8</td>
     </tr>
     <tr>
       <td>K417N</td>
       <td>early 2020</td>
-      <td>1.042299</td>
+      <td>1.049179</td>
       <td>4</td>
     </tr>
     <tr>
       <td>E484K</td>
       <td>early 2020</td>
-      <td>21.110468</td>
+      <td>20.067763</td>
       <td>4</td>
     </tr>
     <tr>
       <td>E484Q</td>
       <td>early 2020</td>
-      <td>19.245811</td>
+      <td>19.255347</td>
       <td>4</td>
     </tr>
     <tr>
       <td>N501Y</td>
       <td>early 2020</td>
-      <td>1.444842</td>
+      <td>1.456253</td>
       <td>4</td>
     </tr>
     <tr>
       <td>G446V</td>
       <td>early 2020</td>
-      <td>1.273744</td>
+      <td>1.449708</td>
       <td>4</td>
     </tr>
     <tr>
       <td>K417N-E484K-N501Y</td>
       <td>early 2020</td>
-      <td>28.146293</td>
+      <td>28.145619</td>
       <td>4</td>
     </tr>
     <tr>
       <td>RBD antibodies depleted</td>
       <td>B.1.351</td>
-      <td>18.641771</td>
+      <td>18.266118</td>
       <td>8</td>
     </tr>
     <tr>
