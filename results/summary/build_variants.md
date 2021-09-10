@@ -50,7 +50,7 @@ print(f"Using dms_variants version {dms_variants.__version__}")
 ```
 
     Using alignparse version 0.2.4
-    Using dms_variants version 0.8.9
+    Using dms_variants version 0.8.10
 
 
 Ignore warnings that clutter output:
@@ -1436,6 +1436,186 @@ for mut_type in ['aa', 'codon']:
     
 ![png](build_variants_files/build_variants_80_1.png)
     
+
+
+### Get some statistics on the library composition
+Specifically, I want the number of WT barcodes, number of 1-mutation barcodes, number of >1-mutation barcodes, and average number of barcodes per single mutant. 
+
+
+```python
+display(HTML(
+    variants.barcode_variant_df
+    .pipe(variants.classifyVariants,
+          primary_target=variants.primary_target,
+          non_primary_target_class='homolog',
+          syn_as_wt=True,
+          class_as_categorical=True)
+    [['library', 'barcode', 'aa_substitutions', 'n_aa_substitutions', 'variant_class']]
+    .groupby(['library', 'variant_class'])
+    .agg(n_barcodes=pd.NamedAgg(column='barcode', aggfunc='count'))
+    .reset_index()
+    .merge(variants.barcode_variant_df.groupby('library').agg(total_barcodes=pd.NamedAgg(column='barcode', aggfunc='count')),
+           on=['library'],
+           how='left',
+           validate='many_to_one',
+          )
+    .assign(percent_library=lambda x: x['n_barcodes']/x['total_barcodes']*100)
+    .to_html(index=False)
+    ))
+```
+
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>library</th>
+      <th>variant_class</th>
+      <th>n_barcodes</th>
+      <th>total_barcodes</th>
+      <th>percent_library</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>lib1</td>
+      <td>wildtype</td>
+      <td>11416</td>
+      <td>44115</td>
+      <td>25.877819</td>
+    </tr>
+    <tr>
+      <td>lib1</td>
+      <td>1 nonsynonymous</td>
+      <td>26837</td>
+      <td>44115</td>
+      <td>60.834183</td>
+    </tr>
+    <tr>
+      <td>lib1</td>
+      <td>&gt;1 nonsynonymous</td>
+      <td>5770</td>
+      <td>44115</td>
+      <td>13.079451</td>
+    </tr>
+    <tr>
+      <td>lib1</td>
+      <td>stop</td>
+      <td>92</td>
+      <td>44115</td>
+      <td>0.208546</td>
+    </tr>
+    <tr>
+      <td>lib2</td>
+      <td>wildtype</td>
+      <td>10131</td>
+      <td>38901</td>
+      <td>26.043032</td>
+    </tr>
+    <tr>
+      <td>lib2</td>
+      <td>1 nonsynonymous</td>
+      <td>23567</td>
+      <td>38901</td>
+      <td>60.581990</td>
+    </tr>
+    <tr>
+      <td>lib2</td>
+      <td>&gt;1 nonsynonymous</td>
+      <td>5103</td>
+      <td>38901</td>
+      <td>13.117915</td>
+    </tr>
+    <tr>
+      <td>lib2</td>
+      <td>stop</td>
+      <td>100</td>
+      <td>38901</td>
+      <td>0.257063</td>
+    </tr>
+  </tbody>
+</table>
+
+
+Now let's just look at the wildtype and 1 nonsynonymous variants, as we are going to drop the stops and >1 nonsynonymous when we analyze antibody escape. 
+
+
+```python
+
+display(HTML(
+    variants.barcode_variant_df
+    .pipe(variants.classifyVariants,
+          primary_target=variants.primary_target,
+          non_primary_target_class='homolog',
+          syn_as_wt=True,
+          class_as_categorical=True)
+    .query('variant_class in ["wildtype", "1 nonsynonymous"]')
+    [['library', 'barcode', 'aa_substitutions', 'n_aa_substitutions', 'variant_class']]
+    .groupby(['library', 'variant_class'])
+    .agg(n_barcodes=pd.NamedAgg(column='barcode', aggfunc='count'))
+    .reset_index()
+    .merge((variants
+            .barcode_variant_df
+            .pipe(variants.classifyVariants,
+                  primary_target=variants.primary_target,
+                  non_primary_target_class='homolog',
+                  syn_as_wt=True,
+                  class_as_categorical=True)
+            .query('variant_class in ["wildtype", "1 nonsynonymous"]')
+            .groupby('library')
+            .agg(total_barcodes=pd.NamedAgg(column='barcode', aggfunc='count'))
+           ),
+           on=['library'],
+           how='left',
+           validate='many_to_one',
+          )
+    .assign(percent_library=lambda x: x['n_barcodes']/x['total_barcodes']*100)
+    .query('n_barcodes > 0')
+    .to_html(index=False)
+    ))
+```
+
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>library</th>
+      <th>variant_class</th>
+      <th>n_barcodes</th>
+      <th>total_barcodes</th>
+      <th>percent_library</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>lib1</td>
+      <td>wildtype</td>
+      <td>11416</td>
+      <td>38253</td>
+      <td>29.843411</td>
+    </tr>
+    <tr>
+      <td>lib1</td>
+      <td>1 nonsynonymous</td>
+      <td>26837</td>
+      <td>38253</td>
+      <td>70.156589</td>
+    </tr>
+    <tr>
+      <td>lib2</td>
+      <td>wildtype</td>
+      <td>10131</td>
+      <td>33698</td>
+      <td>30.064099</td>
+    </tr>
+    <tr>
+      <td>lib2</td>
+      <td>1 nonsynonymous</td>
+      <td>23567</td>
+      <td>33698</td>
+      <td>69.935901</td>
+    </tr>
+  </tbody>
+</table>
 
 
 ### Write codon-variant table
