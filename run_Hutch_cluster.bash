@@ -8,4 +8,5 @@ snakemake \
     --use-envmodules \
     --use-conda \
     --conda-prefix ./env \
+    --rerun-incomplete \
     -R make_summary

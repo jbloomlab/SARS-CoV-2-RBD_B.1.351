@@ -50,6 +50,9 @@ early2020_mut_metric: mut_escape_frac_epistasis_model
 early2020_escape_profiles_config: data/early2020_escape_profiles_config.yaml
 early2020_wildtype_sequence: data/wuhan1_wildtype_sequence.fasta
 
+# max error rate in gene / barcode CCSs retained for PacBio processing
+max_error_rate: 0.0001
+
 # Parameters for processing Illumina barcodes, assuming this structure:
 #  [R2 binds] - [upstream] - [barcode] - [downstream] - [R1 binds]
 #  This orientation is hard-wired in the barcode parser, but here it is opposite
