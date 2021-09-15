@@ -41,7 +41,10 @@ early2020_mut_bind_expr_url: https://media.githubusercontent.com/media/jbloomlab
 # use preliminary ACE2 binding and RBD expression values?
 dms_scores_preliminary: True
 # for now, I will download the CSV file that contains preliminary mutant bind and expression scores because the `variants` repo is still private
-prelim_mut_bind_expr: data/prelim_variant_dms_scores.csv
+prelim_mut_bind_expr: data/final_variant_scores.csv
+
+# GISAID mutation counts file
+gisaid_mutation_counts: data/210801_mutation_counts.csv
 
 # escape_fracs for early 2020 plasmas against Wuhan-1 library:
 early2020_escape_fracs_url: https://media.githubusercontent.com/media/jbloomlab/SARS-CoV-2-RBD_MAP_HAARVI_sera/main/results/escape_scores/escape_fracs.csv
@@ -83,7 +86,7 @@ escape_score_group_by: barcode
 escape_score_stop_quantile_filter: 0.9
 # Filter variants with mutation with binding or expression scores
 # <= these values
-escape_score_min_bind_mut: -2.35
+escape_score_min_bind_mut: -3.0
 escape_score_min_expr_mut: -1.0
 # should we just exclude all mutations to sites where the WT is a cysteine?
 exclude_cysteines: True
@@ -177,3 +180,4 @@ early2020_escape_profiles_dms_colors: results/escape_profiles/early2020_escape_p
 pdb_outputs_dir: results/pdb_outputs
 supp_data_dir: results/supp_data
 lineplots_by_group_dir: results/lineplots_by_group
+bind_expr_filters_dir: results/bind_expr_filters

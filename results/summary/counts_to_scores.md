@@ -1736,7 +1736,7 @@ frac_pre_pass_filter = (
                )
     .reset_index()
     .assign(frac_pass_filter=lambda x: x['n_pass_filter'] / x['n_variants'],
-            pre_sample=lambda x: pd.Categorical(x['pre_sample'], x['pre_sample'].unique(), ordered=True))
+            pre_sample=lambda x: pd.Categorical(x['pre_sample'], x['pre_sample'].unique(), ordered=True).remove_unused_categories())
     )
 
 p = (ggplot(frac_pre_pass_filter) +
@@ -1794,7 +1794,7 @@ print('Here is what that dataframe looks like:')
 display(HTML(mut_bind_expr.query('delta_bind < -2.35').head().to_html(index=False)))
 ```
 
-    Reading ACE2-binding and expression for mutations from data/prelim_variant_dms_scores.csv, and filtering for variants that have single mutations that only have mutations with binding >=-2.35 and expression >=-1.0.
+    Reading ACE2-binding and expression for mutations from data/final_variant_scores.csv, and filtering for variants that have single mutations that only have mutations with binding >=-3.0 and expression >=-1.0.
     Here is what that dataframe looks like:
 
 
@@ -1824,86 +1824,86 @@ display(HTML(mut_bind_expr.query('delta_bind < -2.35').head().to_html(index=Fals
       <td>B1351</td>
       <td>F</td>
       <td>338</td>
-      <td>E</td>
-      <td>F338E</td>
-      <td>6.53600</td>
-      <td>-2.73815</td>
-      <td>5</td>
+      <td>R</td>
+      <td>F338R</td>
+      <td>6.58796</td>
+      <td>-2.69662</td>
+      <td>12</td>
       <td>2</td>
-      <td>7.75599</td>
-      <td>-2.62571</td>
-      <td>14</td>
+      <td>6.62764</td>
+      <td>-3.37374</td>
+      <td>15</td>
       <td>2</td>
       <td>8</td>
-      <td>F8E</td>
+      <td>F8R</td>
     </tr>
     <tr>
       <td>B1351</td>
       <td>F</td>
-      <td>338</td>
-      <td>G</td>
-      <td>F338G</td>
-      <td>6.62162</td>
-      <td>-2.65253</td>
-      <td>5</td>
-      <td>2</td>
-      <td>7.78782</td>
-      <td>-2.59388</td>
-      <td>9</td>
-      <td>2</td>
-      <td>8</td>
-      <td>F8G</td>
-    </tr>
-    <tr>
-      <td>B1351</td>
-      <td>F</td>
-      <td>338</td>
-      <td>K</td>
-      <td>F338K</td>
-      <td>6.19219</td>
-      <td>-3.08197</td>
-      <td>5</td>
-      <td>2</td>
-      <td>7.15474</td>
-      <td>-3.22696</td>
-      <td>13</td>
-      <td>2</td>
-      <td>8</td>
-      <td>F8K</td>
-    </tr>
-    <tr>
-      <td>B1351</td>
-      <td>F</td>
-      <td>338</td>
-      <td>N</td>
-      <td>F338N</td>
-      <td>6.62956</td>
-      <td>-2.64460</td>
+      <td>342</td>
+      <td>D</td>
+      <td>F342D</td>
+      <td>6.45279</td>
+      <td>-2.83179</td>
       <td>7</td>
       <td>2</td>
-      <td>7.60247</td>
-      <td>-2.77923</td>
-      <td>13</td>
+      <td>6.74577</td>
+      <td>-3.25560</td>
+      <td>11</td>
       <td>2</td>
-      <td>8</td>
-      <td>F8N</td>
+      <td>12</td>
+      <td>F12D</td>
     </tr>
     <tr>
       <td>B1351</td>
       <td>F</td>
-      <td>338</td>
-      <td>Q</td>
-      <td>F338Q</td>
-      <td>6.81941</td>
-      <td>-2.45475</td>
-      <td>13</td>
-      <td>2</td>
-      <td>7.85744</td>
-      <td>-2.52426</td>
-      <td>17</td>
-      <td>2</td>
+      <td>342</td>
+      <td>G</td>
+      <td>F342G</td>
+      <td>6.67891</td>
+      <td>-2.53492</td>
+      <td>6</td>
+      <td>1</td>
+      <td>7.17394</td>
+      <td>-2.82743</td>
       <td>8</td>
-      <td>F8Q</td>
+      <td>2</td>
+      <td>12</td>
+      <td>F12G</td>
+    </tr>
+    <tr>
+      <td>B1351</td>
+      <td>F</td>
+      <td>342</td>
+      <td>P</td>
+      <td>F342P</td>
+      <td>6.23906</td>
+      <td>-3.04552</td>
+      <td>6</td>
+      <td>2</td>
+      <td>6.85042</td>
+      <td>-3.15096</td>
+      <td>9</td>
+      <td>2</td>
+      <td>12</td>
+      <td>F12P</td>
+    </tr>
+    <tr>
+      <td>B1351</td>
+      <td>N</td>
+      <td>343</td>
+      <td>P</td>
+      <td>N343P</td>
+      <td>6.87591</td>
+      <td>-2.40867</td>
+      <td>11</td>
+      <td>2</td>
+      <td>6.62332</td>
+      <td>-3.37806</td>
+      <td>16</td>
+      <td>2</td>
+      <td>13</td>
+      <td>N13P</td>
     </tr>
   </tbody>
 </table>
@@ -1933,8 +1933,8 @@ escape_scores['pass_ACE2bind_expr_filter'] = (
 display(HTML(escape_scores.query('not pass_ACE2bind_expr_filter & variant_class != "stop"').head().to_html(index=False)))
 ```
 
-    3004 of 4020 mutations have adequate bind.
-    2437 of 4020 mutations have adequate expr.
+    3291 of 4020 mutations have adequate bind.
+    2369 of 4020 mutations have adequate expr.
 
 
 
@@ -2014,6 +2014,28 @@ display(HTML(escape_scores.query('not pass_ACE2bind_expr_filter & variant_class 
       <td>lib1</td>
       <td>ACE2_enrich-presort-0-ref</td>
       <td>ACE2_enrich-ACE2pos-8-abneg</td>
+      <td>TTCACAACGTGCCCGG</td>
+      <td>0.699120</td>
+      <td>0.006122</td>
+      <td>242</td>
+      <td>118</td>
+      <td>GAG10GGT AGT29AAT TAC35TCT ACG85CAA</td>
+      <td>4</td>
+      <td>E10G S29N Y35S T85Q</td>
+      <td>4</td>
+      <td>&gt;1 nonsynonymous</td>
+      <td>62.1</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>ACE2pos_8</td>
+      <td>B1351</td>
+      <td>lib1</td>
+      <td>ACE2_enrich-presort-0-ref</td>
+      <td>ACE2_enrich-ACE2pos-8-abneg</td>
       <td>GATGACTGACGCCAAA</td>
       <td>0.701318</td>
       <td>0.006495</td>
@@ -2052,33 +2074,56 @@ display(HTML(escape_scores.query('not pass_ACE2bind_expr_filter & variant_class 
       <td>False</td>
       <td>False</td>
     </tr>
-    <tr>
-      <td>ACE2pos_8</td>
-      <td>B1351</td>
-      <td>lib1</td>
-      <td>ACE2_enrich-presort-0-ref</td>
-      <td>ACE2_enrich-ACE2pos-8-abneg</td>
-      <td>GTGGGCAATTTTAAAG</td>
-      <td>0.746590</td>
-      <td>0.007448</td>
-      <td>217</td>
-      <td>113</td>
-      <td>AAC157TCT</td>
-      <td>1</td>
-      <td>N157S</td>
-      <td>1</td>
-      <td>1 nonsynonymous</td>
-      <td>62.1</td>
-      <td>True</td>
-      <td>False</td>
-      <td>True</td>
-      <td>False</td>
-    </tr>
   </tbody>
 </table>
 
 
+Print the number of mutations that pass RBD bind, RBD expression, and are not to sites that are disulfide bonds (if specified in config) 
+
+
+```python
+# if we are excluding all cysteines to remove spurious mutations that break disulfide bonds:
+if config['exclude_cysteines']:
+    print("Here are the number of mutations that pass the bind, express, and disulfide filters:")
+    print(len(mut_bind_expr
+              .assign(pass_cysteine_filter=lambda x: x['mutation'].str[0] != "C")
+              .query(f"delta_bind >= {config[f'escape_score_min_bind_mut']} & \
+                       delta_expr >= {config[f'escape_score_min_expr_mut']} & \
+                       pass_cysteine_filter")
+             ))
+    print("There are these many possible mutations (excluding wildtype and disulfides!):")
+    print(mut_bind_expr.query('wildtype!="C"')['position'].nunique()*19
+         )
+
+else:
+    print("Here are the number of mutations that pass the bind and express filters:")
+    print(len(mut_bind_expr
+              .assign(pass_cysteine_filter=lambda x: x['mutation'].str[0] != "C")
+              .query(f"delta_bind >= {config[f'escape_score_min_bind_mut']} & \
+                       delta_expr >= {config[f'escape_score_min_expr_mut']}")
+             ))
+    print("There are these many possible mutations (excluding wildtype!):")
+    print(mut_bind_expr['position'].nunique()*19
+         )
+```
+
+    Here are the number of mutations that pass the bind, express, and disulfide filters:
+    2207
+    There are these many possible mutations (excluding wildtype and disulfides!):
+    3667
+
+
 Plot the fraction of variants that **have already passed the pre-count filter** that are filtered by the ACE2-binding or expression thresholds:
+
+
+```python
+print('These are the sites that are involved in disulfide bonds:')
+print(mut_bind_expr.query('wildtype=="C"')['position'].unique())
+```
+
+    These are the sites that are involved in disulfide bonds:
+    [336 361 379 391 432 480 488 525]
+
 
 
 ```python
@@ -2094,7 +2139,7 @@ frac_ACE2bind_expr_pass_filter = (
                )
     .reset_index()
     .assign(frac_pass_filter=lambda x: x['n_pass_filter'] / x['n_variants'],
-            pre_sample=lambda x: pd.Categorical(x['pre_sample'], x['pre_sample'].unique(), ordered=True))
+            pre_sample=lambda x: pd.Categorical(x['pre_sample'], x['pre_sample'].unique(), ordered=True).remove_unused_categories())
     )
 
 p = (ggplot(frac_ACE2bind_expr_pass_filter) +
@@ -2115,7 +2160,7 @@ _ = p.draw()
 
 
     
-![png](counts_to_scores_files/counts_to_scores_58_0.png)
+![png](counts_to_scores_files/counts_to_scores_61_0.png)
     
 
 
@@ -2152,7 +2197,7 @@ _ = p.draw()
 
 
     
-![png](counts_to_scores_files/counts_to_scores_60_0.png)
+![png](counts_to_scores_files/counts_to_scores_63_0.png)
     
 
 
@@ -2184,7 +2229,7 @@ _ = p.draw()
 
 
     
-![png](counts_to_scores_files/counts_to_scores_62_0.png)
+![png](counts_to_scores_files/counts_to_scores_65_0.png)
     
 
 
@@ -2358,7 +2403,7 @@ print(f"Read {len(escape_scores_primary)} scores.")
 </table>
 
 
-    Read 724676 scores.
+    Read 715819 scores.
 
 
 ### Count number of barcodes per mutation and remove variants with >1 amino acid substitution
@@ -2386,7 +2431,7 @@ _ = p.draw()
 
 
     
-![png](counts_to_scores_files/counts_to_scores_68_0.png)
+![png](counts_to_scores_files/counts_to_scores_71_0.png)
     
 
 
@@ -2441,7 +2486,7 @@ display(HTML(effects_df.head().to_html()))
   </thead>
   <tbody>
     <tr>
-      <th>11</th>
+      <th>12</th>
       <td>ACE2pos_8</td>
       <td>lib1</td>
       <td>A145R</td>
@@ -2449,7 +2494,7 @@ display(HTML(effects_df.head().to_html()))
       <td>2</td>
     </tr>
     <tr>
-      <th>14</th>
+      <th>15</th>
       <td>ACE2pos_8</td>
       <td>lib1</td>
       <td>A145V</td>
@@ -2457,7 +2502,7 @@ display(HTML(effects_df.head().to_html()))
       <td>2</td>
     </tr>
     <tr>
-      <th>41</th>
+      <th>42</th>
       <td>ACE2pos_8</td>
       <td>lib1</td>
       <td>A190H</td>
@@ -2465,7 +2510,7 @@ display(HTML(effects_df.head().to_html()))
       <td>2</td>
     </tr>
     <tr>
-      <th>53</th>
+      <th>54</th>
       <td>ACE2pos_8</td>
       <td>lib1</td>
       <td>A190W</td>
@@ -2473,7 +2518,7 @@ display(HTML(effects_df.head().to_html()))
       <td>3</td>
     </tr>
     <tr>
-      <th>62</th>
+      <th>63</th>
       <td>ACE2pos_8</td>
       <td>lib1</td>
       <td>A192L</td>
@@ -2506,11 +2551,12 @@ else:
 ```
 
     Excluding mutations where the wildtype identity is a cysteine
-    Specifically, excluding: ['C195A' 'C195D' 'C195E' 'C195G' 'C61A' 'C61F' 'C61K' 'C61S' 'C61H'
+    Specifically, excluding: ['C195A' 'C195D' 'C195E' 'C195G' 'C61A' 'C61F' 'C61K' 'C61S' 'C31T' 'C61H'
      'C158Q' 'C195F' 'C195H' 'C195I' 'C195K' 'C195L' 'C195M' 'C195N' 'C195P'
-     'C195Q' 'C195R' 'C195S' 'C195T' 'C195W' 'C195Y' 'C31E' 'C31M' 'C31P'
-     'C61D' 'C61E' 'C61G' 'C61I' 'C61L' 'C61M' 'C61N' 'C61P' 'C61Q' 'C61R'
-     'C61T' 'C61V' 'C61W' 'C61Y' 'C6D' 'C6G' 'C31A' 'C195V']
+     'C195Q' 'C195S' 'C195T' 'C195W' 'C195Y' 'C31D' 'C31E' 'C31G' 'C31K'
+     'C31P' 'C31R' 'C31S' 'C31V' 'C61D' 'C61E' 'C61G' 'C61I' 'C61L' 'C61M'
+     'C61N' 'C61P' 'C61Q' 'C61R' 'C61T' 'C61V' 'C61W' 'C61Y' 'C6D' 'C31A'
+     'C31N' 'C6N']
 
 
 We need to compute the escape scores (calculated as [here](https://jbloomlab.github.io/dms_variants/dms_variants.codonvarianttable.html?highlight=escape_scores#dms_variants.codonvarianttable.CodonVariantTable.escape_scores)) back to escape fractions. We define a function to do this depending on the score type:
@@ -2576,8 +2622,8 @@ print(len(effects_df.query('nlibs==1')))
 ```
 
     Only taking average of mutations with escape fractions in >=2 libraries or with >=2 single-mutant measurements total.
-    31572
-    73592
+    30858
+    72068
 
 
 Plot the correlations of the escape fractions among the two libraries for all selections performed on both libraries. 
@@ -2655,7 +2701,7 @@ _ = p.draw()
 
 
     
-![png](counts_to_scores_files/counts_to_scores_78_0.png)
+![png](counts_to_scores_files/counts_to_scores_81_0.png)
     
 
 
@@ -2707,8 +2753,8 @@ display(HTML(site_effects_df.head().to_html(index=False)))
       <td>ACE2pos_8</td>
       <td>average</td>
       <td>1</td>
-      <td>0.775342</td>
-      <td>5.427391</td>
+      <td>0.774627</td>
+      <td>4.647763</td>
     </tr>
     <tr>
       <td>ACE2pos_8</td>
@@ -2816,13 +2862,13 @@ for val in ['site_avg_escape_frac_single_mut', 'site_total_escape_frac_single_mu
 
 
     
-![png](counts_to_scores_files/counts_to_scores_84_0.png)
+![png](counts_to_scores_files/counts_to_scores_87_0.png)
     
 
 
 
     
-![png](counts_to_scores_files/counts_to_scores_84_1.png)
+![png](counts_to_scores_files/counts_to_scores_87_1.png)
     
 
 
@@ -2892,8 +2938,8 @@ escape_fracs_to_write.to_csv(config['escape_fracs'], index=False, float_format='
       <td>E</td>
       <td>331</td>
       <td>0.791437</td>
-      <td>5.427391</td>
-      <td>0.775342</td>
+      <td>4.647763</td>
+      <td>0.774627</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2907,8 +2953,8 @@ escape_fracs_to_write.to_csv(config['escape_fracs'], index=False, float_format='
       <td>E</td>
       <td>331</td>
       <td>0.593175</td>
-      <td>5.427391</td>
-      <td>0.775342</td>
+      <td>4.647763</td>
+      <td>0.774627</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2922,8 +2968,8 @@ escape_fracs_to_write.to_csv(config['escape_fracs'], index=False, float_format='
       <td>E</td>
       <td>331</td>
       <td>0.997765</td>
-      <td>5.427391</td>
-      <td>0.775342</td>
+      <td>4.647763</td>
+      <td>0.774627</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2937,8 +2983,8 @@ escape_fracs_to_write.to_csv(config['escape_fracs'], index=False, float_format='
       <td>E</td>
       <td>331</td>
       <td>0.822606</td>
-      <td>5.427391</td>
-      <td>0.775342</td>
+      <td>4.647763</td>
+      <td>0.774627</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2952,8 +2998,8 @@ escape_fracs_to_write.to_csv(config['escape_fracs'], index=False, float_format='
       <td>E</td>
       <td>331</td>
       <td>0.589304</td>
-      <td>5.427391</td>
-      <td>0.775342</td>
+      <td>4.647763</td>
+      <td>0.774627</td>
       <td>1</td>
     </tr>
   </tbody>
