@@ -76,6 +76,7 @@ rule make_summary:
         get_mut_bind_expr=config['mut_bind_expr'],
         get_early2020_mut_bind_expr=config['early2020_mut_bind_expr'],
         get_early2020_escape_fracs=config['early2020_escape_fracs'],
+        bind_expr_filters=nb_markdown('bind_expr_filters.ipynb'),
         process_ccs=nb_markdown('process_ccs.ipynb'),
         build_variants=nb_markdown('build_variants.ipynb'),
         codon_variant_table=config['codon_variant_table'],
@@ -367,6 +368,18 @@ rule build_variants:
     shell:
         "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
 
+rule bind_expr_filters:
+    """QC checks on bind & expression filters from DMS data.
+    """
+    input:
+        config['early2020_escape_fracs']
+    output:
+        nb_markdown=nb_markdown('bind_expr_filters.ipynb')
+    params:
+        nb='bind_expr_filters.ipynb'
+    shell:
+        "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
+        
 rule get_early2020_escape_fracs:
     """Download escape_fracs for early 2020 polyclonal plasmas
         against Wuhan-1 RBD library from URL.

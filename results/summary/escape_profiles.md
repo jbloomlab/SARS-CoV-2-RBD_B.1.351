@@ -137,8 +137,8 @@ display(HTML(escape_fracs.head().to_html(index=False)))
       <td>E</td>
       <td>331</td>
       <td>0.7914</td>
-      <td>5.427</td>
-      <td>0.7753</td>
+      <td>4.648</td>
+      <td>0.7746</td>
       <td>1</td>
     </tr>
     <tr>
@@ -149,8 +149,8 @@ display(HTML(escape_fracs.head().to_html(index=False)))
       <td>E</td>
       <td>331</td>
       <td>0.5932</td>
-      <td>5.427</td>
-      <td>0.7753</td>
+      <td>4.648</td>
+      <td>0.7746</td>
       <td>1</td>
     </tr>
     <tr>
@@ -161,8 +161,8 @@ display(HTML(escape_fracs.head().to_html(index=False)))
       <td>E</td>
       <td>331</td>
       <td>0.9978</td>
-      <td>5.427</td>
-      <td>0.7753</td>
+      <td>4.648</td>
+      <td>0.7746</td>
       <td>1</td>
     </tr>
     <tr>
@@ -173,8 +173,8 @@ display(HTML(escape_fracs.head().to_html(index=False)))
       <td>E</td>
       <td>331</td>
       <td>0.8226</td>
-      <td>5.427</td>
-      <td>0.7753</td>
+      <td>4.648</td>
+      <td>0.7746</td>
       <td>1</td>
     </tr>
     <tr>
@@ -185,8 +185,8 @@ display(HTML(escape_fracs.head().to_html(index=False)))
       <td>E</td>
       <td>331</td>
       <td>0.5893</td>
-      <td>5.427</td>
-      <td>0.7753</td>
+      <td>4.648</td>
+      <td>0.7746</td>
       <td>1</td>
     </tr>
   </tbody>
@@ -331,9 +331,9 @@ if len(nan_color):
     raise ValueError(f"The following entries lack colors:\n{nan_color}")
 ```
 
-    Reading DMS data from data/prelim_variant_dms_scores.csv
+    Reading DMS data from data/final_variant_scores.csv
     
-    bind ranges from -2.34777 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/bind_scalebar_horizontal.pdf
+    bind ranges from -2.92687 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/bind_scalebar_horizontal.pdf
 
 
 
@@ -343,7 +343,7 @@ if len(nan_color):
 
 
     
-    bind ranges from -2.34777 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/bind_scalebar_vertical.pdf
+    bind ranges from -2.92687 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/bind_scalebar_vertical.pdf
 
 
 
@@ -354,7 +354,7 @@ if len(nan_color):
 
     Saving DMS color scheme to results/escape_profiles/escape_profiles_dms_colors.csv
     
-    expr ranges from -0.99848 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/expr_scalebar_horizontal.pdf
+    expr ranges from -0.9903 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/expr_scalebar_horizontal.pdf
 
 
 
@@ -364,7 +364,7 @@ if len(nan_color):
 
 
     
-    expr ranges from -0.99848 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/expr_scalebar_vertical.pdf
+    expr ranges from -0.9903 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/expr_scalebar_vertical.pdf
 
 
 

@@ -109,11 +109,11 @@ display(HTML(escape_fracs.head().to_html(index=False)))
     <tr>
       <td>ACE2pos_8</td>
       <td>331</td>
-      <td>5.4274</td>
+      <td>4.6478</td>
       <td>0.9978</td>
       <td>10.0627</td>
       <td>1.0</td>
-      <td>0.539358</td>
+      <td>0.461884</td>
       <td>0.9978</td>
     </tr>
     <tr>

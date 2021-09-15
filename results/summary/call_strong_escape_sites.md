@@ -95,8 +95,8 @@ display(HTML(escape_fracs.head().to_html(index=False)))
       <td>E</td>
       <td>331</td>
       <td>0.7914</td>
-      <td>5.427</td>
-      <td>0.7753</td>
+      <td>4.648</td>
+      <td>0.7746</td>
       <td>1</td>
     </tr>
     <tr>
@@ -107,8 +107,8 @@ display(HTML(escape_fracs.head().to_html(index=False)))
       <td>E</td>
       <td>331</td>
       <td>0.5932</td>
-      <td>5.427</td>
-      <td>0.7753</td>
+      <td>4.648</td>
+      <td>0.7746</td>
       <td>1</td>
     </tr>
     <tr>
@@ -119,8 +119,8 @@ display(HTML(escape_fracs.head().to_html(index=False)))
       <td>E</td>
       <td>331</td>
       <td>0.9978</td>
-      <td>5.427</td>
-      <td>0.7753</td>
+      <td>4.648</td>
+      <td>0.7746</td>
       <td>1</td>
     </tr>
     <tr>
@@ -131,8 +131,8 @@ display(HTML(escape_fracs.head().to_html(index=False)))
       <td>E</td>
       <td>331</td>
       <td>0.8226</td>
-      <td>5.427</td>
-      <td>0.7753</td>
+      <td>4.648</td>
+      <td>0.7746</td>
       <td>1</td>
     </tr>
     <tr>
@@ -143,8 +143,8 @@ display(HTML(escape_fracs.head().to_html(index=False)))
       <td>E</td>
       <td>331</td>
       <td>0.5893</td>
-      <td>5.427</td>
-      <td>0.7753</td>
+      <td>4.648</td>
+      <td>0.7746</td>
       <td>1</td>
     </tr>
   </tbody>
@@ -323,15 +323,15 @@ strong_sites.to_csv(config['strong_escape_sites'], index=False)
   <tbody>
     <tr>
       <th>default</th>
-      <td>17</td>
+      <td>19</td>
     </tr>
     <tr>
       <th>sensitive</th>
-      <td>29</td>
+      <td>31</td>
     </tr>
     <tr>
       <th>sensitive_max_mut</th>
-      <td>150</td>
+      <td>148</td>
     </tr>
   </tbody>
 </table>
@@ -371,11 +371,11 @@ strong_sites.to_csv(config['strong_escape_sites'], index=False)
       <td>0.2804</td>
       <td>0.02732</td>
       <td>default</td>
-      <td>0.01227</td>
-      <td>0.8212</td>
-      <td>0.1227</td>
+      <td>0.01256</td>
+      <td>0.9597</td>
+      <td>0.1256</td>
       <td>True</td>
-      <td>0.08212</td>
+      <td>0.09597</td>
       <td>True</td>
       <td>0</td>
       <td>True</td>
@@ -387,14 +387,14 @@ strong_sites.to_csv(config['strong_escape_sites'], index=False)
       <th>1</th>
       <td>K007_500</td>
       <td>484</td>
-      <td>0.8212</td>
+      <td>0.9597</td>
       <td>0.19790</td>
       <td>default</td>
-      <td>0.01227</td>
-      <td>0.8212</td>
-      <td>0.1227</td>
+      <td>0.01256</td>
+      <td>0.9597</td>
+      <td>0.1256</td>
       <td>True</td>
-      <td>0.08212</td>
+      <td>0.09597</td>
       <td>True</td>
       <td>0</td>
       <td>True</td>
@@ -409,11 +409,11 @@ strong_sites.to_csv(config['strong_escape_sites'], index=False)
       <td>0.8770</td>
       <td>0.20180</td>
       <td>default</td>
-      <td>0.04529</td>
-      <td>4.0060</td>
-      <td>0.4529</td>
+      <td>0.04439</td>
+      <td>4.0660</td>
+      <td>0.4439</td>
       <td>True</td>
-      <td>0.40060</td>
+      <td>0.40660</td>
       <td>True</td>
       <td>0</td>
       <td>True</td>
@@ -428,11 +428,11 @@ strong_sites.to_csv(config['strong_escape_sites'], index=False)
       <td>4.0060</td>
       <td>0.33590</td>
       <td>default</td>
-      <td>0.04529</td>
-      <td>4.0060</td>
-      <td>0.4529</td>
+      <td>0.04439</td>
+      <td>4.0660</td>
+      <td>0.4439</td>
       <td>True</td>
-      <td>0.40060</td>
+      <td>0.40660</td>
       <td>True</td>
       <td>0</td>
       <td>True</td>
@@ -444,14 +444,14 @@ strong_sites.to_csv(config['strong_escape_sites'], index=False)
       <th>4</th>
       <td>K007_old_500</td>
       <td>448</td>
-      <td>0.8553</td>
+      <td>0.7089</td>
       <td>0.28100</td>
       <td>default</td>
-      <td>0.04529</td>
-      <td>4.0060</td>
-      <td>0.4529</td>
+      <td>0.04439</td>
+      <td>4.0660</td>
+      <td>0.4439</td>
       <td>True</td>
-      <td>0.40060</td>
+      <td>0.40660</td>
       <td>True</td>
       <td>0</td>
       <td>True</td>
