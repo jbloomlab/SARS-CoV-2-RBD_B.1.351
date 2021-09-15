@@ -9,7 +9,10 @@ haarvi_sera:
     22C_d28_200: participant E (day 28)
     25C_d48_200: participant F (day 48)
     25_d18_500: participant G (day 18)
+    12C_d61_160: participant H (day 61)
     23C_d26_80: participant I (day 26)
+    13_d15_200: participant J (day 15)
+    7C_d29_500: participant K (day 29)
   plot_auto_identified_sites: default
   add_sites: [365,369,378,382,383,384,385,386,417,439,443,444,445,446,447,448,449,450,451,452,455,456,477,478,484,501]
   exclude_sites: [336, 361]
