@@ -1831,6 +1831,87 @@ for metric in ['fold_change', 'ic50']:
     
 
 
+Make main-figure plot:
+
+
+```python
+metric='fold_change'
+
+for virus_set, virus_subsample in config['virus_subsets'].items():
+    print(f'Making main-text plot for {virus_set}:')
+
+    virus_subsample=[v for v in virus_subsample if v not in ["wildtype", "L452R", "B.1.351-L452R"]]
+
+    print(f"Making plot for {neut_titers.query('virus in @virus_subsample')['virus_labels'].nunique()} viruses")
+
+    ylab={'fold_change':'fold decrease in neutralization', 
+          'ic50':'inhibitory concentration\n50% (IC50)'
+         }
+    yintercept={'fold_change':1, 
+                'ic50':(neut_titers
+                        .query('virus=="wildtype" & infecting_virus=="B.1.351"')
+                        ['ic50']
+                        .agg(geometric_mean)
+                       )
+               }
+
+    p = (ggplot(neut_titers
+                .query("virus in @virus_subsample & replicate=='average' & infecting_virus!='early 2020 (100d)'")
+                .assign(virus_labels=lambda x: pd.Categorical(x['virus_labels'],
+                                                              ordered=True,
+                                                              categories=(config['virus_simplified_names_order']+
+                                                                          ['417\n484\n501',
+                                                                           'RBD\nantibodies\ndepleted'])),
+                       )
+                ) +
+         aes('virus_labels', 
+             'fold_change', 
+             fill='infecting_virus', 
+             color='infecting_virus',
+            ) +
+         geom_point(position=position_dodge(width=0.55), size=2.5, alpha=0.5) +
+         geom_crossbar(data=(neut_titers
+                             .query("virus in @virus_subsample & replicate=='average' & infecting_virus!='early 2020 (100d)'")
+                             .groupby(['virus_labels', 'infecting_virus'])
+                             .agg({metric: geometric_mean})
+                             .reset_index()
+                             .dropna()
+                            ),
+#                            inherit_aes=False,
+                       mapping=aes(x='virus_labels', y=metric, ymin=metric, ymax=metric),
+                       position=position_dodge(width=0.55),
+              ) +
+         geom_hline(yintercept=yintercept[metric],
+                    linetype='dashed', size=0.5,
+                    alpha=0.6, 
+                    color=CBPALETTE[0]) +
+         scale_y_log10(name=ylab[metric]) +
+         theme_classic() +
+         theme(axis_title_x=element_blank(),
+               figure_size=(neut_titers.query('virus in @virus_subsample')['virus_labels'].nunique()*0.75, 2.5), 
+               ) +
+         scale_fill_manual(values=['#44AA99', '#332288', '#AA4499'], name='infecting virus\n')+
+         scale_color_manual(values=['#44AA99', '#332288', '#AA4499'], name='infecting virus\n')
+         )
+
+    _ = p.draw()
+
+    plotfile = f'{results}/figure5.pdf'
+    print(f"Saving to {plotfile}")
+    p.save(plotfile, limitsize=False, verbose=False)
+```
+
+    Making main-text plot for all:
+    Making plot for 7 viruses
+    Saving to results/neut_titers/figure5.pdf
+
+
+
+    
+![png](analyze_neut_data_files/analyze_neut_data_40_1.png)
+    
+
+
 
 ```python
 geomean_mut_effects=(neut_titers
