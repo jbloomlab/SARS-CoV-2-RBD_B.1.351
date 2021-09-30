@@ -27,6 +27,12 @@ serum_order:
   - participant B (day 26)
   - participant C (day 32)
   - participant I (day 26)
+  - participant A (day 120)
+  - participant B (day 113)
+  - participant C (day 104)
+  - participant E (day 104)
+  - participant G (day 94)
+  - participant I (day 102)
   - REGN10987 (spike-in)
   - pre-pandemic
 
@@ -35,6 +41,12 @@ rename_sera:
   24C_d32: participant C (day 32)
   23C_d26: participant I (day 26)
   1C_d26: participant B (day 26)
+  24C_d104: participant C (day 104)
+  22C_d104: participant E (day 104)
+  23C_d102: participant I (day 102)
+  1C_d113: participant B (day 113)
+  23_d120: participant A (day 120)
+  25_d94: participant G (day 94)
 
 sera_for_further_analysis:
   - K007
@@ -49,6 +61,12 @@ sera_for_further_analysis:
   - participant B (day 26)
   - participant C (day 32)
   - participant I (day 26)
+  - participant A (day 120)
+  - participant B (day 113)
+  - participant C (day 104)
+  - participant E (day 104)
+  - participant G (day 94)
+  - participant I (day 102)
 
 infecting_virus:
   K007: B.1.351
@@ -63,6 +81,12 @@ infecting_virus:
   participant B (day 26): early 2020
   participant C (day 32): early 2020
   participant I (day 26): early 2020
+  participant A (day 120): early 2020 (100d)
+  participant B (day 113): early 2020 (100d)
+  participant C (day 104): early 2020 (100d)
+  participant E (day 104): early 2020 (100d)
+  participant G (day 94): early 2020 (100d)
+  participant I (day 102): early 2020 (100d)
 
 virus_order:
   - wildtype
@@ -79,6 +103,7 @@ virus_order:
   - K417N
   - E484K
   - E484Q
+  - L452R
   - N501Y
   - G446V
   - K417N-E484K-N501Y
@@ -99,6 +124,7 @@ virus_simplified_names:
   K417N: 417K/N
   E484K: 484E/K
   E484Q: 484Q
+  L452R: L452R
   N501Y: 501N/Y
   G446V: G446V
   K417N-E484K-N501Y: '417-484-501'
@@ -128,6 +154,7 @@ virus_subsets:
     - K417N
     - E484K
     - E484Q
+    - L452R
     - N501Y
     - G446V
     - K417N-E484K-N501Y
@@ -137,6 +164,7 @@ virus_subsets:
 neut_samples_ignore:
   2021-08-20: [B.1.351-K484Q] # these were repeated on 2021-08-27
   2021-08-21: [B.1.351-K484Q] # these were repeated on 2021-08-27
+  2021-03-08: [E484K]         # these were repeated on 2021-03-12
 
 # the neutralization limit of detection is equal to the starting dilution
 NT50_LOD: 25

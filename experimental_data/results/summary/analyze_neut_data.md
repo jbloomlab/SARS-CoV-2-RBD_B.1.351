@@ -63,7 +63,7 @@ Read in the neutralization data, dropping sera/viruses that were messed up and r
 print(config['rename_sera'])
 ```
 
-    {'23_d21': 'participant A (day 21)', '24C_d32': 'participant C (day 32)', '23C_d26': 'participant I (day 26)', '1C_d26': 'participant B (day 26)'}
+    {'23_d21': 'participant A (day 21)', '24C_d32': 'participant C (day 32)', '23C_d26': 'participant I (day 26)', '1C_d26': 'participant B (day 26)', '24C_d104': 'participant C (day 104)', '22C_d104': 'participant E (day 104)', '23C_d102': 'participant I (day 102)', '1C_d113': 'participant B (day 113)', '23_d120': 'participant A (day 120)', '25_d94': 'participant G (day 94)'}
 
 
 
@@ -116,13 +116,16 @@ display(HTML(fracinfect.head().to_html(index=False)))
 ```
 
     Reading neutralization data from results/neut_titers/fracinfect.csv
-    Length before dropping anything = 2240
+    Length before dropping anything = 4224
     From 2021-08-20, dropping ['B.1.351-K484Q']
     ['B.1.351-K484Q']
-    Length after dropping 64 rows from ['B.1.351-K484Q'] from 2021-08-20 = 2176
+    Length after dropping 64 rows from ['B.1.351-K484Q'] from 2021-08-20 = 4160
     From 2021-08-21, dropping ['B.1.351-K484Q']
     ['B.1.351-K484Q']
-    Length after dropping 64 rows from ['B.1.351-K484Q'] from 2021-08-21 = 2112
+    Length after dropping 64 rows from ['B.1.351-K484Q'] from 2021-08-21 = 4096
+    From 2021-03-08, dropping ['E484K']
+    ['E484K']
+    Length after dropping 128 rows from ['E484K'] from 2021-03-08 = 3968
 
 
 
@@ -141,54 +144,54 @@ display(HTML(fracinfect.head().to_html(index=False)))
   </thead>
   <tbody>
     <tr>
-      <td>K041</td>
-      <td>B.1.351-K484Q</td>
+      <td>participant A (day 120)</td>
+      <td>wildtype</td>
       <td>1</td>
       <td>0.040000</td>
-      <td>4.610000e-07</td>
-      <td>2021-08-27</td>
-      <td>1 (2021-08-27)</td>
-      <td>2</td>
+      <td>0.000005</td>
+      <td>2021-03-08</td>
+      <td>1 (2021-03-08)</td>
+      <td>1</td>
     </tr>
     <tr>
-      <td>K041</td>
-      <td>B.1.351-K484Q</td>
+      <td>participant A (day 120)</td>
+      <td>wildtype</td>
       <td>1</td>
       <td>0.013330</td>
-      <td>2.739000e-03</td>
-      <td>2021-08-27</td>
-      <td>1 (2021-08-27)</td>
-      <td>2</td>
+      <td>0.011460</td>
+      <td>2021-03-08</td>
+      <td>1 (2021-03-08)</td>
+      <td>1</td>
     </tr>
     <tr>
-      <td>K041</td>
-      <td>B.1.351-K484Q</td>
+      <td>participant A (day 120)</td>
+      <td>wildtype</td>
       <td>1</td>
       <td>0.004444</td>
-      <td>2.070000e-02</td>
-      <td>2021-08-27</td>
-      <td>1 (2021-08-27)</td>
-      <td>2</td>
+      <td>0.053630</td>
+      <td>2021-03-08</td>
+      <td>1 (2021-03-08)</td>
+      <td>1</td>
     </tr>
     <tr>
-      <td>K041</td>
-      <td>B.1.351-K484Q</td>
+      <td>participant A (day 120)</td>
+      <td>wildtype</td>
       <td>1</td>
       <td>0.001481</td>
-      <td>2.479000e-01</td>
-      <td>2021-08-27</td>
-      <td>1 (2021-08-27)</td>
-      <td>2</td>
+      <td>0.386400</td>
+      <td>2021-03-08</td>
+      <td>1 (2021-03-08)</td>
+      <td>1</td>
     </tr>
     <tr>
-      <td>K041</td>
-      <td>B.1.351-K484Q</td>
+      <td>participant A (day 120)</td>
+      <td>wildtype</td>
       <td>1</td>
       <td>0.000494</td>
-      <td>9.689000e-01</td>
-      <td>2021-08-27</td>
-      <td>1 (2021-08-27)</td>
-      <td>2</td>
+      <td>0.654600</td>
+      <td>2021-03-08</td>
+      <td>1 (2021-03-08)</td>
+      <td>1</td>
     </tr>
   </tbody>
 </table>
@@ -307,60 +310,60 @@ fitparams.head()
   <tbody>
     <tr>
       <th>0</th>
-      <td>K041</td>
-      <td>B.1.351-K484Q</td>
-      <td>0.001137</td>
-      <td>879.582342</td>
+      <td>participant A (day 120)</td>
+      <td>wildtype</td>
+      <td>0.000760</td>
+      <td>1315.372571</td>
       <td>interpolated</td>
-      <td>2021-08-27</td>
+      <td>2021-03-08</td>
       <td>1</td>
       <td>True</td>
       <td>False</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>K041</td>
-      <td>B.1.351-K484Q</td>
-      <td>0.001380</td>
-      <td>724.862206</td>
+      <td>participant A (day 120)</td>
+      <td>wildtype</td>
+      <td>0.000680</td>
+      <td>1470.491523</td>
       <td>interpolated</td>
-      <td>2021-08-27</td>
+      <td>2021-03-08</td>
       <td>2</td>
       <td>True</td>
       <td>False</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>K041</td>
-      <td>B.1.351-K484Q</td>
-      <td>0.001393</td>
-      <td>717.838223</td>
+      <td>participant A (day 120)</td>
+      <td>wildtype</td>
+      <td>0.000719</td>
+      <td>1389.854806</td>
       <td>interpolated</td>
-      <td>2021-08-27</td>
+      <td>2021-03-08</td>
       <td>average</td>
       <td>True</td>
       <td>False</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>K041</td>
-      <td>wildtype</td>
-      <td>0.000481</td>
-      <td>2077.386543</td>
+      <td>participant A (day 120)</td>
+      <td>G446V</td>
+      <td>0.000782</td>
+      <td>1279.065296</td>
       <td>interpolated</td>
-      <td>2021-08-27</td>
+      <td>2021-03-08</td>
       <td>1</td>
       <td>True</td>
       <td>False</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>K041</td>
-      <td>wildtype</td>
-      <td>0.000548</td>
-      <td>1824.055323</td>
+      <td>participant A (day 120)</td>
+      <td>G446V</td>
+      <td>0.000811</td>
+      <td>1232.803664</td>
       <td>interpolated</td>
-      <td>2021-08-27</td>
+      <td>2021-03-08</td>
       <td>2</td>
       <td>True</td>
       <td>False</td>
@@ -461,68 +464,68 @@ display(HTML(fitparams_fixtop.head().to_html()))
   <tbody>
     <tr>
       <th>0</th>
-      <td>K041</td>
-      <td>B.1.351-K484Q</td>
-      <td>0.001090</td>
-      <td>2021-08-27</td>
+      <td>participant A (day 120)</td>
+      <td>wildtype</td>
+      <td>0.000876</td>
+      <td>2021-03-08</td>
       <td>1</td>
-      <td>0.000544</td>
-      <td>2.002853</td>
-      <td>0.001137</td>
-      <td>0.000481</td>
-      <td>2.361787</td>
+      <td>0.000876</td>
+      <td>1.000000</td>
+      <td>0.000760</td>
+      <td>0.000760</td>
+      <td>1.000000</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>K041</td>
-      <td>B.1.351-K484Q</td>
-      <td>0.001401</td>
-      <td>2021-08-27</td>
+      <td>participant A (day 120)</td>
+      <td>wildtype</td>
+      <td>0.000673</td>
+      <td>2021-03-08</td>
       <td>2</td>
-      <td>0.000560</td>
-      <td>2.501544</td>
-      <td>0.001380</td>
-      <td>0.000548</td>
-      <td>2.516417</td>
+      <td>0.000673</td>
+      <td>1.000000</td>
+      <td>0.000680</td>
+      <td>0.000680</td>
+      <td>1.000000</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>K041</td>
-      <td>B.1.351-K484Q</td>
-      <td>0.001168</td>
-      <td>2021-08-27</td>
+      <td>participant A (day 120)</td>
+      <td>wildtype</td>
+      <td>0.000795</td>
+      <td>2021-03-08</td>
       <td>average</td>
-      <td>0.000562</td>
-      <td>2.078311</td>
-      <td>0.001393</td>
-      <td>0.000527</td>
-      <td>2.643227</td>
+      <td>0.000795</td>
+      <td>1.000000</td>
+      <td>0.000719</td>
+      <td>0.000719</td>
+      <td>1.000000</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>K041</td>
-      <td>wildtype</td>
-      <td>0.000544</td>
-      <td>2021-08-27</td>
+      <td>participant A (day 120)</td>
+      <td>G446V</td>
+      <td>0.000765</td>
+      <td>2021-03-08</td>
       <td>1</td>
-      <td>0.000544</td>
-      <td>1.000000</td>
-      <td>0.000481</td>
-      <td>0.000481</td>
-      <td>1.000000</td>
+      <td>0.000876</td>
+      <td>0.873807</td>
+      <td>0.000782</td>
+      <td>0.000760</td>
+      <td>1.028386</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>K041</td>
-      <td>wildtype</td>
-      <td>0.000560</td>
-      <td>2021-08-27</td>
+      <td>participant A (day 120)</td>
+      <td>G446V</td>
+      <td>0.001075</td>
+      <td>2021-03-08</td>
       <td>2</td>
-      <td>0.000560</td>
-      <td>1.000000</td>
-      <td>0.000548</td>
-      <td>0.000548</td>
-      <td>1.000000</td>
+      <td>0.000673</td>
+      <td>1.597826</td>
+      <td>0.000811</td>
+      <td>0.000680</td>
+      <td>1.192803</td>
     </tr>
   </tbody>
 </table>
@@ -597,6 +600,7 @@ for d in fracinfect['date'].unique():
     fig.savefig(plotfile, bbox_inches='tight')
 ```
 
+    Saving to results/neut_titers/2021-03-08_mutant_neuts.pdf
     Saving to results/neut_titers/2021-08-27_mutant_neuts.pdf
 
 
@@ -604,6 +608,7 @@ for d in fracinfect['date'].unique():
 
 
     Saving to results/neut_titers/2021-06-10_mutant_neuts.pdf
+    Saving to results/neut_titers/2021-03-12_mutant_neuts.pdf
     Saving to results/neut_titers/2021-08-20_mutant_neuts.pdf
 
 
@@ -642,6 +647,18 @@ for d in fracinfect['date'].unique():
 
     
 ![png](analyze_neut_data_files/analyze_neut_data_18_9.png)
+    
+
+
+
+    
+![png](analyze_neut_data_files/analyze_neut_data_18_10.png)
+    
+
+
+
+    
+![png](analyze_neut_data_files/analyze_neut_data_18_11.png)
     
 
 
@@ -694,69 +711,69 @@ neut_titers.to_csv(neut_titers_file, index=False)
   </thead>
   <tbody>
     <tr>
-      <td>K041</td>
-      <td>B.1.351-K484Q</td>
-      <td>0.001137</td>
-      <td>879.582342</td>
+      <td>participant A (day 120)</td>
+      <td>wildtype</td>
+      <td>0.000760</td>
+      <td>1315.372571</td>
       <td>interpolated</td>
-      <td>2021-08-27</td>
+      <td>2021-03-08</td>
       <td>1</td>
       <td>True</td>
       <td>False</td>
-      <td>0.000514</td>
-      <td>2.213101</td>
+      <td>0.000719</td>
+      <td>1.057321</td>
     </tr>
     <tr>
-      <td>K041</td>
-      <td>B.1.351-K484Q</td>
-      <td>0.001380</td>
-      <td>724.862206</td>
+      <td>participant A (day 120)</td>
+      <td>wildtype</td>
+      <td>0.000680</td>
+      <td>1470.491523</td>
       <td>interpolated</td>
-      <td>2021-08-27</td>
+      <td>2021-03-08</td>
       <td>2</td>
       <td>True</td>
       <td>False</td>
-      <td>0.000514</td>
-      <td>2.685482</td>
+      <td>0.000719</td>
+      <td>0.945787</td>
     </tr>
     <tr>
-      <td>K041</td>
-      <td>B.1.351-K484Q</td>
-      <td>0.001393</td>
-      <td>717.838223</td>
+      <td>participant A (day 120)</td>
+      <td>wildtype</td>
+      <td>0.000719</td>
+      <td>1389.854806</td>
       <td>interpolated</td>
-      <td>2021-08-27</td>
+      <td>2021-03-08</td>
       <td>average</td>
       <td>True</td>
       <td>False</td>
-      <td>0.000514</td>
-      <td>2.711759</td>
+      <td>0.000719</td>
+      <td>1.000659</td>
     </tr>
     <tr>
-      <td>K041</td>
-      <td>wildtype</td>
-      <td>0.000481</td>
-      <td>2077.386543</td>
+      <td>participant A (day 120)</td>
+      <td>G446V</td>
+      <td>0.000782</td>
+      <td>1279.065296</td>
       <td>interpolated</td>
-      <td>2021-08-27</td>
+      <td>2021-03-08</td>
       <td>1</td>
       <td>True</td>
       <td>False</td>
-      <td>0.000514</td>
-      <td>0.937045</td>
+      <td>0.000719</td>
+      <td>1.087334</td>
     </tr>
     <tr>
-      <td>K041</td>
-      <td>wildtype</td>
-      <td>0.000548</td>
-      <td>1824.055323</td>
+      <td>participant A (day 120)</td>
+      <td>G446V</td>
+      <td>0.000811</td>
+      <td>1232.803664</td>
       <td>interpolated</td>
-      <td>2021-08-27</td>
+      <td>2021-03-08</td>
       <td>2</td>
       <td>True</td>
       <td>False</td>
-      <td>0.000514</td>
-      <td>1.067185</td>
+      <td>0.000719</td>
+      <td>1.128137</td>
     </tr>
   </tbody>
 </table>
@@ -926,6 +943,32 @@ display(HTML(haarvi_depletions.head().to_html(index=False)))
   </thead>
   <tbody>
     <tr>
+      <td>participant A (day 120)</td>
+      <td>wildtype</td>
+      <td>0.001161</td>
+      <td>interpolated</td>
+      <td>861.164001</td>
+      <td>October 2020</td>
+      <td>1</td>
+      <td>True</td>
+      <td>False</td>
+      <td>0.001161</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <td>participant A (day 120)</td>
+      <td>RBD antibodies depleted</td>
+      <td>0.050000</td>
+      <td>lower</td>
+      <td>20.000000</td>
+      <td>October 2020</td>
+      <td>1</td>
+      <td>True</td>
+      <td>True</td>
+      <td>0.001161</td>
+      <td>43.058200</td>
+    </tr>
+    <tr>
       <td>participant A (day 21)</td>
       <td>wildtype</td>
       <td>0.000145</td>
@@ -952,42 +995,16 @@ display(HTML(haarvi_depletions.head().to_html(index=False)))
       <td>8.142049</td>
     </tr>
     <tr>
-      <td>participant B (day 26)</td>
+      <td>participant B (day 113)</td>
       <td>wildtype</td>
-      <td>0.000640</td>
+      <td>0.003510</td>
       <td>interpolated</td>
-      <td>1563.438063</td>
+      <td>284.860356</td>
       <td>October 2020</td>
       <td>1</td>
       <td>True</td>
       <td>False</td>
-      <td>0.000640</td>
-      <td>1.000000</td>
-    </tr>
-    <tr>
-      <td>participant B (day 26)</td>
-      <td>RBD antibodies depleted</td>
-      <td>0.007346</td>
-      <td>interpolated</td>
-      <td>136.136752</td>
-      <td>October 2020</td>
-      <td>1</td>
-      <td>True</td>
-      <td>False</td>
-      <td>0.000640</td>
-      <td>11.484320</td>
-    </tr>
-    <tr>
-      <td>participant C (day 32)</td>
-      <td>wildtype</td>
-      <td>0.000287</td>
-      <td>interpolated</td>
-      <td>3479.701163</td>
-      <td>October 2020</td>
-      <td>1</td>
-      <td>True</td>
-      <td>False</td>
-      <td>0.000287</td>
+      <td>0.003510</td>
       <td>1.000000</td>
     </tr>
   </tbody>
@@ -1020,46 +1037,46 @@ display(HTML(neut_titers.tail().to_html(index=False)))
   </thead>
   <tbody>
     <tr>
-      <td>participant B (day 26)</td>
+      <td>participant G (day 94)</td>
       <td>RBD antibodies depleted</td>
-      <td>0.007346</td>
-      <td>136.136752</td>
-      <td>interpolated</td>
+      <td>0.050000</td>
+      <td>20.000000</td>
+      <td>lower</td>
       <td>October 2020</td>
       <td>average</td>
       <td>True</td>
-      <td>False</td>
-      <td>0.000640</td>
-      <td>11.484320</td>
-      <td>early 2020</td>
+      <td>True</td>
+      <td>0.003412</td>
+      <td>14.653492</td>
+      <td>early 2020 (100d)</td>
     </tr>
     <tr>
-      <td>participant C (day 32)</td>
+      <td>participant I (day 102)</td>
       <td>wildtype</td>
-      <td>0.000287</td>
-      <td>3479.701163</td>
+      <td>0.001702</td>
+      <td>587.409120</td>
       <td>interpolated</td>
       <td>October 2020</td>
       <td>average</td>
       <td>True</td>
       <td>False</td>
-      <td>0.000287</td>
+      <td>0.001702</td>
       <td>1.000000</td>
-      <td>early 2020</td>
+      <td>early 2020 (100d)</td>
     </tr>
     <tr>
-      <td>participant C (day 32)</td>
+      <td>participant I (day 102)</td>
       <td>RBD antibodies depleted</td>
-      <td>0.036028</td>
-      <td>27.756167</td>
+      <td>0.019911</td>
+      <td>50.224569</td>
       <td>interpolated</td>
       <td>October 2020</td>
       <td>average</td>
       <td>True</td>
       <td>False</td>
-      <td>0.000287</td>
-      <td>125.366774</td>
-      <td>early 2020</td>
+      <td>0.001702</td>
+      <td>11.695653</td>
+      <td>early 2020 (100d)</td>
     </tr>
     <tr>
       <td>participant I (day 26)</td>
@@ -1124,7 +1141,7 @@ for b in ('average', 'not_average'):
                axis_title_x=element_blank(),
                strip_background_x=element_blank(),
                subplots_adjust={'hspace': 1.15},
-               figure_size=(12, 12),
+               figure_size=(12, 20),
                ) +
          geom_hline(yintercept=1, linetype='dashed', size=1,
                     alpha=0.6, color=CBPALETTE[0]) +
@@ -1136,7 +1153,7 @@ for b in ('average', 'not_average'):
                     linetype='dotted',
                    ) +
          scale_shape_manual(values=['o','^'], name='limit of detection')+
-         scale_fill_manual(values=CBPALETTE[1:])
+         scale_fill_manual(values=CBPALETTE[1:]*3)
          )
 
     _ = p.draw()
@@ -1181,8 +1198,14 @@ neut_titers['serum_virus'].unique()
 
 
 
-    array(['K041\nB.1.351', 'K046\nB.1.351', 'K114\nB.1.351', 'K119\nB.1.351',
-           'K007\nB.1.351', 'K031\nB.1.351', 'K033\nB.1.351', 'K040\nB.1.351',
+    array(['participant A (day 120)\nearly 2020 (100d)',
+           'participant B (day 113)\nearly 2020 (100d)', 'K041\nB.1.351',
+           'K046\nB.1.351', 'K114\nB.1.351', 'K119\nB.1.351', 'K007\nB.1.351',
+           'K031\nB.1.351', 'K033\nB.1.351', 'K040\nB.1.351',
+           'participant C (day 104)\nearly 2020 (100d)',
+           'participant E (day 104)\nearly 2020 (100d)',
+           'participant G (day 94)\nearly 2020 (100d)',
+           'participant I (day 102)\nearly 2020 (100d)',
            'participant A (day 21)\nearly 2020',
            'participant C (day 32)\nearly 2020',
            'participant I (day 26)\nearly 2020',
@@ -1212,7 +1235,7 @@ for metric in ['fold_change', 'ic50']:
              theme(axis_text_x=element_text(angle=90),
                axis_title_x=element_blank(),
                strip_background_x=element_blank(),
-               figure_size=(9, 6),
+               figure_size=(9, 12),
                ) +
              geom_hline(data=(neut_titers
                               .query('virus in ["wildtype", "RBD antibodies depleted"] & replicate!="average" ') # & date in @dates
@@ -1241,25 +1264,25 @@ for metric in ['fold_change', 'ic50']:
     Making plot for fold_change for all:
 
 
-    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 2568 rows containing missing values.
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 6120 rows containing missing values.
 
 
     Saving to results/neut_titers/fold_change_all.pdf
 
 
-    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 2568 rows containing missing values.
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 6120 rows containing missing values.
 
 
     Making plot for ic50 for all:
 
 
-    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 2568 rows containing missing values.
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 6120 rows containing missing values.
 
 
     Saving to results/neut_titers/ic50_all.pdf
 
 
-    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 2568 rows containing missing values.
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 6120 rows containing missing values.
 
 
 
@@ -1298,7 +1321,7 @@ for metric in ['fold_change', 'ic50']:
              theme(axis_text_x=element_text(angle=90),
                axis_title_x=element_blank(),
                strip_background_x=element_blank(),
-               figure_size=(9, 6),
+               figure_size=(9, 12),
                ) +
              geom_hline(data=(neut_titers
                               .query('virus in ["wildtype", "RBD antibodies depleted"] & replicate!="average" ') #& date in @dates
@@ -1326,25 +1349,25 @@ for metric in ['fold_change', 'ic50']:
     Making plot for fold_change for all:
 
 
-    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 2568 rows containing missing values.
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 6120 rows containing missing values.
 
 
     Saving to results/neut_titers/fold_change_all.pdf
 
 
-    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 2568 rows containing missing values.
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 6120 rows containing missing values.
 
 
     Making plot for ic50 for all:
 
 
-    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 2568 rows containing missing values.
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 6120 rows containing missing values.
 
 
     Saving to results/neut_titers/ic50_all.pdf
 
 
-    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 2568 rows containing missing values.
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 6120 rows containing missing values.
 
 
 
@@ -1393,7 +1416,7 @@ for metric in ['fold_change', 'ic50']:
                    axis_title_x=element_blank(),
                    strip_margin_y=0.35,
                    strip_background_x=element_blank(),
-                   figure_size=(6, 2.5),
+                   figure_size=(3*neut_titers['infecting_virus'].nunique(), 2.5),
                    ) +
              geom_hline(data=(neut_titers
                               .query('virus in ["wildtype"] & replicate=="average"') # & date in @dates
@@ -1423,25 +1446,25 @@ for metric in ['fold_change', 'ic50']:
     Making plot for fold_change for all:
 
 
-    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 34 rows containing missing values.
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 54 rows containing missing values.
 
 
     Saving to results/neut_titers/fold_change_all_aggregate.pdf
 
 
-    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 34 rows containing missing values.
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 54 rows containing missing values.
 
 
     Making plot for ic50 for all:
 
 
-    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 34 rows containing missing values.
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 54 rows containing missing values.
 
 
     Saving to results/neut_titers/ic50_all_aggregate.pdf
 
 
-    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 34 rows containing missing values.
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 54 rows containing missing values.
 
 
 
@@ -1488,7 +1511,7 @@ for metric in ['fold_change', 'ic50']:
                    axis_title_x=element_blank(),
                    strip_margin_y=0.35,
                    strip_background_x=element_blank(),
-                   figure_size=(6, 2.5),
+                   figure_size=(9, 2.5),
                    ) +
              geom_hline(data=(neut_titers
                               .query('virus in ["wildtype"] & replicate=="average"') # & date in @dates
@@ -1518,28 +1541,28 @@ for metric in ['fold_change', 'ic50']:
     Making plot for fold_change for all:
 
 
-    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 34 rows containing missing values.
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 54 rows containing missing values.
     /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/guides/guides.py:197: PlotnineWarning: Cannot generate legend for the 'fill' aesthetic. Make sure you have mapped a variable to it
 
 
     Saving to results/neut_titers/fold_change_all_aggregate_nocolors.pdf
 
 
-    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 34 rows containing missing values.
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 54 rows containing missing values.
     /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/guides/guides.py:197: PlotnineWarning: Cannot generate legend for the 'fill' aesthetic. Make sure you have mapped a variable to it
 
 
     Making plot for ic50 for all:
 
 
-    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 34 rows containing missing values.
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 54 rows containing missing values.
     /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/guides/guides.py:197: PlotnineWarning: Cannot generate legend for the 'fill' aesthetic. Make sure you have mapped a variable to it
 
 
     Saving to results/neut_titers/ic50_all_aggregate_nocolors.pdf
 
 
-    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 34 rows containing missing values.
+    /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/layer.py:401: PlotnineWarning: geom_hline : Removed 54 rows containing missing values.
     /fh/fast/bloom_j/computational_notebooks/agreaney/2021/SARS-CoV-2-RBD_B.1.351/env/lib/python3.8/site-packages/plotnine/guides/guides.py:197: PlotnineWarning: Cannot generate legend for the 'fill' aesthetic. Make sure you have mapped a variable to it
 
 
@@ -1659,8 +1682,8 @@ for metric in ['fold_change', 'ic50']:
              theme(axis_title_x=element_blank(),
                    figure_size=(neut_titers.query('virus in @virus_subsample')['virus_labels'].nunique()*0.75, 2.5), 
                    ) +
-             scale_fill_manual(values=['#44AA99', '#332288'], name='infecting virus\n')+
-             scale_color_manual(values=['#44AA99', '#332288'], name='infecting virus\n')
+             scale_fill_manual(values=['#44AA99', '#332288', '#AA4499'], name='infecting virus\n')+
+             scale_color_manual(values=['#44AA99', '#332288', '#AA4499'], name='infecting virus\n')
              )
 
         _ = p.draw()
@@ -1695,93 +1718,93 @@ for metric in ['fold_change', 'ic50']:
   <tbody>
     <tr>
       <th>0</th>
-      <td>K041</td>
-      <td>B.1.351-K484Q</td>
-      <td>0.001137</td>
-      <td>879.582342</td>
+      <td>participant A (day 120)</td>
+      <td>wildtype</td>
+      <td>0.000760</td>
+      <td>1315.372571</td>
       <td>interpolated</td>
-      <td>2021-08-27</td>
+      <td>2021-03-08</td>
       <td>1</td>
       <td>True</td>
       <td>False</td>
-      <td>0.000514</td>
-      <td>2.213101</td>
-      <td>B.1.351</td>
-      <td>484Q</td>
-      <td>K041\nB.1.351</td>
-      <td>484Q</td>
+      <td>0.000719</td>
+      <td>1.057321</td>
+      <td>early 2020 (100d)</td>
+      <td>wildtype</td>
+      <td>participant A (day 120)\nearly 2020 (100d)</td>
+      <td>wildtype</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>K041</td>
-      <td>B.1.351-K484Q</td>
-      <td>0.001380</td>
-      <td>724.862206</td>
+      <td>participant A (day 120)</td>
+      <td>wildtype</td>
+      <td>0.000680</td>
+      <td>1470.491523</td>
       <td>interpolated</td>
-      <td>2021-08-27</td>
+      <td>2021-03-08</td>
       <td>2</td>
       <td>True</td>
       <td>False</td>
-      <td>0.000514</td>
-      <td>2.685482</td>
-      <td>B.1.351</td>
-      <td>484Q</td>
-      <td>K041\nB.1.351</td>
-      <td>484Q</td>
+      <td>0.000719</td>
+      <td>0.945787</td>
+      <td>early 2020 (100d)</td>
+      <td>wildtype</td>
+      <td>participant A (day 120)\nearly 2020 (100d)</td>
+      <td>wildtype</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>K041</td>
-      <td>B.1.351-K484Q</td>
-      <td>0.001393</td>
-      <td>717.838223</td>
+      <td>participant A (day 120)</td>
+      <td>wildtype</td>
+      <td>0.000719</td>
+      <td>1389.854806</td>
       <td>interpolated</td>
-      <td>2021-08-27</td>
+      <td>2021-03-08</td>
       <td>average</td>
       <td>True</td>
       <td>False</td>
-      <td>0.000514</td>
-      <td>2.711759</td>
-      <td>B.1.351</td>
-      <td>484Q</td>
-      <td>K041\nB.1.351</td>
-      <td>484Q</td>
+      <td>0.000719</td>
+      <td>1.000659</td>
+      <td>early 2020 (100d)</td>
+      <td>wildtype</td>
+      <td>participant A (day 120)\nearly 2020 (100d)</td>
+      <td>wildtype</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>K041</td>
-      <td>wildtype</td>
-      <td>0.000481</td>
-      <td>2077.386543</td>
+      <td>participant A (day 120)</td>
+      <td>G446V</td>
+      <td>0.000782</td>
+      <td>1279.065296</td>
       <td>interpolated</td>
-      <td>2021-08-27</td>
+      <td>2021-03-08</td>
       <td>1</td>
       <td>True</td>
       <td>False</td>
-      <td>0.000514</td>
-      <td>0.937045</td>
-      <td>B.1.351</td>
-      <td>wildtype</td>
-      <td>K041\nB.1.351</td>
-      <td>wildtype</td>
+      <td>0.000719</td>
+      <td>1.087334</td>
+      <td>early 2020 (100d)</td>
+      <td>G446V</td>
+      <td>participant A (day 120)\nearly 2020 (100d)</td>
+      <td>G446V</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>K041</td>
-      <td>wildtype</td>
-      <td>0.000548</td>
-      <td>1824.055323</td>
+      <td>participant A (day 120)</td>
+      <td>G446V</td>
+      <td>0.000811</td>
+      <td>1232.803664</td>
       <td>interpolated</td>
-      <td>2021-08-27</td>
+      <td>2021-03-08</td>
       <td>2</td>
       <td>True</td>
       <td>False</td>
-      <td>0.000514</td>
-      <td>1.067185</td>
-      <td>B.1.351</td>
-      <td>wildtype</td>
-      <td>K041\nB.1.351</td>
-      <td>wildtype</td>
+      <td>0.000719</td>
+      <td>1.128137</td>
+      <td>early 2020 (100d)</td>
+      <td>G446V</td>
+      <td>participant A (day 120)\nearly 2020 (100d)</td>
+      <td>G446V</td>
     </tr>
   </tbody>
 </table>
@@ -1805,6 +1828,87 @@ for metric in ['fold_change', 'ic50']:
 
     
 ![png](analyze_neut_data_files/analyze_neut_data_38_3.png)
+    
+
+
+Make main-figure plot:
+
+
+```python
+metric='fold_change'
+
+for virus_set, virus_subsample in config['virus_subsets'].items():
+    print(f'Making main-text plot for {virus_set}:')
+
+    virus_subsample=[v for v in virus_subsample if v not in ["wildtype", "L452R", "B.1.351-L452R"]]
+
+    print(f"Making plot for {neut_titers.query('virus in @virus_subsample')['virus_labels'].nunique()} viruses")
+
+    ylab={'fold_change':'fold decrease in neutralization', 
+          'ic50':'inhibitory concentration\n50% (IC50)'
+         }
+    yintercept={'fold_change':1, 
+                'ic50':(neut_titers
+                        .query('virus=="wildtype" & infecting_virus=="B.1.351"')
+                        ['ic50']
+                        .agg(geometric_mean)
+                       )
+               }
+
+    p = (ggplot(neut_titers
+                .query("virus in @virus_subsample & replicate=='average' & infecting_virus!='early 2020 (100d)'")
+                .assign(virus_labels=lambda x: pd.Categorical(x['virus_labels'],
+                                                              ordered=True,
+                                                              categories=(config['virus_simplified_names_order']+
+                                                                          ['417\n484\n501',
+                                                                           'RBD\nantibodies\ndepleted'])),
+                       )
+                ) +
+         aes('virus_labels', 
+             'fold_change', 
+             fill='infecting_virus', 
+             color='infecting_virus',
+            ) +
+         geom_point(position=position_dodge(width=0.55), size=2.5, alpha=0.5) +
+         geom_crossbar(data=(neut_titers
+                             .query("virus in @virus_subsample & replicate=='average' & infecting_virus!='early 2020 (100d)'")
+                             .groupby(['virus_labels', 'infecting_virus'])
+                             .agg({metric: geometric_mean})
+                             .reset_index()
+                             .dropna()
+                            ),
+#                            inherit_aes=False,
+                       mapping=aes(x='virus_labels', y=metric, ymin=metric, ymax=metric),
+                       position=position_dodge(width=0.55),
+              ) +
+         geom_hline(yintercept=yintercept[metric],
+                    linetype='dashed', size=0.5,
+                    alpha=0.6, 
+                    color=CBPALETTE[0]) +
+         scale_y_log10(name=ylab[metric]) +
+         theme_classic() +
+         theme(axis_title_x=element_blank(),
+               figure_size=(neut_titers.query('virus in @virus_subsample')['virus_labels'].nunique()*0.75, 2.5), 
+               ) +
+         scale_fill_manual(values=['#44AA99', '#332288', '#AA4499'], name='infecting virus\n')+
+         scale_color_manual(values=['#44AA99', '#332288', '#AA4499'], name='infecting virus\n')
+         )
+
+    _ = p.draw()
+
+    plotfile = f'{results}/figure5.pdf'
+    print(f"Saving to {plotfile}")
+    p.save(plotfile, limitsize=False, verbose=False)
+```
+
+    Making main-text plot for all:
+    Making plot for 7 viruses
+    Saving to results/neut_titers/figure5.pdf
+
+
+
+    
+![png](analyze_neut_data_files/analyze_neut_data_40_1.png)
     
 
 
@@ -1853,6 +1957,12 @@ display(HTML(geomean_mut_effects.to_html(index=False)))
       <td>early 2020</td>
       <td>1.004706</td>
       <td>8</td>
+    </tr>
+    <tr>
+      <td>wildtype</td>
+      <td>early 2020 (100d)</td>
+      <td>1.003502</td>
+      <td>14</td>
     </tr>
     <tr>
       <td>B.1.351-N417K</td>
@@ -1909,16 +2019,34 @@ display(HTML(geomean_mut_effects.to_html(index=False)))
       <td>4</td>
     </tr>
     <tr>
+      <td>K417N</td>
+      <td>early 2020 (100d)</td>
+      <td>1.193344</td>
+      <td>6</td>
+    </tr>
+    <tr>
       <td>E484K</td>
       <td>early 2020</td>
       <td>20.067763</td>
       <td>4</td>
     </tr>
     <tr>
+      <td>E484K</td>
+      <td>early 2020 (100d)</td>
+      <td>10.644338</td>
+      <td>6</td>
+    </tr>
+    <tr>
       <td>E484Q</td>
       <td>early 2020</td>
       <td>19.255347</td>
       <td>4</td>
+    </tr>
+    <tr>
+      <td>L452R</td>
+      <td>early 2020 (100d)</td>
+      <td>2.622105</td>
+      <td>6</td>
     </tr>
     <tr>
       <td>N501Y</td>
@@ -1931,6 +2059,12 @@ display(HTML(geomean_mut_effects.to_html(index=False)))
       <td>early 2020</td>
       <td>1.449708</td>
       <td>4</td>
+    </tr>
+    <tr>
+      <td>G446V</td>
+      <td>early 2020 (100d)</td>
+      <td>1.614958</td>
+      <td>6</td>
     </tr>
     <tr>
       <td>K417N-E484K-N501Y</td>
@@ -1949,6 +2083,12 @@ display(HTML(geomean_mut_effects.to_html(index=False)))
       <td>early 2020</td>
       <td>16.666061</td>
       <td>4</td>
+    </tr>
+    <tr>
+      <td>RBD antibodies depleted</td>
+      <td>early 2020 (100d)</td>
+      <td>25.209958</td>
+      <td>6</td>
     </tr>
   </tbody>
 </table>
