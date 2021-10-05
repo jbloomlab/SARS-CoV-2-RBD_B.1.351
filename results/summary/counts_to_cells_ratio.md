@@ -105,64 +105,64 @@ counts_cells.to_csv(config['counts_to_cells_csv'], index=False, float_format='%.
   </thead>
   <tbody>
     <tr>
-      <td>ACE2_enrich-ACE2pos-8-abneg, lib1</td>
-      <td>210603</td>
-      <td>ACE2_enrich</td>
-      <td>ACE2pos</td>
-      <td>8</td>
-      <td>abneg</td>
-      <td>3.1e+07</td>
-      <td>7.7e+05</td>
-      <td>0.025</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <td>ACE2_enrich-ACE2pos-8-abneg, lib2</td>
-      <td>210603</td>
-      <td>ACE2_enrich</td>
-      <td>ACE2pos</td>
-      <td>8</td>
-      <td>abneg</td>
-      <td>3.2e+07</td>
-      <td>6.3e+05</td>
-      <td>0.02</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <td>ACE2_enrich-presort-0-ref, lib1</td>
-      <td>210603</td>
-      <td>ACE2_enrich</td>
-      <td>presort</td>
-      <td>0</td>
-      <td>ref</td>
-      <td>NaN</td>
-      <td>1.2e+06</td>
-      <td>NaN</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <td>ACE2_enrich-presort-0-ref, lib2</td>
-      <td>210603</td>
-      <td>ACE2_enrich</td>
-      <td>presort</td>
-      <td>0</td>
-      <td>ref</td>
-      <td>NaN</td>
-      <td>9.4e+05</td>
-      <td>NaN</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <td>bg4e_1-5-none-0-ref, lib1</td>
-      <td>210616</td>
-      <td>bg4e_1-5</td>
+      <td>bg4e_6-9-none-0-ref, lib1</td>
+      <td>210622</td>
+      <td>bg4e_6-9</td>
       <td>none</td>
       <td>0</td>
       <td>ref</td>
       <td>NaN</td>
-      <td>3.4e+07</td>
+      <td>2.2e+07</td>
       <td>NaN</td>
       <td>True</td>
+    </tr>
+    <tr>
+      <td>bg4e_6-9-none-0-ref, lib2</td>
+      <td>210622</td>
+      <td>bg4e_6-9</td>
+      <td>none</td>
+      <td>0</td>
+      <td>ref</td>
+      <td>NaN</td>
+      <td>2.2e+07</td>
+      <td>NaN</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>bg4e_8-K115_old-80-abneg, lib1</td>
+      <td>210622</td>
+      <td>bg4e_8</td>
+      <td>K115_old</td>
+      <td>80</td>
+      <td>abneg</td>
+      <td>6e+05</td>
+      <td>1.5e+06</td>
+      <td>2.5</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>bg4e_8-K115_old-80-abneg, lib2</td>
+      <td>210622</td>
+      <td>bg4e_8</td>
+      <td>K115_old</td>
+      <td>80</td>
+      <td>abneg</td>
+      <td>5.7e+05</td>
+      <td>1.3e+06</td>
+      <td>2.3</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>bg4e_10-K007-500-abneg, lib1</td>
+      <td>210702</td>
+      <td>bg4e_10</td>
+      <td>K007</td>
+      <td>500</td>
+      <td>abneg</td>
+      <td>5.1e+05</td>
+      <td>3.4e+06</td>
+      <td>6.7</td>
+      <td>False</td>
     </tr>
   </tbody>
 </table>
@@ -299,54 +299,6 @@ display(HTML(
   </thead>
   <tbody>
     <tr>
-      <td>ACE2_enrich-ACE2pos-8-abneg, lib1</td>
-      <td>210603</td>
-      <td>ACE2_enrich</td>
-      <td>ACE2pos</td>
-      <td>8</td>
-      <td>abneg</td>
-      <td>3.1e+07</td>
-      <td>7.7e+05</td>
-      <td>0.025</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <td>ACE2_enrich-ACE2pos-8-abneg, lib2</td>
-      <td>210603</td>
-      <td>ACE2_enrich</td>
-      <td>ACE2pos</td>
-      <td>8</td>
-      <td>abneg</td>
-      <td>3.2e+07</td>
-      <td>6.3e+05</td>
-      <td>0.02</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <td>ACE2_enrich-presort-0-ref, lib1</td>
-      <td>210603</td>
-      <td>ACE2_enrich</td>
-      <td>presort</td>
-      <td>0</td>
-      <td>ref</td>
-      <td>NaN</td>
-      <td>1.2e+06</td>
-      <td>NaN</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <td>ACE2_enrich-presort-0-ref, lib2</td>
-      <td>210603</td>
-      <td>ACE2_enrich</td>
-      <td>presort</td>
-      <td>0</td>
-      <td>ref</td>
-      <td>NaN</td>
-      <td>9.4e+05</td>
-      <td>NaN</td>
-      <td>True</td>
-    </tr>
-    <tr>
       <td>bg4e_6-9-none-0-ref, lib1</td>
       <td>210622</td>
       <td>bg4e_6-9</td>
@@ -371,42 +323,6 @@ display(HTML(
       <td>True</td>
     </tr>
     <tr>
-      <td>bg4e_6-K046_old-200-abneg, lib1</td>
-      <td>210622</td>
-      <td>bg4e_6</td>
-      <td>K046_old</td>
-      <td>200</td>
-      <td>abneg</td>
-      <td>6e+05</td>
-      <td>1.5e+06</td>
-      <td>2.5</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <td>bg4e_6-K046_old-200-abneg, lib2</td>
-      <td>210622</td>
-      <td>bg4e_6</td>
-      <td>K046_old</td>
-      <td>200</td>
-      <td>abneg</td>
-      <td>6.1e+05</td>
-      <td>1.3e+06</td>
-      <td>2.1</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <td>bg4e_7-K114_old-200-abneg, lib2</td>
-      <td>210622</td>
-      <td>bg4e_7</td>
-      <td>K114_old</td>
-      <td>200</td>
-      <td>abneg</td>
-      <td>5.7e+05</td>
-      <td>1.4e+06</td>
-      <td>2.4</td>
-      <td>False</td>
-    </tr>
-    <tr>
       <td>bg4e_8-K115_old-80-abneg, lib1</td>
       <td>210622</td>
       <td>bg4e_8</td>
@@ -428,18 +344,6 @@ display(HTML(
       <td>5.7e+05</td>
       <td>1.3e+06</td>
       <td>2.3</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <td>bg4e_9-K119_old-200-abneg, lib2</td>
-      <td>210622</td>
-      <td>bg4e_9</td>
-      <td>K119_old</td>
-      <td>200</td>
-      <td>abneg</td>
-      <td>7.4e+05</td>
-      <td>1.8e+06</td>
-      <td>2.4</td>
       <td>False</td>
     </tr>
   </tbody>

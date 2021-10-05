@@ -88,64 +88,64 @@ display(HTML(escape_fracs.head().to_html(index=False)))
   </thead>
   <tbody>
     <tr>
-      <td>ACE2pos_8</td>
+      <td>K007_500</td>
       <td>331</td>
       <td>N</td>
-      <td>E</td>
+      <td>A</td>
       <td>E</td>
       <td>331</td>
-      <td>0.7914</td>
-      <td>4.648</td>
-      <td>0.7746</td>
-      <td>1</td>
+      <td>0.000303</td>
+      <td>0.03074</td>
+      <td>0.001708</td>
+      <td>2</td>
     </tr>
     <tr>
-      <td>ACE2pos_8</td>
+      <td>K007_500</td>
       <td>331</td>
       <td>N</td>
-      <td>I</td>
+      <td>C</td>
       <td>E</td>
       <td>331</td>
-      <td>0.5932</td>
-      <td>4.648</td>
-      <td>0.7746</td>
-      <td>1</td>
+      <td>0.000240</td>
+      <td>0.03074</td>
+      <td>0.001708</td>
+      <td>2</td>
     </tr>
     <tr>
-      <td>ACE2pos_8</td>
+      <td>K007_500</td>
       <td>331</td>
       <td>N</td>
-      <td>L</td>
+      <td>D</td>
       <td>E</td>
       <td>331</td>
-      <td>0.9978</td>
-      <td>4.648</td>
-      <td>0.7746</td>
-      <td>1</td>
+      <td>0.000405</td>
+      <td>0.03074</td>
+      <td>0.001708</td>
+      <td>2</td>
     </tr>
     <tr>
-      <td>ACE2pos_8</td>
+      <td>K007_500</td>
       <td>331</td>
       <td>N</td>
-      <td>R</td>
+      <td>E</td>
       <td>E</td>
       <td>331</td>
-      <td>0.8226</td>
-      <td>4.648</td>
-      <td>0.7746</td>
-      <td>1</td>
+      <td>0.000218</td>
+      <td>0.03074</td>
+      <td>0.001708</td>
+      <td>2</td>
     </tr>
     <tr>
-      <td>ACE2pos_8</td>
+      <td>K007_500</td>
       <td>331</td>
       <td>N</td>
-      <td>T</td>
+      <td>F</td>
       <td>E</td>
       <td>331</td>
-      <td>0.5893</td>
-      <td>4.648</td>
-      <td>0.7746</td>
-      <td>1</td>
+      <td>0.000375</td>
+      <td>0.03074</td>
+      <td>0.001708</td>
+      <td>2</td>
     </tr>
   </tbody>
 </table>
@@ -323,15 +323,15 @@ strong_sites.to_csv(config['strong_escape_sites'], index=False)
   <tbody>
     <tr>
       <th>default</th>
-      <td>19</td>
+      <td>17</td>
     </tr>
     <tr>
       <th>sensitive</th>
-      <td>31</td>
+      <td>26</td>
     </tr>
     <tr>
       <th>sensitive_max_mut</th>
-      <td>148</td>
+      <td>26</td>
     </tr>
   </tbody>
 </table>
@@ -404,60 +404,60 @@ strong_sites.to_csv(config['strong_escape_sites'], index=False)
     </tr>
     <tr>
       <th>2</th>
-      <td>K007_old_500</td>
-      <td>446</td>
-      <td>0.8770</td>
-      <td>0.20180</td>
+      <td>K031_500</td>
+      <td>484</td>
+      <td>0.7803</td>
+      <td>0.26940</td>
       <td>default</td>
-      <td>0.04439</td>
-      <td>4.0660</td>
-      <td>0.4439</td>
+      <td>0.02336</td>
+      <td>0.7803</td>
+      <td>0.2336</td>
       <td>True</td>
-      <td>0.40660</td>
+      <td>0.07803</td>
       <td>True</td>
       <td>0</td>
       <td>True</td>
       <td>False</td>
       <td>True</td>
-      <td>6</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>K007_old_500</td>
+      <td>K033_500</td>
       <td>447</td>
-      <td>4.0060</td>
-      <td>0.33590</td>
+      <td>0.2982</td>
+      <td>0.15130</td>
       <td>default</td>
-      <td>0.04439</td>
-      <td>4.0660</td>
-      <td>0.4439</td>
+      <td>0.02625</td>
+      <td>2.3290</td>
+      <td>0.2625</td>
       <td>True</td>
-      <td>0.40660</td>
+      <td>0.23290</td>
       <td>True</td>
       <td>0</td>
       <td>True</td>
       <td>False</td>
       <td>True</td>
-      <td>6</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>K007_old_500</td>
-      <td>448</td>
-      <td>0.7089</td>
-      <td>0.28100</td>
+      <td>K033_500</td>
+      <td>484</td>
+      <td>2.3290</td>
+      <td>0.45180</td>
       <td>default</td>
-      <td>0.04439</td>
-      <td>4.0660</td>
-      <td>0.4439</td>
+      <td>0.02625</td>
+      <td>2.3290</td>
+      <td>0.2625</td>
       <td>True</td>
-      <td>0.40660</td>
+      <td>0.23290</td>
       <td>True</td>
       <td>0</td>
       <td>True</td>
       <td>False</td>
       <td>True</td>
-      <td>6</td>
+      <td>2</td>
     </tr>
   </tbody>
 </table>
