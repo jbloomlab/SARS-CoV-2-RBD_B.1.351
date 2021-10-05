@@ -130,64 +130,64 @@ display(HTML(escape_fracs.head().to_html(index=False)))
   </thead>
   <tbody>
     <tr>
-      <td>ACE2pos_8</td>
+      <td>K007_500</td>
       <td>331</td>
       <td>N</td>
-      <td>E</td>
+      <td>A</td>
       <td>E</td>
       <td>331</td>
-      <td>0.7914</td>
-      <td>4.648</td>
-      <td>0.7746</td>
-      <td>1</td>
+      <td>0.000303</td>
+      <td>0.03074</td>
+      <td>0.001708</td>
+      <td>2</td>
     </tr>
     <tr>
-      <td>ACE2pos_8</td>
+      <td>K007_500</td>
       <td>331</td>
       <td>N</td>
-      <td>I</td>
+      <td>C</td>
       <td>E</td>
       <td>331</td>
-      <td>0.5932</td>
-      <td>4.648</td>
-      <td>0.7746</td>
-      <td>1</td>
+      <td>0.000240</td>
+      <td>0.03074</td>
+      <td>0.001708</td>
+      <td>2</td>
     </tr>
     <tr>
-      <td>ACE2pos_8</td>
+      <td>K007_500</td>
       <td>331</td>
       <td>N</td>
-      <td>L</td>
+      <td>D</td>
       <td>E</td>
       <td>331</td>
-      <td>0.9978</td>
-      <td>4.648</td>
-      <td>0.7746</td>
-      <td>1</td>
+      <td>0.000405</td>
+      <td>0.03074</td>
+      <td>0.001708</td>
+      <td>2</td>
     </tr>
     <tr>
-      <td>ACE2pos_8</td>
+      <td>K007_500</td>
       <td>331</td>
       <td>N</td>
-      <td>R</td>
+      <td>E</td>
       <td>E</td>
       <td>331</td>
-      <td>0.8226</td>
-      <td>4.648</td>
-      <td>0.7746</td>
-      <td>1</td>
+      <td>0.000218</td>
+      <td>0.03074</td>
+      <td>0.001708</td>
+      <td>2</td>
     </tr>
     <tr>
-      <td>ACE2pos_8</td>
+      <td>K007_500</td>
       <td>331</td>
       <td>N</td>
-      <td>T</td>
+      <td>F</td>
       <td>E</td>
       <td>331</td>
-      <td>0.5893</td>
-      <td>4.648</td>
-      <td>0.7746</td>
-      <td>1</td>
+      <td>0.000375</td>
+      <td>0.03074</td>
+      <td>0.001708</td>
+      <td>2</td>
     </tr>
   </tbody>
 </table>
@@ -647,11 +647,11 @@ with multiprocessing.Pool(ncpus) as pool:
         
 ```
 
-    Drawing 7 profiles using 16 CPUs...
+    Drawing 4 profiles using 16 CPUs...
     
     Plotted profile 1 to:
-     results/escape_profiles/jackpotted_experiments_stackedlogo.pdf
-     results/escape_profiles/jackpotted_experiments_stackedlogo.png.
+     results/escape_profiles/B1351_stackedlogo.pdf
+     results/escape_profiles/B1351_stackedlogo.png.
 
 
 
@@ -662,8 +662,8 @@ with multiprocessing.Pool(ncpus) as pool:
 
     
     Plotted profile 2 to:
-     results/escape_profiles/jackpotted_experiments_color_by_bind_stackedlogo.pdf
-     results/escape_profiles/jackpotted_experiments_color_by_bind_stackedlogo.png.
+     results/escape_profiles/B1351_color_by_bind_stackedlogo.pdf
+     results/escape_profiles/B1351_color_by_bind_stackedlogo.png.
 
 
 
@@ -674,8 +674,8 @@ with multiprocessing.Pool(ncpus) as pool:
 
     
     Plotted profile 3 to:
-     results/escape_profiles/jackpotted_experiments_color_by_expr_stackedlogo.pdf
-     results/escape_profiles/jackpotted_experiments_color_by_expr_stackedlogo.png.
+     results/escape_profiles/B1351_color_by_expr_stackedlogo.pdf
+     results/escape_profiles/B1351_color_by_expr_stackedlogo.png.
 
 
 
@@ -686,49 +686,13 @@ with multiprocessing.Pool(ncpus) as pool:
 
     
     Plotted profile 4 to:
-     results/escape_profiles/B1351_stackedlogo.pdf
-     results/escape_profiles/B1351_stackedlogo.png.
-
-
-
-    
-![png](escape_profiles_files/escape_profiles_26_7.png)
-    
-
-
-    
-    Plotted profile 5 to:
-     results/escape_profiles/B1351_color_by_bind_stackedlogo.pdf
-     results/escape_profiles/B1351_color_by_bind_stackedlogo.png.
-
-
-
-    
-![png](escape_profiles_files/escape_profiles_26_9.png)
-    
-
-
-    
-    Plotted profile 6 to:
-     results/escape_profiles/B1351_color_by_expr_stackedlogo.pdf
-     results/escape_profiles/B1351_color_by_expr_stackedlogo.png.
-
-
-
-    
-![png](escape_profiles_files/escape_profiles_26_11.png)
-    
-
-
-    
-    Plotted profile 7 to:
      results/escape_profiles/K119_only_stackedlogo.pdf
      results/escape_profiles/K119_only_stackedlogo.png.
 
 
 
     
-![png](escape_profiles_files/escape_profiles_26_13.png)
+![png](escape_profiles_files/escape_profiles_26_7.png)
     
 
 

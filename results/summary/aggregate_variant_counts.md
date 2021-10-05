@@ -141,262 +141,6 @@ display(HTML(barcode_runs.to_html(index=False)))
   </thead>
   <tbody>
     <tr>
-      <td>210603</td>
-      <td>ACE2_enrich</td>
-      <td>lib1</td>
-      <td>ACE2pos</td>
-      <td>8</td>
-      <td>abneg</td>
-      <td>escape</td>
-      <td>ACE2_enrich-ACE2pos-8-abneg</td>
-      <td>ab_selection</td>
-      <td>31118467.0</td>
-      <td>0.900</td>
-      <td>ACE2_enrich-ACE2pos-8-abneg_lib1</td>
-      <td>results/counts/ACE2_enrich-ACE2pos-8-abneg_lib1_counts.csv</td>
-      <td>results/counts/ACE2_enrich-ACE2pos-8-abneg_lib1_fates.csv</td>
-    </tr>
-    <tr>
-      <td>210603</td>
-      <td>ACE2_enrich</td>
-      <td>lib2</td>
-      <td>ACE2pos</td>
-      <td>8</td>
-      <td>abneg</td>
-      <td>escape</td>
-      <td>ACE2_enrich-ACE2pos-8-abneg</td>
-      <td>ab_selection</td>
-      <td>32008380.0</td>
-      <td>0.900</td>
-      <td>ACE2_enrich-ACE2pos-8-abneg_lib2</td>
-      <td>results/counts/ACE2_enrich-ACE2pos-8-abneg_lib2_counts.csv</td>
-      <td>results/counts/ACE2_enrich-ACE2pos-8-abneg_lib2_fates.csv</td>
-    </tr>
-    <tr>
-      <td>210603</td>
-      <td>ACE2_enrich</td>
-      <td>lib1</td>
-      <td>presort</td>
-      <td>0</td>
-      <td>ref</td>
-      <td>reference</td>
-      <td>ACE2_enrich-presort-0-ref</td>
-      <td>ab_selection</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ACE2_enrich-presort-0-ref_lib1</td>
-      <td>results/counts/ACE2_enrich-presort-0-ref_lib1_counts.csv</td>
-      <td>results/counts/ACE2_enrich-presort-0-ref_lib1_fates.csv</td>
-    </tr>
-    <tr>
-      <td>210603</td>
-      <td>ACE2_enrich</td>
-      <td>lib2</td>
-      <td>presort</td>
-      <td>0</td>
-      <td>ref</td>
-      <td>reference</td>
-      <td>ACE2_enrich-presort-0-ref</td>
-      <td>ab_selection</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ACE2_enrich-presort-0-ref_lib2</td>
-      <td>results/counts/ACE2_enrich-presort-0-ref_lib2_counts.csv</td>
-      <td>results/counts/ACE2_enrich-presort-0-ref_lib2_fates.csv</td>
-    </tr>
-    <tr>
-      <td>210616</td>
-      <td>bg4e_1-5</td>
-      <td>lib1</td>
-      <td>none</td>
-      <td>0</td>
-      <td>ref</td>
-      <td>reference</td>
-      <td>bg4e_1-5-none-0-ref</td>
-      <td>ab_selection</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>bg4e_1-5-none-0-ref_lib1</td>
-      <td>results/counts/bg4e_1-5-none-0-ref_lib1_counts.csv</td>
-      <td>results/counts/bg4e_1-5-none-0-ref_lib1_fates.csv</td>
-    </tr>
-    <tr>
-      <td>210616</td>
-      <td>bg4e_1-5</td>
-      <td>lib2</td>
-      <td>none</td>
-      <td>0</td>
-      <td>ref</td>
-      <td>reference</td>
-      <td>bg4e_1-5-none-0-ref</td>
-      <td>ab_selection</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>bg4e_1-5-none-0-ref_lib2</td>
-      <td>results/counts/bg4e_1-5-none-0-ref_lib2_counts.csv</td>
-      <td>results/counts/bg4e_1-5-none-0-ref_lib2_fates.csv</td>
-    </tr>
-    <tr>
-      <td>210616</td>
-      <td>bg4e_1</td>
-      <td>lib1</td>
-      <td>K007_old</td>
-      <td>500</td>
-      <td>abneg</td>
-      <td>escape</td>
-      <td>bg4e_1-K007_old-500-abneg</td>
-      <td>ab_selection</td>
-      <td>527450.0</td>
-      <td>0.051</td>
-      <td>bg4e_1-K007_old-500-abneg_lib1</td>
-      <td>results/counts/bg4e_1-K007_old-500-abneg_lib1_counts.csv</td>
-      <td>results/counts/bg4e_1-K007_old-500-abneg_lib1_fates.csv</td>
-    </tr>
-    <tr>
-      <td>210616</td>
-      <td>bg4e_1</td>
-      <td>lib2</td>
-      <td>K007_old</td>
-      <td>500</td>
-      <td>abneg</td>
-      <td>escape</td>
-      <td>bg4e_1-K007_old-500-abneg</td>
-      <td>ab_selection</td>
-      <td>601342.0</td>
-      <td>0.065</td>
-      <td>bg4e_1-K007_old-500-abneg_lib2</td>
-      <td>results/counts/bg4e_1-K007_old-500-abneg_lib2_counts.csv</td>
-      <td>results/counts/bg4e_1-K007_old-500-abneg_lib2_fates.csv</td>
-    </tr>
-    <tr>
-      <td>210616</td>
-      <td>bg4e_2</td>
-      <td>lib1</td>
-      <td>K031_old</td>
-      <td>500</td>
-      <td>abneg</td>
-      <td>escape</td>
-      <td>bg4e_2-K031_old-500-abneg</td>
-      <td>ab_selection</td>
-      <td>524121.0</td>
-      <td>0.044</td>
-      <td>bg4e_2-K031_old-500-abneg_lib1</td>
-      <td>results/counts/bg4e_2-K031_old-500-abneg_lib1_counts.csv</td>
-      <td>results/counts/bg4e_2-K031_old-500-abneg_lib1_fates.csv</td>
-    </tr>
-    <tr>
-      <td>210616</td>
-      <td>bg4e_2</td>
-      <td>lib2</td>
-      <td>K031_old</td>
-      <td>500</td>
-      <td>abneg</td>
-      <td>escape</td>
-      <td>bg4e_2-K031_old-500-abneg</td>
-      <td>ab_selection</td>
-      <td>609250.0</td>
-      <td>0.058</td>
-      <td>bg4e_2-K031_old-500-abneg_lib2</td>
-      <td>results/counts/bg4e_2-K031_old-500-abneg_lib2_counts.csv</td>
-      <td>results/counts/bg4e_2-K031_old-500-abneg_lib2_fates.csv</td>
-    </tr>
-    <tr>
-      <td>210616</td>
-      <td>bg4e_3</td>
-      <td>lib1</td>
-      <td>K033_old</td>
-      <td>500</td>
-      <td>abneg</td>
-      <td>escape</td>
-      <td>bg4e_3-K033_old-500-abneg</td>
-      <td>ab_selection</td>
-      <td>752288.0</td>
-      <td>0.067</td>
-      <td>bg4e_3-K033_old-500-abneg_lib1</td>
-      <td>results/counts/bg4e_3-K033_old-500-abneg_lib1_counts.csv</td>
-      <td>results/counts/bg4e_3-K033_old-500-abneg_lib1_fates.csv</td>
-    </tr>
-    <tr>
-      <td>210616</td>
-      <td>bg4e_3</td>
-      <td>lib2</td>
-      <td>K033_old</td>
-      <td>500</td>
-      <td>abneg</td>
-      <td>escape</td>
-      <td>bg4e_3-K033_old-500-abneg</td>
-      <td>ab_selection</td>
-      <td>532827.0</td>
-      <td>0.083</td>
-      <td>bg4e_3-K033_old-500-abneg_lib2</td>
-      <td>results/counts/bg4e_3-K033_old-500-abneg_lib2_counts.csv</td>
-      <td>results/counts/bg4e_3-K033_old-500-abneg_lib2_fates.csv</td>
-    </tr>
-    <tr>
-      <td>210616</td>
-      <td>bg4e_4</td>
-      <td>lib1</td>
-      <td>K040_old</td>
-      <td>500</td>
-      <td>abneg</td>
-      <td>escape</td>
-      <td>bg4e_4-K040_old-500-abneg</td>
-      <td>ab_selection</td>
-      <td>481061.0</td>
-      <td>0.046</td>
-      <td>bg4e_4-K040_old-500-abneg_lib1</td>
-      <td>results/counts/bg4e_4-K040_old-500-abneg_lib1_counts.csv</td>
-      <td>results/counts/bg4e_4-K040_old-500-abneg_lib1_fates.csv</td>
-    </tr>
-    <tr>
-      <td>210616</td>
-      <td>bg4e_4</td>
-      <td>lib2</td>
-      <td>K040_old</td>
-      <td>500</td>
-      <td>abneg</td>
-      <td>escape</td>
-      <td>bg4e_4-K040_old-500-abneg</td>
-      <td>ab_selection</td>
-      <td>616299.0</td>
-      <td>0.067</td>
-      <td>bg4e_4-K040_old-500-abneg_lib2</td>
-      <td>results/counts/bg4e_4-K040_old-500-abneg_lib2_counts.csv</td>
-      <td>results/counts/bg4e_4-K040_old-500-abneg_lib2_fates.csv</td>
-    </tr>
-    <tr>
-      <td>210616</td>
-      <td>bg4e_5</td>
-      <td>lib1</td>
-      <td>K041_old</td>
-      <td>500</td>
-      <td>abneg</td>
-      <td>escape</td>
-      <td>bg4e_5-K041_old-500-abneg</td>
-      <td>ab_selection</td>
-      <td>534561.0</td>
-      <td>0.046</td>
-      <td>bg4e_5-K041_old-500-abneg_lib1</td>
-      <td>results/counts/bg4e_5-K041_old-500-abneg_lib1_counts.csv</td>
-      <td>results/counts/bg4e_5-K041_old-500-abneg_lib1_fates.csv</td>
-    </tr>
-    <tr>
-      <td>210616</td>
-      <td>bg4e_5</td>
-      <td>lib2</td>
-      <td>K041_old</td>
-      <td>500</td>
-      <td>abneg</td>
-      <td>escape</td>
-      <td>bg4e_5-K041_old-500-abneg</td>
-      <td>ab_selection</td>
-      <td>562704.0</td>
-      <td>0.054</td>
-      <td>bg4e_5-K041_old-500-abneg_lib2</td>
-      <td>results/counts/bg4e_5-K041_old-500-abneg_lib2_counts.csv</td>
-      <td>results/counts/bg4e_5-K041_old-500-abneg_lib2_fates.csv</td>
-    </tr>
-    <tr>
       <td>210622</td>
       <td>bg4e_6-9</td>
       <td>lib1</td>
@@ -430,70 +174,6 @@ display(HTML(barcode_runs.to_html(index=False)))
     </tr>
     <tr>
       <td>210622</td>
-      <td>bg4e_6</td>
-      <td>lib1</td>
-      <td>K046_old</td>
-      <td>200</td>
-      <td>abneg</td>
-      <td>escape</td>
-      <td>bg4e_6-K046_old-200-abneg</td>
-      <td>ab_selection</td>
-      <td>602073.0</td>
-      <td>0.051</td>
-      <td>bg4e_6-K046_old-200-abneg_lib1</td>
-      <td>results/counts/bg4e_6-K046_old-200-abneg_lib1_counts.csv</td>
-      <td>results/counts/bg4e_6-K046_old-200-abneg_lib1_fates.csv</td>
-    </tr>
-    <tr>
-      <td>210622</td>
-      <td>bg4e_6</td>
-      <td>lib2</td>
-      <td>K046_old</td>
-      <td>200</td>
-      <td>abneg</td>
-      <td>escape</td>
-      <td>bg4e_6-K046_old-200-abneg</td>
-      <td>ab_selection</td>
-      <td>605655.0</td>
-      <td>0.056</td>
-      <td>bg4e_6-K046_old-200-abneg_lib2</td>
-      <td>results/counts/bg4e_6-K046_old-200-abneg_lib2_counts.csv</td>
-      <td>results/counts/bg4e_6-K046_old-200-abneg_lib2_fates.csv</td>
-    </tr>
-    <tr>
-      <td>210622</td>
-      <td>bg4e_7</td>
-      <td>lib1</td>
-      <td>K114_old</td>
-      <td>200</td>
-      <td>abneg</td>
-      <td>escape</td>
-      <td>bg4e_7-K114_old-200-abneg</td>
-      <td>ab_selection</td>
-      <td>504596.0</td>
-      <td>0.044</td>
-      <td>bg4e_7-K114_old-200-abneg_lib1</td>
-      <td>results/counts/bg4e_7-K114_old-200-abneg_lib1_counts.csv</td>
-      <td>results/counts/bg4e_7-K114_old-200-abneg_lib1_fates.csv</td>
-    </tr>
-    <tr>
-      <td>210622</td>
-      <td>bg4e_7</td>
-      <td>lib2</td>
-      <td>K114_old</td>
-      <td>200</td>
-      <td>abneg</td>
-      <td>escape</td>
-      <td>bg4e_7-K114_old-200-abneg</td>
-      <td>ab_selection</td>
-      <td>571429.0</td>
-      <td>0.044</td>
-      <td>bg4e_7-K114_old-200-abneg_lib2</td>
-      <td>results/counts/bg4e_7-K114_old-200-abneg_lib2_counts.csv</td>
-      <td>results/counts/bg4e_7-K114_old-200-abneg_lib2_fates.csv</td>
-    </tr>
-    <tr>
-      <td>210622</td>
       <td>bg4e_8</td>
       <td>lib1</td>
       <td>K115_old</td>
@@ -523,38 +203,6 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>bg4e_8-K115_old-80-abneg_lib2</td>
       <td>results/counts/bg4e_8-K115_old-80-abneg_lib2_counts.csv</td>
       <td>results/counts/bg4e_8-K115_old-80-abneg_lib2_fates.csv</td>
-    </tr>
-    <tr>
-      <td>210622</td>
-      <td>bg4e_9</td>
-      <td>lib1</td>
-      <td>K119_old</td>
-      <td>200</td>
-      <td>abneg</td>
-      <td>escape</td>
-      <td>bg4e_9-K119_old-200-abneg</td>
-      <td>ab_selection</td>
-      <td>759531.0</td>
-      <td>0.066</td>
-      <td>bg4e_9-K119_old-200-abneg_lib1</td>
-      <td>results/counts/bg4e_9-K119_old-200-abneg_lib1_counts.csv</td>
-      <td>results/counts/bg4e_9-K119_old-200-abneg_lib1_fates.csv</td>
-    </tr>
-    <tr>
-      <td>210622</td>
-      <td>bg4e_9</td>
-      <td>lib2</td>
-      <td>K119_old</td>
-      <td>200</td>
-      <td>abneg</td>
-      <td>escape</td>
-      <td>bg4e_9-K119_old-200-abneg</td>
-      <td>ab_selection</td>
-      <td>738012.0</td>
-      <td>0.062</td>
-      <td>bg4e_9-K119_old-200-abneg_lib2</td>
-      <td>results/counts/bg4e_9-K119_old-200-abneg_lib2_counts.csv</td>
-      <td>results/counts/bg4e_9-K119_old-200-abneg_lib2_fates.csv</td>
     </tr>
     <tr>
       <td>210702</td>
@@ -963,33 +611,33 @@ display(HTML(fates.head().to_html(index=False)))
   <tbody>
     <tr>
       <td>TAACAGGGAAAGACGA</td>
-      <td>982</td>
+      <td>101872</td>
       <td>lib1</td>
-      <td>ACE2_enrich-ACE2pos-8-abneg</td>
-    </tr>
-    <tr>
-      <td>AGTCTAGCAGGCTCAG</td>
-      <td>815</td>
-      <td>lib1</td>
-      <td>ACE2_enrich-ACE2pos-8-abneg</td>
-    </tr>
-    <tr>
-      <td>GGGTGACACCAGAGAC</td>
-      <td>670</td>
-      <td>lib1</td>
-      <td>ACE2_enrich-ACE2pos-8-abneg</td>
+      <td>bg4e_6-9-none-0-ref</td>
     </tr>
     <tr>
       <td>TGGAGGCACTACAGGG</td>
-      <td>631</td>
+      <td>82466</td>
       <td>lib1</td>
-      <td>ACE2_enrich-ACE2pos-8-abneg</td>
+      <td>bg4e_6-9-none-0-ref</td>
     </tr>
     <tr>
       <td>AGACATAGTAGAATAC</td>
-      <td>588</td>
+      <td>75482</td>
       <td>lib1</td>
-      <td>ACE2_enrich-ACE2pos-8-abneg</td>
+      <td>bg4e_6-9-none-0-ref</td>
+    </tr>
+    <tr>
+      <td>AGTCTAGCAGGCTCAG</td>
+      <td>67864</td>
+      <td>lib1</td>
+      <td>bg4e_6-9-none-0-ref</td>
+    </tr>
+    <tr>
+      <td>GGGTGACACCAGAGAC</td>
+      <td>66766</td>
+      <td>lib1</td>
+      <td>bg4e_6-9-none-0-ref</td>
     </tr>
   </tbody>
 </table>
@@ -1011,33 +659,33 @@ display(HTML(fates.head().to_html(index=False)))
   <tbody>
     <tr>
       <td>valid barcode</td>
-      <td>769161</td>
+      <td>21847267</td>
       <td>lib1</td>
-      <td>ACE2_enrich-ACE2pos-8-abneg</td>
+      <td>bg4e_6-9-none-0-ref</td>
     </tr>
     <tr>
       <td>invalid barcode</td>
-      <td>148277</td>
+      <td>4013415</td>
       <td>lib1</td>
-      <td>ACE2_enrich-ACE2pos-8-abneg</td>
+      <td>bg4e_6-9-none-0-ref</td>
     </tr>
     <tr>
       <td>low quality barcode</td>
-      <td>55703</td>
+      <td>602332</td>
       <td>lib1</td>
-      <td>ACE2_enrich-ACE2pos-8-abneg</td>
-    </tr>
-    <tr>
-      <td>failed chastity filter</td>
-      <td>41750</td>
-      <td>lib1</td>
-      <td>ACE2_enrich-ACE2pos-8-abneg</td>
+      <td>bg4e_6-9-none-0-ref</td>
     </tr>
     <tr>
       <td>unparseable barcode</td>
-      <td>21858</td>
+      <td>450858</td>
       <td>lib1</td>
-      <td>ACE2_enrich-ACE2pos-8-abneg</td>
+      <td>bg4e_6-9-none-0-ref</td>
+    </tr>
+    <tr>
+      <td>failed chastity filter</td>
+      <td>206290</td>
+      <td>lib1</td>
+      <td>bg4e_6-9-none-0-ref</td>
     </tr>
   </tbody>
 </table>
@@ -1100,74 +748,6 @@ display(HTML(fates
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th rowspan="2" valign="top">ACE2_enrich-ACE2pos-8-abneg</th>
-      <th>lib1</th>
-      <td>4.2e+04</td>
-      <td>1.5e+05</td>
-      <td>5.6e+04</td>
-      <td>2.2e+04</td>
-      <td>7.7e+05</td>
-    </tr>
-    <tr>
-      <th>lib2</th>
-      <td>3.3e+04</td>
-      <td>1.8e+05</td>
-      <td>5.0e+04</td>
-      <td>1.9e+04</td>
-      <td>6.3e+05</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">ACE2_enrich-presort-0-ref</th>
-      <th>lib1</th>
-      <td>6.5e+04</td>
-      <td>2.3e+05</td>
-      <td>8.9e+04</td>
-      <td>3.7e+04</td>
-      <td>1.2e+06</td>
-    </tr>
-    <tr>
-      <th>lib2</th>
-      <td>4.9e+04</td>
-      <td>2.7e+05</td>
-      <td>7.5e+04</td>
-      <td>3.0e+04</td>
-      <td>9.4e+05</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">bg4e_1-5-none-0-ref</th>
-      <th>lib1</th>
-      <td>8.5e+05</td>
-      <td>6.9e+06</td>
-      <td>2.3e+06</td>
-      <td>5.9e+05</td>
-      <td>3.4e+07</td>
-    </tr>
-    <tr>
-      <th>lib2</th>
-      <td>7.5e+05</td>
-      <td>9.3e+06</td>
-      <td>2.2e+06</td>
-      <td>5.1e+05</td>
-      <td>3.1e+07</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">bg4e_1-K007_old-500-abneg</th>
-      <th>lib1</th>
-      <td>5.1e+04</td>
-      <td>3.9e+05</td>
-      <td>1.4e+05</td>
-      <td>2.7e+04</td>
-      <td>2.2e+06</td>
-    </tr>
-    <tr>
-      <th>lib2</th>
-      <td>5.1e+04</td>
-      <td>4.1e+05</td>
-      <td>1.5e+05</td>
-      <td>3.1e+04</td>
-      <td>2.5e+06</td>
-    </tr>
     <tr>
       <th rowspan="2" valign="top">bg4e_10-14-reference-0-ref</th>
       <th>lib1</th>
@@ -1356,74 +936,6 @@ display(HTML(fates
       <td>7.2e+06</td>
     </tr>
     <tr>
-      <th rowspan="2" valign="top">bg4e_2-K031_old-500-abneg</th>
-      <th>lib1</th>
-      <td>4.7e+04</td>
-      <td>2.3e+05</td>
-      <td>1.3e+05</td>
-      <td>2.7e+04</td>
-      <td>2.1e+06</td>
-    </tr>
-    <tr>
-      <th>lib2</th>
-      <td>6.4e+04</td>
-      <td>4.8e+05</td>
-      <td>1.8e+05</td>
-      <td>3.7e+04</td>
-      <td>2.9e+06</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">bg4e_3-K033_old-500-abneg</th>
-      <th>lib1</th>
-      <td>6.4e+04</td>
-      <td>3.1e+05</td>
-      <td>1.8e+05</td>
-      <td>3.9e+04</td>
-      <td>2.9e+06</td>
-    </tr>
-    <tr>
-      <th>lib2</th>
-      <td>4.8e+04</td>
-      <td>3.5e+05</td>
-      <td>1.3e+05</td>
-      <td>2.6e+04</td>
-      <td>2.2e+06</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">bg4e_4-K040_old-500-abneg</th>
-      <th>lib1</th>
-      <td>5.0e+04</td>
-      <td>2.5e+05</td>
-      <td>1.4e+05</td>
-      <td>3.0e+04</td>
-      <td>2.3e+06</td>
-    </tr>
-    <tr>
-      <th>lib2</th>
-      <td>5.1e+04</td>
-      <td>3.9e+05</td>
-      <td>1.5e+05</td>
-      <td>3.0e+04</td>
-      <td>2.4e+06</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">bg4e_5-K041_old-500-abneg</th>
-      <th>lib1</th>
-      <td>5.3e+04</td>
-      <td>2.5e+05</td>
-      <td>1.5e+05</td>
-      <td>2.9e+04</td>
-      <td>2.3e+06</td>
-    </tr>
-    <tr>
-      <th>lib2</th>
-      <td>4.8e+04</td>
-      <td>3.6e+05</td>
-      <td>1.4e+05</td>
-      <td>2.7e+04</td>
-      <td>2.3e+06</td>
-    </tr>
-    <tr>
       <th rowspan="2" valign="top">bg4e_6-9-none-0-ref</th>
       <th>lib1</th>
       <td>2.1e+05</td>
@@ -1441,40 +953,6 @@ display(HTML(fates
       <td>2.2e+07</td>
     </tr>
     <tr>
-      <th rowspan="2" valign="top">bg4e_6-K046_old-200-abneg</th>
-      <th>lib1</th>
-      <td>1.4e+04</td>
-      <td>2.6e+05</td>
-      <td>4.0e+04</td>
-      <td>3.2e+04</td>
-      <td>1.5e+06</td>
-    </tr>
-    <tr>
-      <th>lib2</th>
-      <td>1.2e+04</td>
-      <td>3.6e+05</td>
-      <td>3.6e+04</td>
-      <td>3.1e+04</td>
-      <td>1.3e+06</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">bg4e_7-K114_old-200-abneg</th>
-      <th>lib1</th>
-      <td>1.2e+04</td>
-      <td>2.2e+05</td>
-      <td>3.4e+04</td>
-      <td>3.6e+04</td>
-      <td>1.3e+06</td>
-    </tr>
-    <tr>
-      <th>lib2</th>
-      <td>1.4e+04</td>
-      <td>4.1e+05</td>
-      <td>4.2e+04</td>
-      <td>3.1e+04</td>
-      <td>1.4e+06</td>
-    </tr>
-    <tr>
       <th rowspan="2" valign="top">bg4e_8-K115_old-80-abneg</th>
       <th>lib1</th>
       <td>1.4e+04</td>
@@ -1490,23 +968,6 @@ display(HTML(fates
       <td>4.0e+04</td>
       <td>3.0e+04</td>
       <td>1.3e+06</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">bg4e_9-K119_old-200-abneg</th>
-      <th>lib1</th>
-      <td>1.7e+04</td>
-      <td>3.4e+05</td>
-      <td>5.1e+04</td>
-      <td>3.6e+04</td>
-      <td>2.0e+06</td>
-    </tr>
-    <tr>
-      <th>lib2</th>
-      <td>1.7e+04</td>
-      <td>5.2e+05</td>
-      <td>4.9e+04</td>
-      <td>4.1e+04</td>
-      <td>1.8e+06</td>
     </tr>
   </tbody>
 </table>
@@ -1588,9 +1049,9 @@ display(HTML(variants.variant_count_df.head().to_html(index=False)))
     <tr>
       <td>B1351</td>
       <td>lib1</td>
-      <td>ACE2_enrich-ACE2pos-8-abneg</td>
+      <td>bg4e_6-9-none-0-ref</td>
       <td>TAACAGGGAAAGACGA</td>
-      <td>982</td>
+      <td>101872</td>
       <td>31</td>
       <td>GGT9TCT ATT142GAA</td>
       <td>G9S I142E</td>
@@ -1600,33 +1061,9 @@ display(HTML(variants.variant_count_df.head().to_html(index=False)))
     <tr>
       <td>B1351</td>
       <td>lib1</td>
-      <td>ACE2_enrich-ACE2pos-8-abneg</td>
-      <td>AGTCTAGCAGGCTCAG</td>
-      <td>815</td>
-      <td>5</td>
-      <td></td>
-      <td></td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>B1351</td>
-      <td>lib1</td>
-      <td>ACE2_enrich-ACE2pos-8-abneg</td>
-      <td>GGGTGACACCAGAGAC</td>
-      <td>670</td>
-      <td>2</td>
-      <td>GGC152AAT</td>
-      <td>G152N</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>B1351</td>
-      <td>lib1</td>
-      <td>ACE2_enrich-ACE2pos-8-abneg</td>
+      <td>bg4e_6-9-none-0-ref</td>
       <td>TGGAGGCACTACAGGG</td>
-      <td>631</td>
+      <td>82466</td>
       <td>5</td>
       <td>ACT140AGA</td>
       <td>T140R</td>
@@ -1636,12 +1073,36 @@ display(HTML(variants.variant_count_df.head().to_html(index=False)))
     <tr>
       <td>B1351</td>
       <td>lib1</td>
-      <td>ACE2_enrich-ACE2pos-8-abneg</td>
+      <td>bg4e_6-9-none-0-ref</td>
       <td>AGACATAGTAGAATAC</td>
-      <td>588</td>
+      <td>75482</td>
       <td>3</td>
       <td>TCT164ACT</td>
       <td>S164T</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>B1351</td>
+      <td>lib1</td>
+      <td>bg4e_6-9-none-0-ref</td>
+      <td>AGTCTAGCAGGCTCAG</td>
+      <td>67864</td>
+      <td>5</td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>B1351</td>
+      <td>lib1</td>
+      <td>bg4e_6-9-none-0-ref</td>
+      <td>GGGTGACACCAGAGAC</td>
+      <td>66766</td>
+      <td>2</td>
+      <td>GGC152AAT</td>
+      <td>G152N</td>
       <td>1</td>
       <td>1</td>
     </tr>
