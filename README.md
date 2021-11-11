@@ -4,7 +4,7 @@ The effects of mutations on antibody and serum binding to the RBD from the B.1.3
 Study and analysis by Allie Greaney, Tyler Starr, [Jesse Bloom](https://research.fhcrc.org/bloom/en.html), and co-authors.
 
 ## Summary of workflow and results
-For a summary of the workflow and links to key results files, click [here](results/summary.md).
+For a summary of the workflow and links to key results files, click [here](results/summary/summary.md).
 Reading this summary is the best way to understand the analysis.
 
 ## Running the analysis
