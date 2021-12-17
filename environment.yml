@@ -6,6 +6,7 @@ channels:
 dependencies:
   - altair=4.1
   - git-lfs
+  - importlib_resources
   - jupyter
   - jupyter_contrib_nbextensions
   - jupyterlab

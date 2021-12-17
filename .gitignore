@@ -12,18 +12,27 @@ _*
 env/
 
 results/*
+
 !results/summary
+
+!results/variants
+results/variants/*
+results/variants/codon_variant_table.csv
+
 !resuts/counts
 results/counts/*
 !results/counts/variant_counts.csv.gz
 !results/counts/counts_to_cells_csv.csv
+
 !results/escape_scores
 results/escape_scores/*
 !results/escape_scores/scores.csv
 !results/escape_scores/escape_fracs.csv
+
 !results/supp_data/
 results/supp_data/*
 !results/supp_data/*.csv
+
 !results/prior_DMS_data/
 results/prior_DMS_data/*
 !results/prior_DMS_data/early2020_escape_fracs.csv
