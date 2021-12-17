@@ -9,9 +9,8 @@ Here is the rule graph of the computational workflow:
 ![rulegraph.svg](rulegraph.svg)
 
 Here is the Markdown output of each notebook in the workflow:
-1. Get prior DMS mutation-level [binding and expression data](../prior_DMS_data/mutant_ACE2binding_expression.csv).
 
-2. Get prior MAPping [escape_fracs](../prior_DMS_data/early2020_escape_fracs.csv) for polyclonal plasmas from early 2020 against the Wuhan-1 RBD library.
+1. Get prior MAPping [escape_fracs](../prior_DMS_data/early2020_escape_fracs.csv) for polyclonal plasmas from early 2020 against the Wuhan-1 RBD library.
 
 2. [Process PacBio CCSs](process_ccs.md).
 

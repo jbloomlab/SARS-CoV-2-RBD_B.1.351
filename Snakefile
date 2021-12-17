@@ -114,9 +114,8 @@ rule make_summary:
             ![{path(input.rulegraph)}]({path(input.rulegraph)})
 
             Here is the Markdown output of each notebook in the workflow:
-            1. Get prior DMS mutation-level [binding and expression data]({path(input.get_mut_bind_expr)}).
-
-            2. Get prior MAPping [escape_fracs]({path(input.get_early2020_escape_fracs)}) for polyclonal plasmas from early 2020 against the Wuhan-1 RBD library.
+            
+            1. Get prior MAPping [escape_fracs]({path(input.get_early2020_escape_fracs)}) for polyclonal plasmas from early 2020 against the Wuhan-1 RBD library.
 
             2. [Process PacBio CCSs]({path(input.process_ccs)}).
 
