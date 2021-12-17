@@ -1,7 +1,13 @@
 # Mutational antigenic profiling of the B.1.351 SARS-CoV-2 RBD
-The effects of mutations on antibody and serum binding to the RBD from the B.1.351 SARS-CoV-2 variant.
+The effects of mutations on antibody and serum binding to the RBD from the B.1.351 (Beta) SARS-CoV-2 variant.
+
+The B.1.351 variant was first described by [Tegally, et al. (2021)](https://www.nature.com/articles/s41586-021-03402-9). 
+This variant is substantially less susceptible to neutralization by convalescent plasmas elicited against early 2020 SARS-CoV-2 viral isolates
+(see [Cele et al. (2021)](https://www.nature.com/articles/s41586-021-03471-w) and [Myo-Gwete et al. (2021)](https://www.nejm.org/doi/full/10.1056/NEJMc2104192)). 
 
 Study and analysis by Allie Greaney, Tyler Starr, [Jesse Bloom](https://research.fhcrc.org/bloom/en.html), and co-authors.
+
+This study was a collaboration with [Alex Sigal's lab](https://sigallab.net/) at the [African Health Research Institute](https://www.ahri.org/) and with [Helen Chu's lab](https://www.chulab.org/) and the [HAARVI Study](https://www.chulab.org/haarvi) at the University of Washington. 
 
 ## Summary of workflow and results
 For a summary of the workflow and links to key results files, click [here](results/summary/summary.md).
@@ -20,7 +26,7 @@ The analysis consists of three components, all of which are contained in this re
 To simplify git tracking of Jupyter notebooks, we have added the filter described [here](https://stackoverflow.com/questions/28908319/how-to-clear-an-ipython-notebooks-output-in-all-cells-from-the-linux-terminal/58004619#58004619) to strip notebook metadata to [.gitattributes](.gitattributes) and [.gitconfig](.gitconfig).
 The **first time** you check out this repo, run the following command to use this configuration (see [here](https://stackoverflow.com/a/18330114)):
 
-   git config --local include.path ../.gitconfig
+    git config --local include.path ../.gitconfig
 
 Then don't worry about it anymore.
 
